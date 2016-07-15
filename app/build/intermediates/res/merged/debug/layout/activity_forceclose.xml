@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_login"
+    android:orientation="vertical"
+    android:padding="10dp" >
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_close"
+        android:layout_gravity="top"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:text="Close"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <ImageView
+            android:layout_width="161dp"
+            android:layout_height="98dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Login Button -->
+
+        <TextView
+            android:background="@color/btn_login_bg"
+            android:padding="15dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_desc"
+            android:layout_gravity="top"
+            android:textColor="#ff1d04"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="Sorry! we found error on Semut App that running on your system. Please send this error report to our developer to help Semut App works better."/>
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/btn_login_bg"
+            android:text="Send by Email"
+            android:textColor="@color/btn_login" />
+
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/layout/activity_forceclose.xml -->

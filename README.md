@@ -1,2 +1,2 @@
-# Semut-Android
-Applikasi Semut Versi Android
+# Semut-PPTIK-Android
+Semut Android Version

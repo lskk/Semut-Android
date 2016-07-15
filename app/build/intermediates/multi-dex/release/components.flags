@@ -1,0 +1,114 @@
+-injars '/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut 7 Januari/Semut-PPTIK-Android-master/app/build/intermediates/multi-dex/release/allclasses.jar'
+-outjars '/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut 7 Januari/Semut-PPTIK-Android-master/app/build/intermediates/multi-dex/release/componentClasses.jar'
+
+-libraryjars /Users/arysetijadiprihatmanto/Library/Android/sdk/build-tools/23.0.1/lib/shrinkedAndroid.jar
+
+-forceprocessing
+-dontoptimize
+-dontobfuscate
+-dontpreverify
+-dontwarn
+-printconfiguration '/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut 7 Januari/Semut-PPTIK-Android-master/app/build/intermediates/multi-dex/release/components.flags'
+
+
+-keep class project.bsts.semut.app.AppController {
+    <init>();
+    void attachBaseContext(android.content.Context);
+}
+
+-keep class project.bsts.semut.service.GetLocation {
+    <init>();
+}
+
+-keep class project.bsts.semut.service.StoreLocations {
+    <init>();
+}
+
+-keep class project.bsts.semut.LoginActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.RegisterActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.SemutActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.PreloginActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.TagsActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.TaxiActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.PublictransActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.CctvActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.CctvPlayerActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.TaxiOrderActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.TaxiOrderListActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.FriendActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.SearchFriendActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.MapFilterActivity {
+    <init>();
+}
+
+-keep class com.facebook.FacebookActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.NotificationActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.BarcodeActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.ErrorReportActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.MainActivity {
+    <init>();
+}
+
+-keep class project.bsts.semut.FrontActivity {
+    <init>();
+}
+
+-keep public class * extends android.app.backup.BackupAgent {
+    <init>();
+}
+
+-keep public class * extends java.lang.annotation.Annotation {
+    <fields>;
+    <methods>;
+}

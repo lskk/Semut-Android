@@ -1,0 +1,168 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="project.bsts.semut.SubmitTagFragment"
+    android:background="@drawable/bg_white_rounded">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Post Tag"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_black_top_rounded"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:gravity="center|center_horizontal" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/backButton"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/btn_back_menu"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="false"
+            android:background="#00ffffff"
+            android:layout_alignParentLeft="true" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/closeButton"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/btn_close_menu"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="true"
+            android:background="#00ffffff" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/thumb"
+                android:src="@drawable/menu_post_sub_01"
+                android:background="@drawable/bg_orange_circle" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Medium Text"
+                    android:id="@+id/title"
+                    android:textColor="@color/semut_blue_color"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Happened at:"
+                    android:id="@+id/textView4"
+                    android:textColor="@color/primaryDark"
+                    android:textSize="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Rabu, 45 Agustus 1987"
+                    android:id="@+id/date"
+                    android:textColor="@color/semut_blue_color"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Remarks:"
+            android:id="@+id/textView6"
+            android:textColor="@color/semut_blue_color"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/remarks"
+            android:layout_weight="0.10"
+            android:background="@drawable/stroke_rounded_blue"
+            android:textSize="14dp"
+            android:hint="Type your remarks here.."
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:maxLength="128" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0 of 128"
+            android:id="@+id/counter"
+            android:textColor="@color/semut_blue_color"
+            android:textSize="10dp"
+            android:layout_marginTop="2dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal">
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:text="@string/submit"
+                android:id="@+id/submitButton"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/solid_rounded_blue"
+                android:textColor="@color/white"
+                android:elegantTextHeight="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</FrameLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/layout/fragment_submit_tag.xml -->

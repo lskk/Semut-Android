@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+    <gradient
+        android:startColor="@color/primary"
+        android:centerColor="@color/primary"
+        android:endColor="@color/primaryDark"
+        android:type="linear"
+        android:angle="135"/>
+</shape><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/drawable/side_nav_bar.xml -->

@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile project(':facebook')
+}
+
+android {
+    compileSdkVersion Integer.parseInt("20")
+    buildToolsVersion "20"
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt("20")
+        targetSdkVersion Integer.parseInt("20")
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+}

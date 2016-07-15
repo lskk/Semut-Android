@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="project.bsts.semut.FriendActivity"
+android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/primary">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Friends"
+        android:id="@+id/textView5"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/backButton"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:background="@drawable/bg_close"
+        android:layout_alignParentBottom="true" />
+
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/search_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:src="@android:drawable/ic_menu_search"
+        android:background="@drawable/bg_close"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false" />
+
+</RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <project.bsts.semut.SegmentedRadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:orientation="horizontal"
+            android:id="@+id/segment_text"
+
+            android:checkedButton="@+id/button_one">
+            <RadioButton android:id="@+id/button_one"
+                android:minWidth="100dip"
+                android:minHeight="33dip"
+                android:text="Friends"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:button="@null"
+                android:gravity="center"
+                android:textColor="@color/radio_colors" />
+            <RadioButton android:id="@+id/button_two"
+                android:minWidth="100dip"
+                android:minHeight="33dip"
+                android:text="Sent"
+                android:button="@null"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/radio_colors" />
+            <RadioButton android:id="@+id/button_three"
+                android:minWidth="100dip"
+                android:minHeight="33dip"
+                android:text="Received"
+                android:button="@null"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/radio_colors" />
+        </project.bsts.semut.SegmentedRadioGroup>
+    </LinearLayout>
+
+    <ListView
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/listView"
+    android:layout_gravity="center_horizontal"
+    android:divider="#ffbababa"
+    android:dividerHeight="1dp" />
+</LinearLayout>
