@@ -94,4 +94,4 @@
             android:layout_marginTop="@dimen/material_drawer_account_header_dropdown" />
 
     </RelativeLayout>
-</FrameLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/4.6.3/res/layout/material_drawer_compact_header.xml -->
+</FrameLayout>

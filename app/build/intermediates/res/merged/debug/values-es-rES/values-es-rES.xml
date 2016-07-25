@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.facebook.android/facebook/4.2.0/res/values-es-rES/values-es-rES.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Error inesperado al descargar una imagen.</string>
     <string name="com_facebook_internet_permission_error_message">El inicio de sesión de WebView requiere permiso para INTERNET</string>
     <string name="com_facebook_internet_permission_error_title">Error de AndroidManifest</string>

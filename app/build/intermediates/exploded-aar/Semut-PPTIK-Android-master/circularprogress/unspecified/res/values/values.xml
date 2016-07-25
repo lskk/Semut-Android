@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="DashedCircularProgress"><attr format="color" name="external_color"/><attr format="color" name="base_color"/><attr format="color" name="progress_color"/><attr format="float" name="max"/><attr format="float" name="min"/><attr format="reference" name="progress_icon"/><attr format="integer" name="duration"/></declare-styleable>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/circularprogress/src/main/res/values/strings.xml -->
-    <eat-comment/>
-    <string name="app_name">Circular progress Lib</string>
-</resources>

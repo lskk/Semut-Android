@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.facebook.android/facebook/4.2.0/res/values-mr/values-mr.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">प्रतिमा डाउनलोड करताना अनपेक्षित त्रुटी.</string>
     <string name="com_facebook_internet_permission_error_message">वेबदृश्य लॉग इन आवश्यकता इंटरनेट परवानगी</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest त्रुटी</string>

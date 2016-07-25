@@ -14,4 +14,3 @@
         app:menu="@menu/activity_test_drawer_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
-<!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/layout/activity_front.xml -->

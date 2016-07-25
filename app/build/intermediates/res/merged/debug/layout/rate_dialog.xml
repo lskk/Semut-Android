@@ -43,4 +43,4 @@
         android:background="@drawable/general_rounded_maincolor"
         android:layout_gravity="center_horizontal"/>
 
-</LinearLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/layout/rate_dialog.xml -->
+</LinearLayout>

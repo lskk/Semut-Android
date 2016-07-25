@@ -6,4 +6,4 @@
         android:valueFrom="0"
         android:valueTo="-320"
         android:duration="250"/>
-</set><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/anim/out_to_half_left.xml -->
+</set>

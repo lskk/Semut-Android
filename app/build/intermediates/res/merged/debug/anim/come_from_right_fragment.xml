@@ -6,4 +6,4 @@
         android:valueFrom="960"
         android:valueTo="0"
         android:duration="250"/>
-</set><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/anim/come_from_right_fragment.xml -->
+</set>

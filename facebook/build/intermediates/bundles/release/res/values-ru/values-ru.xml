@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-ru/strings.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">При загрузке изображения возникла неожиданная ошибка.</string>
     <string name="com_facebook_internet_permission_error_message">Для входа в WebView необходимо разрешение INTERNET</string>
     <string name="com_facebook_internet_permission_error_title">Ошибка AndroidManifest</string>
@@ -18,7 +16,5 @@
     <string name="com_facebook_send_button_text">Отправить</string>
     <string name="com_facebook_share_button_text">Поделиться</string>
     <string name="com_facebook_tooltip_default">Новинка! У вас все под контролем — выбирайте, какой информацией вы хотите поделиться с приложениями.</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-ru/messenger_button_strings.xml -->
-    <eat-comment/>
     <string name="messenger_send_button_text">Отпр</string>
 </resources>

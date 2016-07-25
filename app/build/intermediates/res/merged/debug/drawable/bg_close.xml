@@ -5,4 +5,4 @@
     <corners android:bottomRightRadius="0dp" android:bottomLeftRadius="0dp"
         android:topLeftRadius="7dp" android:topRightRadius="7dp"/>
     <padding android:left="0dip" android:top="0dip" android:right="0dip" android:bottom="0dip" />
-</shape><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/drawable/bg_close.xml -->
+</shape>

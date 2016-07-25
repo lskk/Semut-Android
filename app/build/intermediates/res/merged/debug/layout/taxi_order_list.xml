@@ -21,4 +21,4 @@
         android:id="@+id/order_taxi_item"
         android:textColor="@color/black"
         android:textSize="12dp" />
-</LinearLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/layout/taxi_order_list.xml -->
+</LinearLayout>

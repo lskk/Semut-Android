@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-hi/values-hi.xml -->
-    <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"मुख्यपृष्ठ पर नेविगेट करें"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
@@ -21,8 +19,6 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"इसके द्वारा साझा करें"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"%s के साथ साझा करें"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"संक्षिप्त करें"</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.facebook.android/facebook/4.2.0/res/values-hi/values-hi.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">एक चित्र डाउनलोड करते समय अनपेक्षित गलती हुई.</string>
     <string name="com_facebook_internet_permission_error_message">WebView लॉग इन के लिए INTERNET अनुमति की आवश्यकता है</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest गलती</string>
@@ -39,8 +35,6 @@
     <string name="com_facebook_send_button_text">भेजें</string>
     <string name="com_facebook_share_button_text">साझा करें</string>
     <string name="com_facebook_tooltip_default">नया! आप नियंत्रण में हैं - चुनें कि आप एप्लिकेशन से कौन-सी जानकारी साझा करना चाहते हैं.</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values-hi/common_strings.xml -->
-    <eat-comment/>
     <string msgid="6428604800157361567" name="common_android_wear_notification_needs_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> को Android Wear ऐप की नई जानकारी पाने की आवश्यकता है."</string>
     <string msgid="2453027084525739603" name="common_android_wear_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> तब तक नहीं चलेगा, जब तक कि आप Android Wear ऐप के लिए नई जानकारी प्राप्त नहीं कर लेते."</string>
     <string msgid="1366439133145190222" name="common_android_wear_update_title">"Android Wear अपडेट करें"</string>
@@ -71,10 +65,6 @@
     <string msgid="2201289642219771610" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> उन Google Play सेवाओं के बिना नहीं चलेगा जो वर्तमान में अपडेट हो रही हैं."</string>
     <string msgid="815008177440683245" name="common_google_play_services_updating_title">"Google Play सेवाएं अपडेट हो रही हैं"</string>
     <string msgid="411506735369601515" name="common_open_on_phone">"फ़ोन पर खोलें"</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.facebook.android/facebook/4.2.0/res/values-hi/values-hi.xml -->
-    <eat-comment/>
     <string name="messenger_send_button_text">भेजें</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-hi/values-hi.xml -->
-    <eat-comment/>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

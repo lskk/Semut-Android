@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-hr/strings.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Prilikom preuzimanja slike došlo je do neočekivane pogreške.</string>
     <string name="com_facebook_internet_permission_error_message">Za prijavu u aplikaciju WebView potrebna je dozvola INTERNET</string>
     <string name="com_facebook_internet_permission_error_title">Pogreška datoteke AndroidManifest</string>

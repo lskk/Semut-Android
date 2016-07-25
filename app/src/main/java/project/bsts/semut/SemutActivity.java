@@ -449,7 +449,8 @@ public class SemutActivity extends AppCompatActivity implements Runnable, Marker
     private void bindingMap(){
         pinDetail = (LinearLayout) findViewById(R.id.pinDetail);
         map = (MapView) findViewById(R.id.mapfront);
-        map.setTileSource(TileSourceFactory.MAPQUESTOSM);
+    //    map.setTileSource(TileSourceFactory.MAPQUESTOSM);
+        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         map.setMultiTouchControls(true);
         mapController = map.getController();
         mapController.setZoom(25);

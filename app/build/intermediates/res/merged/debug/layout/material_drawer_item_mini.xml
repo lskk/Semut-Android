@@ -32,4 +32,4 @@
         android:singleLine="true"
         android:textSize="@dimen/material_mini_drawer_item_badge_text"
         tools:text="99" />
-</FrameLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/4.6.3/res/layout/material_drawer_item_mini.xml -->
+</FrameLayout>

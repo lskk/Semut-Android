@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-hi/strings.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">एक चित्र डाउनलोड करते समय अनपेक्षित गलती हुई.</string>
     <string name="com_facebook_internet_permission_error_message">WebView लॉग इन के लिए INTERNET अनुमति की आवश्यकता है</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest गलती</string>
@@ -18,7 +16,5 @@
     <string name="com_facebook_send_button_text">भेजें</string>
     <string name="com_facebook_share_button_text">साझा करें</string>
     <string name="com_facebook_tooltip_default">नया! आप नियंत्रण में हैं - चुनें कि आप एप्लिकेशन से कौन-सी जानकारी साझा करना चाहते हैं.</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-hi/messenger_button_strings.xml -->
-    <eat-comment/>
     <string name="messenger_send_button_text">भेजें</string>
 </resources>

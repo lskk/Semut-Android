@@ -4,4 +4,4 @@
         android:angle="270"
         android:endColor="#40000000"
         android:startColor="@android:color/transparent" />
-</shape><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/4.6.3/res/drawable/material_drawer_shadow_top.xml -->
+</shape>

@@ -49,4 +49,4 @@
     <ImageView android:id="@+id/imageBarcode" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-</LinearLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/layout/activity_barcode.xml -->
+</LinearLayout>

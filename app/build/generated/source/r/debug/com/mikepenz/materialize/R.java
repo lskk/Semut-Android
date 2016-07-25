@@ -600,10 +600,10 @@ public final class R {
 		public static final int switch_thumb_normal_material_light = 0x7f0a01a7;
 	}
 	public static final class dimen {
-		public static final int abc_action_bar_content_inset_material = 0x7f07000f;
+		public static final int abc_action_bar_content_inset_material = 0x7f07000d;
 		public static final int abc_action_bar_default_height_material = 0x7f070001;
-		public static final int abc_action_bar_default_padding_end_material = 0x7f070010;
-		public static final int abc_action_bar_default_padding_start_material = 0x7f070011;
+		public static final int abc_action_bar_default_padding_end_material = 0x7f07000e;
+		public static final int abc_action_bar_default_padding_start_material = 0x7f07000f;
 		public static final int abc_action_bar_icon_vertical_padding_material = 0x7f07001d;
 		public static final int abc_action_bar_overflow_padding_end_material = 0x7f07001e;
 		public static final int abc_action_bar_overflow_padding_start_material = 0x7f07001f;
@@ -688,7 +688,7 @@ public final class R {
 		public static final int materialize_icon = 0x7f0700b5;
 		public static final int materialize_listitem = 0x7f0700b6;
 		public static final int materialize_right_side_icon_margin = 0x7f0700b7;
-		public static final int materialize_screen_edge = 0x7f07000e;
+		public static final int materialize_screen_edge = 0x7f070018;
 		public static final int materialize_spacing = 0x7f0700b8;
 		public static final int materialize_statusbar = 0x7f0700b9;
 		public static final int materialize_subtitle = 0x7f0700ba;

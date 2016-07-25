@@ -17,4 +17,4 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <solid android:color="#000" />
-</shape><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/4.6.3/res/drawable/material_drawer_circle_mask.xml -->
+</shape>

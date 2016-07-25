@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-de/strings.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Unerwarteter Fehler beim Herunterladen eines Bildes.</string>
     <string name="com_facebook_internet_permission_error_message">Die WebView-Anmeldung erfordert die INTERNET-Berechtigung</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest-Fehler</string>
@@ -18,7 +16,5 @@
     <string name="com_facebook_send_button_text">Senden</string>
     <string name="com_facebook_share_button_text">Teilen</string>
     <string name="com_facebook_tooltip_default">Neu! Es liegt ganz an dir – du kannst dir aussuchen, was du mit Apps teilen möchtest.</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-de/messenger_button_strings.xml -->
-    <eat-comment/>
     <string name="messenger_send_button_text">Senden</string>
 </resources>

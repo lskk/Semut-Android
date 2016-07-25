@@ -105,4 +105,4 @@
             android:layout_marginRight="@dimen/material_drawer_vertical_padding" />
 
     </RelativeLayout>
-</FrameLayout><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/4.6.3/res/layout/material_drawer_header.xml -->
+</FrameLayout>

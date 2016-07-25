@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-nb/strings.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Det oppstod en uventet feil ved nedlasting av et bilde.</string>
     <string name="com_facebook_internet_permission_error_message">Webvisning-innlogging krever INTERNETT-tillatelse</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest-feil</string>
@@ -18,7 +16,5 @@
     <string name="com_facebook_send_button_text">Send</string>
     <string name="com_facebook_share_button_text">Del</string>
     <string name="com_facebook_tooltip_default">Nyhet! Du bestemmer – velg hvilke opplysninger du vil dele med appene.</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/facebook/res/values-nb/messenger_button_strings.xml -->
-    <eat-comment/>
     <string name="messenger_send_button_text">Send</string>
 </resources>

@@ -29,4 +29,4 @@
         android:layout_width="20dip" android:layout_height="wrap_content"
         android:gravity="center_horizontal"  android:includeFontPadding="true"/>
 
-</android.support.v4.view.MenuItemCompat><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/layout/menu_item.xml -->
+</android.support.v4.view.MenuItemCompat>

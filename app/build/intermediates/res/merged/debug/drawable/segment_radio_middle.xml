@@ -6,4 +6,4 @@
 	<item android:state_pressed="true"  android:drawable="@drawable/segment_radio_grey_middle_press" /> 
 	<item android:state_checked="false" android:drawable="@drawable/segment_radio_white_middle" /> 
 	<item android:drawable="@drawable/segment_radio_grey_middle" /> 	<!-- default  -->
-</selector><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/drawable/segment_radio_middle.xml -->
+</selector>

@@ -15,4 +15,4 @@
     <item android:id="@+id/menu_logout"
           android:icon="@drawable/btn_logout"
           android:title="Logout"/>
-</menu><!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/src/main/res/menu/main_menu.xml -->
+</menu>

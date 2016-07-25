@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-tl/values-tl.xml -->
-    <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Mag-navigate patungo sa home"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
@@ -21,8 +19,6 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Ibahagi sa/kay"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Ibahagi sa/kay %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"I-collapse"</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.facebook.android/facebook/4.2.0/res/values-tl/values-tl.xml -->
-    <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Hindi inaasahang error habang dina-download ang imahe.</string>
     <string name="com_facebook_internet_permission_error_message">Ang pag-log in sa Web ay nangangailangan ng pahintulot sa INTERNET</string>
     <string name="com_facebook_internet_permission_error_title">Error na AndroidManifest</string>
@@ -39,8 +35,6 @@
     <string name="com_facebook_send_button_text">Ipadala</string>
     <string name="com_facebook_share_button_text">Ibahagi</string>
     <string name="com_facebook_tooltip_default">Bago! Ikaw ang may kontrol - piliin kung anong impormasyon ang gusto mong ibahagi sa mga app.</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values-tl/common_strings.xml -->
-    <eat-comment/>
     <string msgid="6428604800157361567" name="common_android_wear_notification_needs_update_text">"Ang <ns1:g id="APP_NAME">%1$s</ns1:g> ay nangangailangan ng update sa Android Wear app."</string>
     <string msgid="2453027084525739603" name="common_android_wear_update_text">"Hindi gagana ang <ns1:g id="APP_NAME">%1$s</ns1:g> maliban kung i-a-update mo ang Android Wear app."</string>
     <string msgid="1366439133145190222" name="common_android_wear_update_title">"I-update ang Android Wear"</string>
@@ -71,10 +65,6 @@
     <string msgid="2201289642219771610" name="common_google_play_services_updating_text">"Hindi gagana ang <ns1:g id="APP_NAME">%1$s</ns1:g> nang wala ang mga serbisyo ng Google Play na kasalukuyang ina-update."</string>
     <string msgid="815008177440683245" name="common_google_play_services_updating_title">"Ina-update mga serbisyo ng Google Play"</string>
     <string msgid="411506735369601515" name="common_open_on_phone">"Buksan sa telepono"</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.facebook.android/facebook/4.2.0/res/values-tl/values-tl.xml -->
-    <eat-comment/>
     <string name="messenger_send_button_text">Ipadala</string>
-    <!-- From: file:/Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut%207%20Januari/Semut-PPTIK-Android-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-tl/values-tl.xml -->
-    <eat-comment/>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>
