@@ -3,11 +3,11 @@ Semut Android Version
 
 ## New Features in V.1.0.2
 * New UI and UX
-* Change Map service to other OSM Bnuspack method, because MapQuest is dead
+* Change Map service to other [OSM Bonuspack](https://github.com/MKergall/osmbonuspack) method, because MapQuest is dead
 
 ## Flow
 
-Login (LoginActivity.java) -> Main Activity (SemutActivity.java)
+Login (`LoginActivity.java`) -> Main Activity (`SemutActivity.java`)
 
 ## Screenshots
 
