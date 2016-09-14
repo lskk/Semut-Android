@@ -1,25 +1,10 @@
 # Semut-PPTIK-Android
-Semut Android Version
+Branch for development Semut V2
 
-## New Features in V.1.0.2
-* New UI and UX
-* Change Map service to other [OSM Bonuspack](https://github.com/MKergall/osmbonuspack) method, because MapQuest is dead
+For release version see : https://github.com/lskk/Semut-Android/tree/master
 
-## Flow
-
-Login (`LoginActivity.java`) -> Main Activity (`SemutActivity.java`)
-
-## Screenshots
-
-![Alt text](https://github.com/lskk/Semut-Android/blob/master/Screen%20Shot%202016-07-25%20at%202.16.38%20PM.png?raw=true "Screenshot")
-
-![Alt text](https://github.com/lskk/Semut-Android/blob/master/Screen%20Shot%202016-07-25%20at%202.16.52%20PM.png?raw=true "Screenshot")
-
-![Alt text](https://github.com/lskk/Semut-Android/blob/master/Screen%20Shot%202016-07-25%20at%202.17.11%20PM.png?raw=true "Screenshot")
-
-![Alt text](https://github.com/lskk/Semut-Android/blob/master/Screen%20Shot%202016-07-25%20at%202.17.48%20PM.png?raw=true "Screenshot")
-
-![Alt text](https://github.com/lskk/Semut-Android/blob/master/Screen%20Shot%202016-07-25%20at%202.18.03%20PM.png?raw=true "Screenshot")
+# TODO: 
+## * Remove Voley, change to Asynctask
 
 
 
