@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="google-material-typeface-2.1.0.1.original">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.mikepenz/google-material-typeface/2.1.0.1.original/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.mikepenz/google-material-typeface/2.1.0.1.original/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.mikepenz/google-material-typeface/2.1.0.1.original/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
