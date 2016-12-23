@@ -1,95 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/primary"
-    android:orientation="vertical"
-    android:padding="10dp" >
-    <TextView
-        android:layout_width="100dp"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="semut.bsts.project.semutapps.LoginActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_back"
-        android:layout_gravity="top"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:text=" Back "/>
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_login" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
-        <ImageView
-            android:layout_width="161dp"
-            android:layout_height="98dp"
-            android:id="@+id/imageView"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo"
-            android:layout_marginBottom="20dp"/>
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:hint="@string/hint_email"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
-
-        <!-- Login Button -->
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/btn_login_bg"
-            android:text="@string/btn_login"
-            android:textColor="@color/btn_login" />
-
-        <Button
-            android:id="@+id/btnLinkForgot"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:background="@null"
-            android:text="@string/btn_link_forgot"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="12dp" />
-
-        <Button
-            android:id="@+id/btnLinkToRegisterScreen"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:background="@null"
-            android:text="@string/btn_link_to_register"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

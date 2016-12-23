@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Semut-Android-v2.iml" filepath="$PROJECT_DIR$/Semut-Android-v2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Semut-Android.iml" filepath="$PROJECT_DIR$/Semut-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/circularprogress/circularprogress.iml" filepath="$PROJECT_DIR$/circularprogress/circularprogress.iml" />
-      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oSMBonusPack/oSMBonusPack.iml" filepath="$PROJECT_DIR$/oSMBonusPack/oSMBonusPack.iml" />
     </modules>
   </component>
 </project>

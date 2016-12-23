@@ -1,46 +1,64 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.1'
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
     defaultConfig {
-        applicationId 'project.bsts.semut'
+        applicationId "project.bsts.semut"
         minSdkVersion 15
-        targetSdkVersion 21
-        multiDexEnabled = true
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    productFlavors {
-    }
-    dexOptions {
-        javaMaxHeapSize "4g"
     }
 }
 
 
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.1.0'
+    }
+    plugins {
+        javalite {
+            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+        }
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:0.14.0'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {}
+                grpc {
+                    option 'lite'
+                }
+            }
+        }
+    }
+}
 
 dependencies {
-    //  compile 'com.android.support:appcompat-v7:21.0.3'
-    compile('com.mikepenz:materialdrawer:4.6.3@aar') {
-        transitive = true
-    }
-    compile files('libs/volley.jar')
-    compile project(':oSMBonusPack')
-    compile project(':circularprogress')
-    compile project(':facebook')
-    compile files('libs/core-3.2.0.jar')
-    compile 'com.loopj.android:android-async-http:1.4.9'
-//    compile 'com.google.android.gms:play-services:8.3.0'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.mikepenz:iconics-core:2.5.3@aar'
-    compile 'com.mikepenz:google-material-typeface:2.1.0.1.original@aar'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.android.support:multidex:1.0.0'
-    compile 'com.google.android.gms:play-services-location:8.1.0'
+    compile 'com.google.code.findbugs:jsr305:3.0.0'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.squareup.okhttp:okhttp:2.2.0'
+
+    compile 'io.grpc:grpc-okhttp:0.14.0'
+    compile 'io.grpc:grpc-protobuf-nano:0.14.0'
+    compile 'io.grpc:grpc-stub:0.14.0'
+    compile 'javax.annotation:javax.annotation-api:1.2'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+   // androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+   //     exclude group: 'com.android.support', module: 'support-annotations', group: 'com.google.code.findbugs'
+   // })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    testCompile 'junit:junit:4.12'
 }

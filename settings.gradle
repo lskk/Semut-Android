@@ -1,1 +1,1 @@
-include ':app', ':oSMBonusPack', ':circularprogress', ':facebook'
+include ':app'
