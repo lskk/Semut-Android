@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.grpc.android.helloworldexample.test">
+    package="project.bsts.semut.test">
 
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="io.grpc.android.helloworldexample"
+                     android:targetPackage="project.bsts.semut"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for io.grpc.android.helloworldexample"/>
+                     android:label="Tests for project.bsts.semut"/>
 </manifest>

@@ -1,57 +1,57 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:2:1-22:12
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:2:1-22:12
 	package
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:3:5-40
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:3:5-40
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:2:11-69
 	android:versionCode
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:5:5-67
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:5:22-64
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:7:5-20:19
-MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:7:5-20:19
+MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:10:9-41
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:10:9-41
 	android:allowBackup
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:8:9-35
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:8:9-35
 	android:icon
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:9:9-43
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:9:9-43
 	android:theme
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:11:9-61
-activity#io.grpc.helloworldexample.HelloworldActivity
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:12:9-19:20
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:11:9-61
+activity#project.bsts.semut.HelloworldActivity
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:12:9-19:20
 	android:label
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:14:13-45
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:14:13-45
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:13:13-47
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:13:13-65
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:15:13-18:29
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:15:13-18:29
 action#android.intent.action.MAIN
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:16:17-69
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:16:17-69
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:16:25-66
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:16:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:17:17-77
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:17:17-77
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml:17:27-74
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:17:27-74
 uses-sdk
-INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/grpc-java-master/examples/android/helloworld/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml

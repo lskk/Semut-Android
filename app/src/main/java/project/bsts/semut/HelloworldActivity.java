@@ -1,5 +1,5 @@
 
-package io.grpc.helloworldexample;
+package project.bsts.semut;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -16,8 +16,14 @@ import android.widget.TextView;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.examples.helloworld.GreeterGrpc;
+import project.bsts.semutservice.LoginReply;
+import project.bsts.semutservice.LoginRequest;
+import project.bsts.semutservice.UsersManagementGrpc;
 import io.grpc.examples.helloworld.HelloReply;
 import io.grpc.examples.helloworld.HelloRequest;
+import io.grpc.helloworldexample.R;
+
+import project.bsts.semutservice.UsersManagementGrpc;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -70,10 +76,13 @@ public class HelloworldActivity extends ActionBarActivity {
                 mChannel = ManagedChannelBuilder.forAddress(mHost, mPort)
                     .usePlaintext(true)
                     .build();
-                GreeterGrpc.GreeterBlockingStub stub = GreeterGrpc.newBlockingStub(mChannel);
-                HelloRequest message = HelloRequest.newBuilder().setName(mMessage).build();
-                HelloReply reply = stub.sayHello(message);
-                return reply.getMessage();
+                UsersManagementGrpc.UsersManagementBlockingStub stub = UsersManagementGrpc.newBlockingStub(mChannel);
+            //    GreeterGrpc.GreeterBlockingStub stub = GreeterGrpc.newBlockingStub(mChannel);
+                LoginRequest message = LoginRequest.newBuilder().setEmail("caliandrat9@gmail.com").setPassword("").build();
+            //    HelloRequest message = HelloRequest.newBuilder().setName(mMessage).build();
+                LoginReply reply = stub.login(message);
+            //    HelloReply reply = stub.sayHello(message);
+                return reply.getResponse();
             } catch (Exception e) {
                 StringWriter sw = new StringWriter();
                 PrintWriter pw = new PrintWriter(sw);
