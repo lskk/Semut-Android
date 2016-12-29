@@ -1,5 +1,6 @@
 package project.bsts.semut;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -46,11 +47,13 @@ public class HelloworldActivity extends ActionBarActivity {
 
     private void sendRequest(){
         mResultText.setText("");
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setMessage("Loading");
+        dialog.show();
         AsyncJob.doInBackground(new AsyncJob.OnBackgroundJob() {
             @Override
             public void doOnBackground() {
-                mChannel = Channel.buildChannel();
-                res = new UserManagement(mChannel).login("caliandrat9@gmail.com", "");
+                res = new UserManagement().login("caliandrat9@gmail.com", "");
                 final String result = res;
                 AsyncJob.doOnMainThread(new AsyncJob.OnMainThreadJob() {
                     @Override
@@ -58,6 +61,7 @@ public class HelloworldActivity extends ActionBarActivity {
                         Log.i("INFO", "result : "+result);
                         mResultText.setText(result);
                         mSendButton.setEnabled(true);
+                        dialog.dismiss();
                     }
                 });
             }

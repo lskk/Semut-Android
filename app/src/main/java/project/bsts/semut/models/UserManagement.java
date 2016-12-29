@@ -17,20 +17,19 @@ import project.bsts.semutservice.UsersManagementGrpc;
 
 public class UserManagement {
     private ManagedChannel mChannel;
-    public UserManagement(ManagedChannel managedChannel){
-        mChannel = managedChannel;
+    public UserManagement(){
+        mChannel = Channel.buildChannel();
     }
 
     public String login(String email, String pass){
         String res = "";
         try {
-            mChannel = Channel.buildChannel();
-            UsersManagementGrpc.UsersManagementBlockingStub stub = UsersManagementGrpc.newBlockingStub(Channel.buildChannel());
+            UsersManagementGrpc.UsersManagementBlockingStub stub = UsersManagementGrpc.newBlockingStub(mChannel);
             LoginRequest message = LoginRequest.newBuilder().setEmail(email).setPassword(pass).build();
             LoginReply reply = stub.login(message);
             res = reply.getResponse();
         } catch (Exception e) {
-            e.printStackTrace();
+            e.getCause();
             res =  e.getMessage();
             JSONObject object = new JSONObject();
             try {
