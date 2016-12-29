@@ -61,4 +61,5 @@ dependencies {
     compile 'io.grpc:grpc-protobuf-lite:1.0.1' // CURRENT_GRPC_VERSION
     compile 'io.grpc:grpc-stub:1.0.1' // CURRENT_GRPC_VERSION
     compile 'javax.annotation:javax.annotation-api:1.2'
+    compile 'com.arasthel:asyncjob-library:1.0.3'
 }

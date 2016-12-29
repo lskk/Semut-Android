@@ -49,6 +49,7 @@ uses-sdk
 INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.1.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.arasthel:asyncjob-library:1.0.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.arasthel/asyncjob-library/1.0.3/AndroidManifest.xml:7:5-9:41
 	android:targetSdkVersion
 		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml

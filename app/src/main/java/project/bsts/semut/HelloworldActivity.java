@@ -2,28 +2,25 @@
 package project.bsts.semut;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.arasthel.asyncjob.AsyncJob;
+
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.examples.helloworld.GreeterGrpc;
 import project.bsts.semutservice.LoginReply;
 import project.bsts.semutservice.LoginRequest;
 import project.bsts.semutservice.UsersManagementGrpc;
-import io.grpc.examples.helloworld.HelloReply;
-import io.grpc.examples.helloworld.HelloRequest;
 import io.grpc.helloworldexample.R;
-
-import project.bsts.semutservice.UsersManagementGrpc;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -35,6 +32,11 @@ public class HelloworldActivity extends ActionBarActivity {
     private EditText mPortEdit;
     private EditText mMessageEdit;
     private TextView mResultText;
+    String mHost;
+    String mMessage;
+    int mPort;
+    ManagedChannel mChannel;
+    String res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,55 +54,50 @@ public class HelloworldActivity extends ActionBarActivity {
         ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
                 .hideSoftInputFromWindow(mHostEdit.getWindowToken(), 0);
         mSendButton.setEnabled(false);
-        new GrpcTask().execute();
+        sendRequest();
     }
 
-    private class GrpcTask extends AsyncTask<Void, Void, String> {
-        private String mHost;
-        private String mMessage;
-        private int mPort;
-        private ManagedChannel mChannel;
+    private void sendRequest(){
 
-        @Override
-        protected void onPreExecute() {
-            mHost = mHostEdit.getText().toString();
-            mMessage = mMessageEdit.getText().toString();
-            String portStr = mPortEdit.getText().toString();
-            mPort = TextUtils.isEmpty(portStr) ? 0 : Integer.valueOf(portStr);
-            mResultText.setText("");
-        }
+        mHost = mHostEdit.getText().toString();
+        mMessage = mMessageEdit.getText().toString();
+        String portStr = mPortEdit.getText().toString();
+        mPort = TextUtils.isEmpty(portStr) ? 0 : Integer.valueOf(portStr);
+        mResultText.setText("");
 
-        @Override
-        protected String doInBackground(Void... nothing) {
-            try {
-                mChannel = ManagedChannelBuilder.forAddress(mHost, mPort)
-                    .usePlaintext(true)
-                    .build();
-                UsersManagementGrpc.UsersManagementBlockingStub stub = UsersManagementGrpc.newBlockingStub(mChannel);
-            //    GreeterGrpc.GreeterBlockingStub stub = GreeterGrpc.newBlockingStub(mChannel);
-                LoginRequest message = LoginRequest.newBuilder().setEmail("caliandrat9@gmail.com").setPassword("").build();
-            //    HelloRequest message = HelloRequest.newBuilder().setName(mMessage).build();
-                LoginReply reply = stub.login(message);
-            //    HelloReply reply = stub.sayHello(message);
-                return reply.getResponse();
-            } catch (Exception e) {
-                StringWriter sw = new StringWriter();
-                PrintWriter pw = new PrintWriter(sw);
-                e.printStackTrace(pw);
-                pw.flush();
-                return String.format("Failed... : %n%s", sw);
+        AsyncJob.doInBackground(new AsyncJob.OnBackgroundJob() {
+            @Override
+            public void doOnBackground() {
+                try {
+                    mChannel = ManagedChannelBuilder.forAddress(mHost, mPort)
+                            .usePlaintext(true)
+                            .build();
+                    UsersManagementGrpc.UsersManagementBlockingStub stub = UsersManagementGrpc.newBlockingStub(mChannel);
+                    LoginRequest message = LoginRequest.newBuilder().setEmail("caliandrat9@gmail.com").setPassword("").build();
+                    LoginReply reply = stub.login(message);
+                    res = reply.getResponse();
+                } catch (Exception e) {
+                    StringWriter sw = new StringWriter();
+                    PrintWriter pw = new PrintWriter(sw);
+                    e.printStackTrace(pw);
+                    pw.flush();
+                    res =  String.format("Failed... : %n%s", sw);
+                }
+                final String result = res;
+                AsyncJob.doOnMainThread(new AsyncJob.OnMainThreadJob() {
+                    @Override
+                    public void doInUIThread() {
+                        Log.i(this.getClass().getSimpleName(), "result : "+result);
+                        try {
+                            mChannel.shutdown().awaitTermination(1, TimeUnit.SECONDS);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                        mResultText.setText(result);
+                        mSendButton.setEnabled(true);
+                    }
+                });
             }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            try {
-                mChannel.shutdown().awaitTermination(1, TimeUnit.SECONDS);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-            mResultText.setText(result);
-            mSendButton.setEnabled(true);
-        }
+        });
     }
 }
