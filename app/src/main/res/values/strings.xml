@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">GrpcHelloworldExample</string>
+    <string name="app_name">Semut App</string>
+    <string name="action_settings">Settings</string>
 </resources>
