@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
+import project.bsts.semut.setup.Constants;
+
 /**
  * Created by ziahaqi on 1/11/2016.
  */
@@ -58,7 +60,8 @@ public class Consumer extends Connector{
     };
 
     public String createDefaultQueueName(){
-        return    mRoutingKey +"@" + UUID.randomUUID();
+      //  return    mRoutingKey +"@" + UUID.randomUUID();
+        return Constants.MQ_QUEUE_NAME;
     }
 
 
@@ -98,6 +101,7 @@ public class Consumer extends Connector{
                         initchanenel();
                         declareQueue();
                         mChannel.queueBind(mQueueName, mExchange, mRoutingKey);
+
                         mQueue = new QueueingConsumer(mChannel);
                         mChannel.basicConsume(mQueueName, mQueue);
                         while(queuing){

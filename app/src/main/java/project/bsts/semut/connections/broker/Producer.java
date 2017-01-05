@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
+import project.bsts.semut.setup.Constants;
+
 /**
  * Created by ziahaqi on 1/11/2016.
  */
@@ -47,7 +49,8 @@ public class Producer extends Connector{
     }
 
     private String createDefaultRoutingKey() {
-        return    mRoutingKey +"@" + UUID.randomUUID();
+       // return    mRoutingKey +"@" + UUID.randomUUID();
+        return Constants.MQ_QUEUE_NAME;
     }
 
     private void initConnection() throws IOException, TimeoutException {

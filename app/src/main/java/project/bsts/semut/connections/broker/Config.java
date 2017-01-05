@@ -10,4 +10,5 @@ public class Config {
     public static final int port = Constants.MQ_PORT;
     public static final String exchange = Constants.MQ_EXCHANGE_NAME;
     public static final String rotuingkey = Constants.MQ_DEFAULT_ROUTING_KEY;
+    public static final String queuename = Constants.MQ_EXCHANGE_NAME;
 }
