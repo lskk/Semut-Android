@@ -26,6 +26,7 @@ public class Factory {
         return consumer;
     }
 
+
     public Producer createProducer(BrokerCallback callback){
         Producer producer = Producer.createInstance(this, callback);
         return producer;

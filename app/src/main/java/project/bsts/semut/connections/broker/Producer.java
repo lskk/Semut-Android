@@ -1,26 +1,19 @@
 package project.bsts.semut.connections.broker;
 
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
-
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.ShutdownListener;
 import com.rabbitmq.client.ShutdownSignalException;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
 import project.bsts.semut.setup.Constants;
 
-/**
- * Created by ziahaqi on 1/11/2016.
- */
 public class Producer extends Connector{
-    private static final String TAG = "MQProducer";
+    private static final String TAG = "Producer";
     private BrokerCallback mCallback;
     private String mQueueName;
     private String mExchange;
@@ -40,7 +33,7 @@ public class Producer extends Connector{
                 factory.getExcahnge(),
                 callback);
     }
-    private Producer(String host, String virtualHost, String username, String password, int port, String routingKey, String exchange, BrokerCallback callback) {
+    public Producer(String host, String virtualHost, String username, String password, int port, String routingKey, String exchange, BrokerCallback callback) {
         super(host, virtualHost, username, password, port);
         this.mCallback = callback;
         this.mRoutingKey = routingKey;
@@ -66,7 +59,8 @@ public class Producer extends Connector{
         }
     }
 
-    public void publish(final String message, final BasicProperties properties){
+
+    public void publish(final String message, final BasicProperties properties, final boolean isDeclareQueue){
         publishThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -74,9 +68,11 @@ public class Producer extends Connector{
                     try {
                         initConnection();
                         initchanenel();
-                        declareQueue();
+                        if(isDeclareQueue) {
+                            declareQueue();
+                        }
                         mChannel.confirmSelect();
-                        mChannel.queueBind(mQueueName, mExchange, mRoutingKey);
+                    //    mChannel.queueBind(mQueueName, mExchange, mRoutingKey);
                         byte [] messageBytes = message.getBytes();
                         mChannel.basicPublish(mExchange, mRoutingKey, properties, messageBytes);
                         mChannel.waitForConfirms(publishTimeout);
@@ -85,7 +81,7 @@ public class Producer extends Connector{
                     } catch (InterruptedException | IOException | TimeoutException e) {
                         sendBackErrorMessage(e);
                         try {
-                            Thread.sleep(5000); //sleep and then try again
+                            Thread.sleep(5000);
                         } catch (InterruptedException e1) {
                             isRunning = false;
                             break;
@@ -96,6 +92,9 @@ public class Producer extends Connector{
         });
         publishThread.start();
     }
+
+
+
 
     private void sendBackErrorMessage(Exception e) {
         final String errorMessage = e.getMessage() == null ? e.toString() : e.getMessage();

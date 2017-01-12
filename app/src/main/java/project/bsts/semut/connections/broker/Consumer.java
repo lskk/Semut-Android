@@ -14,13 +14,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
-import project.bsts.semut.setup.Constants;
-
-/**
- * Created by ziahaqi on 1/11/2016.
- */
 public class Consumer extends Connector{
-    private static final String TAG = "MQConsumer";
+    private static final String TAG = "Consumer";
     private BrokerCallback mCallback;
     private Thread subscribeThread;
     private QueueingConsumer mQueue;
@@ -60,8 +55,8 @@ public class Consumer extends Connector{
     };
 
     public String createDefaultQueueName(){
-      //  return    mRoutingKey +"@" + UUID.randomUUID();
-        return Constants.MQ_QUEUE_NAME;
+
+        return "";
     }
 
 
@@ -86,17 +81,17 @@ public class Consumer extends Connector{
         }
     }
 
+
     public void subsribe(){
         Log.d(TAG, "subscribe");
         subscribeThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.d(TAG, "subscribe>run");
+                Log.d(TAG, "subscribe > run");
 
                 while(isRunning) {
                     try {
-                        Log.d(TAG, "subscribe>run>subscribeRunning");
-
+                        Log.d(TAG, "subscribe > run > subscribeRunning");
                         initConnection();
                         initchanenel();
                         declareQueue();
@@ -105,7 +100,7 @@ public class Consumer extends Connector{
                         mQueue = new QueueingConsumer(mChannel);
                         mChannel.basicConsume(mQueueName, mQueue);
                         while(queuing){
-                            Log.d(TAG, "subscribe>run>subscribeRunning>queuing");
+                            Log.d(TAG, "subscribe > run > subscribeRunning > queuing");
 
                             final QueueingConsumer.Delivery delivery;
                             delivery = mQueue.nextDelivery();
@@ -143,7 +138,6 @@ public class Consumer extends Connector{
     }
 
 
-
     private void initConnection() throws IOException, TimeoutException {
         if(!isConnected()){
             createConnection();
@@ -161,7 +155,7 @@ public class Consumer extends Connector{
     private void declareQueue() throws IOException {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("x-expires", 2 * 60 * 60 * 1000);
-        mChannel.queueDeclare(mQueueName, true, false, false, params);
+        mQueueName = mChannel.queueDeclare(mQueueName, false, true, false, null).getQueue();
         Log.d(TAG, "Queue :" + "queue:name:" + mQueueName + " declared");
     }
 
