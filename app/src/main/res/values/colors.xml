@@ -2,7 +2,9 @@
 <resources>
     <color name="colorPrimary">#F2F1EF</color>
     <color name="colorPrimaryBold">#EEEEEE</color>
+    <color name="colorWhiteDark">#e7e9ea</color>
     <color name="eucalyptus">#26A65B</color>
     <color name="colorPrimaryDark">#26C281</color>
     <color name="colorAccent">#26A65B</color>
+    <color name="facebookMainColor">#3b5998</color>
 </resources>
