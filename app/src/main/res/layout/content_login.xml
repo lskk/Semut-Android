@@ -30,24 +30,15 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-        <net.qiujuer.genius.ui.widget.Button
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:gFont="roboto.ttf"
-            app:gTouchColor="#5b81d1"
-            app:gTouchEffect="ripple"
-            android:text="Masuk dengan Facebook"
-            android:padding="15dp"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bg_facebook_button"
-            android:id="@+id/fb_Login"
-            app:gTouchCornerRadius="12dp"
-            app:gTouchCornerRadiusTL="6dp"
-            app:gTouchCornerRadiusTR="6dp"
-            app:gTouchCornerRadiusBL="6dp"
-            app:gTouchCornerRadiusBR="6dp"
-            app:gTouchDurationRate="0.7"
-            />
+            android:layout_height="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
     </LinearLayout>
 
     <LinearLayout
