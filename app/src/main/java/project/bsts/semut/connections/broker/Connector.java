@@ -1,12 +1,10 @@
 package project.bsts.semut.connections.broker;
 
 import android.os.Handler;
-
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.ShutdownListener;
-
 import java.io.IOException;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
@@ -15,9 +13,7 @@ public abstract class Connector {
     protected Channel mChannel = null;
     protected Connection mConnection;
     protected Handler mStateHandler;
-
     protected boolean isRunning = true;
-
     protected String host;
     protected String virtualHost;
     protected String username;
@@ -90,6 +86,4 @@ public abstract class Connector {
         }
         return false;
     }
-
-
 }

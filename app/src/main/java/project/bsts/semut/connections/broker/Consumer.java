@@ -2,12 +2,10 @@ package project.bsts.semut.connections.broker;
 
 import android.os.Handler;
 import android.util.Log;
-
 import com.rabbitmq.client.ConsumerCancelledException;
 import com.rabbitmq.client.QueueingConsumer;
 import com.rabbitmq.client.ShutdownListener;
 import com.rabbitmq.client.ShutdownSignalException;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +20,6 @@ public class Consumer extends Connector{
     private String mQueueName;
     private String mExchange;
     private String mRoutingKey;
-
     private Handler mCallbackHandler = new Handler();
     private MQConsumerListener mqConsumerListener;
     private boolean queuing = true;

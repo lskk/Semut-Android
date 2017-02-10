@@ -19,7 +19,6 @@ import project.bsts.semut.connections.broker.Config;
 import project.bsts.semut.connections.broker.Consumer;
 import project.bsts.semut.connections.broker.Factory;
 import project.bsts.semut.connections.broker.Producer;
-import project.bsts.semut.setup.Constants;
 
 public class MainActivity extends AppCompatActivity implements BrokerCallback {
 

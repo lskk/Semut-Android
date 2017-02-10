@@ -42,7 +42,6 @@ public class Producer extends Connector{
     }
 
     private String createDefaultRoutingKey() {
-       // return    mRoutingKey +"@" + UUID.randomUUID();
         return Constants.MQ_QUEUE_NAME;
     }
 
