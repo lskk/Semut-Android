@@ -17,8 +17,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.facebook.share.Sharer;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,10 +25,8 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements FacebookCallback<LoginResult> {
 
- //   @BindView(R.id.loginButton)
- //   LoginButton fbLoginBtn;
     @BindView(R.id.login_btn)
     Button loginBtn;
     @BindView(R.id.email)
@@ -58,46 +54,47 @@ public class LoginActivity extends AppCompatActivity {
         fbLoginBtn = (LoginButton)findViewById(R.id.loginButton);
 
         fbLoginBtn.setReadPermissions(Arrays.asList("public_profile, email, user_birthday"));
-        fbLoginBtn.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
-                        new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject object, GraphResponse response) {
-                                try {
-                                    Log.i("FB", String.valueOf(object));
-                                    Log.i("FB", response.getRawResponse());
-                                    String name=object.getString("name");
-                                    String email=object.getString("email");
-                                    Log.i("Login Success : ", name+", "+email);
-                                } catch(JSONException ex) {
-                                    ex.printStackTrace();
-                                }
-                            }
-                        });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields","id,name,email,gender, birthday");
-                request.setParameters(parameters);
-                request.executeAsync();
-            }
-
-            @Override
-            public void onCancel() {
-                // App code
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-                exception.printStackTrace();
-            }
-        });
+        fbLoginBtn.registerCallback(callbackManager, this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+
+    @Override
+    public void onSuccess(LoginResult loginResult) {
+        GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            Log.i("FB", String.valueOf(object));
+                            Log.i("FB", response.getRawResponse());
+                            String name=object.getString("name");
+                            String email=object.getString("email");
+                            Log.i("Login Success : ", name+", "+email);
+                        } catch(JSONException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields","id,name,email,gender, birthday");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
+    @Override
+    public void onCancel() {
+
+    }
+
+    @Override
+    public void onError(FacebookException error) {
+
     }
 }
