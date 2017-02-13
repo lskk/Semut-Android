@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:animateLayoutChanges="true"
     tools:context="project.bsts.semut.LoginActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -46,5 +47,17 @@
 
     <include layout="@layout/content_login" />
 
-
+    <io.github.yuweiguocn.lib.squareloading.SquareLoading
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        app:squareColor="@android:color/white"
+        app:squareSize="24dp"
+        app:squareCorner="2dp"
+        app:dividerSize="4dp"
+        app:xCount="4"
+        app:yCount="3"
+        android:id="@+id/loadingIndicator"
+        />
 </android.support.design.widget.CoordinatorLayout>

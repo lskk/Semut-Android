@@ -1,11 +1,14 @@
 package project.bsts.semut;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -24,8 +27,13 @@ import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.yuweiguocn.lib.squareloading.SquareLoading;
+import project.bsts.semut.connections.rest.IConnectionResponseHandler;
+import project.bsts.semut.connections.rest.RequestRest;
+import project.bsts.semut.interfaces.LoadingIndicator;
+import project.bsts.semut.setup.Constants;
 
-public class LoginActivity extends AppCompatActivity implements FacebookCallback<LoginResult> {
+public class LoginActivity extends AppCompatActivity implements FacebookCallback<LoginResult>, IConnectionResponseHandler {
 
     @BindView(R.id.login_btn)
     Button loginBtn;
@@ -42,6 +50,10 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
 
     CallbackManager callbackManager;
     LoginButton fbLoginBtn;
+    LoadingIndicator loadingIndicator;
+    private Context context;
+    private RequestRest rest;
+    private String TAG = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +62,21 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        context = this;
+        loadingIndicator = new LoadingIndicator((SquareLoading)findViewById(R.id.loadingIndicator));
         callbackManager = CallbackManager.Factory.create();
         fbLoginBtn = (LoginButton)findViewById(R.id.loginButton);
-
         fbLoginBtn.setReadPermissions(Arrays.asList("public_profile, email, user_birthday"));
         fbLoginBtn.registerCallback(callbackManager, this);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(emailEditText.getText().toString().equals("") || passEditText.getText().toString().equals("")){
+                    Snackbar.make(loginBtn, "Email atau password tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+                }else doLogin(emailEditText.getText().toString(), passEditText.getText().toString());
+            }
+        });
     }
 
     @Override
@@ -64,7 +86,13 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
     }
 
 
+    private void doLogin(String email, String password){
+        rest = new RequestRest(context, this);
+        rest.login(email, password);
+        loadingIndicator.show();
+    }
 
+    //------------------------- Facebook login
     @Override
     public void onSuccess(LoginResult loginResult) {
         GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
@@ -97,4 +125,20 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
     public void onError(FacebookException error) {
 
     }
+
+
+    //------------------------- success request
+    @Override
+    public void onSuccessRequest(String pResult, String type) {
+        switch (type){
+            case Constants.REST_USER_LOGIN:
+                loadingIndicator.hide();
+                Log.i(TAG, pResult);
+                break;
+            case Constants.REST_ERROR:
+                loadingIndicator.hide();
+                break;
+        }
+    }
+
 }

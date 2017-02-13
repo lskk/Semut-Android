@@ -32,10 +32,10 @@ public class RequestRest extends ConnectionHandler {
     }
 
 
-    public void login(String user, String pin){
+    public void login(String email, String pass){
         RequestParams params = new RequestParams();
-        params.put("Email", user);
-        params.put("Password", pin);
+        params.put("Email", email);
+        params.put("Password", pass);
         Log.i(TAG, params.toString());
         post(Constants.REST_USER_LOGIN, params, new JsonHttpResponseHandler() {
             @Override
@@ -48,14 +48,14 @@ public class RequestRest extends ConnectionHandler {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 Log.i(TAG, "Success");
-                responseHandler.onSuccessJSONObject(response.toString());
+                responseHandler.onSuccessRequest(response.toString(), Constants.REST_USER_LOGIN);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, e, errorResponse);
                 Log.e(TAG, "Failed");
-                responseHandler.onFailure(String.valueOf(statusCode));
+                responseHandler.onSuccessRequest(String.valueOf(statusCode), Constants.REST_ERROR);
             }
 
             @Override
