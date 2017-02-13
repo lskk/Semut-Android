@@ -1,4 +1,4 @@
-package project.bsts.semut.interfaces;
+package project.bsts.semut.ui;
 
 
 import android.view.View;
