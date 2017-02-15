@@ -20,19 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
-            <io.github.yuweiguocn.lib.squareloading.SquareLoading
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                app:squareColor="@color/colorPrimaryDark"
-                app:squareSize="6dp"
-                app:squareCorner="2dp"
-                app:dividerSize="4dp"
-                app:xCount="4"
-                app:yCount="3"
-                android:id="@+id/loadingIndicator"
-                />
+            <include layout="@layout/loading_indicator" />
             <net.qiujuer.genius.ui.widget.Button
                 android:layout_gravity="right"
                 android:layout_marginRight="5dp"
@@ -59,4 +47,5 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_login" />
+
 </android.support.design.widget.CoordinatorLayout>
