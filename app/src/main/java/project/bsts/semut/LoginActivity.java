@@ -19,7 +19,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1330,7 +1330,7 @@ int id line1 0x7f0e00bb
 int id line3 0x7f0e00bd
 int id listMode 0x7f0e0015
 int id list_item 0x7f0e005a
-int id loadingIndicator 0x7f0e0087
+int id loadingIndicator 0x7f0e0086
 int id loginButton 0x7f0e0093
 int id login_btn 0x7f0e0096
 int id logo 0x7f0e0091
@@ -1383,7 +1383,7 @@ int id shortcut 0x7f0e006e
 int id showCustom 0x7f0e001a
 int id showHome 0x7f0e001b
 int id showTitle 0x7f0e001c
-int id signup_btn 0x7f0e0086
+int id signup_btn 0x7f0e0087
 int id skip_btn 0x7f0e0097
 int id slide 0x7f0e003b
 int id small 0x7f0e0052
