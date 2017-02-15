@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/foregroundLoading"
+    android:clickable="true"
+    android:id="@+id/foreground"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:layout_height="match_parent">
+</LinearLayout>

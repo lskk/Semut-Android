@@ -129,4 +129,5 @@
         app:gTouchCornerRadiusBR="6dp"
         app:gTouchDurationRate="0.7"
         />
+    <include layout="@layout/foreground_loading" />
 </RelativeLayout>

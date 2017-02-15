@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         context = this;
-        loadingIndicator = new LoadingIndicator((SquareLoading)findViewById(R.id.loadingIndicator));
+        loadingIndicator = new LoadingIndicator(context);
         callbackManager = CallbackManager.Factory.create();
         fbLoginBtn = (LoginButton)findViewById(R.id.loginButton);
         fbLoginBtn.setReadPermissions(Arrays.asList("public_profile, email, user_birthday"));

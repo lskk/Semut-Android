@@ -206,6 +206,7 @@
     <color name="dim_foreground_material_light">#ff323232</color>
     <color name="eucalyptus">#26A65B</color>
     <color name="facebookMainColor">#3b5998</color>
+    <color name="foregroundLoading">#70000000</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
     <color name="g_default_loading_bg">@color/grey_300</color>
