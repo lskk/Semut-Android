@@ -18,11 +18,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.services.LocationService;
+import project.bsts.semut.setup.Constants;
+import project.bsts.semut.ui.LoadingIndicator;
 import project.bsts.semut.ui.MainDrawer;
 
 public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback, BroadcastManager.UIBroadcastListener {
@@ -36,6 +41,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private GoogleMap mMap;
     private static final int REQUEST_ACCESS_FINE_LOCATION = 101;
     private BroadcastManager broadcastManager;
+    private double latitude, longitude;
+    private LoadingIndicator loadingIndicator;
+    private boolean firstInit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +53,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         setSupportActionBar(toolbar);
         context = this;
         broadcastManager = new BroadcastManager(context);
+        loadingIndicator = new LoadingIndicator(context);
         broadcastManager.subscribeToUi(this);
+        loadingIndicator.show();
         drawer = new MainDrawer(context, toolbar, 0);
         drawer.initDrawer();
 
@@ -80,9 +90,15 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        moveMyLocation(-34, 151);
+    }
+
+
+    private void moveMyLocation(double latitude, double longitude){
+        mMap.clear();
+        LatLng myLoc = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLoc));
     }
 
     @Override
@@ -94,5 +110,22 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMessageReceived(String type, String msg) {
         Log.i(TAG, msg);
+        switch (type){
+            case Constants.BROADCAST_MY_LOCATION:
+                if(!firstInit) {
+                    loadingIndicator.hide();
+                    firstInit = false;
+                }
+                try {
+                    JSONObject object = new JSONObject(msg);
+                    latitude = object.getDouble(Constants.ENTITY_LATITUDE);
+                    longitude = object.getDouble(Constants.ENTITY_LONGITUDE);
+                    moveMyLocation(latitude, longitude);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+        }
     }
 }
