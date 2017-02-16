@@ -91,12 +91,15 @@ public class MainDrawer {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 
 
+
+
                         return false;
                     }
                 })
                 .withShowDrawerOnFirstLaunch(true)
                 .build();
         result.closeDrawer();
+
 
     }
 }
