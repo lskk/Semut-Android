@@ -69,9 +69,11 @@
             android:name="project.bsts.semut.SemutActivity"
             android:label="@string/title_activity_semut"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="project.bsts.semut.MapsActivity"
-            android:label="@string/title_activity_maps" />
+
+        <service
+            android:name="project.bsts.semut.services.LocationService"
+            android:enabled="true"
+            android:exported="true" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

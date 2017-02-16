@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:2:1-66:12
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:2:1-68:12
 	package
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:3:5-33
 		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
@@ -94,7 +94,8 @@ MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/arysetijadiprihatma
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:22:22-79
 application
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:25:5-64:19
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:25:5-66:19
+MERGED from [Semut-Android:easypermissions-0.1.9:unspecified] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/Semut-Android/easypermissions-0.1.9/unspecified/AndroidManifest.xml:12:5-20
 MERGED from [net.qiujuer.genius:ui:2.0.0-beta4] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/net.qiujuer.genius/ui/2.0.0-beta4/AndroidManifest.xml:11:5-13:38
 MERGED from [net.qiujuer.genius:res:2.0.0-beta4] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/net.qiujuer.genius/res/2.0.0-beta4/AndroidManifest.xml:11:5-13:38
 MERGED from [com.facebook.android:facebook-android-sdk:4.6.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.6.0/AndroidManifest.xml:28:5-20
@@ -219,17 +220,20 @@ ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:60:13-56
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:58:13-42
-activity#project.bsts.semut.MapsActivity
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:61:9-63:68
-	android:label
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:63:13-56
+service#project.bsts.semut.services.LocationService
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:62:9-65:47
+	android:enabled
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:64:13-35
+	android:exported
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:65:13-36
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:62:13-41
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:63:13-53
 uses-sdk
 INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.mikepenz:materialdrawer:5.8.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/5.8.1/AndroidManifest.xml:8:5-10:41
 MERGED from [com.mikepenz:materialize:1.0.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/materialize/1.0.0/AndroidManifest.xml:8:5-10:41
 MERGED from [com.mikepenz:fastadapter:2.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/fastadapter/2.1.0/AndroidManifest.xml:8:5-10:41
+MERGED from [Semut-Android:easypermissions-0.1.9:unspecified] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/Semut-Android/easypermissions-0.1.9/unspecified/AndroidManifest.xml:8:5-10:41
 MERGED from [net.qiujuer.genius:ui:2.0.0-beta4] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/net.qiujuer.genius/ui/2.0.0-beta4/AndroidManifest.xml:7:5-9:41
 MERGED from [net.qiujuer.genius:res:2.0.0-beta4] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/net.qiujuer.genius/res/2.0.0-beta4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.6.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.6.0/AndroidManifest.xml:24:5-26:41

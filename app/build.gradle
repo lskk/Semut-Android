@@ -28,6 +28,7 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.8.1@aar') {
         transitive = true
     }
+    compile project(':easypermissions-0.1.9')
     compile 'net.qiujuer.genius:ui:2.0.0-beta4'
     compile 'com.facebook.android:facebook-android-sdk:4.6.0'
     compile 'com.android.support:appcompat-v7:25.1.0'

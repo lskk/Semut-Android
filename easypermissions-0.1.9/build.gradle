@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('easypermissions-0.1.9.aar'))
