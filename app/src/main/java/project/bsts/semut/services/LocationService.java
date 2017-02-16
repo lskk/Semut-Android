@@ -20,13 +20,21 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import project.bsts.semut.helper.BroadcastManager;
+import project.bsts.semut.setup.Constants;
+
 public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private double latitude, longitude;
     private LocationRequest mLocationRequest;
     private GoogleApiClient mGoogleApiClient;
     private String TAG = this.getClass().getSimpleName();
+    private BroadcastManager broadcastManager;
 
+    private JSONObject object;
     public LocationService() {
 
     }
@@ -53,6 +61,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             mGoogleApiClient.connect();
         }
 
+        broadcastManager = new BroadcastManager(getApplicationContext());
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -79,6 +88,14 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             } else {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
+                try {
+                    object = new JSONObject();
+                    object.put(Constants.ENTITY_LATITUDE, latitude);
+                    object.put(Constants.ENTITY_LONGITUDE, longitude);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                broadcastManager.sendBroadcastToUI(Constants.BROADCAST_MY_LOCATION, object.toString());
 
             }
 

@@ -20,10 +20,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import project.bsts.semut.helper.BroadcastManager;
+import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.ui.MainDrawer;
 
-public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback, BroadcastManager.UIBroadcastListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -33,6 +35,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private String TAG = this.getClass().getSimpleName();
     private GoogleMap mMap;
     private static final int REQUEST_ACCESS_FINE_LOCATION = 101;
+    private BroadcastManager broadcastManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +44,14 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         context = this;
-
+        broadcastManager = new BroadcastManager(context);
+        broadcastManager.subscribeToUi(this);
         drawer = new MainDrawer(context, toolbar, 0);
         drawer.initDrawer();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        // request fine location
         int accessFineLocationPermission = ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION);
         if (accessFineLocationPermission == PackageManager.PERMISSION_GRANTED) {
@@ -81,5 +83,16 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        broadcastManager.unSubscribeToUi();
+    }
+
+    @Override
+    public void onMessageReceived(String type, String msg) {
+        Log.i(TAG, msg);
     }
 }
