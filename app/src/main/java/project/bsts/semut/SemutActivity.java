@@ -24,11 +24,11 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.helper.BroadcastManager;
-import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.LoadingIndicator;
 import project.bsts.semut.ui.MainDrawer;
+import project.bsts.semut.utilities.CheckService;
 
 public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback, BroadcastManager.UIBroadcastListener {
 
@@ -44,6 +44,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private double latitude, longitude;
     private LoadingIndicator loadingIndicator;
     private boolean firstInit = false;
+    private Intent locService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         loadingIndicator.show();
         drawer = new MainDrawer(context, toolbar, 0);
         drawer.initDrawer();
+        locService = new Intent(context, LocationService.class);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -79,7 +81,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         switch (requestCode) {
             case REQUEST_ACCESS_FINE_LOCATION:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startService(new Intent(context, LocationService.class));
+                    startService(locService);
                 } else {
                     Log.i(TAG, "Location Rejected");
                 }
@@ -105,6 +107,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     public void onDestroy(){
         super.onDestroy();
         broadcastManager.unSubscribeToUi();
+        if(CheckService.isLocationServiceRunning(context)){
+            stopService(locService);
+        }
     }
 
     @Override

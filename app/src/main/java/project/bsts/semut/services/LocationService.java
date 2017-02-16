@@ -25,6 +25,7 @@ import org.json.JSONObject;
 
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.setup.Constants;
+import project.bsts.semut.utilities.ScheduleTask;
 
 public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -33,6 +34,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     private GoogleApiClient mGoogleApiClient;
     private String TAG = this.getClass().getSimpleName();
     private BroadcastManager broadcastManager;
+    private ScheduleTask task;
 
     private JSONObject object;
     public LocationService() {
@@ -56,7 +58,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)
-                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
+                .setFastestInterval(3 * 1000); // 1 second, in milliseconds
         if (mGoogleApiClient.isConnected() == false) {
             mGoogleApiClient.connect();
         }
@@ -68,10 +70,12 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         if (mGoogleApiClient.isConnected()) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
             mGoogleApiClient.disconnect();
         }
+        task.stop();
     }
 
 
@@ -88,6 +92,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             } else {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
+                startTask();
                 try {
                     object = new JSONObject();
                     object.put(Constants.ENTITY_LATITUDE, latitude);
@@ -101,6 +106,16 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
 
         }
 
+    }
+
+    private void startTask() {
+        task = new ScheduleTask(10);
+        task.start(new ScheduleTask.TimerFireListener() {
+            @Override
+            public void onTimerRestart(int counter) {
+                Log.i(TAG, "fire : "+counter);
+            }
+        });
     }
 
     @Override
