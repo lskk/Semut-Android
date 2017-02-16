@@ -142,11 +142,12 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
         preferenceManager.save("{SessionID:"+sessionID+"}", Constants.PREF_SESSION_ID);
         preferenceManager.save(true, Constants.IS_LOGGED_IN);
         preferenceManager.apply();
+        toDashBoard();
     }
 
 
     private void toDashBoard(){
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, SemutActivity.class);
         startActivity(intent);
         finish();
     }

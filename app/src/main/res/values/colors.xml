@@ -8,4 +8,5 @@
     <color name="colorAccent">#26A65B</color>
     <color name="facebookMainColor">#3b5998</color>
     <color name="foregroundLoading">#70000000</color>
+    <color name="material_drawer_selected">#26A65B</color>
 </resources>

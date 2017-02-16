@@ -47,10 +47,10 @@ public class MainDrawer {
         PrimaryDrawerItem dashBoard;
         PrimaryDrawerItem profile;
 
-        ExpandableDrawerItem transaksiItem;
-        ExpandableDrawerItem depositItem;
+        ExpandableDrawerItem friends;
+        ExpandableDrawerItem cctvs;
         PrimaryDrawerItem produkItem;
-        ExpandableDrawerItem historyItem;
+        ExpandableDrawerItem transportasi;
         ExpandableDrawerItem editProfileItem;
         SecondaryDrawerItem tentangItem;
         SecondaryDrawerItem logoutItem;
@@ -60,35 +60,30 @@ public class MainDrawer {
                 .withActivity((Activity) context)
                 .withAccountHeader(headerResult)
                 .withToolbar(toolbar)
-                .withDisplayBelowStatusBar(false)
+                .withDisplayBelowStatusBar(true)
                 .withActionBarDrawerToggleAnimated(true)
                 .withFullscreen(true)
                 .addDrawerItems(
-                        dashBoard = new PrimaryDrawerItem().withName("Dashboard").withIcon(GoogleMaterial.Icon.gmd_dashboard).withIdentifier(100),
+                        dashBoard = new PrimaryDrawerItem().withName("Map").withIcon(GoogleMaterial.Icon.gmd_map).withIdentifier(0),
                         profile = new PrimaryDrawerItem().withName("Profil").withIcon(GoogleMaterial.Icon.gmd_face).withIdentifier(10),
-                        transaksiItem = new ExpandableDrawerItem().withName("Transaksi").withIcon(GoogleMaterial.Icon.gmd_shopping_cart).withIdentifier(1).withSubItems(
-                                new SecondaryDrawerItem().withName("Pembayaran").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_payment).withIdentifier(11),
-                                new SecondaryDrawerItem().withName("Informasi").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_announcement).withIdentifier(12)
+                        friends = new ExpandableDrawerItem().withName("Pertemanan").withIcon(GoogleMaterial.Icon.gmd_shopping_cart).withIdentifier(20).withSubItems(
+                                new SecondaryDrawerItem().withName("Tambah Teman").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_payment).withIdentifier(21),
+                                new SecondaryDrawerItem().withName("Daftar Teman").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_announcement).withIdentifier(22)
                         ),
-                        depositItem = new ExpandableDrawerItem().withName("Deposit").withIcon(GoogleMaterial.Icon.gmd_account_balance_wallet).withIdentifier(2).withSubItems(
-                                new SecondaryDrawerItem().withName("Transfer Deposit").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_keyboard_tab).withIdentifier(22),
-                                new SecondaryDrawerItem().withName("Tiket Deposit").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_picture_in_picture).withIdentifier(23)
+                        cctvs = new ExpandableDrawerItem().withName("CCTV").withIcon(GoogleMaterial.Icon.gmd_account_balance_wallet).withIdentifier(30).withSubItems(
+                                new SecondaryDrawerItem().withName("Terdekat").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_keyboard_tab).withIdentifier(31),
+                                new SecondaryDrawerItem().withName("Semua CCTV").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_picture_in_picture).withIdentifier(32)
                         ),
-                        historyItem = new ExpandableDrawerItem().withName("Riwayat").withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(4).withSubItems(
-                                new SecondaryDrawerItem().withName("Riwayat Transaksi").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_assignment_return).withIdentifier(41),
-                                new SecondaryDrawerItem().withName("Riwayat Deposit").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_assignment_returned).withIdentifier(42)
+                        transportasi = new ExpandableDrawerItem().withName("Transportasi").withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(40).withSubItems(
+                                new SecondaryDrawerItem().withName("Angkot").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_assignment_return).withIdentifier(41)
                         ),
                         new DividerDrawerItem(),
-                        editProfileItem = new ExpandableDrawerItem().withName("Pengaturan").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(5).withSubItems(
-                                new SecondaryDrawerItem().withName("Ubah Kontak").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_create).withIdentifier(51),
-                                new SecondaryDrawerItem().withName("Ubah Password").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_create).withIdentifier(52)
+                        editProfileItem = new ExpandableDrawerItem().withName("Pengaturan").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(50).withSubItems(
+                                new SecondaryDrawerItem().withName("Ubah Password").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_create).withIdentifier(51)
                         ),
-                        tentangItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Tentang").withIcon(GoogleMaterial.Icon.gmd_perm_device_information).withIdentifier(6).withSelectable(false),
-                        bantuanItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Bantuan").withIcon(GoogleMaterial.Icon.gmd_help).withIdentifier(8).withSelectable(false),
-                        logoutItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Logout").withIcon(GoogleMaterial.Icon.gmd_exit_to_app).withIdentifier(7).withSelectable(false)
-
-
-
+                        tentangItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Tentang").withIcon(GoogleMaterial.Icon.gmd_perm_device_information).withIdentifier(60).withSelectable(false),
+                        bantuanItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Bantuan").withIcon(GoogleMaterial.Icon.gmd_help).withIdentifier(70).withSelectable(false),
+                        logoutItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Logout").withIcon(GoogleMaterial.Icon.gmd_exit_to_app).withIdentifier(80).withSelectable(false)
                 )
                 .withSelectedItem(identifier)
                 .withOnDrawerItemClickListener(new com.mikepenz.materialdrawer.Drawer.OnDrawerItemClickListener() {
