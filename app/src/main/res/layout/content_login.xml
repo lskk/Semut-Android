@@ -117,7 +117,7 @@
         app:gTouchColor="@color/colorAccent"
         app:gTouchEffect="ripple"
         android:textStyle="bold"
-        android:text="Skip >"
+        android:text="Skip"
         android:padding="15dp"
         android:textColor="@color/colorPrimary"
         android:background="@color/colorPrimaryDark"
