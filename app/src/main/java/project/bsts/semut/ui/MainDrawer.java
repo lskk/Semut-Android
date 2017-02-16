@@ -66,16 +66,16 @@ public class MainDrawer {
                 .addDrawerItems(
                         dashBoard = new PrimaryDrawerItem().withName("Map").withIcon(GoogleMaterial.Icon.gmd_map).withIdentifier(0),
                         profile = new PrimaryDrawerItem().withName("Profil").withIcon(GoogleMaterial.Icon.gmd_face).withIdentifier(10),
-                        friends = new ExpandableDrawerItem().withName("Pertemanan").withIcon(GoogleMaterial.Icon.gmd_shopping_cart).withIdentifier(20).withSubItems(
-                                new SecondaryDrawerItem().withName("Tambah Teman").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_payment).withIdentifier(21),
-                                new SecondaryDrawerItem().withName("Daftar Teman").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_announcement).withIdentifier(22)
+                        friends = new ExpandableDrawerItem().withName("Pertemanan").withIcon(GoogleMaterial.Icon.gmd_people).withIdentifier(20).withSubItems(
+                                new SecondaryDrawerItem().withName("Tambah Teman").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_add).withIdentifier(21),
+                                new SecondaryDrawerItem().withName("Daftar Teman").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_people_outline).withIdentifier(22)
                         ),
-                        cctvs = new ExpandableDrawerItem().withName("CCTV").withIcon(GoogleMaterial.Icon.gmd_account_balance_wallet).withIdentifier(30).withSubItems(
-                                new SecondaryDrawerItem().withName("Terdekat").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_keyboard_tab).withIdentifier(31),
-                                new SecondaryDrawerItem().withName("Semua CCTV").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_picture_in_picture).withIdentifier(32)
+                        cctvs = new ExpandableDrawerItem().withName("CCTV").withIcon(GoogleMaterial.Icon.gmd_videocam).withIdentifier(30).withSubItems(
+                                new SecondaryDrawerItem().withName("Terdekat").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_near_me).withIdentifier(31),
+                                new SecondaryDrawerItem().withName("Semua CCTV").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(32)
                         ),
-                        transportasi = new ExpandableDrawerItem().withName("Transportasi").withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(40).withSubItems(
-                                new SecondaryDrawerItem().withName("Angkot").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_assignment_return).withIdentifier(41)
+                        transportasi = new ExpandableDrawerItem().withName("Transportasi").withIcon(GoogleMaterial.Icon.gmd_local_shipping).withIdentifier(40).withSubItems(
+                                new SecondaryDrawerItem().withName("Angkot").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_tram).withIdentifier(41)
                         ),
                         new DividerDrawerItem(),
                         editProfileItem = new ExpandableDrawerItem().withName("Pengaturan").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(50).withSubItems(
@@ -90,11 +90,13 @@ public class MainDrawer {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 
+
                         return false;
                     }
                 })
                 .withShowDrawerOnFirstLaunch(true)
                 .build();
         result.closeDrawer();
+
     }
 }
