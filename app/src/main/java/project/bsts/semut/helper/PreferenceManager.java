@@ -39,6 +39,10 @@ public class PreferenceManager {
 
 
     public boolean getBoolean(String name){
-        return sharedPreferences.getBoolean(Constants.IS_LOGGED_IN, false);
+        return sharedPreferences.getBoolean(name, false);
+    }
+
+    public String getString(String name){
+        return sharedPreferences.getString(name, "");
     }
 }

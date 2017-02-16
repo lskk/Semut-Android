@@ -13,21 +13,39 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.gson.Gson;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.QueueingConsumer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+
+import project.bsts.semut.MainActivity;
+import project.bsts.semut.connections.broker.BrokerCallback;
+import project.bsts.semut.connections.broker.Config;
+import project.bsts.semut.connections.broker.Consumer;
+import project.bsts.semut.connections.broker.Factory;
+import project.bsts.semut.connections.broker.Producer;
 import project.bsts.semut.helper.BroadcastManager;
+import project.bsts.semut.helper.JSONRequest;
+import project.bsts.semut.helper.PreferenceManager;
+import project.bsts.semut.pojo.Profile;
+import project.bsts.semut.pojo.Session;
 import project.bsts.semut.setup.Constants;
+import project.bsts.semut.utilities.GetCurrentDate;
 import project.bsts.semut.utilities.ScheduleTask;
 
-public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, LocationListener, BrokerCallback {
 
     private double latitude, longitude;
     private LocationRequest mLocationRequest;
@@ -35,8 +53,13 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     private String TAG = this.getClass().getSimpleName();
     private BroadcastManager broadcastManager;
     private ScheduleTask task;
-
     private JSONObject object;
+    private Factory mqFactory;
+    private Consumer mqConsumer;
+    private Producer mqProducer;
+    private PreferenceManager preferenceManager;
+    Session session;
+    Profile profile;
     public LocationService() {
 
     }
@@ -58,15 +81,60 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)
-                .setFastestInterval(3 * 1000); // 1 second, in milliseconds
+                .setFastestInterval(3 * 1000);
         if (mGoogleApiClient.isConnected() == false) {
             mGoogleApiClient.connect();
         }
 
         broadcastManager = new BroadcastManager(getApplicationContext());
+        preferenceManager = new PreferenceManager(getApplicationContext());
+        session = new Gson().fromJson(preferenceManager.getString(Constants.PREF_SESSION_ID), Session.class);
+        profile = new Gson().fromJson(preferenceManager.getString(Constants.PREF_PROFILE), Profile.class);
+        connectToRabbit();
+        consume();
         return super.onStartCommand(intent, flags, startId);
     }
 
+    private void connectToRabbit() {
+        this.mqFactory = new Factory(Config.hostName, Config.virtualHostname, Config.username, Config.password, Config.exchange, Config.rotuingkey, Config.port);
+        this.mqConsumer = this.mqFactory.createConsumer(this);
+
+    }
+
+    private void consume(){
+
+        mqConsumer.setQueueName(profile.getID()+"-"+session.getSessionID());
+        mqConsumer.subsribe();
+        mqConsumer.setMessageListner(new Consumer.MQConsumerListener() {
+            @Override
+            public void onMessageReceived(QueueingConsumer.Delivery delivery) {
+                try {
+                    final String message = new String(delivery.getBody(), "UTF-8");
+                    Log.i("test", message);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+    }
+
+
+    private void publish(){
+        mqProducer = mqFactory.createProducer(LocationService.this);
+        String corrId = java.util.UUID.randomUUID().toString();
+        AMQP.BasicProperties props = new AMQP.BasicProperties
+                .Builder()
+                .replyTo(mqConsumer.getQueueName())
+                .correlationId(corrId)
+                .build();
+        mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
+        String message = JSONRequest.storeLocation(session.getSessionID(), 0, latitude, longitude, 0,
+                GetCurrentDate.now(), 3000, 6, "11111111");
+        Log.i(TAG, message);
+        mqProducer.publish(message, props, false);
+    }
 
     @Override
     public void onDestroy() {
@@ -76,6 +144,8 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             mGoogleApiClient.disconnect();
         }
         task.stop();
+        mqConsumer.stop();
+     //   mqProducer.stop();
     }
 
 
@@ -109,11 +179,12 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     }
 
     private void startTask() {
-        task = new ScheduleTask(10);
+        task = new ScheduleTask(30);
         task.start(new ScheduleTask.TimerFireListener() {
             @Override
             public void onTimerRestart(int counter) {
                 Log.i(TAG, "fire : "+counter);
+                publish();
             }
         });
     }
@@ -143,5 +214,21 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         latitude = location.getLatitude();
         longitude = location.getLongitude();
 
+    }
+
+    //---------- mq
+    @Override
+    public void onMQConnectionFailure(String message) {
+        Log.i(TAG, message);
+    }
+
+    @Override
+    public void onMQDisconnected() {
+        Log.i(TAG, "Disconnected from mq");
+    }
+
+    @Override
+    public void onMQConnectionClosed(String message) {
+        Log.i(TAG, message);
     }
 }

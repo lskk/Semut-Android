@@ -58,6 +58,14 @@ public class Producer extends Connector{
         }
     }
 
+    public void stop(){
+        try {
+            closeMQConnection();
+        } catch (IOException | TimeoutException e) {
+            sendBackErrorMessage(e);
+            e.printStackTrace();
+        }
+    }
 
     public void publish(final String message, final BasicProperties properties, final boolean isDeclareQueue){
         publishThread = new Thread(new Runnable() {
