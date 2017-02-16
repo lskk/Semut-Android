@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
     private Context context;
     private RequestRest rest;
     private String TAG = this.getClass().getSimpleName();
+    PreferenceManager preferenceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,10 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         context = this;
+        preferenceManager = new PreferenceManager(context);
+        if(preferenceManager.getBoolean(Constants.IS_LOGGED_IN)){
+            toDashBoard();
+        }
         loadingIndicator = new LoadingIndicator(context);
         callbackManager = CallbackManager.Factory.create();
         fbLoginBtn = (LoginButton)findViewById(R.id.loginButton);
@@ -133,10 +138,17 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
 
 
     private void populateUserData(String profile, String sessionID){
-        PreferenceManager preferenceManager = new PreferenceManager(context);
         preferenceManager.save(profile, Constants.PREF_PROFILE);
         preferenceManager.save("{SessionID:"+sessionID+"}", Constants.PREF_SESSION_ID);
+        preferenceManager.save(true, Constants.IS_LOGGED_IN);
         preferenceManager.apply();
+    }
+
+
+    private void toDashBoard(){
+        Intent intent = new Intent(context, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     //------------------------- success request

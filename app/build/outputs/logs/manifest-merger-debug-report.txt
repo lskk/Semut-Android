@@ -34,6 +34,7 @@ MERGED from [com.android.support:support-media-compat:25.1.0] /Users/arysetijadi
 MERGED from [com.android.support:support-core-ui:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-utils:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/AndroidManifest.xml:25:5-20
+MERGED from [com.mikepenz:google-material-typeface:2.2.0.3.original] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/google-material-typeface/2.2.0.3.original/AndroidManifest.xml:27:5-20
 	android:label
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:10:9-41
 	android:supportsRtl
@@ -107,8 +108,9 @@ MERGED from [com.android.support:support-core-ui:25.1.0] /Users/arysetijadipriha
 MERGED from [com.android.support:support-core-utils:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/AndroidManifest.xml:21:5-23:58
 MERGED from [com.mikepenz:materialize:1.0.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/materialize/1.0.0/AndroidManifest.xml:8:5-10:41
-MERGED from [com.mikepenz:iconics-core:2.8.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.8.0/AndroidManifest.xml:8:5-10:41
 MERGED from [com.mikepenz:fastadapter:2.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/fastadapter/2.1.0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:iconics-core:2.8.2] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.8.2/AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:google-material-typeface:2.2.0.3.original] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/google-material-typeface/2.2.0.3.original/AndroidManifest.xml:23:5-25:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion

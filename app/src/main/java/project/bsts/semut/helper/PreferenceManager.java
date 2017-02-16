@@ -36,4 +36,9 @@ public class PreferenceManager {
     public void apply(){
         editor.commit();
     }
+
+
+    public boolean getBoolean(String name){
+        return sharedPreferences.getBoolean(Constants.IS_LOGGED_IN, false);
+    }
 }
