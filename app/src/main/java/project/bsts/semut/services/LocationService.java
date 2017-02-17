@@ -110,7 +110,10 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             public void onMessageReceived(QueueingConsumer.Delivery delivery) {
                 try {
                     final String message = new String(delivery.getBody(), "UTF-8");
-                    Log.i("test", message);
+                    Log.i(TAG, "-------------------------------------");
+                    Log.i(TAG, "incoming message : ");
+                    Log.i(TAG, message);
+                    broadCastMessage(delivery.getProperties().getType(), message);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -128,6 +131,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 .Builder()
                 .replyTo(mqConsumer.getQueueName())
                 .correlationId(corrId)
+                .type(Constants.MQ_INCOMING_TYPE_MAPVIEW)
                 .build();
         mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
         String message = JSONRequest.storeLocation(session.getSessionID(), 0, latitude, longitude, 0,
@@ -145,7 +149,6 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         }
         task.stop();
         mqConsumer.stop();
-     //   mqProducer.stop();
     }
 
 
@@ -170,12 +173,8 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                broadcastManager.sendBroadcastToUI(Constants.BROADCAST_MY_LOCATION, object.toString());
-
             }
-
         }
-
     }
 
     private void startTask() {
@@ -183,7 +182,8 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         task.start(new ScheduleTask.TimerFireListener() {
             @Override
             public void onTimerRestart(int counter) {
-                Log.i(TAG, "fire : "+counter);
+                Log.i(TAG, "Send no : "+counter);
+                broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latitude, longitude));
                 publish();
             }
         });
@@ -214,6 +214,17 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         latitude = location.getLatitude();
         longitude = location.getLongitude();
 
+    }
+
+
+    private void broadCastMessage(String type, String message){
+        switch (type){
+            case Constants.BROADCAST_MY_LOCATION:
+                broadcastManager.sendBroadcastToUI(type, message);
+                break;
+            case Constants.MQ_INCOMING_TYPE_MAPVIEW:
+                broadcastManager.sendBroadcastToUI(type, message);
+        }
     }
 
     //---------- mq

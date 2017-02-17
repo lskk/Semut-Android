@@ -3,6 +3,9 @@ package project.bsts.semut.helper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Comment;
+
+import project.bsts.semut.setup.Constants;
 
 public class JSONRequest {
     public static String storeLocation(String SessionID, double Altitude, double Latitude,
@@ -25,12 +28,20 @@ public class JSONRequest {
             mapviewObj.put("Longitude", Longitude);
             mapviewObj.put("Item", Item);
             mainObj.put("mapview", mapviewObj);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return mainObj.toString();
+    }
 
+    public static String myLocation(double latitude, double longitude){
+        JSONObject object = new JSONObject();
+        try {
+            object.put(Constants.ENTITY_LATITUDE, latitude);
+            object.put(Constants.ENTITY_LONGITUDE, longitude);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return object.toString();
     }
 }
