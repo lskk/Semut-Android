@@ -114,7 +114,11 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public void onMessageReceived(String type, String msg) {
+        Log.i(TAG, "-------------------------------------");
+        Log.i(TAG, "Receive on UI : Type : "+type);
+        Log.i(TAG, "-------------------------------------");
         Log.i(TAG, msg);
+        Log.i(TAG, "-------------------------------------");
         switch (type){
             case Constants.BROADCAST_MY_LOCATION:
                 if(!firstInit) {
@@ -129,7 +133,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
+                break;
+            case Constants.MQ_INCOMING_TYPE_MAPVIEW:
                 break;
         }
     }

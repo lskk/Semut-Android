@@ -111,8 +111,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 try {
                     final String message = new String(delivery.getBody(), "UTF-8");
                     Log.i(TAG, "-------------------------------------");
-                    Log.i(TAG, "incoming message : ");
-                    Log.i(TAG, message);
+                    Log.i(TAG, "incoming message type : "+delivery.getProperties().getType());
+                    Log.i(TAG, "-------------------------------------");
+                //    Log.i(TAG, message);
                     broadCastMessage(delivery.getProperties().getType(), message);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -136,7 +137,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
         String message = JSONRequest.storeLocation(session.getSessionID(), 0, latitude, longitude, 0,
                 GetCurrentDate.now(), 3000, 6, "11111111");
-        Log.i(TAG, message);
+    //    Log.i(TAG, message);
         mqProducer.publish(message, props, false);
     }
 
@@ -224,6 +225,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
                 broadcastManager.sendBroadcastToUI(type, message);
+                break;
         }
     }
 
