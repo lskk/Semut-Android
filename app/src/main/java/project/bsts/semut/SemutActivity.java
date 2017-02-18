@@ -1,6 +1,7 @@
 package project.bsts.semut;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,23 +21,33 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.materialdrawer.icons.MaterialDrawerFont;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.LoadingIndicator;
 import project.bsts.semut.ui.MainDrawer;
 import project.bsts.semut.utilities.CheckService;
+import project.bsts.semut.utilities.FragmentTransUtility;
 
-public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback, BroadcastManager.UIBroadcastListener {
+public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback,
+        BroadcastManager.UIBroadcastListener, View.OnClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.filter_layout)
+    RelativeLayout filterLayout;
+    @BindView(R.id.filter_button)
+    ImageButton filterBtn;
 
     private MainDrawer drawer;
     private Context context;
@@ -45,6 +59,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private LoadingIndicator loadingIndicator;
     private boolean firstInit = false;
     private Intent locService;
+    private FragmentTransUtility fragmentTransUtility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +70,18 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         context = this;
         broadcastManager = new BroadcastManager(context);
         loadingIndicator = new LoadingIndicator(context);
+        fragmentTransUtility = new FragmentTransUtility(context);
+        fragmentTransUtility.setFilterFragment(new FilterFragment(), filterLayout.getId());
         broadcastManager.subscribeToUi(this);
         loadingIndicator.show();
         drawer = new MainDrawer(context, toolbar, 0);
         drawer.initDrawer();
         locService = new Intent(context, LocationService.class);
+        filterBtn.setImageDrawable(new IconicsDrawable(context)
+        .color(context.getResources().getColor(R.color.primary_dark))
+        .sizeDp(24)
+        .icon(GoogleMaterial.Icon.gmd_list));
+        filterBtn.setOnClickListener(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -112,13 +134,15 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         }
     }
 
+
+
+    //--------- Receive brodcast from service
     @Override
     public void onMessageReceived(String type, String msg) {
         Log.i(TAG, "-------------------------------------");
         Log.i(TAG, "Receive on UI : Type : "+type);
         Log.i(TAG, "-------------------------------------");
         Log.i(TAG, msg);
-        Log.i(TAG, "-------------------------------------");
         switch (type){
             case Constants.BROADCAST_MY_LOCATION:
                 if(!firstInit) {
@@ -135,6 +159,31 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 }
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
+                break;
+        }
+    }
+
+
+
+    //--------- click listener
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.filter_button:
+                if(filterLayout.getVisibility() == View.GONE) {
+                    filterLayout.setVisibility(View.VISIBLE);
+                    filterBtn.setImageDrawable(new IconicsDrawable(context)
+                            .color(context.getResources().getColor(R.color.primary_dark))
+                            .sizeDp(24)
+                            .icon(GoogleMaterial.Icon.gmd_done));
+                }
+                else {
+                    filterLayout.setVisibility(View.GONE);
+                    filterBtn.setImageDrawable(new IconicsDrawable(context)
+                            .color(context.getResources().getColor(R.color.primary_dark))
+                            .sizeDp(24)
+                            .icon(GoogleMaterial.Icon.gmd_list));
+                }
                 break;
         }
     }

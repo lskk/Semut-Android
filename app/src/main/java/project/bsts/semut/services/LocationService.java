@@ -29,7 +29,6 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-import project.bsts.semut.MainActivity;
 import project.bsts.semut.connections.broker.BrokerCallback;
 import project.bsts.semut.connections.broker.Config;
 import project.bsts.semut.connections.broker.Consumer;

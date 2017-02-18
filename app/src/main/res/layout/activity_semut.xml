@@ -20,6 +20,14 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
             <include layout="@layout/loading_indicator" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_input_add"
+                android:id="@+id/filter_button"
+                android:layout_gravity="right"
+                android:layout_marginRight="5dp"
+                />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
