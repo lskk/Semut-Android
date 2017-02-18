@@ -45,4 +45,8 @@ public class PreferenceManager {
     public String getString(String name){
         return sharedPreferences.getString(name, "");
     }
+
+    public int getInt(String name, int initial){
+        return sharedPreferences.getInt(name, initial);
+    }
 }
