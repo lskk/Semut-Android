@@ -2332,9 +2332,9 @@ int id filterDisaster 0x7f100132
 int id filterOther 0x7f100136
 int id filterPolice 0x7f10012f
 int id filterTraffic 0x7f100131
-int id filterUser 0x7f10012d
 int id filter_button 0x7f1000e6
 int id filter_layout 0x7f10011b
+int id filter_user 0x7f10012d
 int id fixed 0x7f10008b
 int id foreground 0x7f100128
 int id google_wallet_classic 0x7f1000a1

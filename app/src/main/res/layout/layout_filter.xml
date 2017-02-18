@@ -22,6 +22,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:gHintTitle="slide"
+                    android:imeOptions="actionDone"
                     android:hint="Batasi hasil pencarian"
                     android:inputType="number"
                     android:textColorHint="@color/colorPrimaryDark"
@@ -100,12 +101,12 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="5dp"
-                    android:id="@+id/filterUser"
+                    android:id="@+id/filter_user"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/filterUser"
+                    android:layout_toLeftOf="@id/filter_user"
                     android:text="Pengguna Lain"
                     android:textStyle="bold"
                     android:textColor="@color/primary_dark"

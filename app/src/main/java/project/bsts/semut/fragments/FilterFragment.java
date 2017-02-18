@@ -3,6 +3,7 @@ package project.bsts.semut.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,7 @@ public class FilterFragment extends Fragment {
     EditText limitEdit;
     @BindView(R.id.radiusSeekBar)
     SeekBar radiusSeekbar;
-    @BindView(R.id.filterUser)
+    @BindView(R.id.filter_user)
     ToggleSwitch userSwitch;
     @BindView(R.id.filterCctv)
     ToggleSwitch cctvSwitch;
@@ -73,11 +74,8 @@ public class FilterFragment extends Fragment {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_DONE) {
-
-                    preferenceManager.save(Integer.parseInt(textView.getText().toString()), Constants.MAP_FILTER_USER);
-                    preferenceManager.apply();;
-
-                    return true;
+                    preferenceManager.save(Integer.parseInt(textView.getText().toString()), Constants.MAP_LIMIT);
+                    preferenceManager.apply();
                 }
                 return false;
             }
@@ -96,10 +94,12 @@ public class FilterFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                preferenceManager.save(seekBar.getProgress(), Constants.MAP_RADIUS);
+                preferenceManager.apply();
             }
         });
 
+        Log.i(TAG, String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_USER, 1)));
         userSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_USER, 1));
         userSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
             @Override
