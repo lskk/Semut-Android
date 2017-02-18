@@ -17,4 +17,10 @@
         tools:context="project.bsts.semut.SemutActivity" />
 
     <include layout="@layout/foreground_loading" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/filter_layout"
+        android:visibility="gone"
+        />
 </RelativeLayout>

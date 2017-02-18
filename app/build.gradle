@@ -6,7 +6,7 @@ android {
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "project.bsts.semut"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,7 @@ dependencies {
         transitive = true
     }
     compile 'net.qiujuer.genius:ui:2.0.0-beta4'
+    compile 'us.belka:androidtoggleswitch:1.2.2'
     compile 'com.facebook.android:facebook-android-sdk:4.6.0'
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'

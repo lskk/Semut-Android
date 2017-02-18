@@ -119,6 +119,7 @@
     <color name="black_alpha_64">#40000000</color>
     <color name="black_alpha_80">#50000000</color>
     <color name="black_alpha_96">#60000000</color>
+    <color name="blue">#123256</color>
     <color name="blue_100">#d0d9ff</color>
     <color name="blue_200">#afbfff</color>
     <color name="blue_300">#91a7ff</color>
@@ -264,6 +265,9 @@
     <color name="g_default_loading_bg">@color/grey_300</color>
     <color name="g_default_seek_bar_indicator">@color/cyan_500</color>
     <color name="g_default_seek_bar_ripple">@color/cyan_500</color>
+    <color name="gray">#444444</color>
+    <color name="gray_light">#BBBBBB</color>
+    <color name="gray_very_light">#DDDDDD</color>
     <color name="green_100">#a3e9a4</color>
     <color name="green_200">#72d572</color>
     <color name="green_300">#42bd41</color>
@@ -1219,6 +1223,7 @@
             <enum name="screen" value="15"/>
         </attr></declare-styleable>
     <declare-styleable name="TextView"><attr name="gFont"/><attr name="gBorder"><flag name="all" value="0x1111"/><flag name="left" value="0x0001"/><flag name="top" value="0x0100"/><flag name="right" value="0x0010"/><flag name="bottom" value="0x1000"/></attr><attr name="gBorderSize"/><attr format="color|reference" name="gBorderColor"/></declare-styleable>
+    <declare-styleable name="ToggleSwitchOptions"><attr format="dimension" name="toggleWidth"/><attr format="string" localization="suggested" name="textToggleCenter"/><attr format="string" localization="suggested" name="textToggleLeft"/><attr format="string" localization="suggested" name="textToggleRight"/><attr format="color" name="activeBgColor"/><attr format="color" name="activeTextColor"/><attr format="color" name="inactiveBgColor"/><attr format="color" name="inactiveTextColor"/><attr format="color" name="separatorColor"/><attr format="dimension" name="cornerRadius"/><attr name="android:textSize"/></declare-styleable>
     <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargin"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr format="dimension" name="titleMargins"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr name="contentInsetStartWithNavigation"/><attr name="contentInsetEndWithActions"/><attr format="dimension" name="maxButtonHeight"/><attr name="buttonGravity">
             
             <flag name="top" value="0x30"/>
@@ -1694,6 +1699,9 @@
     <dimen name="size_88">88dp</dimen>
     <dimen name="size_92">92dp</dimen>
     <dimen name="size_96">96dp</dimen>
+    <dimen name="space.medium">16dp</dimen>
+    <dimen name="space.small">8dp</dimen>
+    <dimen name="space.very_small">4dp</dimen>
     <dimen name="tool_bar_top_padding">0dp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
@@ -2824,6 +2832,7 @@
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
         AIzaSyD2uqzJ5QaNGJARajbJsaL114_CA4Rhnww
     </string>
+    <string name="hello_world">Hello world!</string>
     <string name="library_AndroidIconics_author">Mike Penz</string>
     <string name="library_AndroidIconics_authorWebsite">http://mikepenz.com/</string>
     <string name="library_AndroidIconics_isOpenSource">true</string>
