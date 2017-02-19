@@ -47,7 +47,7 @@ import project.bsts.semut.utilities.ScheduleTask;
 public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener, BrokerCallback {
 
-    private double latitude, longitude;
+    private double latitude, longitude, speed, altitude;
     private LocationRequest mLocationRequest;
     private GoogleApiClient mGoogleApiClient;
     private String TAG = this.getClass().getSimpleName();
@@ -135,9 +135,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 .type(Constants.MQ_INCOMING_TYPE_MAPVIEW)
                 .build();
         mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
-        String message = JSONRequest.storeLocation(session.getSessionID(), 0, latitude, longitude, 0,
-                GetCurrentDate.now(), 3000, 6, MapItem.get(getApplicationContext()));
-    //    Log.i(TAG, message);
+        String message = JSONRequest.storeLocation(session.getSessionID(), altitude, latitude, longitude, speed,
+                GetCurrentDate.now(), preferenceManager.getInt(Constants.MAP_RADIUS, 3),
+                preferenceManager.getInt(Constants.MAP_LIMIT, 6), MapItem.get(getApplicationContext()));
         mqProducer.publish(message, props, false);
     }
 
@@ -166,6 +166,8 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             } else {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
+                speed = location.getSpeed();
+                altitude = location.getAltitude();
                 startTask();
                 try {
                     object = new JSONObject();

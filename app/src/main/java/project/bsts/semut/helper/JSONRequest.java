@@ -22,7 +22,7 @@ public class JSONRequest {
             storeObj.put("Date", Date);
             mainObj.put("store", storeObj);
             mapviewObj.put("SessionID", SessionID);
-            mapviewObj.put("Radius", Radius);
+            mapviewObj.put("Radius", Radius*1000);
             mapviewObj.put("Limit", Limit);
             mapviewObj.put("Latitude", Latitude);
             mapviewObj.put("Longitude", Longitude);
