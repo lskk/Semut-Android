@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
@@ -34,6 +35,7 @@ import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
+import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.ui.LoadingIndicator;
 import project.bsts.semut.ui.MainDrawer;
 import project.bsts.semut.utilities.CheckService;
@@ -60,6 +62,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private boolean firstInit = false;
     private Intent locService;
     private FragmentTransUtility fragmentTransUtility;
+    private AnimationView animationView;
+    private Animation slideUp, slideDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +71,14 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         setContentView(R.layout.activity_semut);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+
         context = this;
         broadcastManager = new BroadcastManager(context);
         loadingIndicator = new LoadingIndicator(context);
         fragmentTransUtility = new FragmentTransUtility(context);
+        animationView = new AnimationView(context);
+        setAnim();
+
         fragmentTransUtility.setFilterFragment(new FilterFragment(), filterLayout.getId());
         broadcastManager.subscribeToUi(this);
         loadingIndicator.show();
@@ -96,6 +104,16 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
         }
+    }
+
+    private void setAnim(){
+        slideUp = animationView.getAnimation(R.anim.slide_up, null);
+        slideDown = animationView.getAnimation(R.anim.slide_down, new AnimationView.AnimationViewListener() {
+            @Override
+            public void onAnimationEnd(Animation anim) {
+                filterLayout.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override
@@ -172,17 +190,20 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
             case R.id.filter_button:
                 if(filterLayout.getVisibility() == View.GONE) {
                     filterLayout.setVisibility(View.VISIBLE);
+                    filterLayout.startAnimation(slideUp);
                     filterBtn.setImageDrawable(new IconicsDrawable(context)
                             .color(context.getResources().getColor(R.color.primary_dark))
                             .sizeDp(24)
                             .icon(GoogleMaterial.Icon.gmd_done));
                 }
                 else {
-                    filterLayout.setVisibility(View.GONE);
+                 //   filterLayout.setVisibility(View.GONE);
+                    filterLayout.startAnimation(slideDown);
                     filterBtn.setImageDrawable(new IconicsDrawable(context)
                             .color(context.getResources().getColor(R.color.primary_dark))
                             .sizeDp(24)
                             .icon(GoogleMaterial.Icon.gmd_list));
+
                 }
                 break;
         }
