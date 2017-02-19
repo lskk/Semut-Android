@@ -197,7 +197,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                             .icon(GoogleMaterial.Icon.gmd_done));
                 }
                 else {
-                 //   filterLayout.setVisibility(View.GONE);
                     filterLayout.startAnimation(slideDown);
                     filterBtn.setImageDrawable(new IconicsDrawable(context)
                             .color(context.getResources().getColor(R.color.primary_dark))

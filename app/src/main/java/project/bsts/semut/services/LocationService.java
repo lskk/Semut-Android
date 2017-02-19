@@ -41,6 +41,7 @@ import project.bsts.semut.pojo.Profile;
 import project.bsts.semut.pojo.Session;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.utilities.GetCurrentDate;
+import project.bsts.semut.utilities.MapItem;
 import project.bsts.semut.utilities.ScheduleTask;
 
 public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks,
@@ -135,7 +136,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 .build();
         mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
         String message = JSONRequest.storeLocation(session.getSessionID(), 0, latitude, longitude, 0,
-                GetCurrentDate.now(), 3000, 6, "11111111");
+                GetCurrentDate.now(), 3000, 6, MapItem.get(getApplicationContext()));
     //    Log.i(TAG, message);
         mqProducer.publish(message, props, false);
     }
