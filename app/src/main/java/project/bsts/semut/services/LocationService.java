@@ -136,6 +136,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         String message = JSONRequest.storeLocation(session.getSessionID(), altitude, latitude, longitude, speed,
                 GetCurrentDate.now(), preferenceManager.getInt(Constants.MAP_RADIUS, 3),
                 preferenceManager.getInt(Constants.MAP_LIMIT, 6), MapItem.get(getApplicationContext()));
+        Log.i(TAG, message);
         mqProducer.publish(message, props, false);
     }
 

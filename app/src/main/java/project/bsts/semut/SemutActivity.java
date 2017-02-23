@@ -20,6 +20,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -31,6 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
+import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.services.LocationService;
@@ -42,7 +44,7 @@ import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.FragmentTransUtility;
 
 public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback,
-        BroadcastManager.UIBroadcastListener, View.OnClickListener {
+        BroadcastManager.UIBroadcastListener, View.OnClickListener, GoogleMap.OnMarkerClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -66,6 +68,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private AnimationView animationView;
     private Animation slideUp, slideDown;
     private UserMap[] userMaps;
+    private AddMarkerToMap addMarker;
+    private Marker myLocationMarker;
+    private Marker[] userMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         loadingIndicator = new LoadingIndicator(context);
         fragmentTransUtility = new FragmentTransUtility(context);
         animationView = new AnimationView(context);
+
         setAnim();
 
         fragmentTransUtility.setFilterFragment(new FilterFragment(), filterLayout.getId());
@@ -134,15 +140,17 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        moveMyLocation(-34, 151);
+        mMap.setOnMarkerClickListener(this);
+        addMarker = new AddMarkerToMap(mMap);
+        myLocationMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(-34, 151)).title("Marker in Sydney"));
     }
 
 
     private void moveMyLocation(double latitude, double longitude){
-        mMap.clear();
         LatLng myLoc = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLoc));
+        myLocationMarker = mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
+        myLocationMarker.setPosition(myLoc);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 17.0f));
     }
 
     @Override
@@ -188,7 +196,13 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
     private void populateDataMapView(String msg) {
         userMaps = MapViewComponent.getUsers(MapViewComponent.USER_MAP_COMPONENT, msg);
-
+        mMap.clear();
+        userMarkers = new Marker[userMaps.length];
+        for (int i = 0; i < userMaps.length; i ++){
+            userMarkers[i] = addMarker.add(userMaps[i]);
+            userMarkers[i].setTag(userMaps[i]);
+        }
+        moveMyLocation(latitude, longitude);
 
     }
 
@@ -217,5 +231,12 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 }
                 break;
         }
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Log.i(TAG, marker.getTitle());
+
+        return false;
     }
 }
