@@ -1,7 +1,6 @@
 package project.bsts.semut;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -16,23 +15,28 @@ import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.materialdrawer.icons.MaterialDrawerFont;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
+import project.bsts.semut.pojo.MapViewObject;
+import project.bsts.semut.pojo.MapViewResult;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
@@ -64,6 +68,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private FragmentTransUtility fragmentTransUtility;
     private AnimationView animationView;
     private Animation slideUp, slideDown;
+    private MapViewObject mapViewObject;
+    private MapViewResult mapViewResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +183,18 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 }
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
+              //  mapViewObject = new Gson().fromJson(msg, MapViewObject.class);
+
+            //    Log.i(TAG, String.valueOf(mapViewObject.getMapViewResults()));
+
+                ObjectMapper mapper = new ObjectMapper();
+                try {
+                    mapViewObject = mapper.readValue(msg, MapViewObject.class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Log.i(TAG, String.valueOf(mapViewObject.getResults().get(MapViewResult.USERS)));
+
                 break;
         }
     }
