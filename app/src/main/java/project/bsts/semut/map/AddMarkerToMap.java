@@ -1,10 +1,13 @@
 package project.bsts.semut.map;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.UserMap;
@@ -37,6 +40,12 @@ public class AddMarkerToMap {
                             .position(new LatLng(((PoliceMap) objectMap).getLatitude(),
                                     ((PoliceMap) objectMap).getLongitude()))
                             .title(((PoliceMap) objectMap).getDescription()));
+        }else if(objectMap instanceof AccidentMap){
+            marker = googleMap.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(((AccidentMap) objectMap).getLatitude(),
+                                    ((AccidentMap) objectMap).getLongitude()))
+                            .title(((AccidentMap) objectMap).getDescription()));
         }
 
         return marker;

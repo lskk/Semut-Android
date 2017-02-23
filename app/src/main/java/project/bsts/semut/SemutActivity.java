@@ -36,6 +36,7 @@ import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
+import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.UserMap;
@@ -79,10 +80,12 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private UserMap[] userMaps;
     private CctvMap[] cctvMaps;
     private PoliceMap[] policeMaps;
+    private AccidentMap[] accidentMaps;
 
     private Marker[] userMarkers;
     private Marker[] cctvMarkers;
     private Marker[] policeMarkers;
+    private Marker[] accidentMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,11 +217,12 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         userMaps = MapViewComponent.getUsers(MapViewComponent.USER_MAP_COMPONENT, msg);
         cctvMaps = MapViewComponent.getCCTVs(MapViewComponent.CCTV_MAP_COMPONENT, msg);
         policeMaps = MapViewComponent.getPolicesPost(MapViewComponent.POLICE_MAP_COMPONENT, msg);
+        accidentMaps = MapViewComponent.getAccident(MapViewComponent.ACCIDENT_MAP_COMPONENT, msg);
         mMap.clear();
         userMarkers = new Marker[userMaps.length];
         cctvMarkers = new Marker[cctvMaps.length];
         policeMarkers = new Marker[policeMaps.length];
-
+        accidentMarkers = new Marker[accidentMaps.length];
 
         generateMarker(userMaps, userMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
@@ -226,6 +230,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 .defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
         generateMarker(policeMaps, policeMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+        generateMarker(accidentMaps, accidentMarkers, BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
         moveMyLocation(latitude, longitude);
 
     }
