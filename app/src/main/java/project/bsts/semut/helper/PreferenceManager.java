@@ -29,6 +29,7 @@ public class PreferenceManager {
         editor.putFloat(prefname, val);
     }
 
+
     public void save(boolean val, String prefName){
         editor.putBoolean(prefName, val);
     }
@@ -48,5 +49,13 @@ public class PreferenceManager {
 
     public int getInt(String name, int initial){
         return sharedPreferences.getInt(name, initial);
+    }
+
+    public float getFloat(String name, float initial){
+        return sharedPreferences.getFloat(name, initial);
+    }
+
+    public double getDouble(String name, int initial){
+        return (double)sharedPreferences.getFloat(name, initial);
     }
 }

@@ -34,6 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
+import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
 import project.bsts.semut.pojo.mapview.AccidentMap;
@@ -65,6 +66,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private GoogleMap mMap;
     private static final int REQUEST_ACCESS_FINE_LOCATION = 101;
     private BroadcastManager broadcastManager;
+    private PreferenceManager preferenceManager;
     private double latitude, longitude;
     private LoadingIndicator loadingIndicator;
     private boolean firstInit = false;
@@ -72,7 +74,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private FragmentTransUtility fragmentTransUtility;
     private AnimationView animationView;
     private Animation slideUp, slideDown;
-    private boolean isFirstInit = true;
+    private boolean isFirstInit = true, isMapReady = false;
 
     private AddMarkerToMap addMarker;
     private Marker myLocationMarker;
@@ -99,6 +101,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         loadingIndicator = new LoadingIndicator(context);
         fragmentTransUtility = new FragmentTransUtility(context);
         animationView = new AnimationView(context);
+        preferenceManager = new PreferenceManager(context);
 
         setAnim();
 
@@ -110,9 +113,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         locService = new Intent(context, LocationService.class);
 
         filterBtn.setImageDrawable(new IconicsDrawable(context)
-        .color(context.getResources().getColor(R.color.primary_dark))
-        .sizeDp(24)
-        .icon(GoogleMaterial.Icon.gmd_list));
+                .color(context.getResources().getColor(R.color.primary_dark))
+                .sizeDp(24)
+                .icon(GoogleMaterial.Icon.gmd_list));
         filterBtn.setOnClickListener(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -122,15 +125,15 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 android.Manifest.permission.ACCESS_FINE_LOCATION);
         if (accessFineLocationPermission == PackageManager.PERMISSION_GRANTED) {
             onRequestPermissionsResult(REQUEST_ACCESS_FINE_LOCATION,
-                    new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION },
-                    new int[] { PackageManager.PERMISSION_GRANTED });
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    new int[]{PackageManager.PERMISSION_GRANTED});
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
         }
     }
 
-    private void setAnim(){
+    private void setAnim() {
         slideUp = animationView.getAnimation(R.anim.slide_up, null);
         slideDown = animationView.getAnimation(R.anim.slide_down, new AnimationView.AnimationViewListener() {
             @Override
@@ -156,6 +159,13 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        isMapReady = true;
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG, "Access Fine Location Denied");
+        }else {
+            mMap.setMyLocationEnabled(true);
+           // mMap.getMyLocation();
+        }
         mMap.setOnMarkerClickListener(this);
         addMarker = new AddMarkerToMap(mMap);
         myLocationMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(-34, 151)).title("Marker in Sydney"));
@@ -200,6 +210,19 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                     JSONObject object = new JSONObject(msg);
                     latitude = object.getDouble(Constants.ENTITY_LATITUDE);
                     longitude = object.getDouble(Constants.ENTITY_LONGITUDE);
+                    if(isMapReady) {
+                        if(mMap.getMyLocation() != null) {
+                            if (mMap.getMyLocation().getLatitude() == latitude && mMap.getMyLocation().getLongitude() == longitude) {
+
+                            } else {
+                                latitude = mMap.getMyLocation().getLatitude();
+                                longitude = mMap.getMyLocation().getLongitude();
+                                preferenceManager.save((float) latitude, Constants.ENTITY_LATITUDE);
+                                preferenceManager.save((float) longitude, Constants.ENTITY_LONGITUDE);
+                                preferenceManager.apply();
+                            }
+                        }
+                    }
                     moveMyLocation(latitude, longitude);
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -133,7 +133,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 .type(Constants.MQ_INCOMING_TYPE_MAPVIEW)
                 .build();
         mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
-        String message = JSONRequest.storeLocation(session.getSessionID(), altitude, latitude, longitude, speed,
+        String message = JSONRequest.storeLocation(session.getSessionID(), altitude, preferenceManager.getDouble(Constants.ENTITY_LATITUDE, 0), preferenceManager.getDouble(Constants.ENTITY_LONGITUDE, 0), speed,
                 GetCurrentDate.now(), preferenceManager.getInt(Constants.MAP_RADIUS, 3),
                 preferenceManager.getInt(Constants.MAP_LIMIT, 6), MapItem.get(getApplicationContext()));
         Log.i(TAG, message);
@@ -165,6 +165,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             } else {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
+                preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
+                preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
+                preferenceManager.apply();
                 speed = location.getSpeed();
                 altitude = location.getAltitude();
                 startTask();
@@ -215,6 +218,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         Log.i(TAG, "Location Changed");
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
+        preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
+        preferenceManager.apply();
 
     }
 
