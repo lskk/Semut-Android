@@ -16,20 +16,21 @@ public class AddMarkerToMap {
         this.googleMap = googleMap;
     }
 
-    public Marker add(UserMap userMap){
-        Marker marker = googleMap.addMarker(
-                new MarkerOptions()
-                        .position(new LatLng(userMap.getLastLocation().getLatitude(), userMap.getLastLocation().getLongitude()))
-                        .title(userMap.getEmail()));
-
-        return marker;
-    }
-
-    public Marker add(CctvMap cctvMap){
-        Marker marker = googleMap.addMarker(
-                new MarkerOptions()
-                        .position(new LatLng(cctvMap.getLatitude(), cctvMap.getLongitude()))
-                        .title(cctvMap.getName()));
+    public Marker add(Object objectMap){
+        Marker marker = null;
+        if(objectMap instanceof  UserMap){
+            marker = googleMap.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(((UserMap) objectMap).getLastLocation().getLatitude(),
+                                    ((UserMap) objectMap).getLastLocation().getLongitude()))
+                            .title(((UserMap) objectMap).getEmail()));
+        }else if(objectMap instanceof  CctvMap){
+            marker = googleMap.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(((CctvMap) objectMap).getLatitude(),
+                                    ((CctvMap) objectMap).getLongitude()))
+                            .title(((CctvMap) objectMap).getName()));
+        }
 
         return marker;
     }

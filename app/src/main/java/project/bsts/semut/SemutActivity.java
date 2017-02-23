@@ -209,12 +209,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         userMarkers = new Marker[userMaps.length];
         cctvMarkers = new Marker[cctvMaps.length];
 
-     /*   for (int i = 0; i < userMaps.length; i ++){
-            userMarkers[i] = addMarker.add(userMaps[i]);
-            userMarkers[i].setTag(userMaps[i]);
-            userMarkers[i].setIcon(BitmapDescriptorFactory
-                    .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-        } */
+
         generateMarker(userMaps, userMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
         generateMarker(cctvMaps, cctvMarkers, BitmapDescriptorFactory
@@ -225,27 +220,10 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
     private void generateMarker(Object[] objects, Marker[] markers, BitmapDescriptor descriptor){
-        if(objects instanceof UserMap[]){
-            UserMap[] usermaps = new UserMap[objects.length];
-            for(int i = 0; i < usermaps.length; i++){
-                usermaps[i] = UserMap.class.cast(objects[i]);
-            }
-
-            for (int i = 0; i < usermaps.length; i ++){
-                markers[i] = addMarker.add(usermaps[i]);
-                markers[i].setTag(usermaps[i]);
-                markers[i].setIcon(descriptor);
-            }
-        }else if(objects instanceof CctvMap[]){
-            CctvMap[] cctvmaps = new CctvMap[objects.length];
-            for(int i = 0; i < cctvmaps.length; i++){
-                cctvmaps[i] = CctvMap.class.cast(objects[i]);
-            }
-            for (int i = 0; i < cctvmaps.length; i ++){
-                markers[i] = addMarker.add(cctvmaps[i]);
-                markers[i].setTag(cctvmaps[i]);
-                markers[i].setIcon(descriptor);
-            }
+        for (int i = 0; i < objects.length; i ++){
+            markers[i] = addMarker.add(objects[i]);
+            markers[i].setTag(objects[i]);
+            markers[i].setIcon(descriptor);
         }
     }
 

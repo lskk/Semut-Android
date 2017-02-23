@@ -10,7 +10,7 @@ public class LastLocation {
     private String timespan;
     @SerializedName("Altitude")
     @Expose
-    private Integer altitude;
+    private Double altitude;
     @SerializedName("Latitude")
     @Expose
     private Double latitude;
@@ -19,7 +19,7 @@ public class LastLocation {
     private Double longitude;
     @SerializedName("Speed")
     @Expose
-    private Integer speed;
+    private Double speed;
 
     public String getTimespan() {
         return timespan;
@@ -29,11 +29,11 @@ public class LastLocation {
         this.timespan = timespan;
     }
 
-    public Integer getAltitude() {
+    public Double getAltitude() {
         return altitude;
     }
 
-    public void setAltitude(Integer altitude) {
+    public void setAltitude(Double altitude) {
         this.altitude = altitude;
     }
 
@@ -53,11 +53,11 @@ public class LastLocation {
         this.longitude = longitude;
     }
 
-    public Integer getSpeed() {
+    public Double getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Integer speed) {
+    public void setSpeed(Double speed) {
         this.speed = speed;
     }
 

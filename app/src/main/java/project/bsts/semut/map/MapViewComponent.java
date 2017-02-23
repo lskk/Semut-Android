@@ -4,6 +4,7 @@ package project.bsts.semut.map;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,10 +32,12 @@ public class MapViewComponent {
             e.printStackTrace();
         }
 
+
         userMaps = new UserMap[users.length()];
         for (int i = 0; i <users.length(); i++){
             try {
-                userMaps[i] = new Gson().fromJson(users.get(i).toString(), UserMap.class);
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                userMaps[i] = gson.fromJson(users.get(i).toString(), UserMap.class);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -61,7 +64,8 @@ public class MapViewComponent {
         cctvMaps = new CctvMap[users.length()];
         for (int i = 0; i <users.length(); i++){
             try {
-                cctvMaps[i] = new Gson().fromJson(users.get(i).toString(), CctvMap.class);
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                cctvMaps[i] = gson.fromJson(users.get(i).toString(), CctvMap.class);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
