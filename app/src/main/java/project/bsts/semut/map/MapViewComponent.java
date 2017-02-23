@@ -12,12 +12,14 @@ import org.json.JSONObject;
 
 import project.bsts.semut.pojo.mapview.CCTVLocation;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
 public class MapViewComponent {
 
     public static int USER_MAP_COMPONENT = 0;
     public static int CCTV_MAP_COMPONENT = 1;
+    public static int POLICE_MAP_COMPONENT = 2;
 
     public static UserMap[] getUsers(int indexComponent, String jsonString){
         UserMap[] userMaps;
@@ -72,6 +74,34 @@ public class MapViewComponent {
         }
 
         return cctvMaps;
+
+    }
+
+
+    public static PoliceMap[] getPolicesPost(int indexComponent, String jsonString){
+        PoliceMap[] policeMaps;
+        JSONObject object = null;
+        JSONArray array = null;
+        JSONArray polices = null;
+        try {
+            object = new JSONObject(jsonString);
+            array = object.getJSONArray("results");
+            polices = new JSONObject(array.get(indexComponent).toString()).getJSONArray("Polices");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        policeMaps = new PoliceMap[polices.length()];
+        for (int i = 0; i <polices.length(); i++){
+            try {
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                policeMaps[i] = gson.fromJson(polices.get(i).toString(), PoliceMap.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return policeMaps;
 
     }
 

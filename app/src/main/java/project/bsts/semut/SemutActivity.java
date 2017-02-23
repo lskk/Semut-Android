@@ -37,6 +37,7 @@ import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
@@ -70,15 +71,18 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private FragmentTransUtility fragmentTransUtility;
     private AnimationView animationView;
     private Animation slideUp, slideDown;
+    private boolean isFirstInit = true;
 
     private AddMarkerToMap addMarker;
     private Marker myLocationMarker;
 
     private UserMap[] userMaps;
     private CctvMap[] cctvMaps;
+    private PoliceMap[] policeMaps;
 
     private Marker[] userMarkers;
     private Marker[] cctvMarkers;
+    private Marker[] policeMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +105,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         drawer = new MainDrawer(context, toolbar, 0);
         drawer.initDrawer();
         locService = new Intent(context, LocationService.class);
+
         filterBtn.setImageDrawable(new IconicsDrawable(context)
         .color(context.getResources().getColor(R.color.primary_dark))
         .sizeDp(24)
@@ -158,7 +163,10 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         LatLng myLoc = new LatLng(latitude, longitude);
         myLocationMarker = mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
         myLocationMarker.setPosition(myLoc);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 17.0f));
+        if(isFirstInit) {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 17.0f));
+            isFirstInit = false;
+        }
     }
 
     @Override
@@ -205,15 +213,19 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private void populateDataMapView(String msg) {
         userMaps = MapViewComponent.getUsers(MapViewComponent.USER_MAP_COMPONENT, msg);
         cctvMaps = MapViewComponent.getCCTVs(MapViewComponent.CCTV_MAP_COMPONENT, msg);
+        policeMaps = MapViewComponent.getPolicesPost(MapViewComponent.POLICE_MAP_COMPONENT, msg);
         mMap.clear();
         userMarkers = new Marker[userMaps.length];
         cctvMarkers = new Marker[cctvMaps.length];
+        policeMarkers = new Marker[policeMaps.length];
 
 
         generateMarker(userMaps, userMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
         generateMarker(cctvMaps, cctvMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+        generateMarker(policeMaps, policeMarkers, BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
         moveMyLocation(latitude, longitude);
 
     }

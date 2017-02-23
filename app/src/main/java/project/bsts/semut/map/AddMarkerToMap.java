@@ -6,6 +6,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
 public class AddMarkerToMap {
@@ -30,6 +31,12 @@ public class AddMarkerToMap {
                             .position(new LatLng(((CctvMap) objectMap).getLatitude(),
                                     ((CctvMap) objectMap).getLongitude()))
                             .title(((CctvMap) objectMap).getName()));
+        }else if(objectMap instanceof PoliceMap){
+            marker = googleMap.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(((PoliceMap) objectMap).getLatitude(),
+                                    ((PoliceMap) objectMap).getLongitude()))
+                            .title(((PoliceMap) objectMap).getDescription()));
         }
 
         return marker;
