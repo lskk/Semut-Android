@@ -235,7 +235,10 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Log.i(TAG, marker.getTitle());
+        if(marker.getTag() instanceof UserMap){
+            Log.i(TAG, marker.getTitle());
+        }
+
 
         return false;
     }
