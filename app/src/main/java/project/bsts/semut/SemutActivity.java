@@ -19,6 +19,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -34,6 +36,7 @@ import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
+import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
@@ -67,10 +70,15 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private FragmentTransUtility fragmentTransUtility;
     private AnimationView animationView;
     private Animation slideUp, slideDown;
-    private UserMap[] userMaps;
+
     private AddMarkerToMap addMarker;
     private Marker myLocationMarker;
+
+    private UserMap[] userMaps;
+    private CctvMap[] cctvMaps;
+
     private Marker[] userMarkers;
+    private Marker[] cctvMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,14 +204,49 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
     private void populateDataMapView(String msg) {
         userMaps = MapViewComponent.getUsers(MapViewComponent.USER_MAP_COMPONENT, msg);
+        cctvMaps = MapViewComponent.getCCTVs(MapViewComponent.CCTV_MAP_COMPONENT, msg);
         mMap.clear();
         userMarkers = new Marker[userMaps.length];
-        for (int i = 0; i < userMaps.length; i ++){
+        cctvMarkers = new Marker[cctvMaps.length];
+
+     /*   for (int i = 0; i < userMaps.length; i ++){
             userMarkers[i] = addMarker.add(userMaps[i]);
             userMarkers[i].setTag(userMaps[i]);
-        }
+            userMarkers[i].setIcon(BitmapDescriptorFactory
+                    .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+        } */
+        generateMarker(userMaps, userMarkers, BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+        generateMarker(cctvMaps, cctvMarkers, BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
         moveMyLocation(latitude, longitude);
 
+    }
+
+
+    private void generateMarker(Object[] objects, Marker[] markers, BitmapDescriptor descriptor){
+        if(objects instanceof UserMap[]){
+            UserMap[] usermaps = new UserMap[objects.length];
+            for(int i = 0; i < usermaps.length; i++){
+                usermaps[i] = UserMap.class.cast(objects[i]);
+            }
+
+            for (int i = 0; i < usermaps.length; i ++){
+                markers[i] = addMarker.add(usermaps[i]);
+                markers[i].setTag(usermaps[i]);
+                markers[i].setIcon(descriptor);
+            }
+        }else if(objects instanceof CctvMap[]){
+            CctvMap[] cctvmaps = new CctvMap[objects.length];
+            for(int i = 0; i < cctvmaps.length; i++){
+                cctvmaps[i] = CctvMap.class.cast(objects[i]);
+            }
+            for (int i = 0; i < cctvmaps.length; i ++){
+                markers[i] = addMarker.add(cctvmaps[i]);
+                markers[i].setTag(cctvmaps[i]);
+                markers[i].setIcon(descriptor);
+            }
+        }
     }
 
 
@@ -238,8 +281,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         if(marker.getTag() instanceof UserMap){
             Log.i(TAG, marker.getTitle());
         }
-
-
         return false;
     }
 }

@@ -5,6 +5,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
 public class AddMarkerToMap {
@@ -20,6 +21,15 @@ public class AddMarkerToMap {
                 new MarkerOptions()
                         .position(new LatLng(userMap.getLastLocation().getLatitude(), userMap.getLastLocation().getLongitude()))
                         .title(userMap.getEmail()));
+
+        return marker;
+    }
+
+    public Marker add(CctvMap cctvMap){
+        Marker marker = googleMap.addMarker(
+                new MarkerOptions()
+                        .position(new LatLng(cctvMap.getLatitude(), cctvMap.getLongitude()))
+                        .title(cctvMap.getName()));
 
         return marker;
     }
