@@ -23,4 +23,11 @@
         android:id="@+id/filter_layout"
         android:visibility="gone"
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/markerdetail_layout"
+        android:clickable="true"
+        android:visibility="gone"
+        />
 </RelativeLayout>

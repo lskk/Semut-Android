@@ -7,6 +7,8 @@ import android.content.Context;
 
 import project.bsts.semut.R;
 import project.bsts.semut.fragments.FilterFragment;
+import project.bsts.semut.fragments.map.MapUserFragment;
+import project.bsts.semut.pojo.mapview.UserMap;
 
 public class FragmentTransUtility {
     private Context context;
@@ -16,10 +18,17 @@ public class FragmentTransUtility {
     public FragmentTransUtility(Context context){
         this.context = context;
         fragmentManager = ((Activity)context).getFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+
     }
 
     public void setFilterFragment(FilterFragment fragment, int id){
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(id, fragment);
+        fragmentTransaction.commit();
+    }
+
+    public void setUserMapFragment(MapUserFragment fragment, int id){
+        fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(id, fragment);
         fragmentTransaction.commit();
     }

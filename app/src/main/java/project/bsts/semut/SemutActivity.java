@@ -36,6 +36,7 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.fragments.FilterFragment;
+import project.bsts.semut.fragments.map.MapUserFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.map.AddMarkerToMap;
@@ -68,6 +69,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     ImageButton filterBtn;
     @BindView(R.id.addReport)
     FloatingActionButton addReportBtn;
+    @BindView(R.id.markerdetail_layout)
+    RelativeLayout markerDetailLayout;
 
 
     private MainDrawer drawer;
@@ -84,7 +87,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private FragmentTransUtility fragmentTransUtility;
     private AnimationView animationView;
     private Animation slideUp, slideDown;
-    private boolean isFirstInit = true, isMapReady = false;
+    private boolean isFirstInit = true, isMapReady = false, isMarkerShow = false;
 
     private AddMarkerToMap addMarker;
 
@@ -110,6 +113,11 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private Marker[] otherMarkers;
 
     private ActionBar actionBar;
+
+    private static final int FAB_ACTION_DISMISS_ALL = 0;
+    private static final int FAB_ACTION_FRAGMENT_SHOW = 1;
+    private static final int FAB_ACTION_ADD_REPORT_SHOW = 2;
+    private int FAB_STATE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +151,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 .sizeDp(24)
                 .icon(GoogleMaterial.Icon.gmd_list));
         filterBtn.setOnClickListener(this);
+        addReportBtn.setOnClickListener(this);
+        useFabButton(FAB_ACTION_DISMISS_ALL);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -260,8 +270,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                     }
                 }
             }
-          //  moveMyLocation(latitude, longitude);
-          //  setRipple(new LatLng(latitude, longitude));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -269,11 +277,11 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
     private void setRipple(LatLng latLng){
         mapRipple = new MapRipple(mMap, latLng, context);
-        mapRipple.withNumberOfRipples(2);
+        mapRipple.withNumberOfRipples(3);
         mapRipple.withFillColor(R.color.rippleBG);
         mapRipple.withStrokeColor(Color.DKGRAY);
         mapRipple.withStrokewidth(2);
-        mapRipple.withDistance(preferenceManager.getInt(Constants.MAP_RADIUS, 3)*1000);      // 2000 metres radius
+        mapRipple.withDistance((preferenceManager.getInt(Constants.MAP_RADIUS, 3)*1000)+200);      // 2000 metres radius
         mapRipple.withRippleDuration(6000);
         mapRipple.withTransparency(0.8f);
         if (!mapRipple.isAnimationRunning()) {
@@ -359,13 +367,49 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
                 }
                 break;
+            case R.id.addReport:
+                Log.i(TAG, "SHHHIT "+FAB_STATE);
+                switch (FAB_STATE){
+                    case FAB_ACTION_FRAGMENT_SHOW:
+                        markerDetailLayout.setVisibility(View.GONE);
+                        useFabButton(FAB_ACTION_DISMISS_ALL);
+                        break;
+                    case FAB_ACTION_DISMISS_ALL:
+
+                        break;
+                }
+                break;
         }
     }
+
+    private void useFabButton(int actionType){
+        switch (actionType){
+            case FAB_ACTION_FRAGMENT_SHOW:
+                addReportBtn.setImageDrawable(new IconicsDrawable(context)
+                        .color(context.getResources().getColor(R.color.primary_light))
+                        .sizeDp(24)
+                        .icon(GoogleMaterial.Icon.gmd_clear));
+                FAB_STATE = FAB_ACTION_FRAGMENT_SHOW;
+                break;
+            case FAB_ACTION_DISMISS_ALL:
+                addReportBtn.setImageDrawable(new IconicsDrawable(context)
+                        .color(context.getResources().getColor(R.color.primary_light))
+                        .sizeDp(24)
+                        .icon(GoogleMaterial.Icon.gmd_add));
+                FAB_STATE = FAB_ACTION_DISMISS_ALL;
+                break;
+        }
+    }
+
 
     @Override
     public boolean onMarkerClick(Marker marker) {
         if(marker.getTag() instanceof UserMap){
-            Log.i(TAG, marker.getTitle());
+            MapUserFragment mapUserFragment = new MapUserFragment();
+            mapUserFragment.setData((UserMap) marker.getTag());
+            fragmentTransUtility.setUserMapFragment(mapUserFragment, markerDetailLayout.getId());
+            markerDetailLayout.setVisibility(View.VISIBLE);
+            useFabButton(FAB_ACTION_FRAGMENT_SHOW);
         }
         return false;
     }
