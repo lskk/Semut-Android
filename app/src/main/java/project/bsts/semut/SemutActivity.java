@@ -3,10 +3,13 @@ package project.bsts.semut;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -37,6 +40,7 @@ import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
+import project.bsts.semut.map.radar.MapRipple;
 import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.ClosureMap;
@@ -62,6 +66,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     RelativeLayout filterLayout;
     @BindView(R.id.filter_button)
     ImageButton filterBtn;
+    @BindView(R.id.addReport)
+    FloatingActionButton addReportBtn;
 
 
     private MainDrawer drawer;
@@ -81,7 +87,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private boolean isFirstInit = true, isMapReady = false;
 
     private AddMarkerToMap addMarker;
+
     private Marker myLocationMarker;
+    MapRipple mapRipple;
 
     private UserMap[] userMaps;
     private CctvMap[] cctvMaps;
@@ -101,12 +109,18 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private Marker[] closureMarkers;
     private Marker[] otherMarkers;
 
+    private ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_semut);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        actionBar = getSupportActionBar();
+
+        actionBar.setTitle("Memuat.. ");
+        addReportBtn.setVisibility(View.GONE);
 
         context = this;
         broadcastManager = new BroadcastManager(context);
@@ -151,6 +165,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
             @Override
             public void onAnimationEnd(Animation anim) {
                 filterLayout.setVisibility(View.GONE);
+                addReportBtn.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -189,7 +204,11 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         myLocationMarker = mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
         myLocationMarker.setPosition(myLoc);
         if(isFirstInit) {
+            actionBar.setTitle("Semut");
+            addReportBtn.setVisibility(View.VISIBLE);
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 17.0f));
+
+            loadingIndicator.hide();
             isFirstInit = false;
         }
     }
@@ -223,10 +242,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     private void manageMyLocation(String msg){
-        if(!firstInit) {
-            loadingIndicator.hide();
-            firstInit = false;
-        }
+
         try {
             JSONObject object = new JSONObject(msg);
             latitude = object.getDouble(Constants.ENTITY_LATITUDE);
@@ -244,11 +260,27 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                     }
                 }
             }
-            moveMyLocation(latitude, longitude);
+          //  moveMyLocation(latitude, longitude);
+          //  setRipple(new LatLng(latitude, longitude));
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+    private void setRipple(LatLng latLng){
+        mapRipple = new MapRipple(mMap, latLng, context);
+        mapRipple.withNumberOfRipples(2);
+        mapRipple.withFillColor(R.color.rippleBG);
+        mapRipple.withStrokeColor(Color.DKGRAY);
+        mapRipple.withStrokewidth(2);
+        mapRipple.withDistance(preferenceManager.getInt(Constants.MAP_RADIUS, 3)*1000);      // 2000 metres radius
+        mapRipple.withRippleDuration(6000);
+        mapRipple.withTransparency(0.8f);
+        if (!mapRipple.isAnimationRunning()) {
+            mapRipple.startRippleMapAnimation();
+        }
+    }
+
 
     private void populateDataMapView(String msg) {
         userMaps = MapViewComponent.getUsers(MapViewComponent.USER_MAP_COMPONENT, msg);
@@ -289,6 +321,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 .defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
 
         moveMyLocation(latitude, longitude);
+        setRipple(new LatLng(latitude, longitude));
 
     }
 
@@ -315,6 +348,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                             .color(context.getResources().getColor(R.color.primary_dark))
                             .sizeDp(24)
                             .icon(GoogleMaterial.Icon.gmd_done));
+                    addReportBtn.setVisibility(View.GONE);
                 }
                 else {
                     filterLayout.startAnimation(slideDown);
