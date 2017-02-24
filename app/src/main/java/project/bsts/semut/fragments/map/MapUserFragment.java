@@ -2,6 +2,8 @@ package project.bsts.semut.fragments.map;
 
 
 import android.app.Fragment;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -9,25 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import net.qiujuer.genius.ui.widget.Button;
+import com.mikepenz.community_material_typeface_library.CommunityMaterial;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import net.qiujuer.genius.ui.widget.Button;
 import de.hdodenhof.circleimageview.CircleImageView;
 import project.bsts.semut.R;
 import project.bsts.semut.pojo.mapview.UserMap;
 
 public class MapUserFragment extends Fragment {
 
- //   @BindView(R.id.profile_image)
     CircleImageView profileImg;
- //   @BindView(R.id.name_user)
     TextView nameUserText;
- //   @BindView(R.id.point_user)
     TextView pointUserText;
- //   @BindView(R.id.lastseen_user)
     TextView lastSeenText;
- //   @BindView(R.id.add_or_profile_btn)
     Button addOrProfileBtn;
 
     private UserMap userMap;
@@ -42,9 +40,18 @@ public class MapUserFragment extends Fragment {
         pointUserText = (TextView)view.findViewById(R.id.point_user);
         lastSeenText = (TextView)view.findViewById(R.id.lastseen_user);
         addOrProfileBtn = (Button)view.findViewById(R.id.add_or_profile_btn);
-//        ButterKnife.bind(getActivity(), view);
+
+        Context context = getActivity();
+        Drawable drawable = (userMap.getGender()==1) ? new IconicsDrawable(getActivity())
+                .color(context.getResources().getColor(R.color.accent))
+                .sizeDp(96)
+                .icon(CommunityMaterial.Icon.cmd_emoticon_cool) : new IconicsDrawable(getActivity())
+                .color(context.getResources().getColor(R.color.accent))
+                .sizeDp(96)
+                .icon(CommunityMaterial.Icon.cmd_emoticon_excited);
 
 
+        profileImg.setImageDrawable(drawable);
         isFriend = userMap.getFriend();
         if(isFriend) addOrProfileBtn.setText("Lihat Profile");
         else addOrProfileBtn.setText("Tambahkan Teman");

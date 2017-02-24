@@ -17,11 +17,12 @@
             android:layout_gravity="center_horizontal"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
+            android:padding="5dp"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@mipmap/ic_launcher"
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="@color/colorWhiteDark"/>
         <TextView
             style="@style/Base.TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
