@@ -9,7 +9,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
+import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
 public class AddMarkerToMap {
@@ -46,6 +48,18 @@ public class AddMarkerToMap {
                             .position(new LatLng(((AccidentMap) objectMap).getLatitude(),
                                     ((AccidentMap) objectMap).getLongitude()))
                             .title(((AccidentMap) objectMap).getDescription()));
+        }else if(objectMap instanceof TrafficMap){
+            marker = googleMap.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(((TrafficMap) objectMap).getLatitude(),
+                                    ((TrafficMap) objectMap).getLongitude()))
+                            .title(((TrafficMap) objectMap).getDescription()));
+        }else if(objectMap instanceof DisasterMap){
+            marker = googleMap.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(((DisasterMap) objectMap).getLatitude(),
+                                    ((DisasterMap) objectMap).getLongitude()))
+                            .title(((DisasterMap) objectMap).getDescription()));
         }
 
         return marker;

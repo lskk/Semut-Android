@@ -13,7 +13,9 @@ import org.json.JSONObject;
 import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CCTVLocation;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
+import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
 public class MapViewComponent {
@@ -22,6 +24,8 @@ public class MapViewComponent {
     public static int CCTV_MAP_COMPONENT = 1;
     public static int POLICE_MAP_COMPONENT = 2;
     public static int ACCIDENT_MAP_COMPONENT = 3;
+    public static int TRAFFIC_MAP_COMPONENT = 4;
+    public static int DISASTER_MAP_COMPONENT = 5;
 
     public static UserMap[] getUsers(int indexComponent, String jsonString){
         UserMap[] userMaps;
@@ -132,6 +136,62 @@ public class MapViewComponent {
         }
 
         return accidentMaps;
+
+    }
+
+
+    public static TrafficMap[] getTraffic(int indexComponent, String jsonString){
+        TrafficMap[] trafficMaps;
+        JSONObject object = null;
+        JSONArray array = null;
+        JSONArray traffics = null;
+        try {
+            object = new JSONObject(jsonString);
+            array = object.getJSONArray("results");
+            traffics = new JSONObject(array.get(indexComponent).toString()).getJSONArray("Traffics");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        trafficMaps = new TrafficMap[traffics.length()];
+        for (int i = 0; i <traffics.length(); i++){
+            try {
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                trafficMaps[i] = gson.fromJson(traffics.get(i).toString(), TrafficMap.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return trafficMaps;
+
+    }
+
+
+    public static DisasterMap[] getDisaster(int indexComponent, String jsonString){
+        DisasterMap[] disasterMaps;
+        JSONObject object = null;
+        JSONArray array = null;
+        JSONArray disasters = null;
+        try {
+            object = new JSONObject(jsonString);
+            array = object.getJSONArray("results");
+            disasters = new JSONObject(array.get(indexComponent).toString()).getJSONArray("Disasters");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        disasterMaps = new DisasterMap[disasters.length()];
+        for (int i = 0; i <disasters.length(); i++){
+            try {
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                disasterMaps[i] = gson.fromJson(disasters.get(i).toString(), DisasterMap.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return disasterMaps;
 
     }
 

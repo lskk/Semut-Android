@@ -39,7 +39,9 @@ import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
 import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
+import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
@@ -83,11 +85,15 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private CctvMap[] cctvMaps;
     private PoliceMap[] policeMaps;
     private AccidentMap[] accidentMaps;
+    private TrafficMap[] trafficMaps;
+    private DisasterMap[] disasterMaps;
 
     private Marker[] userMarkers;
     private Marker[] cctvMarkers;
     private Marker[] policeMarkers;
     private Marker[] accidentMarkers;
+    private Marker[] trafficMarkers;
+    private Marker[] disasterMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,37 +208,39 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         Log.i(TAG, msg);
         switch (type){
             case Constants.BROADCAST_MY_LOCATION:
-                if(!firstInit) {
-                    loadingIndicator.hide();
-                    firstInit = false;
-                }
-                try {
-                    JSONObject object = new JSONObject(msg);
-                    latitude = object.getDouble(Constants.ENTITY_LATITUDE);
-                    longitude = object.getDouble(Constants.ENTITY_LONGITUDE);
-                    if(isMapReady) {
-                        if(mMap.getMyLocation() != null) {
-                            if (mMap.getMyLocation().getLatitude() == latitude && mMap.getMyLocation().getLongitude() == longitude) {
-
-                            } else {
-                                latitude = mMap.getMyLocation().getLatitude();
-                                longitude = mMap.getMyLocation().getLongitude();
-                                preferenceManager.save((float) latitude, Constants.ENTITY_LATITUDE);
-                                preferenceManager.save((float) longitude, Constants.ENTITY_LONGITUDE);
-                                preferenceManager.apply();
-                            }
-                        }
-                    }
-                    moveMyLocation(latitude, longitude);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                manageMyLocation(msg);
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
-
                 populateDataMapView(msg);
-
                 break;
+        }
+    }
+
+    private void manageMyLocation(String msg){
+        if(!firstInit) {
+            loadingIndicator.hide();
+            firstInit = false;
+        }
+        try {
+            JSONObject object = new JSONObject(msg);
+            latitude = object.getDouble(Constants.ENTITY_LATITUDE);
+            longitude = object.getDouble(Constants.ENTITY_LONGITUDE);
+            if(isMapReady) {
+                if(mMap.getMyLocation() != null) {
+                    if (mMap.getMyLocation().getLatitude() == latitude && mMap.getMyLocation().getLongitude() == longitude) {
+
+                    } else {
+                        latitude = mMap.getMyLocation().getLatitude();
+                        longitude = mMap.getMyLocation().getLongitude();
+                        preferenceManager.save((float) latitude, Constants.ENTITY_LATITUDE);
+                        preferenceManager.save((float) longitude, Constants.ENTITY_LONGITUDE);
+                        preferenceManager.apply();
+                    }
+                }
+            }
+            moveMyLocation(latitude, longitude);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -241,11 +249,15 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         cctvMaps = MapViewComponent.getCCTVs(MapViewComponent.CCTV_MAP_COMPONENT, msg);
         policeMaps = MapViewComponent.getPolicesPost(MapViewComponent.POLICE_MAP_COMPONENT, msg);
         accidentMaps = MapViewComponent.getAccident(MapViewComponent.ACCIDENT_MAP_COMPONENT, msg);
+        trafficMaps = MapViewComponent.getTraffic(MapViewComponent.TRAFFIC_MAP_COMPONENT, msg);
+        disasterMaps = MapViewComponent.getDisaster(MapViewComponent.TRAFFIC_MAP_COMPONENT, msg);
         mMap.clear();
         userMarkers = new Marker[userMaps.length];
         cctvMarkers = new Marker[cctvMaps.length];
         policeMarkers = new Marker[policeMaps.length];
         accidentMarkers = new Marker[accidentMaps.length];
+        trafficMarkers = new Marker[trafficMaps.length];
+        disasterMarkers = new Marker[disasterMaps.length];
 
         generateMarker(userMaps, userMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
@@ -255,6 +267,11 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 .defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
         generateMarker(accidentMaps, accidentMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+        generateMarker(trafficMaps, trafficMarkers, BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        generateMarker(disasterMaps, disasterMarkers, BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+
         moveMyLocation(latitude, longitude);
 
     }
