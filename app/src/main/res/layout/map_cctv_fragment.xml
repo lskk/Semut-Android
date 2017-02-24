@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@drawable/bg_round_accent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/main"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="109dp"
+            android:layout_height="73dp"
+            android:id="@+id/thumb"
+            android:background="@color/primary" />
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cctv_location"
+            android:text="Lokasi Jalana anu"
+            />
+        <net.qiujuer.genius.ui.widget.Button
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:gTouchColor="@color/colorPrimaryDark"
+            app:gTouchEffect="ripple"
+            android:text="Lihat Video"
+            android:padding="15dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/bg_accent_bold_round"
+            android:id="@+id/watch_btn"
+            app:gTouchCornerRadius="12dp"
+            app:gTouchCornerRadiusTL="0dp"
+            app:gTouchCornerRadiusTR="0dp"
+            app:gTouchCornerRadiusBL="6dp"
+            app:gTouchCornerRadiusBR="6dp"
+            app:gTouchDurationRate="0.7"
+            />
+    </LinearLayout>
+</RelativeLayout>
