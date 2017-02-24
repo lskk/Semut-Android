@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.qiujuer.genius.ui.widget.Loading;
+
 import project.bsts.semut.R;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.utilities.DownloadImageTask;
@@ -19,6 +21,7 @@ public class MapCctvFragment extends Fragment {
     private ImageView thumb;
     private TextView detail;
     private Button watchBtn;
+    private Loading loading;
 
     CctvMap cctvMap;
 
@@ -36,10 +39,12 @@ public class MapCctvFragment extends Fragment {
         thumb = (ImageView)view.findViewById(R.id.thumb);
         detail = (TextView)view.findViewById(R.id.cctv_location);
         watchBtn = (Button)view.findViewById(R.id.watch_btn);
+        loading = (Loading)view.findViewById(R.id.loading);
+        loading.start();
 
         detail.setText(cctvMap.getName());
 
-        new DownloadImageTask(thumb).execute(cctvMap.getUrlImage());
+        new DownloadImageTask(thumb, loading).execute(cctvMap.getUrlImage());
 
 
 

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.io.InputStream;
@@ -11,13 +12,16 @@ import java.io.InputStream;
 
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
+    View loading;
 
-    public DownloadImageTask(ImageView bmImage) {
+    public DownloadImageTask(ImageView bmImage, View loading) {
         this.bmImage = bmImage;
+        this.loading = loading;
     }
 
     protected Bitmap doInBackground(String... urls) {
         String urldisplay = urls[0];
+        urldisplay = urldisplay.replace("push-ios", "247");
         Bitmap mIcon11 = null;
         try {
             InputStream in = new java.net.URL(urldisplay).openStream();
@@ -31,5 +35,6 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
     protected void onPostExecute(Bitmap result) {
         bmImage.setImageBitmap(result);
+        loading.setVisibility(View.GONE);
     }
 }

@@ -14,12 +14,24 @@
         android:id="@+id/main"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_width="109dp"
-            android:layout_height="73dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/thumb"
-            android:background="@color/primary" />
+            android:background="@color/black_alpha_208" />
+        <net.qiujuer.genius.ui.widget.Loading
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:gBackgroundLineSize="1dp"
+            app:gForegroundLineSize="3dp"
+            app:gBackgroundColor="@color/md_light_green_900"
+            app:gForegroundColor="@color/colorAccent"
+            android:id="@+id/loading"
+            android:layout_gravity="center_horizontal"
+            app:gProgressFloat="0.65"
+            app:gAutoRun="false"/>
         <TextView
-            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_marginTop="10dp"
+            style="@style/Base.TextAppearance.AppCompat.Small"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
