@@ -11,6 +11,7 @@ import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.ClosureMap;
 import project.bsts.semut.pojo.mapview.DisasterMap;
+import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
@@ -67,6 +68,12 @@ public class AddMarkerToMap {
                             .position(new LatLng(((ClosureMap) objectMap).getLatitude(),
                                     ((ClosureMap) objectMap).getLongitude()))
                             .title(((ClosureMap) objectMap).getDescription()));
+        }else if(objectMap instanceof OtherMap){
+            marker = googleMap.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(((OtherMap) objectMap).getLatitude(),
+                                    ((OtherMap) objectMap).getLongitude()))
+                            .title(((OtherMap) objectMap).getDescription()));
         }
 
         return marker;

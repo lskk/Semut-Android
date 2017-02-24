@@ -14,6 +14,7 @@ import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.ClosureMap;
 import project.bsts.semut.pojo.mapview.DisasterMap;
+import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
@@ -27,6 +28,7 @@ public class MapViewComponent {
     public static int TRAFFIC_MAP_COMPONENT = 4;
     public static int DISASTER_MAP_COMPONENT = 5;
     public static int CLOSURE_MAP_COMPONENT = 6;
+    public static int OTHER_MAP_COMPONENT = 7;
 
     public static UserMap[] getUsers(int indexComponent, String jsonString){
         UserMap[] userMaps;
@@ -221,6 +223,34 @@ public class MapViewComponent {
         }
 
         return closureMaps;
+
+    }
+
+
+    public static OtherMap[] getOther(int indexComponent, String jsonString){
+        OtherMap[] otherMaps;
+        JSONObject object = null;
+        JSONArray array = null;
+        JSONArray others = null;
+        try {
+            object = new JSONObject(jsonString);
+            array = object.getJSONArray("results");
+            others = new JSONObject(array.get(indexComponent).toString()).getJSONArray("Other");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        otherMaps = new OtherMap[others.length()];
+        for (int i = 0; i <others.length(); i++){
+            try {
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                otherMaps[i] = gson.fromJson(others.get(i).toString(), OtherMap.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return otherMaps;
 
     }
 
