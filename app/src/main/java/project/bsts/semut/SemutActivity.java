@@ -231,6 +231,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         if(CheckService.isLocationServiceRunning(context)){
             stopService(locService);
         }
+        if(mapRipple.isAnimationRunning()){
+            mapRipple.stopRippleMapAnimation();
+        }
     }
 
 
@@ -286,6 +289,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         mapRipple.withRippleDuration(6000);
         mapRipple.withTransparency(0.8f);
         if (!mapRipple.isAnimationRunning()) {
+            mapRipple.startRippleMapAnimation();
+        }else {
+            mapRipple.stopRippleMapAnimation();
             mapRipple.startRippleMapAnimation();
         }
     }

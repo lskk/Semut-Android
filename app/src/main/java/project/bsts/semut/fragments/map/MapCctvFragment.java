@@ -2,6 +2,7 @@ package project.bsts.semut.fragments.map;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,10 @@ import android.widget.TextView;
 
 import net.qiujuer.genius.ui.widget.Loading;
 
+import project.bsts.semut.CctvPlayerActivity;
 import project.bsts.semut.R;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.setup.Constants;
 import project.bsts.semut.utilities.DownloadImageTask;
 
 public class MapCctvFragment extends Fragment {
@@ -45,6 +48,15 @@ public class MapCctvFragment extends Fragment {
         detail.setText(cctvMap.getName());
 
         new DownloadImageTask(thumb, loading).execute(cctvMap.getUrlImage());
+
+        watchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), CctvPlayerActivity.class);
+                intent.putExtra(Constants.INTENT_VIDEO_URL, cctvMap.getUrlVideo());
+                startActivity(intent);
+            }
+        });
 
 
 

@@ -35,8 +35,7 @@ public class AddMarkerToMap {
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((CctvMap) objectMap).getLatitude(),
-                                    ((CctvMap) objectMap).getLongitude()))
-                            .title(((CctvMap) objectMap).getName()));
+                                    ((CctvMap) objectMap).getLongitude())));
         }else if(objectMap instanceof PoliceMap){
             marker = googleMap.addMarker(
                     new MarkerOptions()
