@@ -368,16 +368,19 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 }
                 break;
             case R.id.addReport:
-                Log.i(TAG, "SHHHIT "+FAB_STATE);
-                switch (FAB_STATE){
-                    case FAB_ACTION_FRAGMENT_SHOW:
-                        markerDetailLayout.setVisibility(View.GONE);
-                        useFabButton(FAB_ACTION_DISMISS_ALL);
-                        break;
-                    case FAB_ACTION_DISMISS_ALL:
+                checkFabClick();
+                break;
+        }
+    }
 
-                        break;
-                }
+    private void checkFabClick() {
+        switch (FAB_STATE){
+            case FAB_ACTION_FRAGMENT_SHOW:
+                markerDetailLayout.setVisibility(View.GONE);
+                useFabButton(FAB_ACTION_DISMISS_ALL);
+                break;
+            case FAB_ACTION_DISMISS_ALL:
+
                 break;
         }
     }
@@ -389,6 +392,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                         .color(context.getResources().getColor(R.color.primary_light))
                         .sizeDp(24)
                         .icon(GoogleMaterial.Icon.gmd_clear));
+                hideToolbar(true);
                 FAB_STATE = FAB_ACTION_FRAGMENT_SHOW;
                 break;
             case FAB_ACTION_DISMISS_ALL:
@@ -396,11 +400,22 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                         .color(context.getResources().getColor(R.color.primary_light))
                         .sizeDp(24)
                         .icon(GoogleMaterial.Icon.gmd_add));
+                hideToolbar(false);
                 FAB_STATE = FAB_ACTION_DISMISS_ALL;
                 break;
         }
     }
 
+
+    private void hideToolbar(boolean state){
+        if(state){
+            drawer.hideDrawer();
+            filterBtn.setVisibility(View.GONE);
+        }else {
+            drawer.showDrawer();
+            filterBtn.setVisibility(View.VISIBLE);
+        }
+    }
 
     @Override
     public boolean onMarkerClick(Marker marker) {

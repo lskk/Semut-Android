@@ -4,6 +4,8 @@ package project.bsts.semut.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -36,6 +38,19 @@ public class MainDrawer {
         toolbar = _toolbar;
         identifier = _identifier;
     }
+
+    public void hideDrawer(){
+        DrawerLayout drawerLayout = result.getDrawerLayout();
+        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    public void showDrawer(){
+        DrawerLayout drawerLayout = result.getDrawerLayout();
+        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+    }
+
 
     public void initDrawer() {
 

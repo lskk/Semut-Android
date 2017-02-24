@@ -30,8 +30,7 @@ public class AddMarkerToMap {
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((UserMap) objectMap).getLastLocation().getLatitude(),
-                                    ((UserMap) objectMap).getLastLocation().getLongitude()))
-                            .title(((UserMap) objectMap).getEmail()));
+                                    ((UserMap) objectMap).getLastLocation().getLongitude())));
         }else if(objectMap instanceof  CctvMap){
             marker = googleMap.addMarker(
                     new MarkerOptions()
