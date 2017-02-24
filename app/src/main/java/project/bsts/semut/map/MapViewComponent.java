@@ -11,8 +11,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import project.bsts.semut.pojo.mapview.AccidentMap;
-import project.bsts.semut.pojo.mapview.CCTVLocation;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.ClosureMap;
 import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.TrafficMap;
@@ -26,6 +26,7 @@ public class MapViewComponent {
     public static int ACCIDENT_MAP_COMPONENT = 3;
     public static int TRAFFIC_MAP_COMPONENT = 4;
     public static int DISASTER_MAP_COMPONENT = 5;
+    public static int CLOSURE_MAP_COMPONENT = 6;
 
     public static UserMap[] getUsers(int indexComponent, String jsonString){
         UserMap[] userMaps;
@@ -192,6 +193,34 @@ public class MapViewComponent {
         }
 
         return disasterMaps;
+
+    }
+
+
+    public static ClosureMap[] getClosure(int indexComponent, String jsonString){
+        ClosureMap[] closureMaps;
+        JSONObject object = null;
+        JSONArray array = null;
+        JSONArray closures = null;
+        try {
+            object = new JSONObject(jsonString);
+            array = object.getJSONArray("results");
+            closures = new JSONObject(array.get(indexComponent).toString()).getJSONArray("Closures");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        closureMaps = new ClosureMap[closures.length()];
+        for (int i = 0; i <closures.length(); i++){
+            try {
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                closureMaps[i] = gson.fromJson(closures.get(i).toString(), ClosureMap.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return closureMaps;
 
     }
 

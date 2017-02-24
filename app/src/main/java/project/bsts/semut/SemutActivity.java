@@ -39,6 +39,7 @@ import project.bsts.semut.map.AddMarkerToMap;
 import project.bsts.semut.map.MapViewComponent;
 import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.pojo.mapview.ClosureMap;
 import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.TrafficMap;
@@ -87,6 +88,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private AccidentMap[] accidentMaps;
     private TrafficMap[] trafficMaps;
     private DisasterMap[] disasterMaps;
+    private ClosureMap[] closureMaps;
 
     private Marker[] userMarkers;
     private Marker[] cctvMarkers;
@@ -94,6 +96,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private Marker[] accidentMarkers;
     private Marker[] trafficMarkers;
     private Marker[] disasterMarkers;
+    private Marker[] closureMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -250,14 +253,18 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         policeMaps = MapViewComponent.getPolicesPost(MapViewComponent.POLICE_MAP_COMPONENT, msg);
         accidentMaps = MapViewComponent.getAccident(MapViewComponent.ACCIDENT_MAP_COMPONENT, msg);
         trafficMaps = MapViewComponent.getTraffic(MapViewComponent.TRAFFIC_MAP_COMPONENT, msg);
-        disasterMaps = MapViewComponent.getDisaster(MapViewComponent.TRAFFIC_MAP_COMPONENT, msg);
+        disasterMaps = MapViewComponent.getDisaster(MapViewComponent.DISASTER_MAP_COMPONENT, msg);
+        closureMaps = MapViewComponent.getClosure(MapViewComponent.CLOSURE_MAP_COMPONENT, msg);
+
         mMap.clear();
+
         userMarkers = new Marker[userMaps.length];
         cctvMarkers = new Marker[cctvMaps.length];
         policeMarkers = new Marker[policeMaps.length];
         accidentMarkers = new Marker[accidentMaps.length];
         trafficMarkers = new Marker[trafficMaps.length];
         disasterMarkers = new Marker[disasterMaps.length];
+        closureMarkers = new Marker[closureMaps.length];
 
         generateMarker(userMaps, userMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
@@ -271,6 +278,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
         generateMarker(disasterMaps, disasterMarkers, BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+        generateMarker(closureMaps, closureMarkers, BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
 
         moveMyLocation(latitude, longitude);
 
