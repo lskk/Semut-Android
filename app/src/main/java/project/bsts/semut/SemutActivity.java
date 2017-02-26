@@ -94,7 +94,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
     private AddMarkerToMap addMarker;
 
-    private Marker myLocationMarker;
 
 
     MapRipple mapRipple;
@@ -220,7 +219,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         }
         mMap.setOnMarkerClickListener(this);
         addMarker = new AddMarkerToMap(mMap);
-        myLocationMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(-34, 151)).title("Marker in Sydney"));
     }
 
 
@@ -229,8 +227,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
         if(isFirstInit) {
-            myLocationMarker = mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
-            myLocationMarker.setPosition(myLoc);
             actionBar.setTitle("Semut");
             addReportBtn.setVisibility(View.VISIBLE);
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 17.0f));
@@ -242,7 +238,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
         }else {
             mapRipple.setLatLng(myLoc);
-            myLocationMarker.setPosition(myLoc);
         }
     }
 
@@ -304,12 +299,13 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private void setRipple(LatLng latLng){
         mapRipple = new MapRipple(mMap, context);
         mapRipple.setLatLng(latLng);
-        mapRipple.withNumberOfRipples(3);
+        mapRipple.withNumberOfRipples(2);
         mapRipple.withFillColor(R.color.rippleBG);
         mapRipple.withStrokeColor(Color.DKGRAY);
         mapRipple.withStrokewidth(2);
         mapRipple.withDistance((preferenceManager.getInt(Constants.MAP_RADIUS, 3) * 1000) + 200);      // 2000 metres radius
-        mapRipple.withRippleDuration(6000);
+        mapRipple.withRippleDuration(4000);
+        mapRipple.withDurationBetweenTwoRipples(2000);
         mapRipple.withTransparency(0.8f);
         if (!mapRipple.isAnimationRunning()) {
             mapRipple.startRippleMapAnimation();
@@ -407,7 +403,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 useFabButton(FAB_ACTION_DISMISS_ALL);
                 break;
             case FAB_ACTION_DISMISS_ALL:
-
+                startActivity(new Intent(context, TagsActivity.class));
                 break;
         }
     }

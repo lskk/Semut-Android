@@ -61,7 +61,7 @@
         <activity
             android:name=".TagsActivity"
             android:label="@string/title_activity_semut"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/Theme.Transparent" />
 
         <service
             android:name=".services.LocationService"

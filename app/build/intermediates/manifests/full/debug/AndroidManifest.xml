@@ -69,6 +69,10 @@
             android:name="project.bsts.semut.CctvPlayerActivity"
             android:label="@string/title_activity_semut"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="project.bsts.semut.TagsActivity"
+            android:label="@string/title_activity_semut"
+            android:theme="@style/Theme.Transparent" />
 
         <service
             android:name="project.bsts.semut.services.LocationService"

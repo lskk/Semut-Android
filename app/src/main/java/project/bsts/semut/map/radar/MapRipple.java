@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
+import android.util.Log;
 import android.view.animation.LinearInterpolator;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -157,7 +158,7 @@ public class MapRipple {
     };
 
     private void OverLay(final int i) {
-        vAnimators[i] = ValueAnimator.ofInt(0, (int) distance);
+        vAnimators[i] = ValueAnimator.ofInt(0, (int) (distance+600));
         vAnimators[i].setRepeatCount(ValueAnimator.INFINITE);
         vAnimators[i].setRepeatMode(ValueAnimator.RESTART);
         vAnimators[i].setDuration(rippleDuration);
@@ -168,6 +169,10 @@ public class MapRipple {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 final Integer val = (Integer) valueAnimator.getAnimatedValue();
                 gOverlays[i].setDimensions(val);
+                if(val >= (distance-200)){
+                    //finish animation
+                    stopRippleMapAnimation();
+                }
                 if (distance - val <= 10) {
                     if (latLng != prevlatlng) {
                         gOverlays[i].setPosition(latLng);
