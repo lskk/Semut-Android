@@ -4,6 +4,7 @@ package project.bsts.semut.fragments.map;
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,9 +65,12 @@ public class MapReportFragment extends Fragment {
         imageDescription.setImageDrawable(icons[1]);
         reportTitleText.setText(title);
         reportSubTitleText.setText(subTitle);
-        postDateText.setText(postDate);
-        postedByText.setText(postedBy);
-        contentDescriptionText.setText(contentDescription);
+        String tmp = "<b>Diposting tanggal : </b>"+postDate;
+        postDateText.setText(Html.fromHtml(tmp));
+        tmp = "<b>Diposting Oleh : </b>"+postedBy;
+        postedByText.setText(Html.fromHtml(tmp));
+        tmp = "<b>Deskripsi : </b>"+contentDescription;
+        contentDescriptionText.setText(Html.fromHtml(tmp));
 
         return view;
     }
@@ -100,7 +104,7 @@ public class MapReportFragment extends Fragment {
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
                 mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_green_700))
+                        .color(getActivity().getResources().getColor(R.color.md_cyan_700))
                         .sizeDp(64)
                         .icon(CommunityMaterial.Icon.cmd_playlist_remove);
 
@@ -115,11 +119,11 @@ public class MapReportFragment extends Fragment {
 
             case MapViewComponent.TRAFFIC_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_blue_700))
+                        .color(getActivity().getResources().getColor(R.color.md_cyan_700))
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
                 mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_green_700))
+                        .color(getActivity().getResources().getColor(R.color.md_cyan_700))
                         .sizeDp(64)
                         .icon(CommunityMaterial.Icon.cmd_road_variant);
                 TrafficMap trafficMap = (TrafficMap) reportObject;
@@ -137,7 +141,7 @@ public class MapReportFragment extends Fragment {
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
                 mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_green_700))
+                        .color(getActivity().getResources().getColor(R.color.md_purple_400))
                         .sizeDp(64)
                         .icon(FontAwesome.Icon.faw_globe);
                 DisasterMap disasterMap = (DisasterMap) reportObject;
@@ -155,7 +159,7 @@ public class MapReportFragment extends Fragment {
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
                 mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_green_700))
+                        .color(getActivity().getResources().getColor(R.color.md_red_A200))
                         .sizeDp(64)
                         .icon(CommunityMaterial.Icon.cmd_sign_caution);
                 ClosureMap closureMap = (ClosureMap) reportObject;
@@ -173,7 +177,7 @@ public class MapReportFragment extends Fragment {
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
                 mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_green_700))
+                        .color(getActivity().getResources().getColor(R.color.deep_purple_700))
                         .sizeDp(64)
                         .icon(FontAwesome.Icon.faw_map_signs);
                 OtherMap otherMap = (OtherMap) reportObject;

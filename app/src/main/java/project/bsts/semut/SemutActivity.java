@@ -57,6 +57,7 @@ import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.ui.LoadingIndicator;
 import project.bsts.semut.ui.MainDrawer;
+import project.bsts.semut.ui.MapCircle;
 import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.FragmentTransUtility;
 
@@ -94,6 +95,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private AddMarkerToMap addMarker;
 
     private Marker myLocationMarker;
+
+
     MapRipple mapRipple;
 
     private UserMap[] userMaps;
@@ -145,7 +148,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         fragmentTransUtility.setFilterFragment(new FilterFragment(), filterLayout.getId());
         broadcastManager.subscribeToUi(this);
 
-        loadingIndicator.show();
+
 
 
 
@@ -154,6 +157,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
         viewsToHide[0] = filterBtn;
         drawer.hideToolbar(true, viewsToHide);
+        loadingIndicator.show();
 
         locService = new Intent(context, LocationService.class);
 
@@ -163,7 +167,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 .icon(GoogleMaterial.Icon.gmd_list));
         filterBtn.setOnClickListener(this);
         addReportBtn.setOnClickListener(this);
-        useFabButton(FAB_ACTION_DISMISS_ALL);
+        useFabButton(FAB_ACTION_FRAGMENT_SHOW);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -222,16 +226,23 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
     private void moveMyLocation(double latitude, double longitude){
         LatLng myLoc = new LatLng(latitude, longitude);
-        myLocationMarker = mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
-        myLocationMarker.setPosition(myLoc);
+
+
         if(isFirstInit) {
+            myLocationMarker = mMap.addMarker(new MarkerOptions().position(myLoc).title("Marker in Sydney"));
+            myLocationMarker.setPosition(myLoc);
             actionBar.setTitle("Semut");
             addReportBtn.setVisibility(View.VISIBLE);
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 17.0f));
-
+            useFabButton(FAB_ACTION_DISMISS_ALL);
             loadingIndicator.hide();
             drawer.hideToolbar(false, viewsToHide);
+            setRipple(new LatLng(latitude, longitude));
             isFirstInit = false;
+
+        }else {
+            mapRipple.setLatLng(myLoc);
+            myLocationMarker.setPosition(myLoc);
         }
     }
 
@@ -297,7 +308,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         mapRipple.withFillColor(R.color.rippleBG);
         mapRipple.withStrokeColor(Color.DKGRAY);
         mapRipple.withStrokewidth(2);
-        mapRipple.withDistance((preferenceManager.getInt(Constants.MAP_RADIUS, 3)*1000)+200);      // 2000 metres radius
+        mapRipple.withDistance((preferenceManager.getInt(Constants.MAP_RADIUS, 3) * 1000) + 200);      // 2000 metres radius
         mapRipple.withRippleDuration(6000);
         mapRipple.withTransparency(0.8f);
         if (!mapRipple.isAnimationRunning()) {
@@ -345,7 +356,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                 .defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
 
         moveMyLocation(latitude, longitude);
-        setRipple(new LatLng(latitude, longitude));
+
 
     }
 

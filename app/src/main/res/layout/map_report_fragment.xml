@@ -8,12 +8,12 @@
         android:background="@drawable/bg_round_accent"
         android:layout_width="match_parent"
         android:orientation="vertical"
-
+        android:padding="10dp"
         android:layout_centerVertical="true"
         android:id="@+id/main"
         android:layout_height="wrap_content">
         <RelativeLayout
-            android:padding="10dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -45,6 +45,7 @@
             />
         <RelativeLayout
             android:layout_width="match_parent"
+            android:padding="5dp"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="wrap_content"
@@ -89,15 +90,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:padding="15dp"
-            android:background="@color/lynch"
+            android:background="@color/lynchLight"
             android:layout_height="wrap_content">
             <TextView
-                style="@style/Base.TextAppearance.AppCompat.Medium"
+                style="@style/Base.TextAppearance.AppCompat.Small"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/content_description"
-                android:textColor="@color/colorWhiteDark"
+                android:textColor="@color/lynch"
                 android:text="Lokasi Jalana anu"
                 />
         </LinearLayout>

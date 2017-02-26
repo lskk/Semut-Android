@@ -39,7 +39,7 @@ public class MapRipple {
     private Handler handlers[];
     private GroundOverlay gOverlays[];
     private GradientDrawable drawable;
-    private boolean isAnimationRunning = false;
+    private boolean isAnimationRunning = false, isInit = true;
 
     public MapRipple(GoogleMap googleMap, Context context) {
         this.googleMap = googleMap;
@@ -151,7 +151,6 @@ public class MapRipple {
                     .position(latLng, (int) distance)
                     .transparency(transparency)
                     .image(BitmapDescriptorFactory.fromBitmap(backgroundImage)));
-
             OverLay(3);
 
         }
@@ -212,6 +211,10 @@ public class MapRipple {
 
     public void setLatLng(LatLng latLng){
         this.latLng = latLng;
+        if(!isInit) {
+            stopRippleMapAnimation();
+            startRippleMapAnimation();
+        }
     }
 
     public void stopRippleMapAnimation() {
@@ -251,6 +254,7 @@ public class MapRipple {
 
     public void startRippleMapAnimation() {
         if (!isAnimationRunning) {
+            isInit = false;
             setDrawableAndBitmap();
             for (int i = 0; i < numberOfRipples; i++) {
                 if (i == 0) {
