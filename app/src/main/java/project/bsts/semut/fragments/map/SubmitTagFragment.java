@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import project.bsts.semut.R;
+import project.bsts.semut.helper.TagsType;
 
 
 public class SubmitTagFragment extends Fragment implements TextWatcher {
@@ -42,10 +43,11 @@ public class SubmitTagFragment extends Fragment implements TextWatcher {
     private int subPostID;
     Date currentDate;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //   Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(getActivity()));
         View view = inflater.inflate(R.layout.fragment_submit_tag, container, false);
 
         titleText = (TextView)view.findViewById(R.id.title);
@@ -135,12 +137,9 @@ public class SubmitTagFragment extends Fragment implements TextWatcher {
         }
     }
 
-    /**
-     * function to verify login details in mysql db
-     * */
     private void submit() {
-        // Tag used to cancel the request
-        String tag_string_req = "req_tag";
+        String[] tests = TagsType.get(getPostID(), getSubPostID());
+
 
 
         getActivity().finish();
