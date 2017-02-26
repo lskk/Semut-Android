@@ -37,6 +37,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.fragments.map.MapCctvFragment;
+import project.bsts.semut.fragments.map.MapReportFragment;
 import project.bsts.semut.fragments.map.MapUserFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.helper.PreferenceManager;
@@ -433,6 +434,17 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
             MapCctvFragment mapCctvFragment = new MapCctvFragment();
             mapCctvFragment.setData((CctvMap) marker.getTag());
             fragmentTransUtility.setCctvMapFragment(mapCctvFragment, markerDetailLayout.getId());
+            markerDetailLayout.setVisibility(View.VISIBLE);
+            useFabButton(FAB_ACTION_FRAGMENT_SHOW);
+        }else if(marker.getTag() instanceof  PoliceMap ||
+                marker.getTag() instanceof AccidentMap ||
+                marker.getTag() instanceof  TrafficMap ||
+                marker.getTag() instanceof DisasterMap ||
+                marker.getTag() instanceof  ClosureMap ||
+                marker.getTag() instanceof OtherMap){
+            MapReportFragment mapReportFragment = new MapReportFragment();
+            mapReportFragment.setData(marker.getTag());
+            fragmentTransUtility.setReportMapFragment(mapReportFragment, markerDetailLayout.getId());
             markerDetailLayout.setVisibility(View.VISIBLE);
             useFabButton(FAB_ACTION_FRAGMENT_SHOW);
         }

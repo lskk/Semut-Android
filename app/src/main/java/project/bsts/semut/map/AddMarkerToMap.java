@@ -40,38 +40,32 @@ public class AddMarkerToMap {
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((PoliceMap) objectMap).getLatitude(),
-                                    ((PoliceMap) objectMap).getLongitude()))
-                            .title(((PoliceMap) objectMap).getDescription()));
+                                    ((PoliceMap) objectMap).getLongitude())));
         }else if(objectMap instanceof AccidentMap){
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((AccidentMap) objectMap).getLatitude(),
-                                    ((AccidentMap) objectMap).getLongitude()))
-                            .title(((AccidentMap) objectMap).getDescription()));
+                                    ((AccidentMap) objectMap).getLongitude())));
         }else if(objectMap instanceof TrafficMap){
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((TrafficMap) objectMap).getLatitude(),
-                                    ((TrafficMap) objectMap).getLongitude()))
-                            .title(((TrafficMap) objectMap).getDescription()));
+                                    ((TrafficMap) objectMap).getLongitude())));
         }else if(objectMap instanceof DisasterMap){
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((DisasterMap) objectMap).getLatitude(),
-                                    ((DisasterMap) objectMap).getLongitude()))
-                            .title(((DisasterMap) objectMap).getDescription()));
+                                    ((DisasterMap) objectMap).getLongitude())));
         }else if(objectMap instanceof ClosureMap){
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((ClosureMap) objectMap).getLatitude(),
-                                    ((ClosureMap) objectMap).getLongitude()))
-                            .title(((ClosureMap) objectMap).getDescription()));
+                                    ((ClosureMap) objectMap).getLongitude())));
         }else if(objectMap instanceof OtherMap){
             marker = googleMap.addMarker(
                     new MarkerOptions()
                             .position(new LatLng(((OtherMap) objectMap).getLatitude(),
-                                    ((OtherMap) objectMap).getLongitude()))
-                            .title(((OtherMap) objectMap).getDescription()));
+                                    ((OtherMap) objectMap).getLongitude())));
         }
 
         return marker;

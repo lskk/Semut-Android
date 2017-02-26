@@ -23,12 +23,12 @@ public class MapViewComponent {
 
     public static int USER_MAP_COMPONENT = 0;
     public static int CCTV_MAP_COMPONENT = 1;
-    public static int POLICE_MAP_COMPONENT = 2;
-    public static int ACCIDENT_MAP_COMPONENT = 3;
-    public static int TRAFFIC_MAP_COMPONENT = 4;
-    public static int DISASTER_MAP_COMPONENT = 5;
-    public static int CLOSURE_MAP_COMPONENT = 6;
-    public static int OTHER_MAP_COMPONENT = 7;
+    public static final int POLICE_MAP_COMPONENT = 2;
+    public static final int ACCIDENT_MAP_COMPONENT = 3;
+    public static final int TRAFFIC_MAP_COMPONENT = 4;
+    public static final int DISASTER_MAP_COMPONENT = 5;
+    public static final int CLOSURE_MAP_COMPONENT = 6;
+    public static final int OTHER_MAP_COMPONENT = 7;
 
     public static UserMap[] getUsers(int indexComponent, String jsonString){
         UserMap[] userMaps;
