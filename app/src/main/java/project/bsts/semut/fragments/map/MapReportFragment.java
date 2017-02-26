@@ -4,6 +4,7 @@ package project.bsts.semut.fragments.map;
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class MapReportFragment extends Fragment {
 
     Object reportObject;
     private int reportType;
+
     public void setData(Object reportObject){
         this.reportObject = reportObject;
         reportType = MapViewType.get(reportObject);
@@ -70,7 +72,7 @@ public class MapReportFragment extends Fragment {
     }
 
     private Drawable[] checkType(int type){
-        Drawable[] mapIconDrawable = new Drawable[1];
+        Drawable[] mapIconDrawable = new Drawable[2];
         switch (type){
             case MapViewComponent.POLICE_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())

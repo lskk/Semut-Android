@@ -120,7 +120,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private static final int FAB_ACTION_FRAGMENT_SHOW = 1;
     private static final int FAB_ACTION_ADD_REPORT_SHOW = 2;
     private int FAB_STATE = 0;
-    private View[] viewsToHide = new View[0];
+    private View[] viewsToHide = new View[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
