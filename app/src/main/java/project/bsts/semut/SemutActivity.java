@@ -119,6 +119,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     private static final int FAB_ACTION_FRAGMENT_SHOW = 1;
     private static final int FAB_ACTION_ADD_REPORT_SHOW = 2;
     private int FAB_STATE = 0;
+    private View[] viewsToHide = new View[0];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,9 +143,17 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
 
         fragmentTransUtility.setFilterFragment(new FilterFragment(), filterLayout.getId());
         broadcastManager.subscribeToUi(this);
+
         loadingIndicator.show();
+
+
+
         drawer = new MainDrawer(context, toolbar, 0);
         drawer.initDrawer();
+
+        viewsToHide[0] = filterBtn;
+        drawer.hideToolbar(true, viewsToHide);
+
         locService = new Intent(context, LocationService.class);
 
         filterBtn.setImageDrawable(new IconicsDrawable(context)
@@ -220,6 +229,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLoc, 17.0f));
 
             loadingIndicator.hide();
+            drawer.hideToolbar(false, viewsToHide);
             isFirstInit = false;
         }
     }
@@ -280,7 +290,8 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     private void setRipple(LatLng latLng){
-        mapRipple = new MapRipple(mMap, latLng, context);
+        mapRipple = new MapRipple(mMap, context);
+        mapRipple.setLatLng(latLng);
         mapRipple.withNumberOfRipples(3);
         mapRipple.withFillColor(R.color.rippleBG);
         mapRipple.withStrokeColor(Color.DKGRAY);
@@ -289,9 +300,6 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         mapRipple.withRippleDuration(6000);
         mapRipple.withTransparency(0.8f);
         if (!mapRipple.isAnimationRunning()) {
-            mapRipple.startRippleMapAnimation();
-        }else {
-            mapRipple.stopRippleMapAnimation();
             mapRipple.startRippleMapAnimation();
         }
     }
@@ -399,7 +407,7 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                         .color(context.getResources().getColor(R.color.primary_light))
                         .sizeDp(24)
                         .icon(GoogleMaterial.Icon.gmd_clear));
-                hideToolbar(true);
+                drawer.hideToolbar(true, viewsToHide);
                 FAB_STATE = FAB_ACTION_FRAGMENT_SHOW;
                 break;
             case FAB_ACTION_DISMISS_ALL:
@@ -407,20 +415,9 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
                         .color(context.getResources().getColor(R.color.primary_light))
                         .sizeDp(24)
                         .icon(GoogleMaterial.Icon.gmd_add));
-                hideToolbar(false);
+                drawer.hideToolbar(false, viewsToHide);
                 FAB_STATE = FAB_ACTION_DISMISS_ALL;
                 break;
-        }
-    }
-
-
-    private void hideToolbar(boolean state){
-        if(state){
-            drawer.hideDrawer();
-            filterBtn.setVisibility(View.GONE);
-        }else {
-            drawer.showDrawer();
-            filterBtn.setVisibility(View.VISIBLE);
         }
     }
 

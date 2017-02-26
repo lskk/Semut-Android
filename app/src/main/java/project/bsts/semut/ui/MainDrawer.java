@@ -52,6 +52,20 @@ public class MainDrawer {
     }
 
 
+    public void hideToolbar(boolean state, View[] views){
+        if(state){
+            hideDrawer();
+            for(int i = 0 ; i < views.length; i++){
+                views[i].setVisibility(View.GONE);
+            }
+        }else {
+            showDrawer();
+            for(int i = 0 ; i < views.length; i++){
+                views[i].setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
     public void initDrawer() {
 
         AccountHeader headerResult = new AccountHeaderBuilder()

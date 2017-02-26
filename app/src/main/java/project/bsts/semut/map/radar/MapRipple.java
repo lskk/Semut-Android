@@ -41,9 +41,9 @@ public class MapRipple {
     private GradientDrawable drawable;
     private boolean isAnimationRunning = false;
 
-    public MapRipple(GoogleMap googleMap, LatLng latLng, Context context) {
+    public MapRipple(GoogleMap googleMap, Context context) {
         this.googleMap = googleMap;
-        this.latLng = latLng;
+     //   this.latLng = latLng;
         this.prevlatlng = latLng;
         drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.radar_background);
         vAnimators = new ValueAnimator[4];
@@ -208,6 +208,10 @@ public class MapRipple {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    public void setLatLng(LatLng latLng){
+        this.latLng = latLng;
     }
 
     public void stopRippleMapAnimation() {
