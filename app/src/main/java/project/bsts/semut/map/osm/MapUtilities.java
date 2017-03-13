@@ -28,8 +28,7 @@ public class MapUtilities {
     public void setMyLocationGeo(String jsonStr) {
         try {
             JSONObject object = new JSONObject(jsonStr);
-            myLocationGeo.setLatitude(object.getDouble(Constants.ENTITY_LATITUDE));
-            myLocationGeo.setLongitude(object.getDouble(Constants.ENTITY_LONGITUDE));
+            myLocationGeo = new GeoPoint(object.getDouble(Constants.ENTITY_LATITUDE), object.getDouble(Constants.ENTITY_LONGITUDE));
         } catch (JSONException e) {
             e.printStackTrace();
         }
