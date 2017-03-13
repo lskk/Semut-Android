@@ -116,6 +116,29 @@
     <string msgid="4570331844078181931" name="mr_controller_stop">"Остановить трансляцию"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"Система"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"Устройства"</string>
+    <string name="osmbonuspack.directions.1">Продолжайте[ по %s]</string>
+    <string name="osmbonuspack.directions.12">Развернитесь[ на %s]</string>
+    <string name="osmbonuspack.directions.2">[Продолжайте %s]</string>
+    <string name="osmbonuspack.directions.24">Вы добрались до места назначения</string>
+    <string name="osmbonuspack.directions.27">На кольцевой развилке поверните на первом съезде[ на  %s]</string>
+    <string name="osmbonuspack.directions.28">На кольцевой развилке поверните на втором съезде[ на %s]</string>
+    <string name="osmbonuspack.directions.29">На кольцевой развилке поверните на третьем съезде[ на %s]</string>
+    <string name="osmbonuspack.directions.3">Поверните немного налево[ на %s]</string>
+    <string name="osmbonuspack.directions.30">На кольцевой развилке поверните на четвертом съезде[ на %s]</string>
+    <string name="osmbonuspack.directions.31">На кольцевой развилке поверните на пятом съезде[ на %s]</string>
+    <string name="osmbonuspack.directions.32">На кольцевой развилке поверните на шестом съезде[ на %s]</string>
+    <string name="osmbonuspack.directions.33">На кольцевой развилке поверните на седьмом съезде[ на %s]</string>
+    <string name="osmbonuspack.directions.34">На кольцевой развилке поверните на восьмом съезде[ на %s]</string>
+    <string name="osmbonuspack.directions.4">Поверните налево[ на %s]</string>
+    <string name="osmbonuspack.directions.5">Поверните резко налево[ на %s]</string>
+    <string name="osmbonuspack.directions.6">Поверните немного направо[ на %s]</string>
+    <string name="osmbonuspack.directions.7">Поверните направо[ на %s]</string>
+    <string name="osmbonuspack.directions.8">Поверните резко направо[ на %s]</string>
+    <string name="osmbonuspack.format_distance_kilometers">%s км</string>
+    <string name="osmbonuspack.format_distance_meters">%s м</string>
+    <string name="osmbonuspack.format_hours">%s ч</string>
+    <string name="osmbonuspack.format_minutes">%s мин</string>
+    <string name="osmbonuspack.format_seconds">%s сек</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"Удалить поисковый запрос"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"Поиск"</string>
     <string msgid="146198913615257606" name="search_menu_title">"Поиск"</string>

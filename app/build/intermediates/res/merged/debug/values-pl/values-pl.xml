@@ -116,6 +116,24 @@
     <string msgid="4570331844078181931" name="mr_controller_stop">"Zatrzymaj przesyłanie"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"System"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"Urządzenia"</string>
+    <string name="osmbonuspack.directions.1">Kontynuuj jazdę[na %s]</string>
+    <string name="osmbonuspack.directions.12">Zawróć[na %s]</string>
+    <string name="osmbonuspack.directions.2">[Jedź %s]</string>
+    <string name="osmbonuspack.directions.24">Dotarłeś do punktu pośredniego</string>
+    <string name="osmbonuspack.directions.27">Wjedź na rondo i opuść je pierwszym zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.28">Wjedź na rondo i opuść je drugim zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.29">Wjedź na rondo i opuść je trzecim zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.3">Skręć lekko w lewo[w %s]</string>
+    <string name="osmbonuspack.directions.30">Wjedź na rondo i opuść je czwartym zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.31">Wjedź na rondo i opuść je piątym zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.32">Wjedź na rondo i opuść je szóstym zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.33">Wjedź na rondo i opuść je siódmym zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.34">Wjedź na rondo i opuść je ósmym zjazdem[w %s]</string>
+    <string name="osmbonuspack.directions.4">Skręć w lewo[w %s]</string>
+    <string name="osmbonuspack.directions.5">Skręć ostro w lewo[w %s]</string>
+    <string name="osmbonuspack.directions.6">Skręć lekko w prawo[w %s]</string>
+    <string name="osmbonuspack.directions.7">Skręć w prawo[w %s]</string>
+    <string name="osmbonuspack.directions.8">Skręć ostro w prawo[w %s]</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"Wyczyść wyszukiwanie"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"Szukaj"</string>
     <string msgid="146198913615257606" name="search_menu_title">"Szukaj"</string>

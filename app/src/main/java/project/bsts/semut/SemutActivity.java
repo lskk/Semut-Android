@@ -26,7 +26,6 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
@@ -57,7 +56,6 @@ import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.ui.LoadingIndicator;
 import project.bsts.semut.ui.MainDrawer;
-import project.bsts.semut.ui.MapCircle;
 import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.FragmentTransUtility;
 
@@ -458,3 +456,4 @@ public class SemutActivity extends AppCompatActivity implements OnMapReadyCallba
         return false;
     }
 }
+

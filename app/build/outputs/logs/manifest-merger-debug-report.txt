@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:2:1-72:12
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:2:1-77:12
 	package
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:3:5-33
 		INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml
@@ -27,6 +27,7 @@ MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/arysetij
 MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.0.1/AndroidManifest.xml:20:5-66
 MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics-impl/10.0.1/AndroidManifest.xml:20:5-66
 MERGED from [com.google.android.gms:play-services-maps:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.0.1/AndroidManifest.xml:20:5-66
+MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:20:5-67
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:5:22-64
 permission#project.bsts.semut.permission.C2D_MESSAGE
@@ -38,6 +39,7 @@ MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/arysetijadiprihatma
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:8:9-65
 uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:11:5-79
+MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:16:5-79
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:11:22-76
 uses-permission#android.permission.GET_ACCOUNTS
@@ -55,10 +57,12 @@ MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:14:22-65
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:15:5-81
+MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:17:5-81
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:15:22-78
 uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:16:5-76
+MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:18:5-76
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:16:22-73
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -72,10 +76,12 @@ MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/arysetij
 MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.0.1/AndroidManifest.xml:19:5-78
 MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics-impl/10.0.1/AndroidManifest.xml:21:5-78
 MERGED from [com.google.android.gms:play-services-maps:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.0.1/AndroidManifest.xml:19:5-78
+MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:19:5-79
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:17:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:19:5-81
+MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:21:5-81
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:19:22-78
 uses-permission#android.permission.CALL_PHONE
@@ -94,7 +100,7 @@ MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/arysetijadiprihatma
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:22:22-79
 application
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:25:5-70:19
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:25:5-75:19
 MERGED from [net.qiujuer.genius:ui:2.0.0-beta4] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/net.qiujuer.genius/ui/2.0.0-beta4/AndroidManifest.xml:11:5-13:38
 MERGED from [net.qiujuer.genius:res:2.0.0-beta4] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/net.qiujuer.genius/res/2.0.0-beta4/AndroidManifest.xml:11:5-13:38
 MERGED from [us.belka:androidtoggleswitch:1.2.2] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/us.belka/androidtoggleswitch/1.2.2/AndroidManifest.xml:11:5-14:19
@@ -113,9 +119,6 @@ MERGED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/
 MERGED from [com.google.android.gms:play-services-cast:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/10.0.1/AndroidManifest.xml:18:5-19
 MERGED from [com.android.support:mediarouter-v7:24.0.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:palette-v7:24.0.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.0.0/AndroidManifest.xml:22:5-23:19
-MERGED from [com.android.support:appcompat-v7:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/AndroidManifest.xml:23:5-20
 MERGED from [com.google.android.gms:play-services-clearcut:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.0.1/AndroidManifest.xml:18:5-19
 MERGED from [com.google.firebase:firebase-config:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.0.1/AndroidManifest.xml:18:5-19
 MERGED from [com.google.android.gms:play-services-awareness:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-awareness/10.0.1/AndroidManifest.xml:18:5-19
@@ -149,13 +152,18 @@ MERGED from [com.google.android.gms:play-services-wearable:10.0.1] /Users/aryset
 MERGED from [com.google.android.gms:play-services-base:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:18:5-20:19
 MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:19:5-21:19
+MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.1.0/AndroidManifest.xml:9:5-20
+MERGED from [com.jzxiang.pickerview:TimePickerDialog:1.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.jzxiang.pickerview/TimePickerDialog/1.0.1/AndroidManifest.xml:11:5-14:19
+MERGED from [com.android.support:appcompat-v7:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/AndroidManifest.xml:23:5-20
+MERGED from [com.github.MKergall:osmbonuspack:6.2] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.github.MKergall/osmbonuspack/6.2/AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:support-v4:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-fragment:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-media-compat:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-ui:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-utils:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/AndroidManifest.xml:25:5-20
-MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.1.0/AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:28:9-41
 	android:supportsRtl
@@ -231,13 +239,21 @@ ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:62:13-41
 service#project.bsts.semut.services.LocationService
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:66:9-69:47
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:66:9-69:39
 	android:enabled
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:68:13-35
 	android:exported
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:69:13-36
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:67:13-53
+activity#project.bsts.semut.MainActivity
+ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:71:9-74:68
+	android:label
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:73:13-56
+	android:theme
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:74:13-56
+	android:name
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:72:13-41
 uses-sdk
 INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.mikepenz:materialdrawer:5.8.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/5.8.1/AndroidManifest.xml:8:5-10:41
@@ -267,9 +283,6 @@ MERGED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/
 MERGED from [com.google.android.gms:play-services-cast:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/10.0.1/AndroidManifest.xml:17:5-42
 MERGED from [com.android.support:mediarouter-v7:24.0.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:palette-v7:24.0.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.0.0/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/AndroidManifest.xml:21:5-43
 MERGED from [com.google.android.gms:play-services-clearcut:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.0.1/AndroidManifest.xml:17:5-42
 MERGED from [com.google.firebase:firebase-config:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.0.1/AndroidManifest.xml:17:5-42
 MERGED from [com.google.android.gms:play-services-awareness:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-awareness/10.0.1/AndroidManifest.xml:17:5-42
@@ -310,13 +323,19 @@ MERGED from [com.google.android.gms:play-services-wearable:10.0.1] /Users/aryset
 MERGED from [com.google.android.gms:play-services-base:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/AndroidManifest.xml:17:5-42
 MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/AndroidManifest.xml:3:5-42
 MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:17:5-42
+MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.jzxiang.pickerview:TimePickerDialog:1.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.jzxiang.pickerview/TimePickerDialog/1.0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/AndroidManifest.xml:21:5-43
+MERGED from [com.github.MKergall:osmbonuspack:6.2] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.github.MKergall/osmbonuspack/6.2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/AndroidManifest.xml:21:5-23:58
-MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.1.0] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/design/25.1.0/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
@@ -537,3 +556,41 @@ ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/aryseti
 		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:20:66-119
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/AndroidManifest.xml:20:20-65
+supports-screens
+ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:11:5-14:40
+	android:largeScreens
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:13:9-36
+	android:normalScreens
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:14:9-37
+	android:anyDensity
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:12:9-34
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:22:5-80
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:22:22-77
+uses-feature#android.hardware.location.network
+ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:24:5-26:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:26:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:25:9-57
+uses-feature#android.hardware.location.gps
+ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:27:5-29:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:29:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:28:9-53
+uses-feature#android.hardware.telephony
+ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:30:5-32:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:32:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:31:9-50
+uses-feature#android.hardware.wifi
+ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:33:5-35:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:35:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:34:9-45
+android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:2:1-77:12 reason: org.osmdroid.library requested WRITE_EXTERNAL_STORAGE

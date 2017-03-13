@@ -1,10 +1,8 @@
 package project.bsts.semut.fragments.map;
 
 import android.app.FragmentManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,20 +14,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
-
+import com.jzxiang.pickerview.TimePickerDialog;
+import com.jzxiang.pickerview.data.Type;
+import com.jzxiang.pickerview.listener.OnDateSetListener;
 import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
-
 import project.bsts.semut.R;
-import project.bsts.semut.helper.TagsType;
 
 
-public class SubmitTagFragment extends Fragment implements TextWatcher {
+public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSetListener {
     private TextView titleText;
     private TextView dateText;
     private TextView counterText;
@@ -69,6 +64,29 @@ public class SubmitTagFragment extends Fragment implements TextWatcher {
 
         backButton = (ImageButton) view.findViewById(R.id.backButton);
         closeButton = (ImageButton) view.findViewById(R.id.closeButton);
+
+
+        long tenYears = 10L * 365 * 1000 * 60 * 60 * 24L;
+        TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
+                .setCallBack(this)
+                .setCancelStringId("Cancel")
+                .setSureStringId("Sure")
+                .setTitleStringId("TimePicker")
+                .setYearText("Year")
+                .setMonthText("Month")
+                .setDayText("Day")
+                .setHourText("Hour")
+                .setMinuteText("Minute")
+                .setCyclic(false)
+                .setMinMillseconds(System.currentTimeMillis())
+                .setMaxMillseconds(System.currentTimeMillis() + tenYears)
+                .setCurrentMillseconds(System.currentTimeMillis())
+                .setThemeColor(getResources().getColor(R.color.timepicker_dialog_bg))
+                .setType(Type.ALL)
+                .setWheelItemTextNormalColor(getResources().getColor(R.color.timetimepicker_default_text_color))
+                .setWheelItemTextSelectorColor(getResources().getColor(R.color.timepicker_toolbar_bg))
+                .setWheelItemTextSize(12)
+                .build();
 
 
         closeButton.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +156,7 @@ public class SubmitTagFragment extends Fragment implements TextWatcher {
     }
 
     private void submit() {
-        String[] tests = TagsType.get(getPostID(), getSubPostID());
+
 
 
 
@@ -176,5 +194,10 @@ public class SubmitTagFragment extends Fragment implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
+    }
+
+    @Override
+    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
+        Log.i("shit", String.valueOf(millseconds));
     }
 }
