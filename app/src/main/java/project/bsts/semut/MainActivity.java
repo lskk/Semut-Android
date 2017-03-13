@@ -91,7 +91,9 @@ public class MainActivity extends AppCompatActivity implements BroadcastManager.
                 }
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
-
+                mapset.getOverlays().clear();
+                mapUitilities.setMapObjectsMarkers(msg);
+                mapset.invalidate();
                 break;
         }
     }

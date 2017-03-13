@@ -1,6 +1,5 @@
 package project.bsts.semut.map;
 
-import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
