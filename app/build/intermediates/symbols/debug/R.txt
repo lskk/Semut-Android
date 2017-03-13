@@ -2417,7 +2417,7 @@ int id content_description 0x7f10015d
 int id content_layout 0x7f10017d
 int id content_login 0x7f10011a
 int id content_main 0x7f100121
-int id content_semut 0x7f100123
+int id content_semut 0x7f100124
 int id controllers 0x7f1000f3
 int id counter 0x7f10013c
 int id crash_reporting_present 0x7f100011
@@ -2466,7 +2466,7 @@ int id filterOther 0x7f100151
 int id filterPolice 0x7f10014a
 int id filterTraffic 0x7f10014c
 int id filter_button 0x7f1000e8
-int id filter_layout 0x7f100125
+int id filter_layout 0x7f100126
 int id filter_user 0x7f100148
 int id fixed 0x7f10008b
 int id foreground 0x7f100133
@@ -2524,10 +2524,10 @@ int id login_btn 0x7f10011f
 int id logo 0x7f10011b
 int id logo_only 0x7f10009c
 int id main 0x7f100153
-int id map 0x7f100124
+int id map 0x7f100125
 int id map_icon_type 0x7f100157
 int id maposm 0x7f100122
-int id markerdetail_layout 0x7f100126
+int id markerdetail_layout 0x7f100123
 int id masked 0x7f1001c1
 int id match_global_nicknames 0x7f100085
 int id match_parent 0x7f100095

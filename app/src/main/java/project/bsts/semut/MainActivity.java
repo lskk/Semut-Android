@@ -8,26 +8,31 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.RelativeLayout;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.helper.PermissionHelper;
 import project.bsts.semut.map.osm.MapUtilities;
+import project.bsts.semut.map.osm.MarkerClick;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.utilities.CheckService;
 
-public class MainActivity extends AppCompatActivity implements BroadcastManager.UIBroadcastListener {
+public class MainActivity extends AppCompatActivity implements BroadcastManager.UIBroadcastListener, Marker.OnMarkerClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.maposm)
-
     MapView mapset;
+    @BindView(R.id.markerdetail_layout)
+    RelativeLayout markerDetailLayout;
+
     MapUtilities mapUitilities;
     Context context;
 
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements BroadcastManager.
     private PermissionHelper permissionHelper;
     private String TAG = this.getClass().getSimpleName();
     private Intent locService;
+    private MarkerClick markerClick;
 
     @Override
     protected void onDestroy(){
@@ -59,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements BroadcastManager.
         broadcastManager.subscribeToUi(this);
         locService = new Intent(context, LocationService.class);
         permissionHelper = new PermissionHelper(context);
+        markerClick = new MarkerClick(context, markerDetailLayout);
         if (permissionHelper.requestFineLocation()) startService(locService);
 
     }
@@ -87,14 +94,22 @@ public class MainActivity extends AppCompatActivity implements BroadcastManager.
                 mapUitilities.setMyLocationGeo(msg);
                 if(!mapUitilities.isReady()) {
                     mapController = mapUitilities.init();
-
                 }
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
                 mapset.getOverlays().clear();
                 mapUitilities.setMapObjectsMarkers(msg);
+                for(int i = 0 ; i < mapset.getOverlays().size(); i++){
+                    if (mapset.getOverlays().get(i) instanceof Marker) ((Marker) mapset.getOverlays().get(i)).setOnMarkerClickListener(this);
+                }
                 mapset.invalidate();
                 break;
         }
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker, MapView mapView) {
+        markerClick.checkMarker(marker);
+        return false;
     }
 }
