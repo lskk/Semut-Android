@@ -37,6 +37,7 @@
 
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -48,18 +49,17 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".SsocialReportActivity"
-            android:label="@string/title_activity_semut"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".CctvPlayerActivity"
             android:label="@string/title_activity_semut"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TagsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_semut"
             android:theme="@style/Theme.Transparent" />
 
@@ -70,6 +70,7 @@
 
         <activity
             android:name=".SocialReportActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

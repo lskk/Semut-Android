@@ -5,6 +5,7 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
+import project.bsts.semut.R;
 import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.ClosureMap;
@@ -40,36 +41,42 @@ public class OsmMarker {
             GeoPoint point = new GeoPoint(((PoliceMap) objectMap).getLatitude(), ((PoliceMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.police_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof AccidentMap){
             GeoPoint point = new GeoPoint(((AccidentMap) objectMap).getLatitude(), ((AccidentMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.accident_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof TrafficMap){
             GeoPoint point = new GeoPoint(((TrafficMap) objectMap).getLatitude(), ((TrafficMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.traffic_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof DisasterMap){
             GeoPoint point = new GeoPoint(((DisasterMap) objectMap).getLatitude(), ((DisasterMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.disaster_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof ClosureMap){
             GeoPoint point = new GeoPoint(((ClosureMap) objectMap).getLatitude(), ((ClosureMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.closure_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof OtherMap){
             GeoPoint point = new GeoPoint(((OtherMap) objectMap).getLatitude(), ((OtherMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.other_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }
