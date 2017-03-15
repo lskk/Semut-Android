@@ -1,10 +1,5 @@
 package project.bsts.semut.map.osm;
 
-
-
-
-import com.google.android.gms.maps.model.BitmapDescriptor;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.api.IMapController;

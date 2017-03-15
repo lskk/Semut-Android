@@ -214,14 +214,14 @@ ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:52:13-72
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:49:13-57
-activity#project.bsts.semut.SemutActivity
+activity#project.bsts.semut.SsocialReportActivity
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:53:9-56:59
 	android:label
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:55:13-57
 	android:theme
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:56:13-56
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:54:13-42
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:54:13-50
 activity#project.bsts.semut.CctvPlayerActivity
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:57:9-60:59
 	android:label
@@ -246,14 +246,14 @@ ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:69:13-36
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:67:13-53
-activity#project.bsts.semut.MainActivity
+activity#project.bsts.semut.SocialReportActivity
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:71:9-74:68
 	android:label
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:73:13-56
 	android:theme
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:74:13-56
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:72:13-41
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:72:13-49
 uses-sdk
 INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.mikepenz:materialdrawer:5.8.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/5.8.1/AndroidManifest.xml:8:5-10:41

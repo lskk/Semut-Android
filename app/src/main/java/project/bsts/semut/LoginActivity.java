@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -28,12 +27,9 @@ import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.yuweiguocn.lib.squareloading.SquareLoading;
 import project.bsts.semut.connections.rest.IConnectionResponseHandler;
 import project.bsts.semut.connections.rest.RequestRest;
 import project.bsts.semut.helper.PreferenceManager;
-import project.bsts.semut.pojo.Profile;
-import project.bsts.semut.pojo.Session;
 import project.bsts.semut.ui.LoadingIndicator;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.ShowSnackbar;
@@ -147,7 +143,7 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
 
 
     private void toDashBoard(){
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, SocialReportActivity.class);
         startActivity(intent);
         finish();
     }

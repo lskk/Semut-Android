@@ -59,7 +59,7 @@ import project.bsts.semut.ui.MainDrawer;
 import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.FragmentTransUtility;
 
-public class SemutActivity extends AppCompatActivity implements OnMapReadyCallback,
+public class SsocialReportActivity extends AppCompatActivity implements OnMapReadyCallback,
         BroadcastManager.UIBroadcastListener, View.OnClickListener, GoogleMap.OnMarkerClickListener {
 
     @BindView(R.id.toolbar)

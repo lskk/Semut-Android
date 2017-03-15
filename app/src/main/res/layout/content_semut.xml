@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="project.bsts.semut.SemutActivity"
+    tools:context="project.bsts.semut.SsocialReportActivity"
     tools:showIn="@layout/activity_semut">
 
     <fragment
@@ -14,7 +14,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="project.bsts.semut.SemutActivity" />
+        tools:context="project.bsts.semut.SsocialReportActivity" />
 
     <include layout="@layout/foreground_loading" />
     <RelativeLayout
