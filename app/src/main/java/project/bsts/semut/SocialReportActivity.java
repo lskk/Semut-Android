@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.iconics.IconicsDrawable;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.views.MapView;
