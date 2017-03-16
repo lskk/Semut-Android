@@ -13,6 +13,10 @@ public class ScheduleTask {
         public void onTimerRestart(int periode);
     }
 
+    private static int SCHEDULE_TIMER = 0;
+    private static int SCHEDULE_HANDLER = 1;
+    private int state = 0;
+
     Timer timer;
     TimerTask timerTask;
     final Handler handler = new Handler();
@@ -28,6 +32,7 @@ public class ScheduleTask {
     }
 
     public void start() {
+        state = SCHEDULE_TIMER;
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
@@ -43,14 +48,20 @@ public class ScheduleTask {
     }
 
     public void stop() {
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
+        if(state == SCHEDULE_TIMER) {
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                Log.i(this.getClass().getSimpleName(), "Task Stopped");
+            }
+        }else {
+            handler.removeCallbacks(runnable);
             Log.i(this.getClass().getSimpleName(), "Task Stopped");
         }
     }
 
     public void startHandler(){
+        state = SCHEDULE_HANDLER;
         handler.postDelayed(runnable, periode);
 
     }
