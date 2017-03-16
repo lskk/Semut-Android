@@ -183,15 +183,15 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     }
 
     private void startTask() {
-        task = new ScheduleTask(30);
-        task.start(new ScheduleTask.TimerFireListener() {
+        task = new ScheduleTask(30, new ScheduleTask.TimerFireListener() {
             @Override
-            public void onTimerRestart(int counter) {
-                Log.i(TAG, "Send no : "+counter);
+            public void onTimerRestart(int periode) {
+                Log.i(TAG, "Send no : "+periode);
                 broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latitude, longitude));
                 publish();
             }
         });
+        task.startHandler();
     }
 
     @Override

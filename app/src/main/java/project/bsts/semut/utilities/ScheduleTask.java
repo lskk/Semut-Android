@@ -19,12 +19,15 @@ public class ScheduleTask {
     long periode;
     private int counter = 0;
 
-    public ScheduleTask(long _periode){
+    TimerFireListener listener;
+
+    public ScheduleTask(long _periode, final TimerFireListener listener){
         periode = _periode;
+        this.listener = listener;
 
     }
 
-    public void start(final TimerFireListener listener) {
+    public void start() {
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
@@ -46,4 +49,17 @@ public class ScheduleTask {
             Log.i(this.getClass().getSimpleName(), "Task Stopped");
         }
     }
+
+    public void startHandler(){
+        handler.postDelayed(runnable, periode);
+
+    }
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            counter++;
+            listener.onTimerRestart(counter);
+            handler.postDelayed(this, periode);
+        }
+    };
 }
