@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.helper.PermissionHelper;
+import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.map.osm.MapUtilities;
 import project.bsts.semut.map.osm.MarkerClick;
 import project.bsts.semut.services.LocationService;
@@ -57,6 +58,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private IMapController mapController;
     private BroadcastManager broadcastManager;
     private PermissionHelper permissionHelper;
+    private PreferenceManager preferenceManager;
     private String TAG = this.getClass().getSimpleName();
     private Intent locService;
     private MarkerClick markerClick;
@@ -70,6 +72,8 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     protected void onDestroy(){
         super.onDestroy();
         broadcastManager.unSubscribeToUi();
+        preferenceManager.save(0, Constants.IS_ONLINE);
+        preferenceManager.apply();
         if(CheckService.isLocationServiceRunning(context)){
             stopService(locService);
         }
@@ -85,6 +89,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         context = this;
         mapUitilities = new MapUtilities(mapset);
         broadcastManager = new BroadcastManager(context);
+        preferenceManager = new PreferenceManager(context);
         broadcastManager.subscribeToUi(this);
         locService = new Intent(context, LocationService.class);
         permissionHelper = new PermissionHelper(context);
@@ -112,6 +117,9 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 }
             }
         });
+
+        preferenceManager.save(1, Constants.IS_ONLINE);
+        preferenceManager.apply();
 
     }
 
