@@ -35,6 +35,7 @@ public class OsmMarker {
             GeoPoint point = new GeoPoint(((CctvMap) objectMap).getLatitude(), ((CctvMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.cctv_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof PoliceMap){

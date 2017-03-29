@@ -134,7 +134,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 .build();
         mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
         String message = JSONRequest.storeLocation(session.getSessionID(), altitude, preferenceManager.getDouble(Constants.ENTITY_LATITUDE, 0), preferenceManager.getDouble(Constants.ENTITY_LONGITUDE, 0), speed,
-                GetCurrentDate.now(), preferenceManager.getInt(Constants.MAP_RADIUS, 3),
+                GetCurrentDate.now(), preferenceManager.getInt(Constants.MAP_RADIUS, 3) * 1000,
                 preferenceManager.getInt(Constants.MAP_LIMIT, 6), MapItem.get(getApplicationContext()), preferenceManager.getInt(Constants.IS_ONLINE, 0));
         Log.i(TAG, message);
         mqProducer.publish(message, props, false);

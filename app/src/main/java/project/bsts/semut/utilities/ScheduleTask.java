@@ -70,7 +70,7 @@ public class ScheduleTask {
         public void run() {
             counter++;
             listener.onTimerRestart(counter);
-            handler.postDelayed(this, periode);
+            handler.postDelayed(this, periode*1000);
         }
     };
 }
