@@ -1,121 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:padding="5dp"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:background="@drawable/bg_round_accent"
+    android:background="@color/colorPrimaryDark"
+    android:padding="2dp"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_centerVertical="true"
-        android:id="@+id/main"
+        card_view:cardBackgroundColor="@color/cardview_light_background"
+        card_view:cardElevation="3dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardMaxElevation="2dp"
+        card_view:contentPadding="10dp"
+        card_view:cardUseCompatPadding="true"
+        android:padding="5dp"
         android:layout_height="wrap_content">
-        <RelativeLayout
+        <LinearLayout
 
             android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/main"
             android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/map_icon_type"
-                android:src="@android:drawable/ic_media_play"
-                android:padding="5dp"
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/map_icon_type"
+                    android:src="@android:drawable/ic_media_play"
+                    android:padding="5dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Traffic"
+                    android:id="@+id/report_title"
+                    style="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/lynch"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/map_icon_type"
+                    android:padding="5dp"
+                    android:layout_gravity="center_vertical"
+                    />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorPrimaryDark"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Traffic"
-                android:id="@+id/report_title"
-                style="@style/Base.TextAppearance.AppCompat.Large"
-                android:textColor="@color/lynch"
-                android:textStyle="bold"
-                android:layout_toRightOf="@id/map_icon_type"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:padding="5dp"
-                android:layout_gravity="center_vertical"
-                />
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/colorPrimaryDark"
-            />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:padding="5dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/image_description"
-                android:src="@mipmap/ic_launcher"
-                android:padding="5dp"
-                android:layout_centerVertical="true"
-                />
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/image_description"
+                    android:src="@mipmap/ic_launcher"
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_toRightOf="@id/image_description"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/report_sub_title"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold"
+                        android:text="Heavy Traffic"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/post_date"
+                        android:text="2017/09/09 10:10:10"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/posted_by"
+                        android:text="Oleh : Hendra Permana"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_toRightOf="@id/image_description"
+                android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:padding="5dp"
-                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="15dp"
+                android:background="@color/lynchLight"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/content_description"
+                    android:textColor="@color/lynch"
+                    android:text="Lokasi Jalana anu"
+                    />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/report_sub_title"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:id="@+id/report_tag"
+                    android:text="Report Tag"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/lynch"
+                    android:padding="10dp"
                     android:textStyle="bold"
-                    android:text="Heavy Traffic"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/post_date"
-                    android:text="2017/09/09 10:10:10"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/posted_by"
-                    android:text="Oleh : Hendra Permana"
-                    />
-            </LinearLayout>
-        </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:padding="15dp"
-            android:background="@color/lynchLight"
-            android:layout_height="wrap_content">
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
+            </RelativeLayout>
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/content_description"
-                android:textColor="@color/lynch"
-                android:text="Lokasi Jalana anu"
-                />
         </LinearLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/report_tag"
-                android:text="Report Tag"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/lynch"
-                android:padding="10dp"
-                android:textStyle="bold"
-                />
-        </RelativeLayout>
-
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

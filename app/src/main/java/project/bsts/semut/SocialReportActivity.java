@@ -91,6 +91,8 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_socialreport);
         ButterKnife.bind(this);
+        toolbar.setTitle("Social Report");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.lynchLight));
         setSupportActionBar(toolbar);
 
         context = this;
@@ -184,12 +186,17 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private void setAnim() {
         filterBtn.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_keyboard_arrow_up, 24, R.color.primary_dark));
         addReportBtn.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_add, 24, R.color.primary_light));
-        slideUp = animationView.getAnimation(R.anim.slide_up, null);
+        slideUp = animationView.getAnimation(R.anim.slide_up, new AnimationView.AnimationViewListener() {
+            @Override
+            public void onAnimationEnd(Animation anim) {
+
+            }
+        });
         slideDown = animationView.getAnimation(R.anim.slide_down, new AnimationView.AnimationViewListener() {
             @Override
             public void onAnimationEnd(Animation anim) {
-                filterLayout.setVisibility(View.GONE);
-
+                if(filterLayout.getVisibility() == View.VISIBLE) filterLayout.setVisibility(View.GONE);
+                if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
             }
         });
     }
@@ -242,7 +249,8 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     }
 
     private void hideLayouts(){
-        markerDetailLayout.setVisibility(View.GONE);
+        //markerDetailLayout.setVisibility(View.GONE);
+        markerDetailLayout.startAnimation(slideDown);
         filterLayout.setVisibility(View.GONE);
     }
 }
