@@ -15,9 +15,11 @@ import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.google.gson.Gson;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 
 import org.osmdroid.api.IMapController;
+import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
@@ -29,6 +31,8 @@ import project.bsts.semut.helper.PermissionHelper;
 import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.map.osm.MapUtilities;
 import project.bsts.semut.map.osm.MarkerClick;
+import project.bsts.semut.map.osm.OsmMarker;
+import project.bsts.semut.pojo.mapview.MyLocation;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
@@ -67,6 +71,9 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private Animation slideUp, slideDown;
     private static final int FAB_STATE_CLOSE = 0;
     private static final int FAB_STATE_ADD = 1;
+    private OsmMarker osmMarker;
+    private Marker markerMyLocation;
+    private MyLocation myLocationObject;
 
     @Override
     protected void onDestroy(){
@@ -88,6 +95,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
 
         context = this;
         mapUitilities = new MapUtilities(mapset);
+        osmMarker = new OsmMarker(mapset);
         broadcastManager = new BroadcastManager(context);
         preferenceManager = new PreferenceManager(context);
         broadcastManager.subscribeToUi(this);
@@ -145,12 +153,28 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         switch (type){
             case Constants.BROADCAST_MY_LOCATION:
                 mapUitilities.setMyLocationGeo(msg);
+                myLocationObject = new Gson().fromJson(msg, MyLocation.class);
                 if(!mapUitilities.isReady()) {
                     mapController = mapUitilities.init();
+                    markerMyLocation = osmMarker.add(myLocationObject);
+                }else {
+
+                    markerMyLocation.setPosition(new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude()));
+                    mapset.invalidate();
                 }
+
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
-                mapset.getOverlays().clear();
+                for(int i = 0; i < mapset.getOverlays().size(); i++){
+                    if(mapset.getOverlays().get(i) instanceof Marker ){
+                        Log.i(TAG, String.valueOf(((Marker) mapset.getOverlays().get(i)).getRelatedObject()));
+                        if(((Marker) mapset.getOverlays().get(i)).getRelatedObject() instanceof MyLocation){
+                            // is my location
+                            Log.i(TAG, "ISMY");
+                        }else mapset.getOverlays().remove(i);
+                    }
+                }
+                //mapset.getOverlays().clear();
                 mapUitilities.setMapObjectsMarkers(msg);
                 for(int i = 0 ; i < mapset.getOverlays().size(); i++){
                     if (mapset.getOverlays().get(i) instanceof Marker) ((Marker) mapset.getOverlays().get(i)).setOnMarkerClickListener(this);

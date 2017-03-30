@@ -10,6 +10,7 @@ import project.bsts.semut.pojo.mapview.AccidentMap;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.pojo.mapview.ClosureMap;
 import project.bsts.semut.pojo.mapview.DisasterMap;
+import project.bsts.semut.pojo.mapview.MyLocation;
 import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.TrafficMap;
@@ -78,6 +79,13 @@ public class OsmMarker {
             marker = new Marker(mapView);
             marker.setPosition(point);
             marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.other_icon));
+            marker.setRelatedObject(objectMap);
+            mapView.getOverlays().add(marker);
+        }else if(objectMap instanceof MyLocation){
+            GeoPoint point = new GeoPoint(((MyLocation) objectMap).getMyLatitude(), ((MyLocation) objectMap).getMyLongitude());
+            marker = new Marker(mapView);
+            marker.setPosition(point);
+        //    marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.other_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }

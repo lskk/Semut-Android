@@ -171,6 +171,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 speed = location.getSpeed();
                 altitude = location.getAltitude();
                 startTask();
+                broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latitude, longitude));
                 try {
                     object = new JSONObject();
                     object.put(Constants.ENTITY_LATITUDE, latitude);
@@ -187,7 +188,6 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             @Override
             public void onTimerRestart(int periode) {
                 Log.i(TAG, "Send no : "+periode);
-                broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latitude, longitude));
                 publish();
             }
         });
@@ -221,6 +221,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
         preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
         preferenceManager.apply();
+        broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latitude, longitude));
 
     }
 
