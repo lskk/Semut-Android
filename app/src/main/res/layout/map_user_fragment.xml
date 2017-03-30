@@ -1,70 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:padding="5dp"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:background="@drawable/bg_round_accent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_centerVertical="true"
-        android:id="@+id/main"
+        card_view:cardBackgroundColor="@color/cardview_light_background"
+        card_view:cardElevation="3dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardMaxElevation="7dp"
+        card_view:contentPadding="10dp"
+        card_view:cardUseCompatPadding="true"
+        android:padding="5dp"
         android:layout_height="wrap_content">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_gravity="center_horizontal"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:padding="5dp"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@mipmap/ic_launcher"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@color/colorWhiteDark"/>
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name_user"
-            android:text="Hendra Permana"
-            />
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Small"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/point_user"
-            android:text="Point : 1000"
-            />
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Small"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lastseen_user"
-            android:text="Terakhir Terlihat : 2016/09/08"
-            />
-        <net.qiujuer.genius.ui.widget.Button
-            android:layout_marginTop="10dp"
+        <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:gTouchColor="@color/colorPrimaryDark"
-            app:gTouchEffect="ripple"
-            android:text="Lihat Profile"
-            android:padding="15dp"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bg_accent_bold_round"
-            android:id="@+id/add_or_profile_btn"
-            app:gTouchCornerRadius="12dp"
-            app:gTouchCornerRadiusTL="0dp"
-            app:gTouchCornerRadiusTR="0dp"
-            app:gTouchCornerRadiusBL="6dp"
-            app:gTouchCornerRadiusBR="6dp"
-            app:gTouchDurationRate="0.7"
-            />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/main"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_gravity="center_horizontal"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:padding="5dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorWhiteDark"/>
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_user"
+                android:text="Hendra Permana"
+                />
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/point_user"
+                android:text="Point : 1000"
+                />
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastseen_user"
+                android:text="Terakhir Terlihat : 2016/09/08"
+                />
+            <net.qiujuer.genius.ui.widget.Button
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:gTouchColor="@color/colorPrimaryDark"
+                app:gTouchEffect="ripple"
+                android:text="Lihat Profile"
+                android:padding="15dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/bg_accent_bold_round"
+                android:id="@+id/add_or_profile_btn"
+                app:gTouchCornerRadius="12dp"
+                app:gTouchCornerRadiusTL="0dp"
+                app:gTouchCornerRadiusTR="0dp"
+                app:gTouchCornerRadiusBL="6dp"
+                app:gTouchCornerRadiusBR="6dp"
+                app:gTouchDurationRate="0.7"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

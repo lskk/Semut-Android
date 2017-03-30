@@ -13,6 +13,7 @@ import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.MyLocation;
 import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
+import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
@@ -79,6 +80,13 @@ public class OsmMarker {
             marker = new Marker(mapView);
             marker.setPosition(point);
             marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.other_icon));
+            marker.setRelatedObject(objectMap);
+            mapView.getOverlays().add(marker);
+        }else if(objectMap instanceof Tracker){
+            GeoPoint point = new GeoPoint(((Tracker) objectMap).getData().get(0), ((Tracker) objectMap).getData().get(1));
+            marker = new Marker(mapView);
+            marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.angkot_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof MyLocation){

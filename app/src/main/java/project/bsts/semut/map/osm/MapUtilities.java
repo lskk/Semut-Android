@@ -132,6 +132,7 @@ public class MapUtilities {
         generateMarker(disasterMaps, disasterMarkers);
         generateMarker(closureMaps, closureMarkers);
         generateMarker(otherMaps, otherMarkers);
+        generateMarker(trackers, trackerMarkers);
 
     }
 
