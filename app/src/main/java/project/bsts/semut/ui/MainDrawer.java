@@ -93,7 +93,7 @@ public class MainDrawer {
                 .withActionBarDrawerToggleAnimated(true)
                 .withFullscreen(true)
                 .addDrawerItems(
-                        dashBoard = new PrimaryDrawerItem().withName("Map").withIcon(GoogleMaterial.Icon.gmd_map).withIdentifier(0),
+                    /*    dashBoard = new PrimaryDrawerItem().withName("Map").withIcon(GoogleMaterial.Icon.gmd_map).withIdentifier(0),
                         profile = new PrimaryDrawerItem().withName("Profil").withIcon(GoogleMaterial.Icon.gmd_face).withIdentifier(10),
                         friends = new ExpandableDrawerItem().withName("Pertemanan").withIcon(GoogleMaterial.Icon.gmd_people).withIdentifier(20).withSubItems(
                                 new SecondaryDrawerItem().withName("Tambah Teman").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_add).withIdentifier(21),
@@ -109,10 +109,10 @@ public class MainDrawer {
                         new DividerDrawerItem(),
                         editProfileItem = new ExpandableDrawerItem().withName("Pengaturan").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(50).withSubItems(
                                 new SecondaryDrawerItem().withName("Ubah Password").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_create).withIdentifier(51)
-                        ),
-                        tentangItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Tentang").withIcon(GoogleMaterial.Icon.gmd_perm_device_information).withIdentifier(60).withSelectable(false),
-                        bantuanItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Bantuan").withIcon(GoogleMaterial.Icon.gmd_help).withIdentifier(70).withSelectable(false),
-                        logoutItem = (SecondaryDrawerItem) new SecondaryDrawerItem().withName("Logout").withIcon(GoogleMaterial.Icon.gmd_exit_to_app).withIdentifier(80).withSelectable(false)
+                        ), */
+                        new PrimaryDrawerItem().withName("Tentang").withIcon(GoogleMaterial.Icon.gmd_perm_device_information).withIdentifier(60).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Bantuan").withIcon(GoogleMaterial.Icon.gmd_help).withIdentifier(70).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Logout").withIcon(GoogleMaterial.Icon.gmd_exit_to_app).withIdentifier(80).withSelectable(false)
                 )
                 .withSelectedItem(identifier)
                 .withOnDrawerItemClickListener(new com.mikepenz.materialdrawer.Drawer.OnDrawerItemClickListener() {

@@ -56,7 +56,7 @@ public class MapTrackerFragment extends Fragment {
                 .icon(GoogleMaterial.Icon.gmd_place));
 
         title = "Angkutan Umum";
-        subTitle = "Angkot";
+        subTitle = "Angkutan Perkotaan";
         postDate = tracker.getDate()+" "+tracker.getTime();
         speed = String.valueOf(tracker.getSpeed())+" KM/JH";
         contentDescription = tracker.getLokasi();
@@ -68,7 +68,7 @@ public class MapTrackerFragment extends Fragment {
         reportSubTitleText.setText(subTitle);
         String tmp = "<b>Lokasi Tanggal : </b>"+postDate;
         postDateText.setText(Html.fromHtml(tmp));
-        tmp = "<br><b>Detail : </b>"+detail;
+        tmp = "<b>Detail : </b>"+detail;
         detailText.setText(Html.fromHtml(tmp));
         tmp = "<b>Kecepatan : </b>"+speed;
         speedText.setText(Html.fromHtml(tmp));

@@ -12,28 +12,38 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <RelativeLayout
-                android:padding="7dp"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
                 android:layout_height="wrap_content">
-                <net.qiujuer.genius.ui.widget.EditText
+                <RelativeLayout
+                    android:padding="7dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:gHintTitle="slide"
-                    android:imeOptions="actionDone"
-                    android:hint="Batasi hasil pencarian"
-                    android:inputType="number"
-                    android:textColorHint="@color/colorPrimaryDark"
-                    android:id="@+id/limit"
-                    app:gHintTitlePaddingBottom="2dp"
-                    app:gHintTitlePaddingLeft="0dp"
-                    app:gHintTitlePaddingRight="0dp"
-                    app:gHintTitlePaddingTop="0dp"
-                    app:gLineColor="@color/colorPrimaryDark"
-                    app:gLineSize="1.5dp" />
-            </RelativeLayout>
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+                    <net.qiujuer.genius.ui.widget.EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:gHintTitle="slide"
+                        android:imeOptions="actionDone"
+                        android:hint="Batasi hasil pencarian"
+                        android:inputType="number"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        android:id="@+id/limit"
+                        app:gHintTitlePaddingBottom="2dp"
+                        app:gHintTitlePaddingLeft="0dp"
+                        app:gHintTitlePaddingRight="0dp"
+                        app:gHintTitlePaddingTop="0dp"
+                        app:gLineColor="@color/colorPrimaryDark"
+                        app:gLineSize="1.5dp" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
@@ -44,11 +54,20 @@
                 android:textColor="@color/lynch"
                 android:layout_centerVertical="true"
                 />
-            <RelativeLayout
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <net.qiujuer.genius.ui.widget.SeekBar
                     android:id="@+id/radiusSeekBar"
@@ -76,6 +95,7 @@
                     app:gMirrorForRtl="true"
                     app:gAllowTrackClickToDrag="true"/>
             </RelativeLayout>
+            </android.support.v7.widget.CardView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
@@ -86,40 +106,59 @@
                 android:textColor="@color/lynch"
                 android:layout_centerVertical="true"
                 />
-            <RelativeLayout
-                android:padding="7dp"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
                 android:layout_height="wrap_content">
-                <belka.us.androidtoggleswitch.widgets.ToggleSwitch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:activeBgColor="@color/colorPrimaryDark"
-                    app:textToggleLeft="OFF"
-                    app:textToggleRight="ON"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/filter_user"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/filter_user"
-                    android:text="Pengguna Lain"
-                    android:textStyle="bold"
-                    android:textColor="@color/lynch"
-                    android:layout_centerVertical="true"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:layout_alignParentLeft="true"
-                    />
-            </RelativeLayout>
-            <RelativeLayout
+                <RelativeLayout
+                    android:padding="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+                    <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:activeBgColor="@color/colorPrimaryDark"
+                        app:textToggleLeft="OFF"
+                        app:textToggleRight="ON"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/filter_user"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/filter_user"
+                        android:text="Pengguna Lain"
+                        android:textStyle="bold"
+                        android:textColor="@color/lynch"
+                        android:layout_centerVertical="true"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:layout_alignParentLeft="true"
+                        />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -144,11 +183,21 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -173,11 +222,21 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -202,11 +261,21 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -231,11 +300,21 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -260,11 +339,21 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -289,11 +378,21 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -318,11 +417,21 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -347,11 +456,22 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="10dp"
+                app:cardUseCompatPadding="true"
+                android:layout_marginBottom="@dimen/materialize_toolbar"
+                android:padding="5dp"
+                android:layout_height="wrap_content">
+                <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/bg_rounded_primarydark"
                 android:layout_height="wrap_content">
                 <belka.us.androidtoggleswitch.widgets.ToggleSwitch
                     android:layout_width="wrap_content"
@@ -376,6 +496,7 @@
                     android:layout_alignParentLeft="true"
                     />
             </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

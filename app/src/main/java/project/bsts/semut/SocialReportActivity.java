@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -97,6 +98,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         toolbar.setTitle("Social Report");
         toolbar.setTitleTextColor(getResources().getColor(R.color.lynchLight));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         context = this;
         mapUitilities = new MapUtilities(mapset);
@@ -242,6 +244,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 if((int)addReportBtn.getTag()== FAB_STATE_CLOSE) {
                     hideLayouts();
                     fabState(FAB_STATE_ADD);
+                    filterBtn.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_keyboard_arrow_up, 24, R.color.primary_dark));
                 }
                 else startActivity(new Intent(context, TagsActivity.class));
                 break;
@@ -266,5 +269,16 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.startAnimation(slideDown);
         if(filterLayout.getVisibility() == View.VISIBLE)filterLayout.startAnimation(slideDown);
        // filterLayout.setVisibility(View.GONE);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
