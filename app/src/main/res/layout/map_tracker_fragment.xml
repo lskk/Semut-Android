@@ -82,7 +82,12 @@
                         android:textStyle="bold"
                         android:text="Heavy Traffic"
                         />
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/post_detail"
+                        android:text="2017/09/09 10:10:10"
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -92,7 +97,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/posted_by"
+                        android:id="@+id/speed"
                         android:text="Oleh : Hendra Permana"
                         />
                 </LinearLayout>

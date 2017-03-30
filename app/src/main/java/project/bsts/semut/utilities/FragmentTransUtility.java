@@ -9,6 +9,7 @@ import project.bsts.semut.R;
 import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.fragments.map.MapCctvFragment;
 import project.bsts.semut.fragments.map.MapReportFragment;
+import project.bsts.semut.fragments.map.MapTrackerFragment;
 import project.bsts.semut.fragments.map.MapUserFragment;
 import project.bsts.semut.pojo.mapview.UserMap;
 
@@ -36,6 +37,12 @@ public class FragmentTransUtility {
     }
 
     public void setCctvMapFragment(MapCctvFragment fragment, int id){
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(id, fragment);
+        fragmentTransaction.commit();
+    }
+
+    public void setTrackerMapFragment(MapTrackerFragment fragment, int id){
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(id, fragment);
         fragmentTransaction.commit();
