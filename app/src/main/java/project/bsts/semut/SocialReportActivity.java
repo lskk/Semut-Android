@@ -173,11 +173,8 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 List<Marker> markersToRemove = new ArrayList<Marker>();
 
                 for(int i = 0; i < mapset.getOverlays().size(); i++){
-                    Log.i(TAG, "Listing : "+String.valueOf(((Marker) mapset.getOverlays().get(i)).getRelatedObject()));
-
                     if(mapset.getOverlays().get(i) instanceof Marker ){
                         if(!(((Marker) mapset.getOverlays().get(i)).getRelatedObject() instanceof MyLocation)){
-                           // mapset.getOverlays().remove(mapset.getOverlays().get(i));
                             markersToRemove.add((Marker) mapset.getOverlays().get(i));
                         }
                     }
@@ -186,6 +183,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 for(int i = 0; i < markersToRemove.size(); i++){
                     mapset.getOverlays().remove(markersToRemove.get(i));
                 }
+                markersToRemove.clear();
                 mapset.invalidate();
 
 

@@ -15,6 +15,7 @@ import project.bsts.semut.pojo.mapview.ClosureMap;
 import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
+import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.setup.Constants;
@@ -99,6 +100,7 @@ public class MapUtilities {
     private Marker[] disasterMarkers;
     private Marker[] closureMarkers;
     private Marker[] otherMarkers;
+    private Marker[] trackerMarkers;
 
 
     public void setMapObjectsMarkers(String msg){
@@ -110,6 +112,7 @@ public class MapUtilities {
         disasterMaps = MapViewComponent.getDisaster(MapViewComponent.DISASTER_MAP_COMPONENT, msg);
         closureMaps = MapViewComponent.getClosure(MapViewComponent.CLOSURE_MAP_COMPONENT, msg);
         otherMaps = MapViewComponent.getOther(MapViewComponent.OTHER_MAP_COMPONENT, msg);
+        trackers = MapViewComponent.getTrackers(MapViewComponent.TRACKER_MAP_COMPONENT, msg);
 
         userMarkers = new Marker[userMaps.length];
         cctvMarkers = new Marker[cctvMaps.length];
@@ -119,6 +122,7 @@ public class MapUtilities {
         disasterMarkers = new Marker[disasterMaps.length];
         closureMarkers = new Marker[closureMaps.length];
         otherMarkers = new Marker[otherMaps.length];
+        trackerMarkers = new Marker[trackers.length];
 
         generateMarker(userMaps, userMarkers);
         generateMarker(cctvMaps, cctvMarkers);
@@ -147,6 +151,7 @@ public class MapUtilities {
     private DisasterMap[] disasterMaps;
     private ClosureMap[] closureMaps;
     private OtherMap[] otherMaps;
+    private Tracker[] trackers;
 
     public boolean isReady() {
         return isReady;

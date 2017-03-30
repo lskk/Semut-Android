@@ -16,6 +16,7 @@ import project.bsts.semut.pojo.mapview.ClosureMap;
 import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
+import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
@@ -29,6 +30,8 @@ public class MapViewComponent {
     public static final int DISASTER_MAP_COMPONENT = 5;
     public static final int CLOSURE_MAP_COMPONENT = 6;
     public static final int OTHER_MAP_COMPONENT = 7;
+    //public static final int COMMUTER_MAP_COMPONENT = 8;
+    public static final int TRACKER_MAP_COMPONENT = 8;
 
     public static UserMap[] getUsers(int indexComponent, String jsonString){
         UserMap[] userMaps;
@@ -251,6 +254,34 @@ public class MapViewComponent {
         }
 
         return otherMaps;
+
+    }
+
+
+    public static Tracker[] getTrackers(int indexComponent, String jsonString){
+        Tracker[] trackers;
+        JSONObject object = null;
+        JSONArray array = null;
+        JSONArray trackerArr = null;
+        try {
+            object = new JSONObject(jsonString);
+            array = object.getJSONArray("results");
+            trackerArr = new JSONObject(array.get(indexComponent).toString()).getJSONArray("Trackers");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        trackers = new Tracker[trackerArr.length()];
+        for (int i = 0; i <trackerArr.length(); i++){
+            try {
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                trackers[i] = gson.fromJson(trackerArr.get(i).toString(), Tracker.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return trackers;
 
     }
 
