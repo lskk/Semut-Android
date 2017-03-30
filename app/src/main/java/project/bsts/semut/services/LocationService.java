@@ -158,6 +158,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             Log.i(TAG, "Permission Denied");
         }else {
             Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+           // Location location = LocationServices.FusedLocationApi.
             Log.i(TAG, "LOCATION CONNECTED");
             if (location == null) {
                 LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);

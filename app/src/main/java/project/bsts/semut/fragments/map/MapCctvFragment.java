@@ -47,6 +47,7 @@ public class MapCctvFragment extends Fragment {
 
         detail.setText(cctvMap.getName());
 
+
         new DownloadImageTask(thumb, loading).execute(cctvMap.getUrlImage());
 
         watchBtn.setOnClickListener(new View.OnClickListener() {

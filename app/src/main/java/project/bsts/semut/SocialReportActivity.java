@@ -167,14 +167,11 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
                 for(int i = 0; i < mapset.getOverlays().size(); i++){
                     if(mapset.getOverlays().get(i) instanceof Marker ){
-                        Log.i(TAG, String.valueOf(((Marker) mapset.getOverlays().get(i)).getRelatedObject()));
                         if(((Marker) mapset.getOverlays().get(i)).getRelatedObject() instanceof MyLocation){
                             // is my location
-                            Log.i(TAG, "ISMY");
                         }else mapset.getOverlays().remove(i);
                     }
                 }
-                //mapset.getOverlays().clear();
                 mapUitilities.setMapObjectsMarkers(msg);
                 for(int i = 0 ; i < mapset.getOverlays().size(); i++){
                     if (mapset.getOverlays().get(i) instanceof Marker) ((Marker) mapset.getOverlays().get(i)).setOnMarkerClickListener(this);
@@ -218,10 +215,14 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                     filterBtn.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_keyboard_arrow_up, 24, R.color.primary_dark));
                     hideLayouts();
                     fabState(FAB_STATE_ADD);
+
                 }
                 break;
             case R.id.addReport:
-                if((int)addReportBtn.getTag()== FAB_STATE_CLOSE) hideLayouts();
+                if((int)addReportBtn.getTag()== FAB_STATE_CLOSE) {
+                    hideLayouts();
+                    fabState(FAB_STATE_ADD);
+                }
                 else startActivity(new Intent(context, TagsActivity.class));
                 break;
         }
