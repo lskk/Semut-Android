@@ -23,6 +23,9 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.fragments.FilterFragment;
@@ -167,13 +170,25 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
 
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
+                List<Marker> markersToRemove = new ArrayList<Marker>();
+
                 for(int i = 0; i < mapset.getOverlays().size(); i++){
+                    Log.i(TAG, "Listing : "+String.valueOf(((Marker) mapset.getOverlays().get(i)).getRelatedObject()));
+
                     if(mapset.getOverlays().get(i) instanceof Marker ){
-                        if(((Marker) mapset.getOverlays().get(i)).getRelatedObject() instanceof MyLocation){
-                            // is my location
-                        }else mapset.getOverlays().remove(i);
+                        if(!(((Marker) mapset.getOverlays().get(i)).getRelatedObject() instanceof MyLocation)){
+                           // mapset.getOverlays().remove(mapset.getOverlays().get(i));
+                            markersToRemove.add((Marker) mapset.getOverlays().get(i));
+                        }
                     }
                 }
+
+                for(int i = 0; i < markersToRemove.size(); i++){
+                    mapset.getOverlays().remove(markersToRemove.get(i));
+                }
+                mapset.invalidate();
+
+
                 mapUitilities.setMapObjectsMarkers(msg);
                 for(int i = 0 ; i < mapset.getOverlays().size(); i++){
                     if (mapset.getOverlays().get(i) instanceof Marker) ((Marker) mapset.getOverlays().get(i)).setOnMarkerClickListener(this);
@@ -250,7 +265,8 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
 
     private void hideLayouts(){
         //markerDetailLayout.setVisibility(View.GONE);
-        markerDetailLayout.startAnimation(slideDown);
-        filterLayout.setVisibility(View.GONE);
+        if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.startAnimation(slideDown);
+        if(filterLayout.getVisibility() == View.VISIBLE)filterLayout.startAnimation(slideDown);
+       // filterLayout.setVisibility(View.GONE);
     }
 }

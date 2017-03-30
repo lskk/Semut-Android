@@ -80,13 +80,10 @@ public class MapReportFragment extends Fragment {
         switch (type){
             case MapViewComponent.POLICE_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_green_700))
+                        .color(getActivity().getResources().getColor(R.color.lynch))
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
-                mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_green_700))
-                        .sizeDp(64)
-                        .icon(FontAwesome.Icon.faw_taxi);
+                mapIconDrawable[1] = getActivity().getResources().getDrawable(R.drawable.police_icon);
 
                 PoliceMap policeMap = (PoliceMap) reportObject;
                 title = policeMap.getType();
@@ -100,13 +97,10 @@ public class MapReportFragment extends Fragment {
 
             case MapViewComponent.ACCIDENT_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_cyan_700))
+                        .color(getActivity().getResources().getColor(R.color.lynch))
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
-                mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_cyan_700))
-                        .sizeDp(64)
-                        .icon(CommunityMaterial.Icon.cmd_playlist_remove);
+                mapIconDrawable[1] = mapIconDrawable[1] = getActivity().getResources().getDrawable(R.drawable.accident_icon);
 
                 AccidentMap accidentMap = (AccidentMap) reportObject;
                 title = accidentMap.getType();
@@ -119,13 +113,10 @@ public class MapReportFragment extends Fragment {
 
             case MapViewComponent.TRAFFIC_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_cyan_700))
+                        .color(getActivity().getResources().getColor(R.color.lynch))
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
-                mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_cyan_700))
-                        .sizeDp(64)
-                        .icon(CommunityMaterial.Icon.cmd_road_variant);
+                mapIconDrawable[1] = mapIconDrawable[1] = getActivity().getResources().getDrawable(R.drawable.traffic_icon);
                 TrafficMap trafficMap = (TrafficMap) reportObject;
                 title = trafficMap.getType();
                 subTitle = trafficMap.getSubType();
@@ -137,13 +128,10 @@ public class MapReportFragment extends Fragment {
 
             case MapViewComponent.DISASTER_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_purple_400))
+                        .color(getActivity().getResources().getColor(R.color.lynch))
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
-                mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_purple_400))
-                        .sizeDp(64)
-                        .icon(FontAwesome.Icon.faw_globe);
+                mapIconDrawable[1] = mapIconDrawable[1] = getActivity().getResources().getDrawable(R.drawable.disaster_icon);
                 DisasterMap disasterMap = (DisasterMap) reportObject;
                 title = disasterMap.getType();
                 subTitle = disasterMap.getSubType();
@@ -155,13 +143,10 @@ public class MapReportFragment extends Fragment {
 
             case MapViewComponent.CLOSURE_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_red_A200))
+                        .color(getActivity().getResources().getColor(R.color.lynch))
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
-                mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.md_red_A200))
-                        .sizeDp(64)
-                        .icon(CommunityMaterial.Icon.cmd_sign_caution);
+                mapIconDrawable[1] = mapIconDrawable[1] = getActivity().getResources().getDrawable(R.drawable.closure_icon);
                 ClosureMap closureMap = (ClosureMap) reportObject;
                 title = closureMap.getType();
                 subTitle = closureMap.getSubType();
@@ -173,13 +158,10 @@ public class MapReportFragment extends Fragment {
 
             case MapViewComponent.OTHER_MAP_COMPONENT:
                 mapIconDrawable[0] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.deep_purple_700))
+                        .color(getActivity().getResources().getColor(R.color.lynch))
                         .sizeDp(34)
                         .icon(GoogleMaterial.Icon.gmd_place);
-                mapIconDrawable[1] = new IconicsDrawable(getActivity())
-                        .color(getActivity().getResources().getColor(R.color.deep_purple_700))
-                        .sizeDp(64)
-                        .icon(FontAwesome.Icon.faw_map_signs);
+                mapIconDrawable[1] = mapIconDrawable[1] = getActivity().getResources().getDrawable(R.drawable.other_icon);
                 OtherMap otherMap = (OtherMap) reportObject;
                 title = otherMap.getType();
                 subTitle = otherMap.getSubType();
