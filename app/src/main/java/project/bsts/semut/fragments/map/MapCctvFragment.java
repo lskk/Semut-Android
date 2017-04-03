@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import net.qiujuer.genius.ui.widget.Loading;
 
 import project.bsts.semut.CctvPlayerActivity;
@@ -43,12 +45,19 @@ public class MapCctvFragment extends Fragment {
         detail = (TextView)view.findViewById(R.id.cctv_location);
         watchBtn = (Button)view.findViewById(R.id.watch_btn);
         loading = (Loading)view.findViewById(R.id.loading);
-        loading.start();
+        loading.setVisibility(View.GONE);
+      //  loading.start();
 
         detail.setText(cctvMap.getName());
 
 
-        new DownloadImageTask(thumb, loading).execute(cctvMap.getUrlImage());
+      //  new DownloadImageTask(thumb, loading).execute(cctvMap.getUrlImage());
+        String urldisplay = cctvMap.getUrlImage().replace("push-ios", "247");
+        Picasso.with(getActivity())
+                .load(urldisplay)
+                .placeholder(R.mipmap.loading_image)
+                .error(R.mipmap.kamera_akses_error)
+                .into(thumb);
 
         watchBtn.setOnClickListener(view1 -> {
             Intent intent = new Intent(getActivity().getApplicationContext(), CctvPlayerActivity.class);

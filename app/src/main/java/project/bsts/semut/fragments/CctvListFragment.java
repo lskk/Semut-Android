@@ -15,16 +15,12 @@ import project.bsts.semut.R;
 import project.bsts.semut.adapters.CctvListAdapter;
 import project.bsts.semut.pojo.mapview.CctvMap;
 
-/**
- * Created by arysetijadiprihatmanto on 4/3/17.
- */
 
 public class CctvListFragment extends Fragment {
 
     ListView mListViewCctv;
     private ArrayList<CctvMap> list = new ArrayList<CctvMap>();
-    Intent intent;
-    Context context;
+
     CctvListAdapter cctvListAdapter;
 
     public CctvListFragment(){
@@ -44,7 +40,6 @@ public class CctvListFragment extends Fragment {
         mListViewCctv = (ListView)convertView.findViewById(R.id.list_cctv);
         cctvListAdapter = new CctvListAdapter(getActivity(), list);
         mListViewCctv.setAdapter(cctvListAdapter);
-      //  list.clear();
 
         return convertView;
     }

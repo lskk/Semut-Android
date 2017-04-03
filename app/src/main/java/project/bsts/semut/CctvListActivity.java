@@ -23,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import project.bsts.semut.adapters.CctvListAdapter;
 import project.bsts.semut.fragments.CctvListFragment;
+import project.bsts.semut.fragments.map.CctvMapFragment;
 import project.bsts.semut.pojo.CityCctv;
 import project.bsts.semut.pojo.mapview.CctvMap;
 import project.bsts.semut.setup.Constants;
@@ -66,9 +67,9 @@ public class CctvListActivity extends AppCompatActivity {
         cctvListFragment.setData(list);
         adapter.addFragment(cctvListFragment, "LIST");
 
-        CctvListFragment cctvListFragment2 = new CctvListFragment();
-        cctvListFragment2.setData(list);
-        adapter.addFragment(cctvListFragment2, "LIST");
+        CctvMapFragment cctvMapFragment = new CctvMapFragment();
+        cctvMapFragment.setData(list);
+        adapter.addFragment(cctvMapFragment, "MAP");
 
 
         viewPager.setAdapter(adapter);

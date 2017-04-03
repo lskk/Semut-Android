@@ -2,6 +2,7 @@ package project.bsts.semut.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import project.bsts.semut.CctvPlayerActivity;
 import project.bsts.semut.R;
 import project.bsts.semut.pojo.CityCctv;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.setup.Constants;
 import project.bsts.semut.utilities.DownloadImageTask;
 
 public class CctvListAdapter extends BaseAdapter {
@@ -76,6 +79,11 @@ public class CctvListAdapter extends BaseAdapter {
                 .error(R.mipmap.kamera_akses_error)
                 .into(mImagePreview);
 
+        convertView.setOnClickListener(view -> {
+            Intent intent = new Intent(mContext, CctvPlayerActivity.class);
+            intent.putExtra(Constants.INTENT_VIDEO_URL, cctvMaps.get(position).getUrlVideo());
+            mContext.startActivity(intent);
+        });
 
         return convertView;
     }
