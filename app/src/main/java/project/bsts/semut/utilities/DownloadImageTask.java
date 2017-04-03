@@ -16,7 +16,7 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
     public DownloadImageTask(ImageView bmImage, View loading) {
         this.bmImage = bmImage;
-        this.loading = loading;
+        if(loading != null) this.loading = loading;
     }
 
     protected Bitmap doInBackground(String... urls) {
@@ -35,6 +35,6 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
     protected void onPostExecute(Bitmap result) {
         bmImage.setImageBitmap(result);
-        loading.setVisibility(View.GONE);
+        if(loading != null) loading.setVisibility(View.GONE);
     }
 }

@@ -3,7 +3,9 @@ package project.bsts.semut.pojo.mapview;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CctvMap {
+import java.io.Serializable;
+
+public class CctvMap implements Serializable {
 
     @SerializedName("_id")
     @Expose

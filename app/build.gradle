@@ -63,6 +63,7 @@ dependencies {
     compile 'com.mikepenz:fontawesome-typeface:4.7.0.0@aar'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.google.android.gms:play-services:10.0.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     testCompile 'junit:junit:4.12'
     compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'

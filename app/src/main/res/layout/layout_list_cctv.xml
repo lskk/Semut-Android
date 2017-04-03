@@ -12,7 +12,7 @@
         app:cardMaxElevation="2dp"
         app:contentPadding="0dp"
         app:cardUseCompatPadding="true"
-        android:layout_marginBottom="@dimen/materialize_toolbar"
+        android:layout_marginBottom="5dp"
         android:padding="5dp"
         android:layout_height="wrap_content">
         <RelativeLayout
@@ -38,7 +38,7 @@
                 android:text="Tanda Lainnya"
                 android:textStyle="bold"
                 android:textColor="@color/lynch"
-                android:id="@+id/city_name"
+                android:id="@+id/cctv_name"
                 android:layout_centerVertical="true"
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />

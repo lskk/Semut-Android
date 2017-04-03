@@ -3,6 +3,7 @@ package project.bsts.semut.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,13 @@ import com.mikepenz.iconics.IconicsDrawable;
 
 import java.util.ArrayList;
 
+import project.bsts.semut.CctvListActivity;
 import project.bsts.semut.R;
 import project.bsts.semut.pojo.CityCctv;
+import project.bsts.semut.setup.Constants;
 
 public class CityListAdapter extends BaseAdapter {
-    private ArrayList<CityCctv> detailText = null;
+    private ArrayList<CityCctv> cityCctvs = null;
     private Context mContext = null;
     private LayoutInflater mInflater = null;
 
@@ -28,16 +31,16 @@ public class CityListAdapter extends BaseAdapter {
 
 
 
-    public CityListAdapter(Context context, ArrayList<CityCctv> detailText) {
+    public CityListAdapter(Context context, ArrayList<CityCctv> cityCctvs) {
         this.mContext = context;
-        this.detailText = detailText;
+        this.cityCctvs = cityCctvs;
         this.mInflater = (LayoutInflater)this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        if (detailText != null) {
-            return detailText.size();
+        if (cityCctvs != null) {
+            return cityCctvs.size();
         }
         else {
             return 0;
@@ -46,8 +49,8 @@ public class CityListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        if (detailText != null) {
-            return detailText.get(position);
+        if (cityCctvs != null) {
+            return cityCctvs.get(position);
         }
         else {
             return null;
@@ -63,7 +66,7 @@ public class CityListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        CityCctv cctv = detailText.get(position);
+        CityCctv cctv = cityCctvs.get(position);
         convertView = mInflater.inflate(R.layout.layout_list_city, null);
         mTextViewCityName = (TextView)convertView.findViewById(R.id.city_name);
         mImageViewIcon = (ImageView) convertView.findViewById(R.id.city_icon);
@@ -72,6 +75,12 @@ public class CityListAdapter extends BaseAdapter {
                 .icon(GoogleMaterial.Icon.gmd_videocam)
                 .sizeDp(24)
                 .color(mContext.getResources().getColor(R.color.primary_dark)));
+
+        Intent intent = new Intent(mContext, CctvListActivity.class);
+        intent.putExtra(Constants.INTENT_CCTV_LIST, cityCctvs.get(position).getCctv());
+        convertView.setOnClickListener(view -> {
+            mContext.startActivity(intent);
+        });
 
         return convertView;
     }

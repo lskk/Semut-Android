@@ -1,10 +1,11 @@
 package project.bsts.semut.pojo.mapview;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CCTVLocation {
+public class CCTVLocation implements Serializable {
 
     @SerializedName("type")
     @Expose

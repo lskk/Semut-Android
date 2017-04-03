@@ -8,4 +8,5 @@
     <string name="title_activity_main">Semut</string>
     <string name="bottom_arrow">&#129169;</string>
     <string name="title_activity_city_cctv">City</string>
+    <string name="title_activity_cctv_list">CctvListActivity</string>
 </resources>
