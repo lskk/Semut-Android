@@ -78,6 +78,7 @@ public class CityListAdapter extends BaseAdapter {
 
         Intent intent = new Intent(mContext, CctvListActivity.class);
         intent.putExtra(Constants.INTENT_CCTV_LIST, cityCctvs.get(position).getCctv());
+        intent.putExtra(Constants.INTENT_CCTV_CITY, cityCctvs.get(position).getName());
         convertView.setOnClickListener(view -> {
             mContext.startActivity(intent);
         });

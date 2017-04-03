@@ -42,10 +42,12 @@ public class CctvListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cctv_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
         ButterKnife.bind(this);
         intent = getIntent();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(intent.getStringExtra(Constants.INTENT_CCTV_CITY));
+        setSupportActionBar(toolbar);
         list = (ArrayList<CctvMap>) intent.getSerializableExtra(Constants.INTENT_CCTV_LIST);
         initTab();
 
