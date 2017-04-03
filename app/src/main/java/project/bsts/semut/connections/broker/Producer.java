@@ -68,31 +68,28 @@ public class Producer extends Connector{
     }
 
     public void publish(final String message, final BasicProperties properties, final boolean isDeclareQueue){
-        publishThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(isRunning) {
+        publishThread = new Thread(() -> {
+            while(isRunning) {
+                try {
+                    initConnection();
+                    initchanenel();
+                    if(isDeclareQueue) {
+                        declareQueue();
+                    }
+                    mChannel.confirmSelect();
+                //    mChannel.queueBind(mQueueName, mExchange, mRoutingKey);
+                    byte [] messageBytes = message.getBytes();
+                    mChannel.basicPublish(mExchange, mRoutingKey, properties, messageBytes);
+                    mChannel.waitForConfirms(publishTimeout);
+                    closeMQConnection();
+                    isRunning = false;
+                } catch (InterruptedException | IOException | TimeoutException e) {
+                    sendBackErrorMessage(e);
                     try {
-                        initConnection();
-                        initchanenel();
-                        if(isDeclareQueue) {
-                            declareQueue();
-                        }
-                        mChannel.confirmSelect();
-                    //    mChannel.queueBind(mQueueName, mExchange, mRoutingKey);
-                        byte [] messageBytes = message.getBytes();
-                        mChannel.basicPublish(mExchange, mRoutingKey, properties, messageBytes);
-                        mChannel.waitForConfirms(publishTimeout);
-                        closeMQConnection();
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e1) {
                         isRunning = false;
-                    } catch (InterruptedException | IOException | TimeoutException e) {
-                        sendBackErrorMessage(e);
-                        try {
-                            Thread.sleep(5000);
-                        } catch (InterruptedException e1) {
-                            isRunning = false;
-                            break;
-                        }
+                        break;
                     }
                 }
             }
@@ -105,12 +102,7 @@ public class Producer extends Connector{
 
     private void sendBackErrorMessage(Exception e) {
         final String errorMessage = e.getMessage() == null ? e.toString() : e.getMessage();
-        mCallbackHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                mCallback.onMQConnectionFailure(errorMessage);
-            }
-        });
+        mCallbackHandler.post(() -> mCallback.onMQConnectionFailure(errorMessage));
     }
 
     private void declareQueue() throws IOException {
@@ -123,12 +115,9 @@ public class Producer extends Connector{
 
     @Override
     protected ShutdownListener createShutDownListener() {
-        ShutdownListener listener = new ShutdownListener() {
-            @Override
-            public void shutdownCompleted(ShutdownSignalException cause) {
-                String errorMessage = cause.getMessage() == null ? "produser connection was shutdown" : "consumer " + cause.getMessage();
-                mCallback.onMQConnectionClosed(errorMessage);
-            }
+        ShutdownListener listener = cause -> {
+            String errorMessage = cause.getMessage() == null ? "produser connection was shutdown" : "consumer " + cause.getMessage();
+            mCallback.onMQConnectionClosed(errorMessage);
         };
         return listener;
     }

@@ -36,11 +36,9 @@ public class ScheduleTask {
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
-                handler.post(new Runnable() {
-                    public void run() {
-                        counter++;
-                        listener.onTimerRestart(counter);
-                    }
+                handler.post(() -> {
+                    counter++;
+                    listener.onTimerRestart(counter);
                 });
             }
         };

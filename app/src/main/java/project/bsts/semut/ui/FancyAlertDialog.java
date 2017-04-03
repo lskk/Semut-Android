@@ -136,12 +136,7 @@ public class FancyAlertDialog extends DialogFragment {
                     positive.setTextColor(ContextCompat.getColor(getActivity(), builder.getPositiveTextColor()));
                 }
                 if (builder.getOnPositiveClicked() != null) {
-                    positive.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            builder.getOnPositiveClicked().OnClick(v, getDialog());
-                        }
-                    });
+                    positive.setOnClickListener(v -> builder.getOnPositiveClicked().OnClick(v, getDialog()));
                 }
             } else {
                 positive.setVisibility(View.GONE);
@@ -152,12 +147,7 @@ public class FancyAlertDialog extends DialogFragment {
                     negative.setTextColor(ContextCompat.getColor(getActivity(), builder.getNegativeColor()));
                 }
                 if (builder.getOnNegativeClicked() != null) {
-                    negative.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            builder.getOnNegativeClicked().OnClick(v, getDialog());
-                        }
-                    });
+                    negative.setOnClickListener(v -> builder.getOnNegativeClicked().OnClick(v, getDialog()));
                 }
             } else {
                 negative.setVisibility(View.GONE);
@@ -180,12 +170,9 @@ public class FancyAlertDialog extends DialogFragment {
 
             if (builder.isAutoHide()) {
                 int time = builder.getTimeToHide() != 0 ? builder.getTimeToHide() : 10000;
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (isAdded() && getActivity() != null)
-                            dismiss();
-                    }
+                new Handler().postDelayed(() -> {
+                    if (isAdded() && getActivity() != null)
+                        dismiss();
                 }, time);
             }
 

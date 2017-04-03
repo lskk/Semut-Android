@@ -50,13 +50,10 @@ public class MapCctvFragment extends Fragment {
 
         new DownloadImageTask(thumb, loading).execute(cctvMap.getUrlImage());
 
-        watchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), CctvPlayerActivity.class);
-                intent.putExtra(Constants.INTENT_VIDEO_URL, cctvMap.getUrlVideo());
-                startActivity(intent);
-            }
+        watchBtn.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity().getApplicationContext(), CctvPlayerActivity.class);
+            intent.putExtra(Constants.INTENT_VIDEO_URL, cctvMap.getUrlVideo());
+            startActivity(intent);
         });
 
 

@@ -89,23 +89,10 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSe
                 .build();
 
 
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
-            }
-        });
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                back();
-            }
-        });
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submit();;
-            }
+        closeButton.setOnClickListener(v -> getActivity().finish());
+        backButton.setOnClickListener(v -> back());
+        submitButton.setOnClickListener(v -> {
+            submit();;
         });
 
         return view;

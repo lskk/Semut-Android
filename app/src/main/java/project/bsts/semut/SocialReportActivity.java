@@ -121,15 +121,12 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         if (permissionHelper.requestFineLocation()) startService(locService);
 
         markerDetailLayout.setTag(markerDetailLayout.getVisibility());
-        markerDetailLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                int newVis = markerDetailLayout.getVisibility();
-                if((int)markerDetailLayout.getTag() != newVis) {
-                    markerDetailLayout.setTag(markerDetailLayout.getVisibility());
-                    if(newVis == View.VISIBLE) fabState(FAB_STATE_CLOSE);
-                    else fabState(FAB_STATE_ADD);
-                }
+        markerDetailLayout.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            int newVis = markerDetailLayout.getVisibility();
+            if((int)markerDetailLayout.getTag() != newVis) {
+                markerDetailLayout.setTag(markerDetailLayout.getVisibility());
+                if(newVis == View.VISIBLE) fabState(FAB_STATE_CLOSE);
+                else fabState(FAB_STATE_ADD);
             }
         });
 
@@ -201,18 +198,12 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private void setAnim() {
         filterBtn.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_keyboard_arrow_up, 24, R.color.primary_dark));
         addReportBtn.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_add, 24, R.color.primary_light));
-        slideUp = animationView.getAnimation(R.anim.slide_up, new AnimationView.AnimationViewListener() {
-            @Override
-            public void onAnimationEnd(Animation anim) {
+        slideUp = animationView.getAnimation(R.anim.slide_up, anim -> {
 
-            }
         });
-        slideDown = animationView.getAnimation(R.anim.slide_down, new AnimationView.AnimationViewListener() {
-            @Override
-            public void onAnimationEnd(Animation anim) {
-                if(filterLayout.getVisibility() == View.VISIBLE) filterLayout.setVisibility(View.GONE);
-                if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
-            }
+        slideDown = animationView.getAnimation(R.anim.slide_down, anim -> {
+            if(filterLayout.getVisibility() == View.VISIBLE) filterLayout.setVisibility(View.GONE);
+            if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
         });
     }
 

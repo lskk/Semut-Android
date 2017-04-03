@@ -63,13 +63,10 @@ public class MainMenuAdapter extends BaseAdapter {
         textMenu = (TextView)convertView.findViewById(R.id.menu_title);
         textMenu.setText(detailText.get(position).getTitle());
         imageMenu.setImageDrawable(detailText.get(position).getIcon());
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(detailText.get(position).getClassIntent().toString()
-                        .equals(SocialReportActivity.class.toString()))
-                    mContext.startActivity(new Intent(mContext, SocialReportActivity.class));
-            }
+        convertView.setOnClickListener(view -> {
+            if(detailText.get(position).getClassIntent().toString()
+                    .equals(SocialReportActivity.class.toString()))
+                mContext.startActivity(new Intent(mContext, SocialReportActivity.class));
         });
 
         return convertView;

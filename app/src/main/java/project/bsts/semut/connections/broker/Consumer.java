@@ -81,42 +81,39 @@ public class Consumer extends Connector{
 
     public void subsribe(){
         Log.d(TAG, "subscribe");
-        subscribeThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Log.d(TAG, "subscribe > run");
+        subscribeThread = new Thread(() -> {
+            Log.d(TAG, "subscribe > run");
 
-                while(isRunning) {
+            while(isRunning) {
+                try {
+                    Log.d(TAG, "subscribe > run > subscribeRunning");
+                    initConnection();
+                    initchanenel();
+                    declareQueue();
+                    mChannel.queueBind(mQueueName, mExchange, mRoutingKey);
+
+                    mQueue = new QueueingConsumer(mChannel);
+                    mChannel.basicConsume(mQueueName, mQueue);
+                    while(queuing){
+                        Log.d(TAG, "subscribe > run > subscribeRunning > queuing");
+
+                        final QueueingConsumer.Delivery delivery;
+                        delivery = mQueue.nextDelivery();
+                        mChannel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+                        mCallbackHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mqConsumerListener.onMessageReceived(delivery);
+                            }
+                        });
+                    }
+                } catch (InterruptedException | ConsumerCancelledException
+                        | ShutdownSignalException | IOException | TimeoutException e) {
+                    sendBackErrorMessage(e);
                     try {
-                        Log.d(TAG, "subscribe > run > subscribeRunning");
-                        initConnection();
-                        initchanenel();
-                        declareQueue();
-                        mChannel.queueBind(mQueueName, mExchange, mRoutingKey);
-
-                        mQueue = new QueueingConsumer(mChannel);
-                        mChannel.basicConsume(mQueueName, mQueue);
-                        while(queuing){
-                            Log.d(TAG, "subscribe > run > subscribeRunning > queuing");
-
-                            final QueueingConsumer.Delivery delivery;
-                            delivery = mQueue.nextDelivery();
-                            mChannel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
-                            mCallbackHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mqConsumerListener.onMessageReceived(delivery);
-                                }
-                            });
-                        }
-                    } catch (InterruptedException | ConsumerCancelledException
-                            | ShutdownSignalException | IOException | TimeoutException e) {
-                        sendBackErrorMessage(e);
-                        try {
-                            Thread.sleep(5000);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
                     }
                 }
             }
@@ -126,12 +123,7 @@ public class Consumer extends Connector{
 
     private void sendBackErrorMessage(Exception e) {
         final String errorMessage = e.getMessage() == null ? e.toString() : e.getMessage();
-        mCallbackHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                mCallback.onMQConnectionFailure(errorMessage);
-            }
-        });
+        mCallbackHandler.post(() -> mCallback.onMQConnectionFailure(errorMessage));
     }
 
 

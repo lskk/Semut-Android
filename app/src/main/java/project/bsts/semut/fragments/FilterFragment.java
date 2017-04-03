@@ -70,15 +70,12 @@ public class FilterFragment extends Fragment {
         limitEdit.setText(String.valueOf(preferenceManager.getInt(Constants.MAP_LIMIT, 10)));
         radiusSeekbar.setProgress(preferenceManager.getInt(Constants.MAP_RADIUS, 3));
 
-        limitEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i == EditorInfo.IME_ACTION_DONE) {
-                    preferenceManager.save(Integer.parseInt(textView.getText().toString()), Constants.MAP_LIMIT);
-                    preferenceManager.apply();
-                }
-                return false;
+        limitEdit.setOnEditorActionListener((textView, i, keyEvent) -> {
+            if (i == EditorInfo.IME_ACTION_DONE) {
+                preferenceManager.save(Integer.parseInt(textView.getText().toString()), Constants.MAP_LIMIT);
+                preferenceManager.apply();
             }
+            return false;
         });
 
         radiusSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -101,104 +98,71 @@ public class FilterFragment extends Fragment {
 
         Log.i(TAG, String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_USER, 1)));
         userSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_USER, 1));
-        userSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_USER);
-                preferenceManager.apply();
-            }
+        userSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_USER);
+            preferenceManager.apply();
         });
 
         cctvSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_CCTV, 1));
-        cctvSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_CCTV);
-                preferenceManager.apply();
-            }
+        cctvSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_CCTV);
+            preferenceManager.apply();
         });
 
         policeSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_POLICE_POST, 1));
-        policeSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_POLICE_POST);
-                preferenceManager.apply();
-            }
+        policeSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_POLICE_POST);
+            preferenceManager.apply();
         });
 
         accidentSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_ACCIDENT_POST, 1));
-        accidentSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_ACCIDENT_POST);
-                preferenceManager.apply();
-            }
+        accidentSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_ACCIDENT_POST);
+            preferenceManager.apply();
         });
 
 
         trafficSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_TRAFFIC_POST, 1));
-        trafficSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_TRAFFIC_POST);
-                preferenceManager.apply();
-            }
+        trafficSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_TRAFFIC_POST);
+            preferenceManager.apply();
         });
 
         disasterSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_DISASTER_POST, 1));
-        disasterSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_DISASTER_POST);
-                preferenceManager.apply();
-            }
+        disasterSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_DISASTER_POST);
+            preferenceManager.apply();
         });
 
         closureSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_CLOSURE_POST, 1));
-        closureSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_CLOSURE_POST);
-                preferenceManager.apply();
-            }
+        closureSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_CLOSURE_POST);
+            preferenceManager.apply();
         });
 
         trafficSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_TRAFFIC_POST, 1));
-        trafficSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_TRAFFIC_POST);
-                preferenceManager.apply();
-            }
+        trafficSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_TRAFFIC_POST);
+            preferenceManager.apply();
         });
 
 
         angkotSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_ANGKOT_LOCATION, 1));
-        angkotSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_ANGKOT_LOCATION);
-                preferenceManager.apply();
-            }
+        angkotSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_ANGKOT_LOCATION);
+            preferenceManager.apply();
         });
 
         trainSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_COMMUTER_TRAIN, 1));
-        trainSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_COMMUTER_TRAIN);
-                preferenceManager.apply();
-            }
+        trainSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_COMMUTER_TRAIN);
+            preferenceManager.apply();
         });
 
         otherSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_OTHER_POST, 1));
-        otherSwitch.setOnToggleSwitchChangeListener(new BaseToggleSwitch.OnToggleSwitchChangeListener() {
-            @Override
-            public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                preferenceManager.save(position, Constants.MAP_FILTER_OTHER_POST);
-                preferenceManager.apply();
-            }
+        otherSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_OTHER_POST);
+            preferenceManager.apply();
         });
     }
 }

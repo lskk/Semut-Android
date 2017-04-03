@@ -75,13 +75,10 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
         fbLoginBtn = (LoginButton)findViewById(R.id.loginButton);
         fbLoginBtn.setReadPermissions(Arrays.asList("public_profile, email, user_birthday"));
         fbLoginBtn.registerCallback(callbackManager, this);
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(emailEditText.getText().toString().equals("") || passEditText.getText().toString().equals("")){
-                    Snackbar.make(loginBtn, "Email atau password tidak boleh kosong", Snackbar.LENGTH_LONG).show();
-                }else doLogin(emailEditText.getText().toString(), passEditText.getText().toString());
-            }
+        loginBtn.setOnClickListener(view -> {
+            if(emailEditText.getText().toString().equals("") || passEditText.getText().toString().equals("")){
+                Snackbar.make(loginBtn, "Email atau password tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+            }else doLogin(emailEditText.getText().toString(), passEditText.getText().toString());
         });
     }
 
@@ -102,18 +99,15 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
     @Override
     public void onSuccess(LoginResult loginResult) {
         GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
-                new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        try {
-                            Log.i("FB", String.valueOf(object));
-                            Log.i("FB", response.getRawResponse());
-                            String name=object.getString("name");
-                            String email=object.getString("email");
-                            Log.i("Login Success : ", name+", "+email);
-                        } catch(JSONException ex) {
-                            ex.printStackTrace();
-                        }
+                (object, response) -> {
+                    try {
+                        Log.i("FB", String.valueOf(object));
+                        Log.i("FB", response.getRawResponse());
+                        String name=object.getString("name");
+                        String email=object.getString("email");
+                        Log.i("Login Success : ", name+", "+email);
+                    } catch(JSONException ex) {
+                        ex.printStackTrace();
                     }
                 });
         Bundle parameters = new Bundle();

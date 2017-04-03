@@ -103,21 +103,18 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
 
         mqConsumer.setQueueName(profile.getID()+"-"+session.getSessionID());
         mqConsumer.subsribe();
-        mqConsumer.setMessageListner(new Consumer.MQConsumerListener() {
-            @Override
-            public void onMessageReceived(QueueingConsumer.Delivery delivery) {
-                try {
-                    final String message = new String(delivery.getBody(), "UTF-8");
-                    Log.i(TAG, "-------------------------------------");
-                    Log.i(TAG, "incoming message type : "+delivery.getProperties().getType());
-                    Log.i(TAG, "-------------------------------------");
-                //    Log.i(TAG, message);
-                    broadCastMessage(delivery.getProperties().getType(), message);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-
+        mqConsumer.setMessageListner(delivery -> {
+            try {
+                final String message = new String(delivery.getBody(), "UTF-8");
+                Log.i(TAG, "-------------------------------------");
+                Log.i(TAG, "incoming message type : "+delivery.getProperties().getType());
+                Log.i(TAG, "-------------------------------------");
+            //    Log.i(TAG, message);
+                broadCastMessage(delivery.getProperties().getType(), message);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
+
         });
 
     }
@@ -185,12 +182,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     }
 
     private void startTask() {
-        task = new ScheduleTask(30, new ScheduleTask.TimerFireListener() {
-            @Override
-            public void onTimerRestart(int periode) {
-                Log.i(TAG, "Send no : "+periode);
-                publish();
-            }
+        task = new ScheduleTask(30, periode -> {
+            Log.i(TAG, "Send no : "+periode);
+            publish();
         });
         task.startHandler();
     }

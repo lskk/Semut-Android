@@ -115,16 +115,7 @@ public class MainDrawer {
                         new PrimaryDrawerItem().withName("Logout").withIcon(GoogleMaterial.Icon.gmd_exit_to_app).withIdentifier(80).withSelectable(false)
                 )
                 .withSelectedItem(identifier)
-                .withOnDrawerItemClickListener(new com.mikepenz.materialdrawer.Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-
-
-
-
-                        return false;
-                    }
-                })
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> false)
                 .withShowDrawerOnFirstLaunch(true)
                 .build();
         result.closeDrawer();

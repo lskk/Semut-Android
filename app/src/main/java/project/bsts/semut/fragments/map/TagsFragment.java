@@ -55,20 +55,10 @@ public class TagsFragment extends Fragment implements View.OnClickListener {
         backButton = (ImageButton) v.findViewById(R.id.backButton);
         closeButton = (ImageButton) v.findViewById(R.id.closeButton);
 
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
-            }
-        });
+        closeButton.setOnClickListener(v1 -> getActivity().finish());
 
         if(backButton != null) {
-            backButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    back();
-                }
-            });
+            backButton.setOnClickListener(v12 -> back());
         }
 
         int[] ids = {R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4, R.id.btn5};
