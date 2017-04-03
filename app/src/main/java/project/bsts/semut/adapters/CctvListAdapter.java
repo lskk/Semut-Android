@@ -72,8 +72,8 @@ public class CctvListAdapter extends BaseAdapter {
         String urldisplay = cctvMaps.get(position).getUrlImage().replace("push-ios", "247");
         Picasso.with(mContext)
                 .load(urldisplay)
-                .placeholder(R.mipmap.its_logo)
-                .error(R.mipmap.its_logo)
+                .placeholder(R.mipmap.loading_image)
+                .error(R.mipmap.kamera_akses_error)
                 .into(mImagePreview);
 
 
