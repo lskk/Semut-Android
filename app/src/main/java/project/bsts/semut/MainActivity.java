@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         MainMenuObject object2 = new MainMenuObject();
         object2.setTitle("Street \nCamera");
-        object2.setClassIntent(SocialReportActivity.class);
+        object2.setClassIntent(CityCctvActivity.class);
         object2.setIcon(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_videocam, 34, R.color.primary_dark));
         arrObj.add(object2);
 

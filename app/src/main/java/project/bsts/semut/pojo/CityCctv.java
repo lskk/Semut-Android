@@ -1,7 +1,10 @@
 package project.bsts.semut.pojo;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import project.bsts.semut.pojo.mapview.CctvMap;
 
 public class CityCctv {
 
@@ -19,7 +22,7 @@ public class CityCctv {
     private Integer provinceID;
     @SerializedName("cctv")
     @Expose
-    private String cctv;
+    private List<CctvMap> cctv = null;
 
     public String getId() {
         return id;
@@ -53,11 +56,11 @@ public class CityCctv {
         this.provinceID = provinceID;
     }
 
-    public String getCctv() {
+    public List<CctvMap> getCctv() {
         return cctv;
     }
 
-    public void setCctv(String cctv) {
+    public void setCctv(List<CctvMap> cctv) {
         this.cctv = cctv;
     }
 

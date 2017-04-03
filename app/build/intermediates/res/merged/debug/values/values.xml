@@ -184,6 +184,7 @@
     <color name="cast_libraries_material_featurehighlight_outer_highlight_default_color">#2196F3</color>
     <color name="cast_libraries_material_featurehighlight_text_body_color">#FFFFFFFF</color>
     <color name="cast_libraries_material_featurehighlight_text_header_color">#FFFFFFFF</color>
+    <color name="cochineal_red">#9D2933</color>
     <color name="colorAccent">#26A65B</color>
     <color name="colorPrimary">#F2F1EF</color>
     <color name="colorPrimaryBold">#EEEEEE</color>

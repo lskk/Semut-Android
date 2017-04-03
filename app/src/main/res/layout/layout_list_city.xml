@@ -12,7 +12,7 @@
         app:cardMaxElevation="2dp"
         app:contentPadding="10dp"
         app:cardUseCompatPadding="true"
-        android:layout_marginBottom="@dimen/materialize_toolbar"
+        android:layout_marginBottom="2dp"
         android:padding="5dp"
         android:layout_height="wrap_content">
         <RelativeLayout

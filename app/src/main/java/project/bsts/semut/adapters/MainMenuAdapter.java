@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import project.bsts.semut.CityCctvActivity;
 import project.bsts.semut.R;
 import project.bsts.semut.SocialReportActivity;
 import project.bsts.semut.pojo.MainMenuObject;
@@ -67,6 +68,9 @@ public class MainMenuAdapter extends BaseAdapter {
             if(detailText.get(position).getClassIntent().toString()
                     .equals(SocialReportActivity.class.toString()))
                 mContext.startActivity(new Intent(mContext, SocialReportActivity.class));
+            else if(detailText.get(position).getClassIntent().toString()
+                    .equals(CityCctvActivity.class.toString()))
+                mContext.startActivity(new Intent(mContext, CityCctvActivity.class));
         });
 
         return convertView;

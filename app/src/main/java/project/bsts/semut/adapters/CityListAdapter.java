@@ -16,9 +16,10 @@ import com.mikepenz.iconics.IconicsDrawable;
 import java.util.ArrayList;
 
 import project.bsts.semut.R;
+import project.bsts.semut.pojo.CityCctv;
 
 public class CityListAdapter extends BaseAdapter {
-    private ArrayList<String> detailText = null;
+    private ArrayList<CityCctv> detailText = null;
     private Context mContext = null;
     private LayoutInflater mInflater = null;
 
@@ -27,7 +28,7 @@ public class CityListAdapter extends BaseAdapter {
 
 
 
-    public CityListAdapter(Context context, ArrayList<String> detailText) {
+    public CityListAdapter(Context context, ArrayList<CityCctv> detailText) {
         this.mContext = context;
         this.detailText = detailText;
         this.mInflater = (LayoutInflater)this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -62,10 +63,11 @@ public class CityListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        CityCctv cctv = detailText.get(position);
         convertView = mInflater.inflate(R.layout.layout_list_city, null);
         mTextViewCityName = (TextView)convertView.findViewById(R.id.city_name);
         mImageViewIcon = (ImageView) convertView.findViewById(R.id.city_icon);
-        mTextViewCityName.setText(detailText.get(position));
+        mTextViewCityName.setText(cctv.getName());
         mImageViewIcon.setImageDrawable(new IconicsDrawable(mContext)
                 .icon(GoogleMaterial.Icon.gmd_videocam)
                 .sizeDp(24)
