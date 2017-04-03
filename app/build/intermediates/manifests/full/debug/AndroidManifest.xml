@@ -110,6 +110,10 @@
             android:name="project.bsts.semut.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="project.bsts.semut.CityCctvActivity"
+            android:label="@string/title_activity_city_cctv"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
