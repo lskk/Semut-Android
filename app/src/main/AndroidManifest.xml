@@ -76,6 +76,10 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CityCctvActivity"
+            android:label="@string/title_activity_city_cctv"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

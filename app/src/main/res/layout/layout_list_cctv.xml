@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="2dp"
+        app:cardMaxElevation="2dp"
+        app:contentPadding="0dp"
+        app:cardUseCompatPadding="true"
+        android:layout_marginBottom="@dimen/materialize_toolbar"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:padding="0dp"
+            android:layout_width="match_parent"
+            android:layout_margin="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="140dp"
+                android:background="@color/black"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:id="@+id/cctv_preview"
+                />
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@id/cctv_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/filterOther"
+                android:text="Tanda Lainnya"
+                android:textStyle="bold"
+                android:textColor="@color/lynch"
+                android:id="@+id/city_name"
+                android:layout_centerVertical="true"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
