@@ -152,7 +152,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
 
         mqConsumer.setQueueName("");
         mqConsumer.setExchange(Constants.MQ_EXCHANGE_NAME_MULTIPLE_BROADCAST);
-        mqConsumer.setRoutingkey(Constants.MQ_ROUTES_BROADCAST_TRACKER_BUS);
+        mqConsumer.setRoutingkey(Constants.MQ_ROUTES_BROADCAST_TRACKER_ANGKOT);
         mqConsumer.subsribe();
         mqConsumer.setMessageListner(delivery -> {
             try {
@@ -272,7 +272,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         if(isConnected){
             isConnected = false;
             if(mProgressDialog.isShowing()) mProgressDialog.dismiss();
-            if(!isFirsInit)
+         //   if(!isFirsInit)
             try {
                 CommonAlerts.commonError(context, "Server tidak merespon atau koneksi internet Anda tidak stabil, coba beberapa saat lagi");
             }catch (IllegalStateException e){
@@ -283,7 +283,6 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
 
     @Override
     public void onMarkerSelected(int position) {
-        Log.i("Pos", String.valueOf(position));
         checkedState = position;
         animateToSelected();
         setListView();
@@ -292,38 +291,8 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
 
     }
 
-    public View getViewByPosition(int pos, ListView listView) {
-        final int firstListItemPosition = listView.getFirstVisiblePosition();
-        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
-        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
-            return listView.getAdapter().getView(pos, null, listView);
-        } else {
-            final int childIndex = pos - firstListItemPosition;
-            return listView.getChildAt(childIndex);
-        }
-    }
 
-    private void updateListView(){
-        for(int i = 0; i < trackers.length; i++){
-            updateItemAtPosition(i);
-        }
-    }
-
-    private void updateItemAtPosition(int position) {
-        int c = listView.getAdapter().getCount();
-        for (int i = 0; i < c; i++) {
-            //View view = listView.getChildAt(i);
-            View view = getViewByPosition(i, listView);
-            if ((int)view.getTag() == position) {
-                String detail = "Speed : "+trackers[position].getSpeed()+" KM/H | Tanggal : "
-                        +trackers[position].getDate()+" "+trackers[position].getTime();
-                ((TextView) view.findViewById(R.id.gps_name)).setText(trackers[position].getKeterangan());
-                ((TextView) view.findViewById(R.id.gps_location)).setText(trackers[position].getLokasi());
-                ((TextView) view.findViewById(R.id.gps_detail)).setText(detail);
-            }
-        }
-    }
 
     @Override
     public void onDestroy(){
