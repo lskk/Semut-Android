@@ -118,6 +118,14 @@
             android:name="project.bsts.semut.CctvListActivity"
             android:label="@string/title_activity_cctv_list"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="project.bsts.semut.TransportationListActivity"
+            android:label="@string/title_activity_transportation_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="project.bsts.semut.AngkotTrackerActivity"
+            android:label="@string/title_activity_angkot_tracker"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

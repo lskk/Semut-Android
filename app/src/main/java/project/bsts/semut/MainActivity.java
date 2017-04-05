@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         MainMenuObject object3 = new MainMenuObject();
         object3.setTitle("Public \nTransport");
-        object3.setClassIntent(SocialReportActivity.class);
+        object3.setClassIntent(TransportationListActivity.class);
         object3.setIcon(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_directions_bus, 34, R.color.primary_dark));
         arrObj.add(object3);
 

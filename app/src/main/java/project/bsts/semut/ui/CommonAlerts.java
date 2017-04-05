@@ -22,7 +22,7 @@ public class CommonAlerts {
                 .setBody(msg)
                 .setAutoHide(false)
                 .setPositiveButtonText("OK")
-                .setPositiveColor(R.color.primary)
+                .setPositiveColor(R.color.primary_dark)
                 .setOnPositiveClicked((view, dialog) -> {
                     ((Activity)context).finish();
                 })

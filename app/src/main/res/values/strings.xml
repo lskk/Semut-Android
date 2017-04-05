@@ -9,4 +9,6 @@
     <string name="bottom_arrow">&#129169;</string>
     <string name="title_activity_city_cctv">City</string>
     <string name="title_activity_cctv_list">CctvListActivity</string>
+    <string name="title_activity_transportation_list">Transportasi</string>
+    <string name="title_activity_angkot_tracker">Angkot Tracker</string>
 </resources>

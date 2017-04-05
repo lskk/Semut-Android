@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_angkot_tracker"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="project.bsts.semut.AngkotTrackerActivity"
+    tools:showIn="@layout/activity_angkot_tracker">
+    <org.osmdroid.views.MapView
+        android:id="@+id/maposm"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/sortLayout"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+        <TextView
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:text="Klik untuk fokus pada salah satu Tujuan"
+            android:id="@+id/help"
+            />
+        <ListView
+            android:layout_below="@id/help"
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@color/colorPrimaryDark"
+            android:dividerHeight="1dp"
+            android:background="#fff"
+            android:scrollbars="none" >
+        </ListView>
+    </RelativeLayout>
+
+</RelativeLayout>

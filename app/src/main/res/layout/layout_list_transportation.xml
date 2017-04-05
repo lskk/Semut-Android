@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="2dp"
+        app:cardMaxElevation="2dp"
+        app:contentPadding="10dp"
+        app:cardUseCompatPadding="true"
+        android:layout_marginBottom="2dp"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:padding="7dp"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_sort_by_size"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/transportation_icon"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/filterOther"
+                android:text="Tanda Lainnya"
+                android:textStyle="bold"
+                android:textColor="@color/lynch"
+                android:id="@+id/transportation_name"
+                android:layout_centerVertical="true"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_alignParentLeft="true"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

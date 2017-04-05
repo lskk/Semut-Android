@@ -84,6 +84,14 @@
         <activity
             android:name=".CctvListActivity"
             android:label="@string/title_activity_cctv_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TransportationListActivity"
+            android:label="@string/title_activity_transportation_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AngkotTrackerActivity"
+            android:label="@string/title_activity_angkot_tracker"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

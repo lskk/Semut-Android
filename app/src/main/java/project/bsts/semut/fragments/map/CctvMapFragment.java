@@ -8,28 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.ListView;
+import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.BoundingBox;
-import org.osmdroid.util.BoundingBoxE6;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
-import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.api.IGeoPoint;
 
 import java.util.ArrayList;
 
 import project.bsts.semut.R;
-import project.bsts.semut.adapters.CctvListAdapter;
-import project.bsts.semut.fragments.CctvListFragment;
 import project.bsts.semut.map.osm.MapUtilities;
 import project.bsts.semut.map.osm.MarkerClick;
 import project.bsts.semut.map.osm.OsmMarker;
 import project.bsts.semut.pojo.mapview.CctvMap;
+import project.bsts.semut.ui.AnimationView;
 
 public class CctvMapFragment extends Fragment implements Marker.OnMarkerClickListener {
 
@@ -40,6 +36,7 @@ public class CctvMapFragment extends Fragment implements Marker.OnMarkerClickLis
     private IMapController mapController;
     private MarkerClick markerClick;
     private RelativeLayout markerDetailLayout;
+    private Animation slideDown;
 
     public CctvMapFragment(){
 
@@ -57,14 +54,11 @@ public class CctvMapFragment extends Fragment implements Marker.OnMarkerClickLis
         View convertView = inflater.inflate(R.layout.fragment_cctv_map, container, false);
         mMapView = (MapView)convertView.findViewById(R.id.maposm);
         markerDetailLayout = (RelativeLayout)convertView.findViewById(R.id.markerdetail_layout);
-        markerDetailLayout.setOnClickListener(view -> {
-            if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
-        });
+
         markerClick = new MarkerClick(getActivity(), markerDetailLayout);
 
         mapUitilities = new MapUtilities(mMapView);
         osmMarker = new OsmMarker(mMapView);
-     //   mapController = mapUitilities.init();
         mMapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         mMapView.setMultiTouchControls(true);
         mapController = mMapView.getController();
@@ -84,9 +78,15 @@ public class CctvMapFragment extends Fragment implements Marker.OnMarkerClickLis
             }
         }
 
-        zoomToBounds(computeArea(geoPoints));
+        zoomToBounds(MapUtilities.computeArea(geoPoints));
 
+        slideDown = new AnimationView(getActivity()).getAnimation(R.anim.slide_down, anim -> {
+            if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
+        });
 
+        markerDetailLayout.setOnClickListener(view -> {
+            markerDetailLayout.startAnimation(slideDown);
+        });
         return convertView;
     }
 
@@ -112,21 +112,9 @@ public class CctvMapFragment extends Fragment implements Marker.OnMarkerClickLis
         }
     }
 
-    public BoundingBox computeArea(ArrayList<GeoPoint> points) {
-        double nord = 0, sud = 0, ovest = 0, est = 0;
-        for (int i = 0; i < points.size(); i++) {
-            if (points.get(i) == null) continue;
-            double lat = points.get(i).getLatitude();
-            double lon = points.get(i).getLongitude();
-            if ((i == 0) || (lat > nord)) nord = lat;
-            if ((i == 0) || (lat < sud)) sud = lat;
-            if ((i == 0) || (lon < ovest)) ovest = lon;
-            if ((i == 0) || (lon > est)) est = lon;
-        }
 
-        return new BoundingBox(nord, est, sud, ovest);
 
-    }
+
 
 
     @Override

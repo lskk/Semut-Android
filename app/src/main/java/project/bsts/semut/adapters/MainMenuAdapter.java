@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import project.bsts.semut.CityCctvActivity;
 import project.bsts.semut.R;
 import project.bsts.semut.SocialReportActivity;
+import project.bsts.semut.TransportationListActivity;
 import project.bsts.semut.pojo.MainMenuObject;
 
 public class MainMenuAdapter extends BaseAdapter {
@@ -71,6 +72,9 @@ public class MainMenuAdapter extends BaseAdapter {
             else if(detailText.get(position).getClassIntent().toString()
                     .equals(CityCctvActivity.class.toString()))
                 mContext.startActivity(new Intent(mContext, CityCctvActivity.class));
+            else if(detailText.get(position).getClassIntent().toString()
+                    .equals(TransportationListActivity.class.toString()))
+                mContext.startActivity(new Intent(mContext, TransportationListActivity.class));
         });
 
         return convertView;

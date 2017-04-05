@@ -256,10 +256,8 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     }
 
     private void hideLayouts(){
-        //markerDetailLayout.setVisibility(View.GONE);
         if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.startAnimation(slideDown);
         if(filterLayout.getVisibility() == View.VISIBLE)filterLayout.startAnimation(slideDown);
-       // filterLayout.setVisibility(View.GONE);
     }
 
 
