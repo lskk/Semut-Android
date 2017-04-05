@@ -16,6 +16,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/sortLayout"
+        android:background="@color/colorPrimaryDark"
         android:visibility="gone"
         android:layout_height="match_parent">
         <TextView
@@ -37,7 +38,9 @@
             android:divider="@color/colorPrimaryDark"
             android:dividerHeight="1dp"
             android:background="#fff"
-            android:scrollbars="none" >
+            android:scrollbars="none"
+            android:layout_marginBottom="?actionBarSize"
+            >
         </ListView>
     </RelativeLayout>
     <RelativeLayout

@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +45,7 @@ import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.ui.CommonAlerts;
+import project.bsts.semut.utilities.CustomDrawable;
 import project.bsts.semut.utilities.FragmentTransUtility;
 
 public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCallback, TrackerAdapter.MarkerPositionListener, Marker.OnMarkerClickListener {
@@ -77,6 +79,9 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     private MarkerClick markerClick;
     private Animation slideDown;
     private AnimationView animationView;
+    private final static int FAB_STATE_OPEN = 1;
+    private final static int FAB_STATE_CLOSE = 0;
+    private int fabState = FAB_STATE_CLOSE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,17 +102,26 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         mapset.setMultiTouchControls(true);
         mapController = mapset.getController();
         mapController.setZoom(25);
+        sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_filter, 24, R.color.primary_light));
         sortFab.setOnClickListener(view -> {
-            if(sortLayout.getVisibility() == View.GONE){
-                sortLayout.setVisibility(View.VISIBLE);
-            }else sortLayout.setVisibility(View.GONE);
+            if(markerDetailLayout.getVisibility() == View.VISIBLE) fabState = FAB_STATE_OPEN;
+            if(fabState == FAB_STATE_CLOSE){
+                if(sortLayout.getVisibility() == View.GONE) sortLayout.setVisibility(View.VISIBLE);
+                fabState = FAB_STATE_OPEN;
+                sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_close, 24, R.color.primary_light));
+            }else {
+                if(sortLayout.getVisibility() == View.VISIBLE) sortLayout.setVisibility(View.GONE);
+                if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.startAnimation(slideDown);
+                fabState = FAB_STATE_CLOSE;
+                sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_sort, 24, R.color.primary_light));
+            }
         });
 
         animationView = new AnimationView(context);
         slideDown = animationView.getAnimation(R.anim.slide_down, anim -> {
             if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
         });
-        markerDetailLayout.setOnClickListener(v-> markerDetailLayout.startAnimation(slideDown));
+       // markerDetailLayout.setOnClickListener(v-> markerDetailLayout.startAnimation(slideDown));
     }
 
 
@@ -252,6 +266,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         checkedState = position;
         animateToSelected();
         int c = listView.getChildCount();
+        Log.i(TAG, "SIZE CHECKERS "+c);
         for (int i = 0; i < c; i++) {
             View view = listView.getChildAt(i);
             boolean state = (i == checkedState);
@@ -289,6 +304,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     @Override
     public boolean onMarkerClick(Marker marker, MapView mapView) {
         markerClick.checkMarker(marker);
+        sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_close, 24, R.color.primary_light));
         return false;
     }
 
