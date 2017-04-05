@@ -83,7 +83,7 @@ public class TrackerAdapter extends BaseAdapter {
 
         view.setOnClickListener(view1 -> {
             listener.onMarkerSelected(i);
-        //    sortView.setVisibility(View.GONE);
+            sortView.setVisibility(View.GONE);
 
         });
 
@@ -94,7 +94,7 @@ public class TrackerAdapter extends BaseAdapter {
 
         stateRadio.setOnClickListener(view1 -> {
             listener.onMarkerSelected(i);
-        //    sortView.setVisibility(View.GONE);
+            sortView.setVisibility(View.GONE);
 
         });
 

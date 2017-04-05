@@ -18,7 +18,27 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:id="@+id/switch_track"
+                android:padding="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorSemiDarkPrimary"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ikuti : "
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/lynchLight"
+
+                android:layout_gravity="right"
+                />
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 

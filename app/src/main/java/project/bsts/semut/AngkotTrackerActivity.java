@@ -11,9 +11,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -63,6 +65,8 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     RelativeLayout markerDetailLayout;
 
 
+    private Switch mSwitchTrack;
+
     private Factory mqFactory;
     private Consumer mqConsumer;
     private final String TAG = this.getClass().getSimpleName();
@@ -73,7 +77,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     private Tracker[] trackers;
     private String[] trackerMacs;
     private Marker[] markers;
-    private boolean isFirsInit = true;
+    private boolean isFirsInit = true, isTracked = true;
     private TrackerAdapter adapter;
     private int checkedState = 0;
     private MarkerClick markerClick;
@@ -88,10 +92,15 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_angkot_tracker);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mSwitchTrack = (Switch)findViewById(R.id.switch_track);
         toolbar.setTitleTextColor(getResources().getColor(R.color.lynchLight));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+
+        mSwitchTrack.setChecked(true);
+        mSwitchTrack.setOnCheckedChangeListener((compoundButton, b) -> isTracked = b);
+
         context = this;
         mProgressDialog = new ProgressDialog(context);
         markerClick = new MarkerClick(context, markerDetailLayout);
@@ -102,26 +111,28 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         mapset.setMultiTouchControls(true);
         mapController = mapset.getController();
         mapController.setZoom(25);
-        sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_filter, 24, R.color.primary_light));
-        sortFab.setOnClickListener(view -> {
-            if(markerDetailLayout.getVisibility() == View.VISIBLE) fabState = FAB_STATE_OPEN;
-            if(fabState == FAB_STATE_CLOSE){
-                if(sortLayout.getVisibility() == View.GONE) sortLayout.setVisibility(View.VISIBLE);
-                fabState = FAB_STATE_OPEN;
-                sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_close, 24, R.color.primary_light));
-            }else {
-                if(sortLayout.getVisibility() == View.VISIBLE) sortLayout.setVisibility(View.GONE);
-                if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.startAnimation(slideDown);
-                fabState = FAB_STATE_CLOSE;
-                sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_sort, 24, R.color.primary_light));
-            }
-        });
+        sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_sort, 24, R.color.primary_light));
+        sortFab.setOnClickListener(view -> doFab());
 
         animationView = new AnimationView(context);
         slideDown = animationView.getAnimation(R.anim.slide_down, anim -> {
             if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
         });
        // markerDetailLayout.setOnClickListener(v-> markerDetailLayout.startAnimation(slideDown));
+    }
+
+    private void doFab(){
+        if(markerDetailLayout.getVisibility() == View.VISIBLE) fabState = FAB_STATE_OPEN;
+        if(fabState == FAB_STATE_CLOSE){
+            if(sortLayout.getVisibility() == View.GONE) sortLayout.setVisibility(View.VISIBLE);
+            fabState = FAB_STATE_OPEN;
+            sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_close, 24, R.color.primary_light));
+        }else {
+            if(sortLayout.getVisibility() == View.VISIBLE) sortLayout.setVisibility(View.GONE);
+            if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.startAnimation(slideDown);
+            fabState = FAB_STATE_CLOSE;
+            sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_sort, 24, R.color.primary_light));
+        }
     }
 
 
@@ -211,9 +222,9 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
                                 }
                             }
                         }
-                        //setListView();
-                        updateListView();
-                        animateToSelected();
+                        if(listView.getVisibility() == View.GONE) setListView();
+                        //updateListView();
+                        if(isTracked) animateToSelected();
 
                     }else {
                         // found new data
@@ -241,7 +252,12 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         if(isConnected){
             isConnected = false;
             if(mProgressDialog.isShowing()) mProgressDialog.dismiss();
-            CommonAlerts.commonError(context, "Server tidak merespon atau koneksi internet Anda tidak stabil, coba beberapa saat lagi");
+            try {
+                CommonAlerts.commonError(context, "Server tidak merespon atau koneksi internet Anda tidak stabil, coba beberapa saat lagi");
+            }catch (IllegalStateException e){
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -256,7 +272,12 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         if(isConnected){
             isConnected = false;
             if(mProgressDialog.isShowing()) mProgressDialog.dismiss();
-            CommonAlerts.commonError(context, "Server tidak merespon, coba beberapa saat lagi");
+            if(!isFirsInit)
+            try {
+                CommonAlerts.commonError(context, "Server tidak merespon atau koneksi internet Anda tidak stabil, coba beberapa saat lagi");
+            }catch (IllegalStateException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -265,14 +286,22 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
         Log.i("Pos", String.valueOf(position));
         checkedState = position;
         animateToSelected();
-        int c = listView.getChildCount();
-        Log.i(TAG, "SIZE CHECKERS "+c);
-        for (int i = 0; i < c; i++) {
-            View view = listView.getChildAt(i);
-            boolean state = (i == checkedState);
-            ((RadioButton) view.findViewById(R.id.state)).setChecked(state);
-        }
+        setListView();
+        doFab();
 
+
+    }
+
+    public View getViewByPosition(int pos, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+            return listView.getAdapter().getView(pos, null, listView);
+        } else {
+            final int childIndex = pos - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
     }
 
     private void updateListView(){
@@ -282,9 +311,10 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     }
 
     private void updateItemAtPosition(int position) {
-        int c = listView.getChildCount();
+        int c = listView.getAdapter().getCount();
         for (int i = 0; i < c; i++) {
-            View view = listView.getChildAt(i);
+            //View view = listView.getChildAt(i);
+            View view = getViewByPosition(i, listView);
             if ((int)view.getTag() == position) {
                 String detail = "Speed : "+trackers[position].getSpeed()+" KM/H | Tanggal : "
                         +trackers[position].getDate()+" "+trackers[position].getTime();
