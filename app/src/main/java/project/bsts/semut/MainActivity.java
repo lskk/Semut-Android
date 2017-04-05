@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         object3.setIcon(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_directions_bus, 34, R.color.primary_dark));
         arrObj.add(object3);
 
-        MainMenuObject object4 = new MainMenuObject();
+    /*    MainMenuObject object4 = new MainMenuObject();
         object4.setTitle("Profile\n");
         object4.setClassIntent(SocialReportActivity.class);
         object4.setIcon(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_account_circle, 34, R.color.primary_dark));
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         object8.setTitle("Settings\n");
         object8.setClassIntent(SocialReportActivity.class);
         object8.setIcon(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_settings, 34, R.color.primary_dark));
-        arrObj.add(object8);
+        arrObj.add(object8); */
 
         MainMenuAdapter mainMenuAdapter = new MainMenuAdapter(context,arrObj);
         gridView.setAdapter(mainMenuAdapter);

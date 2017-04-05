@@ -56,9 +56,9 @@ public class MapTrackerFragment extends Fragment {
                 .icon(GoogleMaterial.Icon.gmd_place));
 
         title = "Angkutan Umum";
-        subTitle = "Angkutan Perkotaan";
+        subTitle = "Tipe : "+tracker.getType();
         postDate = tracker.getDate()+" "+tracker.getTime();
-        speed = String.valueOf(tracker.getSpeed())+" KM/JH";
+        speed = String.valueOf(tracker.getSpeed())+" KM/H";
         contentDescription = tracker.getLokasi();
         detail = tracker.getKeterangan();
 

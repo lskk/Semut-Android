@@ -8,7 +8,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -35,13 +37,16 @@ import project.bsts.semut.connections.broker.Config;
 import project.bsts.semut.connections.broker.Consumer;
 import project.bsts.semut.connections.broker.Factory;
 import project.bsts.semut.map.MarkerBearing;
+import project.bsts.semut.map.osm.MarkerClick;
 import project.bsts.semut.map.osm.OSMarkerAnimation;
 import project.bsts.semut.pojo.RequestStatus;
 import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.setup.Constants;
+import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.ui.CommonAlerts;
+import project.bsts.semut.utilities.FragmentTransUtility;
 
-public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCallback, TrackerAdapter.MarkerPositionListener {
+public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCallback, TrackerAdapter.MarkerPositionListener, Marker.OnMarkerClickListener {
 
 
     @BindView(R.id.maposm)
@@ -52,6 +57,8 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     RelativeLayout sortLayout;
     @BindView(R.id.sort_fab)
     FloatingActionButton sortFab;
+    @BindView(R.id.markerdetail_layout)
+    RelativeLayout markerDetailLayout;
 
 
     private Factory mqFactory;
@@ -67,16 +74,22 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     private boolean isFirsInit = true;
     private TrackerAdapter adapter;
     private int checkedState = 0;
+    private MarkerClick markerClick;
+    private Animation slideDown;
+    private AnimationView animationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_angkot_tracker);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.lynchLight));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         context = this;
         mProgressDialog = new ProgressDialog(context);
+        markerClick = new MarkerClick(context, markerDetailLayout);
         mProgressDialog.setMessage("Memuat...");
         mProgressDialog.show();
         connectToRabbit();
@@ -89,6 +102,12 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
                 sortLayout.setVisibility(View.VISIBLE);
             }else sortLayout.setVisibility(View.GONE);
         });
+
+        animationView = new AnimationView(context);
+        slideDown = animationView.getAnimation(R.anim.slide_down, anim -> {
+            if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
+        });
+        markerDetailLayout.setOnClickListener(v-> markerDetailLayout.startAnimation(slideDown));
     }
 
 
@@ -150,9 +169,8 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
                         markers[i].setPosition(new GeoPoint(trackers[i].getData().get(0), trackers[i].getData().get(1)));
                         markers[i].setImage(getResources().getDrawable(R.drawable.ic_audiotrack));
                         markers[i].setIcon(getResources().getDrawable(R.drawable.ic_audiotrack));
-                        String info = trackers[i].getLokasi() + "\n" + trackers[i].getKeterangan() + "\nLokasi Tanggal : " + trackers[i].getDate() + "\nKecepatan : " + trackers[i].getSpeed() + " KM/H";
-                        markers[i].setTitle(info);
                         markers[i].setRelatedObject(trackers[i]);
+                        markers[i].setOnMarkerClickListener(this);
                         mapset.getOverlays().add(markers[i]);
                     }
                     setListView();
@@ -168,8 +186,6 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
                                         markers[i].getPosition().getLongitude() != trackers[i].getData().get(1)) {
                                     double bearing = MarkerBearing.bearing(markers[i].getPosition().getLatitude(), markers[i].getPosition().getLongitude(),
                                             trackers[i].getData().get(0), trackers[i].getData().get(1));
-                                    String info = trackers[i].getLokasi()+"\n"+trackers[i].getKeterangan()+"\nLokasi Tanggal : "+trackers[i].getDate()+"\nKecepatan : "+trackers[i].getSpeed()+" KM/H";
-                                    markers[i].setTitle(info);
                                     markers[i].setRelatedObject(trackers[i]);
                                     markers[i].setRotation((float) bearing);
 
@@ -187,10 +203,12 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
 
                     }else {
                         // found new data
+                        isFirsInit = true;
                     }
                 }
             }else {
                 // success == false
+                CommonAlerts.commonError(context, "Terjadi kesalahan pada server, silahkan coba beberapa saat lagi");
             }
 
         } catch (JSONException e) {
@@ -266,5 +284,21 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     public void onDestroy(){
         super.onDestroy();
         mqConsumer.stop();
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker, MapView mapView) {
+        markerClick.checkMarker(marker);
+        return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
