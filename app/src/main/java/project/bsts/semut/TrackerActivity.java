@@ -2,21 +2,19 @@ package project.bsts.semut;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
-import android.widget.CompoundButton;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -42,15 +40,13 @@ import project.bsts.semut.connections.broker.Factory;
 import project.bsts.semut.map.MarkerBearing;
 import project.bsts.semut.map.osm.MarkerClick;
 import project.bsts.semut.map.osm.OSMarkerAnimation;
-import project.bsts.semut.pojo.RequestStatus;
 import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.ui.CommonAlerts;
 import project.bsts.semut.utilities.CustomDrawable;
-import project.bsts.semut.utilities.FragmentTransUtility;
 
-public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCallback, TrackerAdapter.MarkerPositionListener, Marker.OnMarkerClickListener {
+public class TrackerActivity extends AppCompatActivity implements BrokerCallback, TrackerAdapter.MarkerPositionListener, Marker.OnMarkerClickListener {
 
 
     @BindView(R.id.maposm)
@@ -86,17 +82,31 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
     private final static int FAB_STATE_OPEN = 1;
     private final static int FAB_STATE_CLOSE = 0;
     private int fabState = FAB_STATE_CLOSE;
+    private Intent intent;
+    private Drawable mMarkerDrawable;
+    private String ROUTING_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_angkot_tracker);
+        setContentView(R.layout.activity_tracker);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mSwitchTrack = (Switch)findViewById(R.id.switch_track);
         toolbar.setTitleTextColor(getResources().getColor(R.color.lynchLight));
+        intent = getIntent();
+        ROUTING_KEY = intent.getStringExtra(Constants.INTENT_TRACKER_TYPE);
+        if(ROUTING_KEY.equals(Constants.MQ_ROUTES_BROADCAST_TRACKER_ANGKOT)) {
+            toolbar.setTitle("Angkot");
+            mMarkerDrawable = getResources().getDrawable(R.drawable.tracker_angkot);
+        } else {
+            toolbar.setTitle("Bus");
+            mMarkerDrawable = getResources().getDrawable(R.drawable.tracker_bus);
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+
+
 
         mSwitchTrack.setChecked(true);
         mSwitchTrack.setOnCheckedChangeListener((compoundButton, b) -> isTracked = b);
@@ -152,7 +162,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
 
         mqConsumer.setQueueName("");
         mqConsumer.setExchange(Constants.MQ_EXCHANGE_NAME_MULTIPLE_BROADCAST);
-        mqConsumer.setRoutingkey(Constants.MQ_ROUTES_BROADCAST_TRACKER_ANGKOT);
+        mqConsumer.setRoutingkey(ROUTING_KEY);
         mqConsumer.subsribe();
         mqConsumer.setMessageListner(delivery -> {
             try {
@@ -192,7 +202,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
                         trackerMacs[i] = trackers[i].getMac();
                         markers[i] = new Marker(mapset);
                         markers[i].setPosition(new GeoPoint(trackers[i].getData().get(0), trackers[i].getData().get(1)));
-                        markers[i].setIcon(getResources().getDrawable(R.drawable.tracker_angkot));
+                        markers[i].setIcon(mMarkerDrawable);
                         markers[i].setRelatedObject(trackers[i]);
                         markers[i].setOnMarkerClickListener(this);
                         mapset.getOverlays().add(markers[i]);

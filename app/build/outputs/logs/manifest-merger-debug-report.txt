@@ -289,14 +289,14 @@ ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:91:13-56
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:89:13-55
-activity#project.bsts.semut.AngkotTrackerActivity
+activity#project.bsts.semut.TrackerActivity
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:92:9-95:68
 	android:label
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:94:13-66
 	android:theme
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:95:13-56
 	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:93:13-50
+		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:93:13-44
 uses-sdk
 INJECTED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:multidex:1.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/AndroidManifest.xml:18:5-42

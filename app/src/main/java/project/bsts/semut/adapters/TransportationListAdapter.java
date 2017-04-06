@@ -14,9 +14,9 @@ import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 import java.util.ArrayList;
 
-import project.bsts.semut.AngkotTrackerActivity;
-import project.bsts.semut.CctvListActivity;
+import project.bsts.semut.TrackerActivity;
 import project.bsts.semut.R;
+import project.bsts.semut.setup.Constants;
 
 
 public class TransportationListAdapter extends BaseAdapter {
@@ -73,7 +73,9 @@ public class TransportationListAdapter extends BaseAdapter {
                 .sizeDp(24)
                 .color(mContext.getResources().getColor(R.color.primary_dark)));
 
-        Intent intent = new Intent(mContext, AngkotTrackerActivity.class);
+        Intent intent = new Intent(mContext, TrackerActivity.class);
+        if(transportList.get(position).toLowerCase().equals("angkot")) intent.putExtra(Constants.INTENT_TRACKER_TYPE, Constants.MQ_ROUTES_BROADCAST_TRACKER_ANGKOT);
+        else intent.putExtra(Constants.INTENT_TRACKER_TYPE, Constants.MQ_ROUTES_BROADCAST_TRACKER_BUS);
 
         convertView.setOnClickListener(view -> {
             mContext.startActivity(intent);

@@ -2,6 +2,8 @@ package project.bsts.semut.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +12,13 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import project.bsts.semut.R;
 import project.bsts.semut.pojo.mapview.Tracker;
+import project.bsts.semut.utilities.CompareDate;
 
 public class TrackerAdapter extends BaseAdapter {
 
@@ -60,7 +67,7 @@ public class TrackerAdapter extends BaseAdapter {
         return i;
     }
 
-    @SuppressLint({"ViewHolder", "InflateParams"})
+    @SuppressLint({"ViewHolder", "InflateParams", "SimpleDateFormat"})
     @Override
     public View getView(final int i, View view, final ViewGroup viewGroup) {
 
@@ -73,12 +80,20 @@ public class TrackerAdapter extends BaseAdapter {
         gpsLocText = (TextView)view.findViewById(R.id.gps_location);
         gpsDetail = (TextView)view.findViewById(R.id.gps_detail);
 
-        boolean state = (i == checkedState) ? true : false;
+        boolean state = (i == checkedState);
         String detail = "Speed : "+trackers[i].getSpeed()+" KM/H | Tanggal : "+trackers[i].getDate()+" "+trackers[i].getTime();
+
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis() - 3600 * 10);
+        String dateNow = df.format(date);
+        String dateToCompare = trackers[i].getDate()+" "+trackers[i].getTime();
+        boolean isExpired = CompareDate.compare(dateToCompare, dateNow);
+        if(isExpired) detail += " <br> <b><font color='red'>LOKASI TIDAK UPDATE</font></b>";
+        else detail += " <br> <b><font color='blue'>LOKASI UPDATE</font></b>";
 
         gpsNameText.setText(trackers[i].getKeterangan());
         gpsLocText.setText(trackers[i].getLokasi());
-        gpsDetail.setText(detail);
+        gpsDetail.setText(Html.fromHtml(detail), TextView.BufferType.SPANNABLE);
         stateRadio.setChecked(state);
 
         view.setOnClickListener(view1 -> {
@@ -101,4 +116,7 @@ public class TrackerAdapter extends BaseAdapter {
         view.setTag(i);
         return view;
     }
+
+
+
 }

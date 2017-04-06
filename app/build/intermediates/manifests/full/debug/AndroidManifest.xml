@@ -123,7 +123,7 @@
             android:label="@string/title_activity_transportation_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="project.bsts.semut.AngkotTrackerActivity"
+            android:name="project.bsts.semut.TrackerActivity"
             android:label="@string/title_activity_angkot_tracker"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
