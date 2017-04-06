@@ -67,6 +67,10 @@
             android:name=".services.LocationService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name=".services.GetLocation"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name=".SocialReportActivity"

@@ -1,5 +1,6 @@
 package project.bsts.semut;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,6 +38,7 @@ import project.bsts.semut.map.osm.MapUtilities;
 import project.bsts.semut.map.osm.MarkerClick;
 import project.bsts.semut.map.osm.OsmMarker;
 import project.bsts.semut.pojo.mapview.MyLocation;
+import project.bsts.semut.services.GetLocation;
 import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
@@ -78,6 +80,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private OsmMarker osmMarker;
     private Marker markerMyLocation;
     private MyLocation myLocationObject;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onDestroy(){
@@ -102,11 +105,15 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
 
         context = this;
         mapUitilities = new MapUtilities(mapset);
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Memuat...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         osmMarker = new OsmMarker(mapset);
         broadcastManager = new BroadcastManager(context);
         preferenceManager = new PreferenceManager(context);
         broadcastManager.subscribeToUi(this);
-        locService = new Intent(context, LocationService.class);
+        locService = new Intent(context, GetLocation.class);
         permissionHelper = new PermissionHelper(context);
         animationView = new AnimationView(context);
         filterBtn.setOnClickListener(this);
@@ -160,9 +167,19 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 myLocationObject = new Gson().fromJson(msg, MyLocation.class);
                 if(!mapUitilities.isReady()) {
                     mapController = mapUitilities.init();
+                    progressDialog.dismiss();
                     markerMyLocation = osmMarker.add(myLocationObject);
+                    double lat = myLocationObject.getMyLatitude();
+                    double lon = myLocationObject.getMyLongitude();
+                    preferenceManager.save((float)lat, Constants.ENTITY_LATITUDE);
+                    preferenceManager.save((float)lon, Constants.ENTITY_LONGITUDE);
+                    preferenceManager.apply();
                 }else {
-
+                    double lat = myLocationObject.getMyLatitude();
+                    double lon = myLocationObject.getMyLongitude();
+                    preferenceManager.save((float)lat, Constants.ENTITY_LATITUDE);
+                    preferenceManager.save((float)lon, Constants.ENTITY_LONGITUDE);
+                    preferenceManager.apply();
                     markerMyLocation.setPosition(new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude()));
                     mapset.invalidate();
                 }
@@ -267,6 +284,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         if (id == android.R.id.home) {
             finish();
         }
+
 
         return super.onOptionsItemSelected(item);
     }

@@ -102,6 +102,10 @@
             android:name="project.bsts.semut.services.LocationService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name="project.bsts.semut.services.GetLocation"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name="project.bsts.semut.SocialReportActivity"

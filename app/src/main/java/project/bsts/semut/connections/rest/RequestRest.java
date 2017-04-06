@@ -118,7 +118,7 @@ public class RequestRest extends ConnectionHandler {
         }, mClient);
     }
 
-    public void insertPost(int id, int subID, String dateExp, String desc){
+    public void insertPost(int id, int subID, String desc){
         Session session = new Gson().fromJson(preferenceManager.getString(Constants.PREF_SESSION_ID), Session.class);
         String[] types = TagsType.get(id, subID);
         RequestParams params = new RequestParams();
@@ -131,7 +131,7 @@ public class RequestRest extends ConnectionHandler {
         params.put("Description", desc);
         params.put("Latitude", preferenceManager.getDouble(Constants.ENTITY_LATITUDE, 0));
         params.put("Longitude", preferenceManager.getDouble(Constants.ENTITY_LONGITUDE, 0));
-        params.put("Expire", dateExp);
+        params.put("Expire", GetCurrentDate.tomorrow(GetCurrentDate.now(), 1));
         Log.i(TAG, params.toString());
         post(Constants.REST_INSERT_POST, params, new JsonHttpResponseHandler() {
             @Override

@@ -1,6 +1,8 @@
 package project.bsts.semut.map.osm;
 
 
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
@@ -16,6 +18,7 @@ import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
 import project.bsts.semut.pojo.mapview.UserMap;
+import project.bsts.semut.utilities.CustomDrawable;
 
 public class OsmMarker {
 
@@ -94,7 +97,7 @@ public class OsmMarker {
             GeoPoint point = new GeoPoint(((MyLocation) objectMap).getMyLatitude(), ((MyLocation) objectMap).getMyLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
-        //    marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.other_icon));
+            marker.setIcon(CustomDrawable.create(mapView.getContext(), GoogleMaterial.Icon.gmd_radio_button_checked, 24, R.color.primary_dark));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }

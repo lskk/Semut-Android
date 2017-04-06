@@ -1,6 +1,7 @@
 package project.bsts.semut.fragments.map;
 
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.Editable;
@@ -14,17 +15,23 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.jzxiang.pickerview.TimePickerDialog;
-import com.jzxiang.pickerview.data.Type;
-import com.jzxiang.pickerview.listener.OnDateSetListener;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
 import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import project.bsts.semut.R;
+import project.bsts.semut.connections.rest.IConnectionResponseHandler;
+import project.bsts.semut.connections.rest.RequestRest;
+import project.bsts.semut.pojo.RequestStatus;
+import project.bsts.semut.setup.Constants;
+import project.bsts.semut.ui.CommonAlerts;
 
 
-public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSetListener {
+public class SubmitTagFragment extends Fragment implements TextWatcher, IConnectionResponseHandler{
     private TextView titleText;
     private TextView dateText;
     private TextView counterText;
@@ -37,6 +44,7 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSe
     private int postID;
     private int subPostID;
     Date currentDate;
+    private ProgressDialog dialog;
 
 
 
@@ -53,6 +61,10 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSe
         thumb = (ImageView)view.findViewById(R.id.thumb);
         submitButton = (Button)view.findViewById(R.id.submitButton);
 
+        dialog = new ProgressDialog(getActivity(), R.style.MaterialBaseTheme_Light_AlertDialog);
+        dialog.setMessage("Memuat...");
+        dialog.setCancelable(false);
+
         currentDate = Calendar.getInstance().getTime();
         java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("EEEE, dd MMWW yyyy HH:mm:ss");
         String formattedCurrentDate = format.format(currentDate);
@@ -66,33 +78,11 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSe
         closeButton = (ImageButton) view.findViewById(R.id.closeButton);
 
 
-        long tenYears = 10L * 365 * 1000 * 60 * 60 * 24L;
-        TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
-                .setCallBack(this)
-                .setCancelStringId("Cancel")
-                .setSureStringId("Sure")
-                .setTitleStringId("TimePicker")
-                .setYearText("Year")
-                .setMonthText("Month")
-                .setDayText("Day")
-                .setHourText("Hour")
-                .setMinuteText("Minute")
-                .setCyclic(false)
-                .setMinMillseconds(System.currentTimeMillis())
-                .setMaxMillseconds(System.currentTimeMillis() + tenYears)
-                .setCurrentMillseconds(System.currentTimeMillis())
-                .setThemeColor(getResources().getColor(R.color.timepicker_dialog_bg))
-                .setType(Type.ALL)
-                .setWheelItemTextNormalColor(getResources().getColor(R.color.timetimepicker_default_text_color))
-                .setWheelItemTextSelectorColor(getResources().getColor(R.color.timepicker_toolbar_bg))
-                .setWheelItemTextSize(12)
-                .build();
-
 
         closeButton.setOnClickListener(v -> getActivity().finish());
         backButton.setOnClickListener(v -> back());
         submitButton.setOnClickListener(v -> {
-            submit();;
+            submit();
         });
 
         return view;
@@ -143,11 +133,13 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSe
     }
 
     private void submit() {
+        if(remarks.getText().toString().equals("")) Toast.makeText(getActivity(), "Anda belum mengisi keterangan", Toast.LENGTH_LONG).show();
+        else {
+            dialog.show();
+            RequestRest requestRest = new RequestRest(getActivity(), this);
+            requestRest.insertPost(getPostID(), getSubPostID(), remarks.getText().toString());
+        }
 
-
-
-
-        getActivity().finish();
     }
 
     // setter dan getter
@@ -184,7 +176,20 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, OnDateSe
     }
 
     @Override
-    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        Log.i("shit", String.valueOf(millseconds));
+    public void onSuccessRequest(String pResult, String type) {
+        dialog.dismiss();
+        switch (type){
+            case Constants.REST_INSERT_POST:
+                RequestStatus requestStatus = new Gson().fromJson(pResult, RequestStatus.class);
+                if(requestStatus.getSuccess()) {
+                    Toast.makeText(getActivity(), "Berhasil mengirimkan laporan", Toast.LENGTH_LONG).show();
+                    getActivity().finish();
+                }
+                else CommonAlerts.commonError(getActivity(), requestStatus.getMessage());
+                break;
+            case Constants.REST_ERROR:
+                CommonAlerts.commonError(getActivity(), Constants.MESSAGE_HTTP_ERROR);
+                break;
+        }
     }
 }
