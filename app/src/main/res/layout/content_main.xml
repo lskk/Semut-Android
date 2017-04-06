@@ -25,7 +25,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="INTELLIGENT \nTRANSPORTATION\nSYSTEM"
+            android:text="BANDAR LAMPUNG\nINTELLIGENT \nTRANSPORTATION\nSYSTEM"
             />
     </LinearLayout>
     <TextView

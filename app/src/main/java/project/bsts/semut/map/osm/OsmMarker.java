@@ -31,6 +31,7 @@ public class OsmMarker {
             GeoPoint point = new GeoPoint(((UserMap) objectMap).getLastLocation().getLatitude(), ((UserMap) objectMap).getLastLocation().getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.user_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }else if(objectMap instanceof CctvMap){

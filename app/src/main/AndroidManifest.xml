@@ -75,28 +75,34 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CityCctvActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_city_cctv"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CctvListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_cctv_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TransportationListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_transportation_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TrackerActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_angkot_tracker"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SignupActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_signup"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

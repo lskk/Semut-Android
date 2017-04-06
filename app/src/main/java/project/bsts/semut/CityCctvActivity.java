@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
@@ -46,6 +47,7 @@ public class CityCctvActivity extends AppCompatActivity implements IConnectionRe
         setContentView(R.layout.activity_city_cctv);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         context = this;
         mProgressDialog = new ProgressDialog(context);
@@ -99,5 +101,15 @@ public class CityCctvActivity extends AppCompatActivity implements IConnectionRe
                 CommonAlerts.commonError(context, Constants.MESSAGE_HTTP_ERROR);
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

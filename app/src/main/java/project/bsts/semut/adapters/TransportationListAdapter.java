@@ -69,7 +69,7 @@ public class TransportationListAdapter extends BaseAdapter {
         mImageViewIcon = (ImageView) convertView.findViewById(R.id.transportation_icon);
         mTextViewCityName.setText(transportList.get(position));
         mImageViewIcon.setImageDrawable(new IconicsDrawable(mContext)
-                .icon(GoogleMaterial.Icon.gmd_videocam)
+                .icon(GoogleMaterial.Icon.gmd_directions_bus)
                 .sizeDp(24)
                 .color(mContext.getResources().getColor(R.color.primary_dark)));
 

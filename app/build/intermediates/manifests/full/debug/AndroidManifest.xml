@@ -111,26 +111,32 @@
         <activity
             android:name="project.bsts.semut.MainActivity"
             android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="project.bsts.semut.CityCctvActivity"
             android:label="@string/title_activity_city_cctv"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="project.bsts.semut.CctvListActivity"
             android:label="@string/title_activity_cctv_list"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="project.bsts.semut.TransportationListActivity"
             android:label="@string/title_activity_transportation_list"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="project.bsts.semut.TrackerActivity"
             android:label="@string/title_activity_angkot_tracker"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="project.bsts.semut.SignupActivity"
             android:label="@string/title_activity_signup"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
