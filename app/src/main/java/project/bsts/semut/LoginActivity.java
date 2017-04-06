@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
             }else doLogin(emailEditText.getText().toString(), passEditText.getText().toString());
         });
 
+        signupBtn.setOnClickListener(v -> startActivity(new Intent(context, SignupActivity.class)));
         mLoginTypeGroup.setOnClickedButtonPosition(position -> {
             loginType = position;
             if(loginType == 0){

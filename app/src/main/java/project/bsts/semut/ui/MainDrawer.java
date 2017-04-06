@@ -8,6 +8,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -20,6 +21,8 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import project.bsts.semut.R;
+import project.bsts.semut.helper.PreferenceManager;
+import project.bsts.semut.setup.Constants;
 
 
 /**
@@ -32,11 +35,13 @@ public class MainDrawer {
     private int identifier;
     private com.mikepenz.materialdrawer.Drawer result;
     private SecondaryDrawerItem bantuanItem;
+    private PreferenceManager preferenceManager;
 
     public MainDrawer(Context _context, Toolbar _toolbar, int _identifier){
         context = _context;
         toolbar = _toolbar;
         identifier = _identifier;
+        preferenceManager = new PreferenceManager(context);
     }
 
     public void hideDrawer(){
@@ -115,7 +120,18 @@ public class MainDrawer {
                         new PrimaryDrawerItem().withName("Logout").withIcon(GoogleMaterial.Icon.gmd_exit_to_app).withIdentifier(80).withSelectable(false)
                 )
                 .withSelectedItem(identifier)
-                .withOnDrawerItemClickListener((view, position, drawerItem) -> false)
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
+
+                    switch ((int) drawerItem.getIdentifier()){
+                        case 80:
+                            preferenceManager.save(false, Constants.IS_LOGGED_IN);
+                            preferenceManager.apply();
+                            Toast.makeText(context, "Signout berhasil", Toast.LENGTH_LONG).show();
+                            ((Activity)context).finish();
+                            break;
+                    }
+                    return false;
+                })
                 .withShowDrawerOnFirstLaunch(true)
                 .build();
         result.closeDrawer();

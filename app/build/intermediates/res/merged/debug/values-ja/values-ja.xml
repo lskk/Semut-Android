@@ -99,6 +99,18 @@
     <string msgid="2039274714455389140" name="debug_menu_title">"デバッグモードの選択"</string>
     <string msgid="1173358804935285568" name="debug_menu_troubleshooting">"困ったときに"</string>
     <string msgid="6099173376375995052" name="decline">"同意しない"</string>
+    <string name="mdtp_date_v1_monthyear">yyyy年M月</string>
+    <string msgid="3968620852217927702" name="mdtp_day_picker_description">"日グリッド（月別）"</string>
+    <string msgid="6908431551612331381" name="mdtp_deleted_key">"<ns1:g id="KEY">%1$s</ns1:g>を削除しました"</string>
+    <string msgid="7007948707597430919" name="mdtp_done_label">"完了"</string>
+    <string msgid="7586639618712934060" name="mdtp_hour_picker_description">"円形スライダー（時）"</string>
+    <string msgid="2674929164900463786" name="mdtp_item_is_selected">"<ns1:g id="ITEM">%1$s</ns1:g>を選択しました"</string>
+    <string msgid="6024811202872705251" name="mdtp_minute_picker_description">"円形スライダー（分）"</string>
+    <string msgid="3973338219107019769" name="mdtp_select_day">"月と日を選択"</string>
+    <string msgid="7651068754188418859" name="mdtp_select_hours">"時間を選択"</string>
+    <string msgid="8327182090226828481" name="mdtp_select_minutes">"分を選択"</string>
+    <string msgid="2603330600102539372" name="mdtp_select_year">"年を選択"</string>
+    <string msgid="6963340404644587098" name="mdtp_year_picker_description">"年リスト"</string>
     <string name="messenger_send_button_text">送信</string>
     <string msgid="3698378085901466129" name="mr_button_content_description">"キャストアイコン"</string>
     <string msgid="6349900579507521956" name="mr_chooser_searching">"端末を検索しています"</string>

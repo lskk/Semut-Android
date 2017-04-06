@@ -83,6 +83,18 @@
     <string msgid="2039274714455389140" name="debug_menu_title">"Chagua Hali ya Utatuzi"</string>
     <string msgid="1173358804935285568" name="debug_menu_troubleshooting">"Utatuzi"</string>
     <string msgid="6099173376375995052" name="decline">"Kataa"</string>
+    <string name="mdtp_date_v1_monthyear">MMMM yyyy</string>
+    <string msgid="3968620852217927702" name="mdtp_day_picker_description">"Gridi ya mwezi ya siku"</string>
+    <string msgid="6908431551612331381" name="mdtp_deleted_key">"<ns1:g id="KEY">%1$s</ns1:g> kimefutwa"</string>
+    <string msgid="7007948707597430919" name="mdtp_done_label">"Nimemaliza"</string>
+    <string msgid="7586639618712934060" name="mdtp_hour_picker_description">"Kitelezi cha mviringo cha saa"</string>
+    <string msgid="2674929164900463786" name="mdtp_item_is_selected">"<ns1:g id="ITEM">%1$s</ns1:g> kimechaguliwa"</string>
+    <string msgid="6024811202872705251" name="mdtp_minute_picker_description">"Kitelezi cha mviringo cha dakika"</string>
+    <string msgid="3973338219107019769" name="mdtp_select_day">"Chagua mwezi na siku"</string>
+    <string msgid="7651068754188418859" name="mdtp_select_hours">"Chagua saa"</string>
+    <string msgid="8327182090226828481" name="mdtp_select_minutes">"Chagua dakika"</string>
+    <string msgid="2603330600102539372" name="mdtp_select_year">"Chagua mwaka"</string>
+    <string msgid="6963340404644587098" name="mdtp_year_picker_description">"Orodha ya miaka"</string>
     <string msgid="3698378085901466129" name="mr_button_content_description">"Kitufe cha kutuma"</string>
     <string msgid="6349900579507521956" name="mr_chooser_searching">"Inatafuta vifaa"</string>
     <string msgid="414301941546135990" name="mr_chooser_title">"Tuma kwenye"</string>

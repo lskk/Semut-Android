@@ -10,6 +10,15 @@
     <dimen name="cast_expanded_controller_ad_layout_width">240dp</dimen>
     <dimen name="cast_expanded_controller_margin_between_seek_bar_and_control_buttons">8dp</dimen>
     <dimen name="cast_expanded_controller_margin_between_status_text_and_seek_bar">8dp</dimen>
+    <dimen name="mdtp_date_picker_component_width">220dp</dimen>
+    <dimen name="mdtp_date_picker_view_animator_height">220dp</dimen>
+    <dimen name="mdtp_dialog_height">200dip</dimen>
+    <dimen name="mdtp_left_side_width">240dip</dimen>
+    <dimen name="mdtp_picker_dimen">220dip</dimen>
+    <dimen name="mdtp_selected_date_day_size">100dp</dimen>
+    <dimen name="mdtp_selected_date_month_size">30dp</dimen>
+    <dimen name="mdtp_selected_date_year_size">30dp</dimen>
+    <dimen name="mdtp_time_picker_height">270dip</dimen>
     <dimen name="mr_controller_volume_group_list_item_height">61dp</dimen>
     <dimen name="mr_controller_volume_group_list_item_icon_size">18dp</dimen>
     <dimen name="mr_controller_volume_group_list_max_height">132dp</dimen>
