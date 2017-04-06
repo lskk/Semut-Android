@@ -39,9 +39,11 @@ public class RequestRest extends ConnectionHandler {
     }
 
 
-    public void login(String email, String pass){
+    public void login(String uniqueParam, String pass, int loginType){
         RequestParams params = new RequestParams();
-        params.put("Email", email);
+        if(loginType == 0) params.put("Email", uniqueParam);
+        else params.put("Phonenumber", uniqueParam);
+
         params.put("Password", pass);
         Log.i(TAG, params.toString());
         post(Constants.REST_USER_LOGIN, params, new JsonHttpResponseHandler() {

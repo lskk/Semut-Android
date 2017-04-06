@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -27,6 +29,8 @@ import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.ceryle.radiorealbutton.library.RadioRealButton;
+import co.ceryle.radiorealbutton.library.RadioRealButtonGroup;
 import project.bsts.semut.connections.rest.IConnectionResponseHandler;
 import project.bsts.semut.connections.rest.RequestRest;
 import project.bsts.semut.helper.PreferenceManager;
@@ -48,6 +52,14 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
     Button signupBtn;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.radio_group_login_type)
+    RadioRealButtonGroup mLoginTypeGroup;
+    @BindView(R.id.radio_email)
+    RadioRealButton mRadioEmail;
+    @BindView(R.id.radio_phone)
+    RadioRealButton mRadioPhone;
+    @BindView(R.id.textInputEmail)
+    TextInputLayout textInputLayout;
 
     CallbackManager callbackManager;
     LoginButton fbLoginBtn;
@@ -56,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
     private RequestRest rest;
     private String TAG = this.getClass().getSimpleName();
     PreferenceManager preferenceManager;
+    private int loginType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +90,19 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
         fbLoginBtn.registerCallback(callbackManager, this);
         loginBtn.setOnClickListener(view -> {
             if(emailEditText.getText().toString().equals("") || passEditText.getText().toString().equals("")){
-                Snackbar.make(loginBtn, "Email atau password tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(loginBtn, "Kolom tidak boleh kosong", Snackbar.LENGTH_LONG).show();
             }else doLogin(emailEditText.getText().toString(), passEditText.getText().toString());
+        });
+
+        mLoginTypeGroup.setOnClickedButtonPosition(position -> {
+            loginType = position;
+            if(loginType == 0){
+                textInputLayout.setHint("Email");
+                emailEditText.setText("");
+            }else {
+                textInputLayout.setHint("Nomor Telepon");
+                emailEditText.setText("");
+            }
         });
     }
 
@@ -91,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements FacebookCallback
 
     private void doLogin(String email, String password){
         rest = new RequestRest(context, this);
-        rest.login(email, password);
+        rest.login(email, password, loginType);
         loadingIndicator.show();
     }
 

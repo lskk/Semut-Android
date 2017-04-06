@@ -31,6 +31,7 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
         <com.facebook.login.widget.LoginButton
+            android:visibility="gone"
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="15dp"
@@ -53,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Atau masuk dengan menggunakan email "
+            android:text="Masuk menggunakan Nomor telepon atau email"
             />
         <LinearLayout
             android:orientation="vertical"
@@ -64,9 +65,46 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:background="@drawable/bg_rounded_white_dark"
             android:layout_height="wrap_content">
+            <co.ceryle.radiorealbutton.library.RadioRealButtonGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radio_group_login_type"
+                app:rrbg_bottomLineSize="0dp"
+                app:rrbg_dividerColor="@color/colorPrimaryDark"
+                app:rrbg_dividerSize="1dp"
+                app:rrbg_selectorColor="@color/colorAccent"
+                app:rrbg_selectorSize="3dp"
+                app:rrbg_radius="0dp"
+                app:rrbg_selectorTop="true"
+                app:rrbg_selectorBottom="true"
+                app:rrbg_shadow="false"
+                app:rrbg_shadowElevation="2dp"
+                app:rrbg_shadowMargin="3dp"
+                app:rrbg_animateTexts_enter="overshoot"
+                app:rrbg_animateImages_enter="overshoot">
+                <co.ceryle.radiorealbutton.library.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/radio_email"
+                    android:layout_height="wrap_content"
+                    app:rrb_backgroundColor="@color/colorPrimaryBold"
+                    app:rrb_ripple="true"
+                    app:rrb_rippleColor="@color/colorPrimaryDark"
+                    app:rrb_text="Email"
+                    app:rrb_textColor="@color/colorPrimaryDark"/>
+                <co.ceryle.radiorealbutton.library.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radio_phone"
+                    app:rrb_ripple="true"
+                    app:rrb_backgroundColor="@color/colorPrimaryBold"
+                    app:rrb_rippleColor="@color/colorPrimaryDark"
+                    app:rrb_text="Phone"
+                    app:rrb_textColor="@color/colorPrimaryDark"/>
+            </co.ceryle.radiorealbutton.library.RadioRealButtonGroup>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:paddingTop="3dp"
+                android:id="@+id/textInputEmail"
                 android:layout_height="wrap_content">
                 <EditText
                     android:layout_width="match_parent"
@@ -128,6 +166,7 @@
         app:gTouchCornerRadiusBL="6dp"
         app:gTouchCornerRadiusBR="6dp"
         app:gTouchDurationRate="0.7"
+        android:visibility="gone"
         />
     <include layout="@layout/foreground_loading" />
 </RelativeLayout>
