@@ -77,6 +77,47 @@ public class RequestRest extends ConnectionHandler {
     }
 
 
+    public void register(String uniqueParam, String pass, int gender, String name, String username, String birthday, int loginType){
+        RequestParams params = new RequestParams();
+        if(loginType == 0) params.put("Email", uniqueParam);
+        else params.put("Phonenumber", uniqueParam);
+
+        params.put("Password", pass);
+        params.put("Birthday", birthday);
+        params.put("Name", name);
+        params.put("Username", username);
+        params.put("Gender", gender);
+        Log.i(TAG, params.toString());
+        post(Constants.REST_USER_REGISTER, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.i(TAG, "Sending request");
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.i(TAG, "Success");
+                responseHandler.onSuccessRequest(response.toString(), Constants.REST_USER_REGISTER);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, e, errorResponse);
+                Log.e(TAG, "Failed");
+                responseHandler.onSuccessRequest(String.valueOf(statusCode), Constants.REST_ERROR);
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                Log.i(TAG, "Disconnected");
+            }
+
+        }, mClient);
+    }
+
     public void insertPost(int id, int subID, String dateExp, String desc){
         Session session = new Gson().fromJson(preferenceManager.getString(Constants.PREF_SESSION_ID), Session.class);
         String[] types = TagsType.get(id, subID);
