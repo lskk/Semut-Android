@@ -192,8 +192,7 @@ public class AngkotTrackerActivity extends AppCompatActivity implements BrokerCa
                         trackerMacs[i] = trackers[i].getMac();
                         markers[i] = new Marker(mapset);
                         markers[i].setPosition(new GeoPoint(trackers[i].getData().get(0), trackers[i].getData().get(1)));
-                        markers[i].setImage(getResources().getDrawable(R.drawable.ic_audiotrack));
-                        markers[i].setIcon(getResources().getDrawable(R.drawable.ic_audiotrack));
+                        markers[i].setIcon(getResources().getDrawable(R.drawable.tracker_angkot));
                         markers[i].setRelatedObject(trackers[i]);
                         markers[i].setOnMarkerClickListener(this);
                         mapset.getOverlays().add(markers[i]);
