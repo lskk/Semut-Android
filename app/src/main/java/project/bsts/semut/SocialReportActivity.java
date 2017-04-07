@@ -45,6 +45,7 @@ import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.CustomDrawable;
 import project.bsts.semut.utilities.FragmentTransUtility;
+import project.bsts.semut.utilities.NumUtils;
 
 public class SocialReportActivity extends AppCompatActivity implements BroadcastManager.UIBroadcastListener,
         Marker.OnMarkerClickListener,View.OnClickListener {
@@ -169,14 +170,14 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                     mapController = mapUitilities.init();
                     progressDialog.dismiss();
                     markerMyLocation = osmMarker.add(myLocationObject);
-                    double lat = myLocationObject.getMyLatitude();
-                    double lon = myLocationObject.getMyLongitude();
+                    double lat = NumUtils.round(myLocationObject.getMyLatitude(), 7);
+                    double lon = NumUtils.round(myLocationObject.getMyLongitude(), 7);
                     preferenceManager.save((float)lat, Constants.ENTITY_LATITUDE);
                     preferenceManager.save((float)lon, Constants.ENTITY_LONGITUDE);
                     preferenceManager.apply();
                 }else {
-                    double lat = myLocationObject.getMyLatitude();
-                    double lon = myLocationObject.getMyLongitude();
+                    double lat = NumUtils.round(myLocationObject.getMyLatitude(), 7);
+                    double lon = NumUtils.round(myLocationObject.getMyLongitude(), 7);
                     preferenceManager.save((float)lat, Constants.ENTITY_LATITUDE);
                     preferenceManager.save((float)lon, Constants.ENTITY_LONGITUDE);
                     preferenceManager.apply();

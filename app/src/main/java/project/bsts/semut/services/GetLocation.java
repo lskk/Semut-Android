@@ -35,6 +35,7 @@ import project.bsts.semut.setup.Constants;
 import project.bsts.semut.utilities.GetCurrentDate;
 import project.bsts.semut.utilities.LocationUtilities;
 import project.bsts.semut.utilities.MapItem;
+import project.bsts.semut.utilities.NumUtils;
 import project.bsts.semut.utilities.ScheduleTask;
 
 
@@ -153,7 +154,7 @@ public class GetLocation extends Service implements BrokerCallback {
                 .type(Constants.MQ_INCOMING_TYPE_MAPVIEW)
                 .build();
         mqProducer.setRoutingkey(Constants.ROUTING_KEY_UPDATE_LOCATION);
-        String message = JSONRequest.storeLocation(session.getSessionID(), altService, latService, lngService, spdService,
+        String message = JSONRequest.storeLocation(session.getSessionID(), altService, NumUtils.round(latService, 7), NumUtils.round(lngService,7), spdService,
                 GetCurrentDate.now(), preferenceManager.getInt(Constants.MAP_RADIUS, 3) * 1000,
                 preferenceManager.getInt(Constants.MAP_LIMIT, 6), MapItem.get(getApplicationContext()), preferenceManager.getInt(Constants.IS_ONLINE, 0));
         Log.i(TAG, message);

@@ -182,7 +182,7 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, IConnect
             case Constants.REST_INSERT_POST:
                 RequestStatus requestStatus = new Gson().fromJson(pResult, RequestStatus.class);
                 if(requestStatus.getSuccess()) {
-                    Toast.makeText(getActivity(), "Berhasil mengirimkan laporan", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Berhasil mengirimkan laporan. Laporan Anda akan tampil dalam beberapa menit", Toast.LENGTH_LONG).show();
                     getActivity().finish();
                 }
                 else CommonAlerts.commonError(getActivity(), requestStatus.getMessage());

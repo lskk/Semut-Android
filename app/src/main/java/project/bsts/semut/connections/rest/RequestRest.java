@@ -130,8 +130,8 @@ public class RequestRest extends ConnectionHandler {
         params.put("SubType", types[1]);
         params.put("Date", GetCurrentDate.now());
         params.put("Description", desc);
-        params.put("Latitude", preferenceManager.getDouble(Constants.ENTITY_LATITUDE, 0));
-        params.put("Longitude", preferenceManager.getDouble(Constants.ENTITY_LONGITUDE, 0));
+        params.put("Latitude", preferenceManager.getFloat(Constants.ENTITY_LATITUDE, 0));
+        params.put("Longitude", preferenceManager.getFloat(Constants.ENTITY_LONGITUDE, 0));
         params.put("Expire", GetCurrentDate.tomorrow(GetCurrentDate.now(), 1));
         Log.i(TAG, params.toString());
         post(Constants.REST_INSERT_POST, params, new JsonHttpResponseHandler() {
