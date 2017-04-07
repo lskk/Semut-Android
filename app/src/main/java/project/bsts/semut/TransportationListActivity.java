@@ -31,7 +31,7 @@ public class TransportationListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         arrayList = new ArrayList<String>();
-        arrayList.add("Angkot");
+    //    arrayList.add("Angkot");
         arrayList.add("Bus");
 
         TransportationListAdapter transportationListAdapter = new TransportationListAdapter(this, arrayList);

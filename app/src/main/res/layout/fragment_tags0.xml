@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Lalu Lintas"
+                android:text="Traffic"
                 android:id="@+id/textView2"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_black_top_rounded"

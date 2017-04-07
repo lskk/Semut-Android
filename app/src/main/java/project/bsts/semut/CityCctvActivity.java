@@ -2,6 +2,7 @@ package project.bsts.semut;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -46,6 +47,7 @@ public class CityCctvActivity extends AppCompatActivity implements IConnectionRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_cctv);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Lokasi");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
@@ -70,6 +72,15 @@ public class CityCctvActivity extends AppCompatActivity implements IConnectionRe
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        /******************* bandar lampung only *******************/
+        Intent intent = new Intent(context, CctvListActivity.class);
+        intent.putExtra(Constants.INTENT_CCTV_LIST, list.get(1).getCctv());
+        intent.putExtra(Constants.INTENT_CCTV_CITY, list.get(1).getName());
+        startActivity(intent);
+        finish();
+        /******************* end *******************/
+
         mListViewCity.setAdapter(null);
         mCityListAdapter = new CityListAdapter(context, list);
         mListViewCity.setAdapter(mCityListAdapter);
