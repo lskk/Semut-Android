@@ -3,30 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_signup"
+    android:background="@color/primary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="project.bsts.semut.SignupActivity"
     tools:showIn="@layout/activity_signup">
     <ScrollView
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="@color/colorPrimaryBold"
-        android:paddingTop="10dp"
+
+        android:background="@color/primary"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-            <LinearLayout
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="2dp"
+                app:cardMaxElevation="2dp"
+                app:contentPadding="5dp"
+                app:cardUseCompatPadding="true"
+                android:layout_height="wrap_content">
+                <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_centerInParent="true"
                 android:id="@+id/layoutField"
-                android:background="@drawable/bg_rounded_white_dark"
+
                 >
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -81,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:id="@+id/radio_email"
                         android:layout_height="wrap_content"
-                        app:rrb_backgroundColor="@color/colorPrimaryBold"
+                        app:rrb_backgroundColor="@color/cardview_light_background"
                         app:rrb_ripple="true"
                         app:rrb_rippleColor="@color/colorPrimaryDark"
                         app:rrb_text="Email"
@@ -91,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/radio_phone"
                         app:rrb_ripple="true"
-                        app:rrb_backgroundColor="@color/colorPrimaryBold"
+                        app:rrb_backgroundColor="@color/cardview_light_background"
                         app:rrb_rippleColor="@color/colorPrimaryDark"
                         app:rrb_text="Phone"
                         app:rrb_textColor="@color/colorPrimaryDark"/>
@@ -228,7 +240,7 @@
                         android:layout_width="wrap_content"
                         android:id="@+id/radio_male"
                         android:layout_height="wrap_content"
-                        app:rrb_backgroundColor="@color/colorPrimary"
+                        app:rrb_backgroundColor="@color/cardview_light_background"
                         app:rrb_ripple="true"
                         app:rrb_rippleColor="@color/colorPrimaryDark"
                         app:rrb_text="Laki-Laki"
@@ -238,7 +250,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/radio_female"
                         app:rrb_ripple="true"
-                        app:rrb_backgroundColor="@color/colorPrimary"
+                        app:rrb_backgroundColor="@color/cardview_light_background"
                         app:rrb_rippleColor="@color/colorPrimaryDark"
                         app:rrb_text="Perempuan"
                         app:rrb_textColor="@color/colorPrimaryDark"/>
@@ -270,6 +282,7 @@
                         android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
+            </android.support.v7.widget.CardView>
             <net.qiujuer.genius.ui.widget.Button
                 android:layout_marginTop="15dp"
                 android:layout_below="@+id/layoutField"
@@ -280,6 +293,7 @@
                 android:background="@drawable/bg_accent_bold_round"
                 android:textColor="@color/colorPrimaryLight"
                 android:text="DAFTAR"
+                android:layout_margin="2dp"
                 app:gTouchColor="@color/colorSemiDarkPrimary"
                 app:gTouchEffect="ripple"
                 app:gTouchCornerRadiusTL="@dimen/lay_4"

@@ -31,7 +31,7 @@
                 app:gTouchColor="@color/colorWhiteDark"
                 app:gTouchEffect="ripple"
                 android:textColor="@color/colorAccent"
-                android:text="signup"
+                android:text="daftar"
                 android:background="@android:color/transparent"
                 style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:id="@+id/signup_btn"

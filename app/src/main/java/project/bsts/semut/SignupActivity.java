@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -67,6 +68,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         setContentView(R.layout.activity_signup);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         context = this;
 
@@ -176,5 +178,16 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                 CommonAlerts.commonError(context, Constants.MESSAGE_HTTP_ERROR);
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/content_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryBold"
+    android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="project.bsts.semut.LoginActivity"
     tools:showIn="@layout/activity_login">
@@ -56,14 +56,24 @@
             android:layout_gravity="center_horizontal"
             android:text="Masuk menggunakan Nomor telepon atau email"
             />
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="2dp"
+            app:cardMaxElevation="7dp"
+            app:contentPadding="10dp"
+            app:cardUseCompatPadding="true"
+
+            android:layout_height="wrap_content">
+            <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_rounded_white_dark"
+
             android:layout_height="wrap_content">
             <co.ceryle.radiorealbutton.library.RadioRealButtonGroup
                 android:layout_width="match_parent"
@@ -86,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:id="@+id/radio_email"
                     android:layout_height="wrap_content"
-                    app:rrb_backgroundColor="@color/colorPrimaryBold"
+                    app:rrb_backgroundColor="@color/cardview_light_background"
                     app:rrb_ripple="true"
                     app:rrb_rippleColor="@color/colorPrimaryDark"
                     app:rrb_text="Email"
@@ -96,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/radio_phone"
                     app:rrb_ripple="true"
-                    app:rrb_backgroundColor="@color/colorPrimaryBold"
+                    app:rrb_backgroundColor="@color/cardview_light_background"
                     app:rrb_rippleColor="@color/colorPrimaryDark"
                     app:rrb_text="Phone"
                     app:rrb_textColor="@color/colorPrimaryDark"/>
@@ -127,6 +137,7 @@
                     />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
+        </android.support.v7.widget.CardView>
         <net.qiujuer.genius.ui.widget.Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,12 +147,13 @@
             android:textStyle="bold"
             android:text="Masuk"
             android:padding="15dp"
+            android:layout_margin="7dp"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/bg_button_login"
             android:id="@+id/login_btn"
             app:gTouchCornerRadius="12dp"
-            app:gTouchCornerRadiusTL="0dp"
-            app:gTouchCornerRadiusTR="0dp"
+            app:gTouchCornerRadiusTL="6dp"
+            app:gTouchCornerRadiusTR="6dp"
             app:gTouchCornerRadiusBL="6dp"
             app:gTouchCornerRadiusBR="6dp"
             app:gTouchDurationRate="0.7"
