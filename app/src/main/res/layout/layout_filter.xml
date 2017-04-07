@@ -380,6 +380,7 @@
             </RelativeLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 app:cardBackgroundColor="@color/cardview_light_background"
                 app:cardElevation="3dp"
@@ -448,7 +449,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@id/filterAngkot"
-                    android:text="Angkot"
+                    android:text="BRT"
                     android:textStyle="bold"
                     android:textColor="@color/lynch"
                     android:layout_centerVertical="true"
