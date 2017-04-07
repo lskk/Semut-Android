@@ -77,7 +77,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
                 .addApi(LocationServices.API)
                 .build();
         mLocationRequest = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_LOW_POWER)
+                .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
                 .setInterval(10 * 1000)
                 .setFastestInterval(3 * 1000);
         if (mGoogleApiClient.isConnected() == false) {
@@ -163,9 +163,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             } else {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
-                preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
-                preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
-                preferenceManager.apply();
+             //   preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
+             //   preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
+             //   preferenceManager.apply();
                 speed = location.getSpeed();
                 altitude = location.getAltitude();
                 startTask();
@@ -213,9 +213,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         Log.i(TAG, "Location Changed");
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
-        preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
-        preferenceManager.apply();
+    //    preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
+    //    preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
+    //    preferenceManager.apply();
         broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latitude, longitude));
 
     }

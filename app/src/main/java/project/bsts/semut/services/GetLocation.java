@@ -3,9 +3,11 @@ package project.bsts.semut.services;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -31,6 +33,7 @@ import project.bsts.semut.pojo.Profile;
 import project.bsts.semut.pojo.Session;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.utilities.GetCurrentDate;
+import project.bsts.semut.utilities.LocationUtilities;
 import project.bsts.semut.utilities.MapItem;
 import project.bsts.semut.utilities.ScheduleTask;
 
@@ -74,21 +77,33 @@ public class GetLocation extends Service implements BrokerCallback {
         consume();
         handler = new Handler();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location loc = LocationUtilities.getLastBestLocation(locationManager);
+        if(loc != null){
+            latService = loc.getLatitude();
+            lngService = loc.getLongitude();
+            broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latService, lngService));
+            startCollectingMap();
+        }
     }
 
 
+    private void startCollectingMap(){
+        if(isFirstInit){
+            startTask();
+            isFirstInit = false;
+        }
+    }
+
 
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        Criteria criteria = new Criteria();
+        String best = locationManager.getBestProvider(criteria, true);
         final Runnable r = new Runnable() {
             public void run() {
                 listener = new MyLocationListener();
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 400, 0, listener);
+                locationManager.requestLocationUpdates(best, 400, 0, listener);
                 if (latService!=0.0 || lngService!=0.0){
-                    if(isFirstInit){
-                        startTask();
-                        isFirstInit = false;
-                    }
+                    startCollectingMap();
                     Log.i("STATUS", "Location changed Alt: " + altService
                             + " Lat: " + latService
                             + " Lon: " + lngService
@@ -98,7 +113,7 @@ public class GetLocation extends Service implements BrokerCallback {
                 handler.postDelayed(this, 10000);
             }
         };
-        handler.postDelayed(r, 3000);
+        handler.postDelayed(r, 10000);
         return START_STICKY;
     }
 
@@ -201,7 +216,9 @@ public class GetLocation extends Service implements BrokerCallback {
         public void onProviderDisabled(String provider)
         {
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Criteria criteria = new Criteria();
+            String best = locationManager.getBestProvider(criteria, true);
+            if (locationManager.isProviderEnabled(best)) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
             } else {
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
@@ -212,7 +229,9 @@ public class GetLocation extends Service implements BrokerCallback {
         public void onProviderEnabled(String provider)
         {
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Criteria criteria = new Criteria();
+            String best = locationManager.getBestProvider(criteria, true);
+            if (locationManager.isProviderEnabled(best)) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
             } else {
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
@@ -220,9 +239,19 @@ public class GetLocation extends Service implements BrokerCallback {
         }
 
 
-        public void onStatusChanged(String provider, int status, Bundle extras)
-        {
-
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            switch (status) {
+                case LocationProvider.OUT_OF_SERVICE:
+                    Log.v(TAG, "Status Changed: Out of Service");
+                    break;
+                case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                    Log.v(TAG, "Status Changed: UNAVAILABLE");
+                    break;
+                case LocationProvider.AVAILABLE:
+                    Log.v(TAG, "Status Changed: Available");
+                    break;
+            }
         }
 
     }
