@@ -76,7 +76,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Police"
+                        android:text="Polisi"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -103,7 +103,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Incident"
+                        android:text="Kecelakaan"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -130,7 +130,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Disaster"
+                        android:text="Bencana Alam"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -157,7 +157,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Closure"
+                        android:text="Penutupan Jalan"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -184,7 +184,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Other"
+                        android:text="Lain-lain"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -211,7 +211,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Traffic"
+                        android:text="Lalu Lintas"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"

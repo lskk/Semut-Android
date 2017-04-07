@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Traffic"
+                android:text="Lalu Lintas"
                 android:id="@+id/textView2"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_black_top_rounded"
@@ -85,7 +85,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Normal Traffic"
+                        android:text="Normal"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Heavy Traffic"
+                        android:text="Padat"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -139,7 +139,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Standstill Traffic"
+                        android:text="Macet Total"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"

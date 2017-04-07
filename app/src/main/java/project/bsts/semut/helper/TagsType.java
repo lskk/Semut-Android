@@ -3,29 +3,29 @@ package project.bsts.semut.helper;
 
 public class TagsType {
 
-    private final static String[] TITLES = {"Traffic", "Police", "Incident", "Disaster", "Closure", "Other"};
+    private final static String[] TITLES = {"Lalu Lintas", "Polisi", "Kecelakaan", "Bencana Alam", "Penutupan Jalan", "Tanda Lainnya"};
 
     public static String[] get(int title, int subTitle){
 
         String[] subTitlesStr = {};
         switch (title){
             case 0:
-                subTitlesStr = new String[]{"Normal Traffic", "Heavy Traffic", "Standstill Traffic"};
+                subTitlesStr = new String[]{"Normal", "Padat", "Macet Total"};
                 break;
             case 1:
-                subTitlesStr = new String[]{"Police Patrol", "Police Raid"};
+                subTitlesStr = new String[]{"Polisi Patroli", "Pemeriksaan Polisi"};
                 break;
             case 2:
-                subTitlesStr = new String[]{"Incident", "Incident with Victim", "Vehicle Broke Down"};
+                subTitlesStr = new String[]{"Kecelakaan", "Kecelakaan dengan Korban Jiwa", "Mobil Mogok"};
                 break;
             case 3:
-                subTitlesStr = new String[]{"Fallen Tree", "Flood"};
+                subTitlesStr = new String[]{"Phon Tumbang", "Banjir"};
                 break;
             case 4:
-                subTitlesStr = new String[]{"Minor Road Repair", "Medium Road Repair", "Event", "Construction", "Demonstration"};
+                subTitlesStr = new String[]{"Perbaikan Jalan Ringan", "Perbaikan Jalan Rusak", "Event", "Pembangunan", "Demonstrasi"};
                 break;
             case 5:
-                subTitlesStr = new String[]{"No Sign", "Damaged Road", "Bus Stop", "Crowded Places"};
+                subTitlesStr = new String[]{"Tidak Ada Tanda", "Jalan Rusak", "Bus Berhenti", "Tempat Padat/Ramai"};
                 break;
         }
 

@@ -95,7 +95,7 @@ public class SubmitTagFragment extends Fragment implements TextWatcher, IConnect
 
     private HashMap<String, String> getPostInfo(){
         int[] childNums = {3, 2, 3, 2, 5, 4};
-        String[] texts = {"Normal Traffic", "Heavy Traffic", "Standstill Traffic", "Police Patrol", "Police Raid", "Incident", "Incident with Victim", "Vehicle Broke Down", "Fallen Tree", "Flood", "Minor Road Repair", "Medium Road Repair", "Event", "Construction", "Demonstration", "No Sign", "Damaged Road", "Bus Stop", "Crowded Place"};
+        String[] texts = {"Normal", "Padat", "Macet Total", "Polisi Patroli", "Pemeriksaan Polisi", "Kecelakaan", "Kecelakaan dengan Korban Jiwa", "Mobil Mogok", "Pohon Tumbang", "Banjir", "Perbaikan Jalan Ringan", "Perbaikan Jalan Rusak", "Event", "Pembangunan", "Demonstrasi", "Tidak Ada Tanda", "Jalan Rusak", "Bus Berhenti", "Tempat Padat/Ramai"};
 
         int postID = 0;
         for(int i=0; i<this.postID; i++){

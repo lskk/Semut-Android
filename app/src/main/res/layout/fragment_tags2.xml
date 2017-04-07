@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Incident"
+                android:text="Kecelakaan"
                 android:id="@+id/textView2"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_black_top_rounded"
@@ -85,7 +85,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Incident"
+                        android:text="Kecelakaan Ringan"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Incident With Victim"
+                        android:text="Kecelakaan dgn Korban"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -139,7 +139,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Vehicle Broke Down"
+                        android:text="Kendaraan Mogok"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"

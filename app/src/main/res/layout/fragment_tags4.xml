@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Closure"
+                android:text="Penutupan Jalan"
                 android:id="@+id/textView2"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_black_top_rounded"
@@ -85,7 +85,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Minor Road Repair"
+                        android:text="Perbaikan Jalan Ringan"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Medium Road Repair"
+                        android:text="Perbaikan Jalan rusak"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -166,7 +166,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Conctruction"
+                        android:text="Pembangunan"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -193,7 +193,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Demonstration"
+                        android:text="Demonstrasi"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"

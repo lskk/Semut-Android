@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Police"
+                android:text="Polisi"
                 android:id="@+id/textView2"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_black_top_rounded"
@@ -85,7 +85,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Police Patrol"
+                        android:text="Polisi Patroli"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:text="Police Raid"
+                        android:text="Pemeriksaan"
                         android:textAllCaps="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#00ffffff"
