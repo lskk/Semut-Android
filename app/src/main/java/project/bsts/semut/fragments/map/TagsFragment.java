@@ -47,6 +47,9 @@ public class TagsFragment extends Fragment implements View.OnClickListener {
                 case 5:
                     layout = R.layout.fragment_tags5;
                     break;
+                case 6:
+                    layout = R.layout.fragment_tags6;
+                    break;
             }
         }
 
@@ -61,8 +64,8 @@ public class TagsFragment extends Fragment implements View.OnClickListener {
             backButton.setOnClickListener(v12 -> back());
         }
 
-        int[] ids = {R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4, R.id.btn5};
-        for(int i=0; i<6; i++){
+        int[] ids = {R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4, R.id.btn5, R.id.btn6};
+        for(int i=0; i<7; i++){
             ImageButton btn = (ImageButton)v.findViewById(ids[i]);
             if(btn != null) {
                 btn.setOnClickListener(this);
@@ -115,6 +118,10 @@ public class TagsFragment extends Fragment implements View.OnClickListener {
                     tagsFragment.setLevel(1);
                     tagsFragment.parentID = 5;
                     break;
+                case R.id.btn6:
+                    tagsFragment.setLevel(1);
+                    tagsFragment.parentID = 6;
+                    break;
             }
 
             fragmentTransaction.add(R.id.container, tagsFragment);
@@ -146,6 +153,9 @@ public class TagsFragment extends Fragment implements View.OnClickListener {
                     break;
                 case R.id.btn5:
                     index = 5;
+                    break;
+                case R.id.btn6:
+                    index = 6;
                     break;
             }
 

@@ -36,4 +36,10 @@
     <color name="semut_blue_color">#3a4781</color>
     <color name="progress_color">#fffce417</color>
     <color name="semi_transparent">#66000000</color>
+    <!-- report level -->
+    <color name="reportLevel1">#F5D76E</color>
+    <color name="reportLevel2">#ecbe07</color>
+    <color name="reportLevel3">#ef9917</color>
+    <color name="reportLevel4">#F9690E</color>
+    <color name="reportLevel5">#8F1D21</color>
 </resources>

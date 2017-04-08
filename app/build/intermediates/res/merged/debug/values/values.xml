@@ -806,6 +806,11 @@
     <color name="red_a200">#ff5177</color>
     <color name="red_a400">#ff2d6f</color>
     <color name="red_a700">#e00032</color>
+    <color name="reportLevel1">#F5D76E</color>
+    <color name="reportLevel2">#ecbe07</color>
+    <color name="reportLevel3">#ef9917</color>
+    <color name="reportLevel4">#F9690E</color>
+    <color name="reportLevel5">#8F1D21</color>
     <color name="rippleBG">#5026A65B</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
