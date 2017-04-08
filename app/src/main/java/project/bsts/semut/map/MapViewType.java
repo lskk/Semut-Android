@@ -7,6 +7,7 @@ import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.TrafficMap;
+import project.bsts.semut.pojo.mapview.TranspostMap;
 
 public class MapViewType {
 
@@ -19,6 +20,7 @@ public class MapViewType {
         else if(object instanceof DisasterMap) type = MapViewComponent.DISASTER_MAP_COMPONENT;
         else if(object instanceof ClosureMap) type = MapViewComponent.CLOSURE_MAP_COMPONENT;
         else if(object instanceof OtherMap) type = MapViewComponent.OTHER_MAP_COMPONENT;
+        else if(object instanceof TranspostMap) type = MapViewComponent.TRANSPORTATION_POST_MAP_COMPONENT;
 
         return type;
     }

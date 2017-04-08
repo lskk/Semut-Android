@@ -20,6 +20,7 @@ import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
+import project.bsts.semut.pojo.mapview.TranspostMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.utilities.FragmentTransUtility;
@@ -63,6 +64,7 @@ public class MarkerClick {
                 marker.getRelatedObject() instanceof TrafficMap ||
                 marker.getRelatedObject() instanceof DisasterMap ||
                 marker.getRelatedObject() instanceof ClosureMap ||
+                marker.getRelatedObject() instanceof TranspostMap ||
                 marker.getRelatedObject() instanceof OtherMap){
             MapReportFragment mapReportFragment = new MapReportFragment();
             mapReportFragment.setData(marker.getRelatedObject());

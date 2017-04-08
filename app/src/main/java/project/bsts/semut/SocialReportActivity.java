@@ -186,6 +186,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                     mapController = mapUitilities.init();
                     progressDialog.dismiss();
                     markerMyLocation = osmMarker.add(myLocationObject);
+                    if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
 
                 }else {
                     GeoPoint currPoint = new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude());
@@ -193,9 +194,10 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                             markerMyLocation.getPosition().getLongitude(), currPoint.getLatitude(), currPoint.getLongitude()));
                     markerAnimation.animate(mapset, markerMyLocation, currPoint, 1500);
                  //   markerMyLocation.setPosition(new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude()));
+                    if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
                     mapset.invalidate();
                 }
-                if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
+
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
                 List<Marker> markersToRemove = new ArrayList<Marker>();
@@ -219,8 +221,9 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 for(int i = 0 ; i < mapset.getOverlays().size(); i++){
                     if (mapset.getOverlays().get(i) instanceof Marker) ((Marker) mapset.getOverlays().get(i)).setOnMarkerClickListener(this);
                 }
-                mapset.invalidate();
                 if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
+                mapset.invalidate();
+
                 break;
         }
     }

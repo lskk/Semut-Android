@@ -26,6 +26,7 @@ import project.bsts.semut.pojo.mapview.DisasterMap;
 import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.TrafficMap;
+import project.bsts.semut.pojo.mapview.TranspostMap;
 
 public class MapReportFragment extends Fragment {
 
@@ -64,7 +65,12 @@ public class MapReportFragment extends Fragment {
         mapIconType.setImageDrawable(icons[0]);
         imageDescription.setImageDrawable(icons[1]);
         reportTitleText.setText(title);
-        reportSubTitleText.setText(subTitle);
+        if(reportType == MapViewComponent.TRANSPORTATION_POST_MAP_COMPONENT){
+            reportSubTitleText.setText("Laporan : "+subTitle);
+        }else {
+            reportSubTitleText.setText(subTitle);
+        }
+
         String tmp = "<b>Diposting tanggal : </b>"+postDate;
         postDateText.setText(Html.fromHtml(tmp));
         tmp = "<b>Diposting Oleh : </b>"+postedBy;
@@ -168,6 +174,19 @@ public class MapReportFragment extends Fragment {
                 postDate = otherMap.getTimes();
                 postedBy = otherMap.getPostedBy().getName();
                 contentDescription = otherMap.getDescription();
+                break;
+            case MapViewComponent.TRANSPORTATION_POST_MAP_COMPONENT:
+                mapIconDrawable[0] = new IconicsDrawable(getActivity())
+                        .color(getActivity().getResources().getColor(R.color.lynch))
+                        .sizeDp(34)
+                        .icon(GoogleMaterial.Icon.gmd_place);
+                mapIconDrawable[1] = mapIconDrawable[1] = getActivity().getResources().getDrawable(R.drawable.tranpost_icon);
+                TranspostMap transpostMap = (TranspostMap) reportObject;
+                title = transpostMap.getType();
+                subTitle = transpostMap.getSubType();
+                postDate = transpostMap.getTimes();
+                postedBy = transpostMap.getPostedBy().getName();
+                contentDescription = transpostMap.getDescription();
                 break;
         }
 
