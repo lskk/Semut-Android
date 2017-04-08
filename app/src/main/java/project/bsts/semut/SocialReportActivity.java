@@ -16,6 +16,7 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -34,8 +35,10 @@ import project.bsts.semut.fragments.FilterFragment;
 import project.bsts.semut.helper.BroadcastManager;
 import project.bsts.semut.helper.PermissionHelper;
 import project.bsts.semut.helper.PreferenceManager;
+import project.bsts.semut.map.MarkerBearing;
 import project.bsts.semut.map.osm.MapUtilities;
 import project.bsts.semut.map.osm.MarkerClick;
+import project.bsts.semut.map.osm.OSMarkerAnimation;
 import project.bsts.semut.map.osm.OsmMarker;
 import project.bsts.semut.pojo.mapview.MyLocation;
 import project.bsts.semut.services.GetLocation;
@@ -82,6 +85,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private Marker markerMyLocation;
     private MyLocation myLocationObject;
     private ProgressDialog progressDialog;
+    private OSMarkerAnimation markerAnimation;
 
     @Override
     protected void onDestroy(){
@@ -114,12 +118,13 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         broadcastManager = new BroadcastManager(context);
         preferenceManager = new PreferenceManager(context);
         broadcastManager.subscribeToUi(this);
-        locService = new Intent(context, GetLocation.class);
+        locService = new Intent(context, LocationService.class);
         permissionHelper = new PermissionHelper(context);
         animationView = new AnimationView(context);
         filterBtn.setOnClickListener(this);
         addReportBtn.setOnClickListener(this);
         addReportBtn.setTag(FAB_STATE_ADD);
+        markerAnimation = new OSMarkerAnimation();
 
         setAnim();
         fragmentTransUtility = new FragmentTransUtility(context);
@@ -170,18 +175,13 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                     mapController = mapUitilities.init();
                     progressDialog.dismiss();
                     markerMyLocation = osmMarker.add(myLocationObject);
-                    double lat = NumUtils.round(myLocationObject.getMyLatitude(), 7);
-                    double lon = NumUtils.round(myLocationObject.getMyLongitude(), 7);
-                    preferenceManager.save((float)lat, Constants.ENTITY_LATITUDE);
-                    preferenceManager.save((float)lon, Constants.ENTITY_LONGITUDE);
-                    preferenceManager.apply();
+
                 }else {
-                    double lat = NumUtils.round(myLocationObject.getMyLatitude(), 7);
-                    double lon = NumUtils.round(myLocationObject.getMyLongitude(), 7);
-                    preferenceManager.save((float)lat, Constants.ENTITY_LATITUDE);
-                    preferenceManager.save((float)lon, Constants.ENTITY_LONGITUDE);
-                    preferenceManager.apply();
-                    markerMyLocation.setPosition(new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude()));
+                    GeoPoint currPoint = new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude());
+                    markerMyLocation.setRotation((float) MarkerBearing.bearing(markerMyLocation.getPosition().getLatitude(),
+                            markerMyLocation.getPosition().getLongitude(), currPoint.getLatitude(), currPoint.getLongitude()));
+                    markerAnimation.animate(mapset, markerMyLocation, currPoint, 1500);
+                 //   markerMyLocation.setPosition(new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude()));
                     mapset.invalidate();
                 }
 

@@ -155,17 +155,14 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             Log.i(TAG, "Permission Denied");
         }else {
             Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-           // Location location = LocationServices.FusedLocationApi.
             Log.i(TAG, "LOCATION CONNECTED");
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
             if (location == null) {
-                LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+              //  LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
 
             } else {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
-             //   preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
-             //   preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
-             //   preferenceManager.apply();
                 speed = location.getSpeed();
                 altitude = location.getAltitude();
                 startTask();
@@ -213,9 +210,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         Log.i(TAG, "Location Changed");
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-    //    preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
-    //    preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
-    //    preferenceManager.apply();
+        preferenceManager.save((float)latitude, Constants.ENTITY_LATITUDE);
+        preferenceManager.save((float)longitude, Constants.ENTITY_LONGITUDE);
+        preferenceManager.apply();
         broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latitude, longitude));
 
     }

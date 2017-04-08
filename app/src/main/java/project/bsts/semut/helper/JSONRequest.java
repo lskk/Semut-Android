@@ -16,7 +16,7 @@ public class JSONRequest {
             storeObj.put("Latitude", Latitude);
             storeObj.put("Longitude", Longitude);
             storeObj.put("Speed", Speed);
-            storeObj.put("Date", Date);
+            storeObj.put("Timespan", Date);
             storeObj.put("mapitem", Item);
             storeObj.put("StatusOnline", status);
             storeObj.put("Radius", Radius);
