@@ -97,7 +97,7 @@ public class OsmMarker {
             GeoPoint point = new GeoPoint(((MyLocation) objectMap).getMyLatitude(), ((MyLocation) objectMap).getMyLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
-            marker.setIcon(CustomDrawable.create(mapView.getContext(), GoogleMaterial.Icon.gmd_radio_button_checked, 24, R.color.primary_dark));
+            marker.setIcon(CustomDrawable.create(mapView.getContext(), GoogleMaterial.Icon.gmd_navigation, 24, R.color.primary_dark));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }

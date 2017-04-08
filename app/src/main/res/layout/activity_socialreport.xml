@@ -19,6 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimaryDark"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -26,7 +27,24 @@
                 android:id="@+id/filter_button"
                 android:layout_gravity="right"
                 android:layout_marginRight="15dp"
-
+                />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:id="@+id/switch_track"
+                android:padding="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorSemiDarkPrimary"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lokasi Saya : "
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorSemiDarkPrimary"
+                android:layout_gravity="right"
                 />
         </android.support.v7.widget.Toolbar>
 

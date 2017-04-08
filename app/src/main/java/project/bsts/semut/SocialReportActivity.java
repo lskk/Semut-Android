@@ -14,8 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -65,6 +67,8 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     ImageButton filterBtn;
     @BindView(R.id.addReport)
     FloatingActionButton addReportBtn;
+    @BindView(R.id.switch_track)
+    Switch switchTrack;
 
     MapUtilities mapUitilities;
     Context context;
@@ -86,6 +90,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private MyLocation myLocationObject;
     private ProgressDialog progressDialog;
     private OSMarkerAnimation markerAnimation;
+    private boolean isTracked = true;
 
     @Override
     protected void onDestroy(){
@@ -103,7 +108,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_socialreport);
         ButterKnife.bind(this);
-        toolbar.setTitle("Social Report");
+        toolbar.setTitle("");
         toolbar.setTitleTextColor(getResources().getColor(R.color.lynchLight));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -143,6 +148,11 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
             }
         });
 
+        switchTrack.setOnCheckedChangeListener((compoundButton, b) -> {
+            isTracked = b;
+            if(isTracked && markerMyLocation.getPosition() != null) mapController.animateTo(markerMyLocation.getPosition());
+        });
+
         preferenceManager.save(1, Constants.IS_ONLINE);
         preferenceManager.apply();
 
@@ -169,6 +179,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         Log.i(TAG, msg);
         switch (type){
             case Constants.BROADCAST_MY_LOCATION:
+           //     Toast.makeText(context, "Location fired", Toast.LENGTH_SHORT).show();
                 mapUitilities.setMyLocationGeo(msg);
                 myLocationObject = new Gson().fromJson(msg, MyLocation.class);
                 if(!mapUitilities.isReady()) {
@@ -184,7 +195,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                  //   markerMyLocation.setPosition(new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude()));
                     mapset.invalidate();
                 }
-
+                if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
                 List<Marker> markersToRemove = new ArrayList<Marker>();
@@ -209,6 +220,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                     if (mapset.getOverlays().get(i) instanceof Marker) ((Marker) mapset.getOverlays().get(i)).setOnMarkerClickListener(this);
                 }
                 mapset.invalidate();
+                if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
                 break;
         }
     }
