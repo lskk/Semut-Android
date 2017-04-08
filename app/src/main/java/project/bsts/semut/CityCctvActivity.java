@@ -81,9 +81,9 @@ public class CityCctvActivity extends AppCompatActivity implements IConnectionRe
         finish();
         /******************* end *******************/
 
-        mListViewCity.setAdapter(null);
-        mCityListAdapter = new CityListAdapter(context, list);
-        mListViewCity.setAdapter(mCityListAdapter);
+    //    mListViewCity.setAdapter(null);
+    //    mCityListAdapter = new CityListAdapter(context, list);
+    //    mListViewCity.setAdapter(mCityListAdapter);
     }
 
     private void getCCtv(){

@@ -9,7 +9,6 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        app:elevation="1dp"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -17,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimaryBold"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
             <Switch
                 android:layout_width="wrap_content"
@@ -26,7 +25,6 @@
                 android:id="@+id/switch_track"
                 android:padding="5dp"
                 android:layout_marginRight="5dp"
-                android:background="@color/colorSemiDarkPrimary"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -34,7 +32,7 @@
                 android:text="Ikuti : "
                 android:layout_marginRight="5dp"
                 android:textStyle="bold"
-                android:textColor="@color/lynchLight"
+                android:textColor="@color/colorPrimaryDark"
 
                 android:layout_gravity="right"
                 />

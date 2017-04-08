@@ -9,7 +9,6 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        app:elevation="1dp"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -17,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimaryDark"
+            android:background="@color/colorPrimaryBold"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 
             <ImageButton
@@ -36,7 +35,6 @@
                 android:checked="true"
                 android:padding="5dp"
                 android:layout_marginRight="5dp"
-                android:background="@color/colorSemiDarkPrimary"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -44,7 +42,7 @@
                 android:text="Lokasi Saya : "
                 android:layout_marginRight="5dp"
                 android:textStyle="bold"
-                android:textColor="@color/colorSemiDarkPrimary"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_gravity="right"
                 />
         </android.support.v7.widget.Toolbar>
