@@ -19,7 +19,8 @@ public class MapItem {
                 String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_CLOSURE_POST, 1))+
                 String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_OTHER_POST, 1))+
                 String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_COMMUTER_TRAIN, 1))+
-                String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_ANGKOT_LOCATION,1));
+                String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_ANGKOT_LOCATION,1))+
+                String.valueOf(preferenceManager.getInt(Constants.MAP_FILTER_TRANSPOST,1));
     }
 
 }

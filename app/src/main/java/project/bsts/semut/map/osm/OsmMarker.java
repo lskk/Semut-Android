@@ -17,6 +17,7 @@ import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
+import project.bsts.semut.pojo.mapview.TranspostMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.utilities.CustomDrawable;
 
@@ -98,6 +99,13 @@ public class OsmMarker {
             marker = new Marker(mapView);
             marker.setPosition(point);
             marker.setIcon(CustomDrawable.create(mapView.getContext(), GoogleMaterial.Icon.gmd_navigation, 24, R.color.primary_dark));
+            marker.setRelatedObject(objectMap);
+            mapView.getOverlays().add(marker);
+        }else if(objectMap instanceof TranspostMap){
+            GeoPoint point = new GeoPoint(((TranspostMap) objectMap).getLatitude(), ((TranspostMap) objectMap).getLongitude());
+            marker = new Marker(mapView);
+            marker.setPosition(point);
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.angkot_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }

@@ -20,6 +20,7 @@ import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
+import project.bsts.semut.pojo.mapview.TranspostMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 import project.bsts.semut.setup.Constants;
 
@@ -104,6 +105,7 @@ public class MapUtilities {
     private Marker[] closureMarkers;
     private Marker[] otherMarkers;
     private Marker[] trackerMarkers;
+    private Marker[] transpostMarkers;
 
 
     public void setMapObjectsMarkers(String msg){
@@ -116,6 +118,7 @@ public class MapUtilities {
         closureMaps = MapViewComponent.getClosure(MapViewComponent.CLOSURE_MAP_COMPONENT, msg);
         otherMaps = MapViewComponent.getOther(MapViewComponent.OTHER_MAP_COMPONENT, msg);
         trackers = MapViewComponent.getTrackers(MapViewComponent.TRACKER_MAP_COMPONENT, msg);
+        transpostMaps = MapViewComponent.getTransPost(MapViewComponent.TRANSPORTATION_POST_MAP_COMPONENT, msg);
 
         userMarkers = new Marker[userMaps.length];
         cctvMarkers = new Marker[cctvMaps.length];
@@ -126,6 +129,7 @@ public class MapUtilities {
         closureMarkers = new Marker[closureMaps.length];
         otherMarkers = new Marker[otherMaps.length];
         trackerMarkers = new Marker[trackers.length];
+        transpostMarkers = new Marker[transpostMaps.length];
 
         generateMarker(userMaps, userMarkers);
         generateMarker(cctvMaps, cctvMarkers);
@@ -136,6 +140,7 @@ public class MapUtilities {
         generateMarker(closureMaps, closureMarkers);
         generateMarker(otherMaps, otherMarkers);
         generateMarker(trackers, trackerMarkers);
+        generateMarker(transpostMaps, transpostMarkers);
 
     }
 
@@ -156,6 +161,7 @@ public class MapUtilities {
     private ClosureMap[] closureMaps;
     private OtherMap[] otherMaps;
     private Tracker[] trackers;
+    private TranspostMap[] transpostMaps;
 
     public boolean isReady() {
         return isReady;

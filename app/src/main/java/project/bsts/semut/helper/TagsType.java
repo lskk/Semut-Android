@@ -3,7 +3,7 @@ package project.bsts.semut.helper;
 
 public class TagsType {
 
-    private final static String[] TITLES = {"Lalu Lintas", "Polisi", "Kecelakaan", "Bencana Alam", "Penutupan Jalan", "Tanda Lainnya"};
+    private final static String[] TITLES = {"Lalu Lintas", "Polisi", "Kecelakaan", "Bencana Alam", "Penutupan Jalan", "Tanda Lainnya", "Angkutan Umum"};
 
     public static String[] get(int title, int subTitle){
 
@@ -27,9 +27,10 @@ public class TagsType {
             case 5:
                 subTitlesStr = new String[]{"Tidak Ada Tanda", "Jalan Rusak", "Bus Berhenti", "Tempat Padat/Ramai"};
                 break;
+            case 6:
+                subTitlesStr = new String[]{"BRT", "Angkot"};
+                break;
         }
-
         return new String[]{TITLES[title], subTitlesStr[subTitle]};
-
     }
 }

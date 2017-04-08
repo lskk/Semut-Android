@@ -47,6 +47,8 @@ public class FilterFragment extends Fragment {
     ToggleSwitch angkotSwitch;
     @BindView(R.id.filterOther)
     ToggleSwitch otherSwitch;
+    @BindView(R.id.filterTranPost)
+    ToggleSwitch transPostSwitch;
     
     PreferenceManager preferenceManager;
     
@@ -162,6 +164,12 @@ public class FilterFragment extends Fragment {
         otherSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_OTHER_POST, 1));
         otherSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
             preferenceManager.save(position, Constants.MAP_FILTER_OTHER_POST);
+            preferenceManager.apply();
+        });
+
+        transPostSwitch.setCheckedTogglePosition(preferenceManager.getInt(Constants.MAP_FILTER_TRANSPOST, 1));
+        transPostSwitch.setOnToggleSwitchChangeListener((position, isChecked) -> {
+            preferenceManager.save(position, Constants.MAP_FILTER_TRANSPOST);
             preferenceManager.apply();
         });
     }

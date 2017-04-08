@@ -18,6 +18,7 @@ import project.bsts.semut.pojo.mapview.OtherMap;
 import project.bsts.semut.pojo.mapview.PoliceMap;
 import project.bsts.semut.pojo.mapview.Tracker;
 import project.bsts.semut.pojo.mapview.TrafficMap;
+import project.bsts.semut.pojo.mapview.TranspostMap;
 import project.bsts.semut.pojo.mapview.UserMap;
 
 public class MapViewComponent {
@@ -32,6 +33,7 @@ public class MapViewComponent {
     public static final int OTHER_MAP_COMPONENT = 7;
     //public static final int COMMUTER_MAP_COMPONENT = 8;
     public static final int TRACKER_MAP_COMPONENT = 8;
+    public static final int TRANSPORTATION_POST_MAP_COMPONENT = 9;
 
     public static UserMap[] getUsers(int indexComponent, String jsonString){
         UserMap[] userMaps;
@@ -114,6 +116,34 @@ public class MapViewComponent {
         }
 
         return policeMaps;
+
+    }
+
+
+    public static TranspostMap[] getTransPost(int indexComponent, String jsonString){
+        TranspostMap[] transpostMaps;
+        JSONObject object = null;
+        JSONArray array = null;
+        JSONArray polices = null;
+        try {
+            object = new JSONObject(jsonString);
+            array = object.getJSONArray("results");
+            polices = new JSONObject(array.get(indexComponent).toString()).getJSONArray("PublicTran");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        transpostMaps = new TranspostMap[polices.length()];
+        for (int i = 0; i <polices.length(); i++){
+            try {
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                transpostMaps[i] = gson.fromJson(polices.get(i).toString(), TranspostMap.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return transpostMaps;
 
     }
 
