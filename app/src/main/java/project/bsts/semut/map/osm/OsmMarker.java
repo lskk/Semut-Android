@@ -105,7 +105,7 @@ public class OsmMarker {
             GeoPoint point = new GeoPoint(((TranspostMap) objectMap).getLatitude(), ((TranspostMap) objectMap).getLongitude());
             marker = new Marker(mapView);
             marker.setPosition(point);
-            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.angkot_icon));
+            marker.setIcon(mapView.getContext().getResources().getDrawable(R.drawable.tranpost_icon));
             marker.setRelatedObject(objectMap);
             mapView.getOverlays().add(marker);
         }
