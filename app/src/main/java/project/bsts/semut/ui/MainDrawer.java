@@ -20,6 +20,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import project.bsts.semut.LoginActivity;
 import project.bsts.semut.R;
 import project.bsts.semut.helper.PreferenceManager;
 import project.bsts.semut.setup.Constants;
@@ -116,7 +117,7 @@ public class MainDrawer {
                                 new SecondaryDrawerItem().withName("Ubah Password").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_create).withIdentifier(51)
                         ), */
                         new PrimaryDrawerItem().withName("Tentang").withIcon(GoogleMaterial.Icon.gmd_perm_device_information).withIdentifier(60).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Bantuan").withIcon(GoogleMaterial.Icon.gmd_help).withIdentifier(70).withSelectable(false),
+                //        new PrimaryDrawerItem().withName("Bantuan").withIcon(GoogleMaterial.Icon.gmd_help).withIdentifier(70).withSelectable(false),
                         new PrimaryDrawerItem().withName("Logout").withIcon(GoogleMaterial.Icon.gmd_exit_to_app).withIdentifier(80).withSelectable(false)
                 )
                 .withSelectedItem(identifier)
@@ -127,6 +128,7 @@ public class MainDrawer {
                             preferenceManager.save(false, Constants.IS_LOGGED_IN);
                             preferenceManager.apply();
                             Toast.makeText(context, "Signout berhasil", Toast.LENGTH_LONG).show();
+                            context.startActivity(new Intent(context, LoginActivity.class));
                             ((Activity)context).finish();
                             break;
                     }
