@@ -123,7 +123,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         broadcastManager = new BroadcastManager(context);
         preferenceManager = new PreferenceManager(context);
         broadcastManager.subscribeToUi(this);
-        locService = new Intent(context, LocationService.class);
+        locService = new Intent(context, GetLocation.class);
         permissionHelper = new PermissionHelper(context);
         animationView = new AnimationView(context);
         filterBtn.setOnClickListener(this);

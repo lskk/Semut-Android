@@ -3,6 +3,7 @@ package project.bsts.semut.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -26,6 +27,34 @@ public class CommonAlerts {
                 .setOnPositiveClicked((view, dialog) -> {
                     ((Activity)context).finish();
                 })
+                .build();
+
+
+        alert.show();
+    }
+
+
+    public static void gspIsDisable(Context context){
+        FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(context)
+                .setImageDrawable(new IconicsDrawable(context)
+                        .icon(GoogleMaterial.Icon.gmd_location_disabled)
+                        .sizeDp(100)
+                        .color(context.getResources().getColor(R.color.cochineal_red)))
+                .setTextTitle("LOKASI ANDA TIDAK AKTIF")
+                .setTextSubTitle("Aplikasi membutuhkan lokasi Anda")
+                .setBody("Aplikasi ini membutuhkan lokasi Anda yang saat ini sedang non-aktif. Aktifkan terlebih dahulu untuk melanjutkan")
+                .setAutoHide(false)
+                .setPositiveButtonText("OK")
+                .setPositiveColor(R.color.primary_dark)
+                .setOnPositiveClicked((view, dialog) -> {
+                    Intent callGPSSettingIntent = new Intent(
+                            android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    context.startActivity(callGPSSettingIntent);
+                    ((Activity)context).finish();
+                }).setNegativeButtonText("Keluar")
+                .setOnNegativeClicked(((view, dialog) -> {
+                    ((Activity)context).finish();
+                }))
                 .build();
 
 

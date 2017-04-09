@@ -105,10 +105,10 @@ public class GetLocation extends Service implements BrokerCallback {
                 locationManager.requestLocationUpdates(best, 400, 0, listener);
                 if (latService!=0.0 || lngService!=0.0){
                     startCollectingMap();
-                    Log.i("STATUS", "Location changed Alt: " + altService
-                            + " Lat: " + latService
-                            + " Lon: " + lngService
-                            + " Spd: " + spdService);
+                    Log.i("STATUS", "Location changed Alt: " + altService + " Lat: " + latService + " Lon: " + lngService + " Spd: " + spdService);
+                    preferenceManager.save((float)latService, Constants.ENTITY_LATITUDE);
+                    preferenceManager.save((float)lngService, Constants.ENTITY_LONGITUDE);
+                    preferenceManager.apply();
                     broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latService, lngService));
                 }
                 handler.postDelayed(this, 10000);
@@ -135,7 +135,6 @@ public class GetLocation extends Service implements BrokerCallback {
                 Log.i(TAG, "-------------------------------------");
                 Log.i(TAG, "incoming message type : "+delivery.getProperties().getType());
                 Log.i(TAG, "-------------------------------------");
-                //    Log.i(TAG, message);
                 broadCastMessage(delivery.getProperties().getType(), message);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
