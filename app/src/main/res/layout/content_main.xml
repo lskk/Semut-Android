@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="project.bsts.semut.MainActivity"
+    android:background="@color/colorPrimaryBold"
     tools:showIn="@layout/activity_main">
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,13 +21,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:src="@mipmap/its_logo"
+            android:background="@drawable/bg_circle_bold"
+            android:padding="15dp"
             />
-        <TextView
+    <!--    <TextView
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BANDAR LAMPUNG\nINTELLIGENT \nTRANSPORTATION\nSYSTEM"
-            />
+            /> -->
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"

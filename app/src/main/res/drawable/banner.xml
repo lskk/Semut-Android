@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorPrimaryBold"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/blits_baner"
+        android:bottom="37dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="37dp"/>
+</layer-list>

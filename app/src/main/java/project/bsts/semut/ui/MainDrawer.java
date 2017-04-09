@@ -75,7 +75,7 @@ public class MainDrawer {
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity((Activity) context)
-                .withHeaderBackground(context.getResources().getDrawable(R.drawable.default_cover))
+                .withHeaderBackground(context.getResources().getDrawable(R.drawable.banner))
                 .build();
 
         PrimaryDrawerItem dashBoard;
