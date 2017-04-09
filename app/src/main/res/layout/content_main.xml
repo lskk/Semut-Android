@@ -41,6 +41,7 @@
         android:layout_centerHorizontal="true"
         />
     <RelativeLayout
+        android:id="@+id/gridMain"
         android:layout_below="@id/arrow"
         android:layout_width="match_parent"
         android:layout_centerVertical="true"
@@ -60,5 +61,48 @@
             android:stretchMode="columnWidth"
             android:gravity="center"
             />
+
     </RelativeLayout>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:padding="5dp"
+        android:id="@+id/lay_logo"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:src="@mipmap/logo_kota"
+            />
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:src="@mipmap/logo_ubl"
+            />
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:src="@mipmap/logo_itb"
+            />
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:src="@mipmap/logo_pptik"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_above="@id/lay_logo" />
 </RelativeLayout>
