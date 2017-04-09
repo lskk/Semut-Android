@@ -60,7 +60,7 @@ public class GetLocation extends Service implements BrokerCallback {
     private PreferenceManager preferenceManager;
     Session session;
     Profile profile;
-    private boolean isFirstInit = true;
+    private boolean isFirstInit = true, isMqConnectionError = false;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -97,10 +97,11 @@ public class GetLocation extends Service implements BrokerCallback {
 
 
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Criteria criteria = new Criteria();
-        String best = locationManager.getBestProvider(criteria, true);
+
         final Runnable r = new Runnable() {
             public void run() {
+                Criteria criteria = new Criteria();
+                String best = locationManager.getBestProvider(criteria, true);
                 listener = new MyLocationListener();
                 locationManager.requestLocationUpdates(best, 400, 0, listener);
                 if (latService!=0.0 || lngService!=0.0){
@@ -167,7 +168,16 @@ public class GetLocation extends Service implements BrokerCallback {
                 break;
             case Constants.MQ_INCOMING_TYPE_MAPVIEW:
                 broadcastManager.sendBroadcastToUI(type, message);
+                if(isMqConnectionError){
+                    broadCastMessage(Constants.BROADCAST_CONNECTION_STABLE, "Connection Stable");
+                    isMqConnectionError = false;
+                }
                 break;
+            case Constants.BROADCAST_CONNECTION_ERROR:
+                broadcastManager.sendBroadcastToUI(type, message);
+                break;
+            case Constants.BROADCAST_CONNECTION_STABLE:
+                broadcastManager.sendBroadcastToUI(type, message);
         }
     }
 
@@ -184,12 +194,15 @@ public class GetLocation extends Service implements BrokerCallback {
         handler.removeCallbacksAndMessages(runnable);
         task.stop();
         mqConsumer.stop();
+        mqProducer.stop();
         Log.i("STATUS", "Get Loc Service Stoped");
     }
 
     @Override
     public void onMQConnectionFailure(String message) {
+        isMqConnectionError = true;
         Log.i(TAG, message);
+        broadCastMessage(Constants.BROADCAST_CONNECTION_ERROR, "Connection not Stable");
     }
 
     @Override
@@ -199,7 +212,7 @@ public class GetLocation extends Service implements BrokerCallback {
 
     @Override
     public void onMQConnectionClosed(String message) {
-        Log.i(TAG, message);
+      //  Log.i(TAG, message);
     }
 
     public class MyLocationListener implements LocationListener {

@@ -12,14 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
-import android.widget.Toast;
 
+import com.androidadvance.topsnackbar.TSnackbar;
 import com.google.gson.Gson;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 
@@ -44,13 +42,12 @@ import project.bsts.semut.map.osm.OSMarkerAnimation;
 import project.bsts.semut.map.osm.OsmMarker;
 import project.bsts.semut.pojo.mapview.MyLocation;
 import project.bsts.semut.services.GetLocation;
-import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
+import project.bsts.semut.ui.ShowSnackbar;
 import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.CustomDrawable;
 import project.bsts.semut.utilities.FragmentTransUtility;
-import project.bsts.semut.utilities.NumUtils;
 
 public class SocialReportActivity extends AppCompatActivity implements BroadcastManager.UIBroadcastListener,
         Marker.OnMarkerClickListener,View.OnClickListener {
@@ -91,6 +88,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
     private ProgressDialog progressDialog;
     private OSMarkerAnimation markerAnimation;
     private boolean isTracked = true;
+    TSnackbar mSnackbarError;
 
     @Override
     protected void onDestroy(){
@@ -114,6 +112,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         context = this;
+        mSnackbarError = ShowSnackbar.errorSnackbar(context);
         mapUitilities = new MapUtilities(mapset);
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Memuat...");
@@ -172,6 +171,9 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
         }
     }
 
+
+
+
     @Override
     public void onMessageReceived(String type, String msg) {
         Log.i(TAG, "-------------------------------------");
@@ -188,13 +190,15 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                     markerMyLocation = osmMarker.add(myLocationObject);
                     if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
 
+
                 }else {
                     GeoPoint currPoint = new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude());
                     markerMyLocation.setRotation((float) MarkerBearing.bearing(markerMyLocation.getPosition().getLatitude(),
                             markerMyLocation.getPosition().getLongitude(), currPoint.getLatitude(), currPoint.getLongitude()));
+                    if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
                     markerAnimation.animate(mapset, markerMyLocation, currPoint, 1500);
                  //   markerMyLocation.setPosition(new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude()));
-                    if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
+
                     mapset.invalidate();
                 }
 
@@ -223,8 +227,12 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 }
                 if(isTracked) mapController.animateTo(markerMyLocation.getPosition());
                 mapset.invalidate();
-
                 break;
+            case Constants.BROADCAST_CONNECTION_ERROR:
+                mSnackbarError.show();
+                break;
+            case Constants.BROADCAST_CONNECTION_STABLE:
+                mSnackbarError.dismiss();
         }
     }
 

@@ -36,17 +36,17 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
 
-            if(CheckService.isGpsEnabled(this)){
-
-                PermissionHelper permissionHelper = new PermissionHelper(this);
-                if (permissionHelper.requestFineLocation()){
-                    Intent intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                }
-
-            }else CommonAlerts.gspIsDisable(this);
+            if(CheckService.isInternetAvailable(context)) {
+                if (CheckService.isGpsEnabled(this)) {
+                    PermissionHelper permissionHelper = new PermissionHelper(this);
+                    if (permissionHelper.requestFineLocation()) {
+                        Intent intent = new Intent(this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    }
+                } else CommonAlerts.gspIsDisable(this);
+            }else CommonAlerts.internetIsDisabled(this);
 
 
         }, SPLASH_TIME);

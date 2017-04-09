@@ -65,6 +65,7 @@
         <activity
             android:name=".SplashScreenActivity"
             android:label="@string/title_activity_semut"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:screenOrientation="portrait"
             />
 
