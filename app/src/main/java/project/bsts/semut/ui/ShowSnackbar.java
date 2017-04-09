@@ -27,7 +27,7 @@ public class ShowSnackbar {
 
 
     public static TSnackbar errorSnackbar(Context context){
-        TSnackbar snackbar = TSnackbar.make(((Activity)context).findViewById(R.id.toolbar), "Oops! Koneksi internet Anda tidak stabil", TSnackbar.LENGTH_INDEFINITE);
+        TSnackbar snackbar = TSnackbar.make(((Activity)context).findViewById(R.id.maposm), "Oops! Koneksi internet Anda tidak stabil", TSnackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(Color.parseColor("#000000"));
         snackbar.setAction("Keluar", view1 -> {
             ((Activity)context).finish();

@@ -29,8 +29,45 @@
             android:text="Klik untuk fokus pada salah satu Tujuan"
             android:id="@+id/help"
             />
-        <ListView
+        <RelativeLayout
             android:layout_below="@id/help"
+            android:id="@+id/myLocLay"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:id="@+id/myLocRadio"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gps_name"
+                    android:text="Lokasi Saya"
+                    android:textColor="@color/colorAccent"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/divider"
+            android:layout_below="@id/myLocLay"
+            android:background="@color/colorPrimaryDark" />
+        <ListView
+            android:layout_below="@id/divider"
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -3,8 +3,10 @@ package project.bsts.semut;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,7 +14,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 
@@ -32,21 +36,28 @@ import java.io.UnsupportedEncodingException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.ceryle.radiorealbutton.library.RadioRealButtonGroup;
 import project.bsts.semut.adapters.TrackerAdapter;
 import project.bsts.semut.connections.broker.BrokerCallback;
 import project.bsts.semut.connections.broker.Config;
 import project.bsts.semut.connections.broker.Consumer;
 import project.bsts.semut.connections.broker.Factory;
+import project.bsts.semut.helper.BroadcastManager;
+import project.bsts.semut.helper.PermissionHelper;
 import project.bsts.semut.map.MarkerBearing;
 import project.bsts.semut.map.osm.MarkerClick;
 import project.bsts.semut.map.osm.OSMarkerAnimation;
+import project.bsts.semut.map.osm.OsmMarker;
+import project.bsts.semut.pojo.mapview.MyLocation;
 import project.bsts.semut.pojo.mapview.Tracker;
+import project.bsts.semut.services.GetLocation;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
 import project.bsts.semut.ui.CommonAlerts;
+import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.CustomDrawable;
 
-public class TrackerActivity extends AppCompatActivity implements BrokerCallback, TrackerAdapter.MarkerPositionListener, Marker.OnMarkerClickListener {
+public class TrackerActivity extends AppCompatActivity implements BrokerCallback, TrackerAdapter.MarkerPositionListener, Marker.OnMarkerClickListener, BroadcastManager.UIBroadcastListener {
 
 
     @BindView(R.id.maposm)
@@ -59,6 +70,8 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
     FloatingActionButton sortFab;
     @BindView(R.id.markerdetail_layout)
     RelativeLayout markerDetailLayout;
+    @BindView(R.id.myLocRadio)
+    RadioButton mRadioMyLocation;
 
 
     private Switch mSwitchTrack;
@@ -75,7 +88,7 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
     private Marker[] markers;
     private boolean isFirsInit = true, isTracked = true;
     private TrackerAdapter adapter;
-    private int checkedState = 0;
+    private int checkedState = -1;
     private MarkerClick markerClick;
     private Animation slideDown;
     private AnimationView animationView;
@@ -85,6 +98,15 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
     private Intent intent;
     private Drawable mMarkerDrawable;
     private String ROUTING_KEY;
+    private Intent locService;
+    private BroadcastManager broadcastManager;
+    private Marker markerMyLocation;
+    private OsmMarker osmMarker;
+    private OSMarkerAnimation markerAnimation;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,11 +129,31 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
         ButterKnife.bind(this);
 
 
+        mRadioMyLocation.setOnCheckedChangeListener((compoundButton, b) -> {
+            if(b) {
+                checkedState = -1;
+                animateToSelected();
+                setListView();
+                doFab();
+            }
+        });
+
+
 
         mSwitchTrack.setChecked(true);
         mSwitchTrack.setOnCheckedChangeListener((compoundButton, b) -> isTracked = b);
 
         context = this;
+
+        PermissionHelper permissionHelper = new PermissionHelper(context);
+        broadcastManager = new BroadcastManager(context);
+        broadcastManager.subscribeToUi(this);
+
+
+        locService = new Intent(context, GetLocation.class);
+        locService.putExtra(Constants.INTENT_LOCATION_WITH_STORING, false);
+        if (permissionHelper.requestFineLocation()) startService(locService);
+
         mProgressDialog = new ProgressDialog(context);
         markerClick = new MarkerClick(context, markerDetailLayout);
         mProgressDialog.setMessage("Memuat...");
@@ -121,10 +163,11 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
         mapset.setMultiTouchControls(true);
         mapset.setMaxZoomLevel(20);
         mapController = mapset.getController();
+        osmMarker = new OsmMarker(mapset);
         mapController.setZoom(20);
         sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_sort, 24, R.color.primary_light));
         sortFab.setOnClickListener(view -> doFab());
-
+        markerAnimation = new OSMarkerAnimation();
         animationView = new AnimationView(context);
         slideDown = animationView.getAnimation(R.anim.slide_down, anim -> {
             if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.setVisibility(View.GONE);
@@ -138,6 +181,7 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
             if(sortLayout.getVisibility() == View.GONE) sortLayout.setVisibility(View.VISIBLE);
             fabState = FAB_STATE_OPEN;
             sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_close, 24, R.color.primary_light));
+         //   setListView();
         }else {
             if(sortLayout.getVisibility() == View.VISIBLE) sortLayout.setVisibility(View.GONE);
             if(markerDetailLayout.getVisibility() == View.VISIBLE) markerDetailLayout.startAnimation(slideDown);
@@ -146,6 +190,20 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PermissionHelper.REQUEST_ACCESS_FINE_LOCATION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.i(TAG, "Location granted");
+                    startService(locService);
+                } else {
+                    Log.i(TAG, "Location Rejected");
+                    CommonAlerts.commonError(context, "Untuk melanjutkan menggunakan aplikasi, Anda harus mengizinkan aplikasi menggunakan lokasi Anda");
+                }
+                break;
+        }
+    }
 
     private void setListView() {
 
@@ -212,7 +270,6 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
                     animateToSelected();
                 }else {
                     if(jsonArray.length() == trackers.length){
-                        OSMarkerAnimation markerAnimation = new OSMarkerAnimation();
                         for(int i = 0; i < jsonArray.length(); i++){
                             JSONObject entity = jsonArray.getJSONObject(i);
                             if(trackers[i].getMac().equals(entity.getString("Mac"))){ // update markers
@@ -227,7 +284,7 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
                                     markerAnimation.animate(mapset, markers[i],
                                             new GeoPoint(trackers[i].getData().get(0), trackers[i].getData().get(1)),
                                             1500);
-                                    mapController.setZoom(20);
+                                    if(checkedState != -1) mapController.setZoom(20);
                                 }else {
                                     // same position
                                 }
@@ -253,7 +310,8 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
     }
 
     private void animateToSelected(){
-        mapController.animateTo(markers[checkedState].getPosition());
+        if(checkedState == -1) mapController.animateTo(markerMyLocation.getPosition());
+        else mapController.animateTo(markers[checkedState].getPosition());
     }
 
 
@@ -294,10 +352,13 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
 
     @Override
     public void onMarkerSelected(int position) {
+        Log.i(TAG, "pos "+position);
         checkedState = position;
+        mRadioMyLocation.setChecked(false);
         animateToSelected();
         setListView();
         doFab();
+        Log.i(TAG, "pos 2"+checkedState);
 
 
     }
@@ -309,6 +370,10 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
     public void onDestroy(){
         super.onDestroy();
         mqConsumer.stop();
+        broadcastManager.unSubscribeToUi();
+        if(CheckService.isLocationServiceRunning(context)){
+            stopService(locService);
+        }
     }
 
     @Override
@@ -326,5 +391,34 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMessageReceived(String type, String msg) {
+        Log.i(TAG, "-------------------------------------");
+        Log.i(TAG, "Receive on UI : Type : "+type);
+        Log.i(TAG, msg);
+        switch (type) {
+            case Constants.BROADCAST_MY_LOCATION:
+                MyLocation myLocationObject = new Gson().fromJson(msg, MyLocation.class);
+                if (isFirsInit) {
+
+                    markerMyLocation = osmMarker.add(myLocationObject);
+                 //   if (isTracked) mapController.animateTo(markerMyLocation.getPosition());
+
+
+                } else {
+                    GeoPoint currPoint = new GeoPoint(myLocationObject.getMyLatitude(), myLocationObject.getMyLongitude());
+                    markerMyLocation.setRotation((float) MarkerBearing.bearing(markerMyLocation.getPosition().getLatitude(),
+                            markerMyLocation.getPosition().getLongitude(), currPoint.getLatitude(), currPoint.getLongitude()));
+                  //  if (isTracked) mapController.animateTo(markerMyLocation.getPosition());
+                    markerAnimation.animate(mapset, markerMyLocation, currPoint, 1500);
+
+
+                    mapset.invalidate();
+                }
+
+                break;
+        }
     }
 }

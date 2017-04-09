@@ -53,37 +53,38 @@ public class GetLocation extends Service implements BrokerCallback {
 
     private BroadcastManager broadcastManager;
     private ScheduleTask task;
-    private JSONObject object;
     private Factory mqFactory;
     private Consumer mqConsumer;
     private Producer mqProducer;
     private PreferenceManager preferenceManager;
     Session session;
     Profile profile;
-    private boolean isFirstInit = true, isMqConnectionError = false;
+    private boolean isFirstInit = true, isMqConnectionError = false, isWithStroring = true;
+    private Intent intent;
 
     @Override
-    public IBinder onBind(Intent intent) {
+    public IBinder onBind(Intent i) {
+
         return null;
     }
 
     @Override
     public void onCreate() {
         Log.i("STATUS", "Get Loc Service Created");
+
         broadcastManager = new BroadcastManager(getApplicationContext());
         preferenceManager = new PreferenceManager(getApplicationContext());
         session = new Gson().fromJson(preferenceManager.getString(Constants.PREF_SESSION_ID), Session.class);
         profile = new Gson().fromJson(preferenceManager.getString(Constants.PREF_PROFILE), Profile.class);
-        connectToRabbit();
-        consume();
+        if(isWithStroring) connectToRabbit();
+        if(isWithStroring) consume();
         handler = new Handler();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location loc = LocationUtilities.getLastBestLocation(locationManager);
         if(loc != null){
             latService = loc.getLatitude();
             lngService = loc.getLongitude();
-            broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latService, lngService));
-            startCollectingMap();
+
         }
     }
 
@@ -96,7 +97,12 @@ public class GetLocation extends Service implements BrokerCallback {
     }
 
 
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent i, int flags, int startId) {
+        this.intent = i;
+        isWithStroring = intent.getBooleanExtra(Constants.INTENT_LOCATION_WITH_STORING, true);
+        broadCastMessage(Constants.BROADCAST_MY_LOCATION, JSONRequest.myLocation(latService, lngService));
+        if(isWithStroring) startCollectingMap();
+        Log.i("SHIT", String.valueOf(isWithStroring));
 
         final Runnable r = new Runnable() {
             public void run() {
@@ -105,7 +111,7 @@ public class GetLocation extends Service implements BrokerCallback {
                 listener = new MyLocationListener();
                 locationManager.requestLocationUpdates(best, 400, 0, listener);
                 if (latService!=0.0 || lngService!=0.0){
-                    startCollectingMap();
+                    if(isWithStroring) startCollectingMap();
                     Log.i("STATUS", "Location changed Alt: " + altService + " Lat: " + latService + " Lon: " + lngService + " Spd: " + spdService);
                     preferenceManager.save((float)latService, Constants.ENTITY_LATITUDE);
                     preferenceManager.save((float)lngService, Constants.ENTITY_LONGITUDE);
@@ -192,9 +198,9 @@ public class GetLocation extends Service implements BrokerCallback {
     @Override
     public void onDestroy() {
         handler.removeCallbacksAndMessages(runnable);
-        task.stop();
-        mqConsumer.stop();
-        mqProducer.stop();
+        if(task != null)task.stop();
+        if(mqConsumer != null) mqConsumer.stop();
+        if(mqProducer != null) mqProducer.stop();
         Log.i("STATUS", "Get Loc Service Stoped");
     }
 

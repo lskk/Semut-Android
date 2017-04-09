@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.google.gson.Gson;
@@ -44,6 +45,7 @@ import project.bsts.semut.pojo.mapview.MyLocation;
 import project.bsts.semut.services.GetLocation;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.AnimationView;
+import project.bsts.semut.ui.CommonAlerts;
 import project.bsts.semut.ui.ShowSnackbar;
 import project.bsts.semut.utilities.CheckService;
 import project.bsts.semut.utilities.CustomDrawable;
@@ -166,6 +168,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                     startService(locService);
                 } else {
                     Log.i(TAG, "Location Rejected");
+                    CommonAlerts.commonError(context, "Untuk melanjutkan menggunakan aplikasi, Anda harus mengizinkan aplikasi menggunakan lokasi Anda");
                 }
                 break;
         }
@@ -233,6 +236,7 @@ public class SocialReportActivity extends AppCompatActivity implements Broadcast
                 break;
             case Constants.BROADCAST_CONNECTION_STABLE:
                 mSnackbarError.dismiss();
+                Toast.makeText(context, "Koneksi Anda stabil kembali", Toast.LENGTH_LONG).show();
         }
     }
 
