@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="project.bsts.semut.test" >
+    package="id.blits.semut.test" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -10,8 +10,8 @@
         android:name="android.support.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for project.bsts.semut"
-        android:targetPackage="project.bsts.semut" />
+        android:label="Tests for id.blits.semut"
+        android:targetPackage="id.blits.semut" />
 
     <application>
         <uses-library android:name="android.test.runner" />

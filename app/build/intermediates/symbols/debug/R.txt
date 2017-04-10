@@ -27,7 +27,9 @@ int anim slide_out_bottom 0x7f050019
 int anim slide_up 0x7f05001a
 int anim top_in 0x7f05001b
 int anim top_out 0x7f05001c
-int animator design_appbar_state_list_animator 0x7f060000
+int animator come_from_right_fragment 0x7f060000
+int animator design_appbar_state_list_animator 0x7f060001
+int animator out_to_right_fragment 0x7f060002
 int array cast_expanded_controller_default_control_buttons 0x7f0f0000
 int array cast_mini_controller_default_control_buttons 0x7f0f0001
 int array g_default_loading_fg 0x7f0f0002
@@ -2715,10 +2717,10 @@ int id filterCctv 0x7f10018b
 int id filterClosure 0x7f100190
 int id filterCommuter 0x7f100191
 int id filterDisaster 0x7f10018f
-int id filterOther 0x7f100193
+int id filterOther 0x7f100194
 int id filterPolice 0x7f10018c
 int id filterTraffic 0x7f10018e
-int id filterTranPost 0x7f100194
+int id filterTranPost 0x7f100193
 int id filter_button 0x7f1000f8
 int id filter_layout 0x7f100157
 int id filter_user 0x7f10018a

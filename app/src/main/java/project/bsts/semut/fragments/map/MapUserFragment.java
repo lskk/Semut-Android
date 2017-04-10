@@ -55,6 +55,7 @@ public class MapUserFragment extends Fragment {
         isFriend = userMap.getFriend();
         if(isFriend) addOrProfileBtn.setText("Lihat Profile");
         else addOrProfileBtn.setText("Tambahkan Teman");
+        addOrProfileBtn.setVisibility(View.GONE);
 
 
         nameUserText.setText(userMap.getName());

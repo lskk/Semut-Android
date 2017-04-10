@@ -3,9 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="app_id"></string>
-    <string name="title_activity_semut">Semut</string>
+    <string name="title_activity_semut">Semut Bandar Lampung</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_main">Semut</string>
+    <string name="title_activity_main">Semut Bandar Lampung</string>
     <string name="bottom_arrow">&#129169;</string>
     <string name="title_activity_city_cctv">City</string>
     <string name="title_activity_cctv_list">CctvListActivity</string>

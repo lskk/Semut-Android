@@ -161,10 +161,10 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
         connectToRabbit();
         mapset.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         mapset.setMultiTouchControls(true);
-        mapset.setMaxZoomLevel(20);
+        mapset.setMaxZoomLevel(19);
         mapController = mapset.getController();
         osmMarker = new OsmMarker(mapset);
-        mapController.setZoom(20);
+        mapController.setZoom(19);
         sortFab.setImageDrawable(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_sort, 24, R.color.primary_light));
         sortFab.setOnClickListener(view -> doFab());
         markerAnimation = new OSMarkerAnimation();
@@ -284,7 +284,7 @@ public class TrackerActivity extends AppCompatActivity implements BrokerCallback
                                     markerAnimation.animate(mapset, markers[i],
                                             new GeoPoint(trackers[i].getData().get(0), trackers[i].getData().get(1)),
                                             1500);
-                                    if(checkedState != -1) mapController.setZoom(20);
+                                    if(checkedState != -1) mapController.setZoom(19);
                                 }else {
                                     // same position
                                 }

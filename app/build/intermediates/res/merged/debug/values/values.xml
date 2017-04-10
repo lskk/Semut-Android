@@ -3929,9 +3929,9 @@
     <string name="title_activity_cctv_list">CctvListActivity</string>
     <string name="title_activity_city_cctv">City</string>
     <string name="title_activity_login">Login</string>
-    <string name="title_activity_main">Semut</string>
+    <string name="title_activity_main">Semut Bandar Lampung</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_semut">Semut</string>
+    <string name="title_activity_semut">Semut Bandar Lampung</string>
     <string name="title_activity_signup">Daftar</string>
     <string name="title_activity_transportation_list">Transportasi</string>
     <string name="topo">Topographic</string>

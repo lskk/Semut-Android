@@ -86,10 +86,10 @@ public class TagsFragment extends Fragment implements View.OnClickListener {
             }
 
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.setCustomAnimations(R.anim.come_from_right_fragment,
-                    R.anim.out_to_right_fragment,
-                    R.anim.come_from_right_fragment,
-                    R.anim.out_to_right_fragment);
+            fragmentTransaction.setCustomAnimations(R.animator.come_from_right_fragment,
+                    R.animator.out_to_right_fragment,
+                    R.animator.come_from_right_fragment,
+                    R.animator.out_to_right_fragment);
 
             TagsFragment tagsFragment = new TagsFragment();
 
@@ -164,7 +164,7 @@ public class TagsFragment extends Fragment implements View.OnClickListener {
             submit.setSubPostID(index);
 
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.setCustomAnimations(R.anim.come_from_right_fragment, R.anim.out_to_right_fragment, R.anim.come_from_right_fragment, R.anim.out_to_right_fragment);
+            fragmentTransaction.setCustomAnimations(R.animator.come_from_right_fragment, R.animator.out_to_right_fragment, R.animator.come_from_right_fragment, R.animator.out_to_right_fragment);
             fragmentTransaction.add(R.id.container, submit);
             fragmentTransaction.addToBackStack("third");
             fragmentTransaction.commit();
