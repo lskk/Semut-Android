@@ -2,6 +2,9 @@ package project.bsts.semut.utilities;
 
 import android.text.TextUtils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class FieldValidator {
 
@@ -19,4 +22,15 @@ public class FieldValidator {
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
     }
+
+    public static boolean userNameValidator(String username){
+        String USERNAME_PATTERN = "^[a-z0-9_-]{6,15}$";
+        Pattern pattern = Pattern.compile(USERNAME_PATTERN);
+        Matcher matcher;
+        matcher = pattern.matcher(username);
+        return matcher.matches();
+
+    }
+
+
 }

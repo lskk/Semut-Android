@@ -54,6 +54,7 @@ public class CctvPlayerActivity extends Activity implements MediaPlayer.OnPrepar
 
         mediaController.setAnchorView(videoView);
         Uri video = Uri.parse(getUrlStr());
+        Log.i(this.getClass().getSimpleName(), String.valueOf(video));
         videoView.setMediaController(mediaController);
         videoView.setVideoURI(video);
         videoView.setOnPreparedListener(this);

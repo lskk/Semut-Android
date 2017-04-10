@@ -97,8 +97,10 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
     }
 
     private void doLogin(){
-        boolean valid = (mEditUsername.getText().toString() != null) && mEditUsername.getText().toString().matches("[A-Za-z0-9_]+");
-        if(!valid) Snackbar.make(mEditEmail, "Username tidak valid", Snackbar.LENGTH_LONG).show();
+
+
+        boolean valid = FieldValidator.userNameValidator(mEditUsername.getText().toString());
+        if(!valid) Snackbar.make(mEditEmail, "Username tidak valid. Harus huruf kecil dan minimal terdiri dari 6 karakter", Snackbar.LENGTH_LONG).show();
         else {
             if (mEditPassword.getText().toString().equals("") ||
                     mEditRepeatPassword.getText().toString().equals("") ||
