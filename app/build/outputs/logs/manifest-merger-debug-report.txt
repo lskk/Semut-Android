@@ -41,10 +41,6 @@ ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app
 MERGED from [org.osmdroid:osmdroid-android:5.6.3] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/org.osmdroid/osmdroid-android/5.6.3/AndroidManifest.xml:16:5-79
 	android:name
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:11:22-76
-uses-permission#android.permission.GET_ACCOUNTS
-ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:13:5-71
-	android:name
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:13:22-68
 uses-permission#android.permission.WAKE_LOCK
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:14:5-68
 MERGED from [com.google.android.gms:play-services-analytics:10.0.1] /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/10.0.1/AndroidManifest.xml:24:5-67
@@ -191,8 +187,6 @@ ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:36:13-58
 activity#project.bsts.semut.LoginActivity
 ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:39:9-49:20
-	android:screenOrientation
-		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:42:13-49
 	android:label
 		ADDED from /Users/arysetijadiprihatmanto/AndroidStudioProjects/Semut-Android/app/src/main/AndroidManifest.xml:41:13-49
 	android:theme
