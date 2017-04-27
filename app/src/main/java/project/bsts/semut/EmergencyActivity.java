@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.rabbitmq.client.AMQP;
@@ -34,8 +35,7 @@ import project.bsts.semut.services.LocationService;
 import project.bsts.semut.setup.Constants;
 import project.bsts.semut.ui.CommonAlerts;
 import project.bsts.semut.utilities.CheckService;
-import project.bsts.semut.utilities.GetCurrentDate;
-import project.bsts.semut.utilities.MapItem;
+
 
 public class EmergencyActivity extends AppCompatActivity implements BrokerCallback {
 
@@ -168,6 +168,8 @@ public class EmergencyActivity extends AppCompatActivity implements BrokerCallba
         }
         Log.i(TAG, message.toString());
         mqProducer.publish(message.toString(), null, true);
+        Toast.makeText(mContext, "Berhasil memuat laporan, pastikan Nomor telepon Anda Aktif!", Toast.LENGTH_LONG).show();
+        finish();
     }
 
     @Override

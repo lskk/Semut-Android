@@ -11,10 +11,10 @@
     tools:showIn="@layout/activity_emergency">
     <ScrollView
         android:layout_width="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,106 +81,132 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
-                <RelativeLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="210dp"
-                    android:layout_height="210dp"
-                    android:id="@+id/layout_ambulance_emergency"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/bg_circle_bold"
-                    >
-                    <TextView
-                        android:layout_centerInParent="true"
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="AMBULANCE"
-                        android:id="@+id/title_amblulance_emergency"
-                        style="@style/Base.TextAppearance.AppCompat.Title"
-                        />
-                    <TextView
-                        android:layout_below="@id/title_amblulance_emergency"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TEKAN LAMA DISINI"
-                        style="@style/TextAppearance.AppCompat.Small"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="210dp"
-                    android:layout_height="210dp"
-                    android:id="@+id/layout_police_emergency"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/bg_circle_bold"
-                    >
-                    <TextView
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="POLISI"
-                        android:id="@+id/title_police_emergency"
-                        style="@style/Base.TextAppearance.AppCompat.Title"
-                        />
-                    <TextView
-                        android:layout_below="@id/title_police_emergency"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TEKAN LAMA DISINI"
-                        style="@style/TextAppearance.AppCompat.Small"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="210dp"
-                    android:layout_height="210dp"
-                    android:id="@+id/layout_fire_emergency"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/bg_circle_bold"
-                    >
-                    <TextView
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PEMADAM KEBAKARAN"
-                        android:id="@+id/title_fire_emergency"
-                        style="@style/Base.TextAppearance.AppCompat.Title"
-                        />
-                    <TextView
-                        android:layout_below="@id/title_fire_emergency"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TEKAN LAMA DISINI"
-                        style="@style/TextAppearance.AppCompat.Small"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="210dp"
-                    android:id="@+id/layout_derek_emergency"
-                    android:layout_height="210dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/bg_circle_bold"
-                    >
-                    <TextView
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MOBIL DEREK"
-                        android:id="@+id/title_derek_emergency"
-                        style="@style/Base.TextAppearance.AppCompat.Title"
-                        />
-                    <TextView
-                        android:layout_below="@id/title_derek_emergency"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TEKAN DISINI"
-                        style="@style/TextAppearance.AppCompat.Small"
-                        />
-                </RelativeLayout>
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content">
+                        <RelativeLayout
+                            android:layout_margin="15dp"
+                            android:layout_width="210dp"
+                            android:layout_height="210dp"
+                            android:id="@+id/layout_ambulance_emergency"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/bg_circle_bold"
+                            >
+                            <TextView
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AMBULANCE"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:id="@+id/title_amblulance_emergency"
+                                style="@style/Base.TextAppearance.AppCompat.Title"
+                                />
+                            <TextView
+                                android:layout_below="@id/title_amblulance_emergency"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TEKAN LAMA DISINI"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_margin="15dp"
+                            android:layout_width="210dp"
+                            android:layout_height="210dp"
+                            android:id="@+id/layout_police_emergency"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/bg_circle_bold"
+                            >
+                            <TextView
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="POLISI"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:id="@+id/title_police_emergency"
+                                style="@style/Base.TextAppearance.AppCompat.Title"
+                                />
+                            <TextView
+                                android:layout_below="@id/title_police_emergency"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TEKAN LAMA DISINI"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_margin="15dp"
+                            android:layout_width="210dp"
+                            android:id="@+id/layout_fire_emergency"
+                            android:layout_height="210dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/bg_circle_bold"
+                            >
+                            <TextView
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PEMADAM KEBAKARAN"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:id="@+id/title_fire_emergency"
+                                style="@style/Base.TextAppearance.AppCompat.Title"
+                                />
+                            <TextView
+                                android:layout_below="@id/title_fire_emergency"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TEKAN LAMA DISINI"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_margin="15dp"
+                            android:layout_width="210dp"
+                            android:id="@+id/layout_derek_emergency"
+                            android:layout_height="210dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/bg_circle_bold"
+                            >
+                            <TextView
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MOBIL DEREK"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:id="@+id/title_derek_emergency"
+                                style="@style/Base.TextAppearance.AppCompat.Title"
+                                />
+                            <TextView
+                                android:layout_below="@id/title_derek_emergency"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TEKAN LAMA DISINI"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

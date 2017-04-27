@@ -60,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
         object3.setIcon(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_directions_bus, 34, R.color.primary_dark));
         arrObj.add(object3);
 
+        MainMenuObject object4 = new MainMenuObject();
+        object4.setTitle("Tombol \nDarurat");
+        object4.setClassIntent(EmergencyActivity.class);
+        object4.setIcon(CustomDrawable.create(context, GoogleMaterial.Icon.gmd_pan_tool, 34, R.color.primary_dark));
+        arrObj.add(object4);
+
     /*    MainMenuObject object4 = new MainMenuObject();
         object4.setTitle("Profile\n");
         object4.setClassIntent(SocialReportActivity.class);
